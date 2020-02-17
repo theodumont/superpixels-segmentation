@@ -1,1 +1,3 @@
-# superpixels-segmentation
+# Image segmentation by superpixels
+
+In progress
