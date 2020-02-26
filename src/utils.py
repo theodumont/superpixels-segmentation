@@ -20,7 +20,7 @@ def show_image(image):
     """
 
     plt.figure(0)
-    plt.imshow(np.transpose(image.int().squeeze(0), axes = (1, 2, 0)))
+    plt.imshow(np.transpose(image.int().squeeze(0), axes=(1, 2, 0)))
     plt.draw()
     plt.pause(5)
     plt.close()
@@ -41,13 +41,13 @@ def show_sample_index(segmentation_dataset, idx_list):
 
 
 def show_sample(sample, idx):
-    fig = plt.figure("Batch number "+str(idx),figsize=(6, 9))
+    fig = plt.figure("Batch number "+str(idx), figsize=(6, 9))
 
     images = sample['image']
     images_segm = sample['image_segm']
     for i in range(images.shape[0]):
-        image = np.transpose((255*images).int()[i], axes = (1,2,0))
-        image_segm = np.transpose((255*images_segm).int()[i], axes = (1,2,0))
+        image = np.transpose((255*images).int()[i], axes=(1, 2, 0))
+        image_segm = np.transpose((255*images_segm).int()[i], axes=(1, 2, 0))
         ax = plt.subplot(images.shape[0], 2, 2*i+1)
         ax.set_title('Original image '+str(i))
         ax.axis('off')
@@ -90,7 +90,7 @@ def min_max_images(segmentation_dataset):
     for i in range(len(segmentation_dataset)):
         h = segmentation_dataset[i]['image'].shape[2]
         w = segmentation_dataset[i]['image'].shape[3]
-        print(h,w)
+        print(h, w)
         if h < min_heigth:
             min_heigth = h
         if h > max_heigth:
@@ -99,15 +99,15 @@ def min_max_images(segmentation_dataset):
             min_width = w
         if w > max_width:
             max_width = w
-        if (i%100==0):
-            print(i,"th image")
-    print("Minimum height is",min_heigth,"pixels")
-    print("Maximum height is",max_heigth,"pixels")
-    print("Minimum width is",min_width,"pixels")
-    print("Maximum width is",max_width,"pixels")
+        if (i % 100 == 0):
+            print(i, "th image")
+    print("Minimum height is", min_heigth, "pixels")
+    print("Maximum height is", max_heigth, "pixels")
+    print("Minimum width is", min_width, "pixels")
+    print("Maximum width is", max_width, "pixels")
 
 
-def calcul_pixel(input_img,outputs,net):
+def calcul_pixel(input_img, outputs, net):
 
     """
     Tests if the convolution computation of a network is correct.
@@ -121,8 +121,8 @@ def calcul_pixel(input_img,outputs,net):
     :type net: Net
     """
 
-    print("Initial pixel   : ",input_img[0,0,0,0].item(),input_img[0,1,0,0].item(),input_img[0,2,0,0].item())
-    print("Final pixel     : ",outputs[0,0,0,0].item(),outputs[0,1,0,0].item(),outputs[0,2,0,0].item())
+    print("Initial pixel   : ", input_img[0, 0, 0, 0].item(), input_img[0, 1, 0, 0].item(), input_img[0, 2, 0, 0].item())
+    print("Final pixel     : ", outputs[0, 0, 0, 0].item(), outputs[0, 1, 0, 0].item(), outputs[0, 2, 0, 0].item())
 
     R = 0.
     G = 0.
@@ -131,9 +131,9 @@ def calcul_pixel(input_img,outputs,net):
     for name, param in net.named_parameters():
         if param.requires_grad:
             if u == 0:
-                R += input_img[0,0,0,0].item()*param[0,0,0,0] + input_img[0,1,0,0].item()*param[0,1,0,0] + input_img[0,2,0,0].item()*param[0,2,0,0]
-                G += input_img[0,0,0,0].item()*param[1,0,0,0] + input_img[0,1,0,0].item()*param[1,1,0,0] + input_img[0,2,0,0].item()*param[1,2,0,0]
-                B += input_img[0,0,0,0].item()*param[2,0,0,0] + input_img[0,1,0,0].item()*param[2,1,0,0] + input_img[0,2,0,0].item()*param[2,2,0,0]
+                R += input_img[0, 0, 0, 0].item()*param[0, 0, 0, 0] + input_img[0, 1, 0, 0].item()*param[0, 1, 0, 0] + input_img[0, 2, 0, 0].item()*param[0, 2, 0, 0]
+                G += input_img[0, 0, 0, 0].item()*param[1, 0, 0, 0] + input_img[0, 1, 0, 0].item()*param[1, 1, 0, 0] + input_img[0, 2, 0, 0].item()*param[1, 2, 0, 0]
+                B += input_img[0, 0, 0, 0].item()*param[2, 0, 0, 0] + input_img[0, 1, 0, 0].item()*param[2, 1, 0, 0] + input_img[0, 2, 0, 0].item()*param[2, 2, 0, 0]
 
             if u == 1:
                 R += param[0]
@@ -141,19 +141,19 @@ def calcul_pixel(input_img,outputs,net):
                 B += param[2]
             u += 1
 
-    print("Par calcul : ",R.item(),G.item(),B.item())
+    print("Par calcul : ", R.item(), G.item(), B.item())
 
 
 def to_vector(f):
     return f.reshape(-1).unsqueeze(1)
 
 
-def draw(ylabel,title,batch_size,d,xlim=None,ylim=None):
+def draw(ylabel, title, batch_size, d, xlim=None, ylim=None):
     plt.xlabel('Number of processed images')
     plt.ylabel(ylabel)
     plt.xlim(xlim)
     plt.ylim(ylim)
-    plt.title(title+', batch is '+ str(batch_size)+', d = '+str(d))
+    plt.title(title+', batch is ' + str(batch_size)+', d = '+str(d))
     plt.grid(True)
     plt.legend()
     plt.tight_layout

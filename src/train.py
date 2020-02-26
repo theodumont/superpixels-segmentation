@@ -4,7 +4,6 @@ Training methods for the neural network
 
 import sys, time, os
 from os.path import expanduser
-home = expanduser("~")
 
 import torch
 import torchvision
@@ -19,6 +18,7 @@ import matplotlib.pyplot as plt
 from network import Net
 
 import argparse
+home = expanduser("~")
 
 parser = argparse.ArgumentParser(
     description='Process the parameters.')
@@ -26,21 +26,24 @@ parser.add_argument('d', help="network length", type=int)
 parser.add_argument('alpha', help="alpha parameter", type=float)
 parser.add_argument('lr', help="learning_rate", type=float)
 parser.add_argument('run_idx', help="run number [...]", type=int)
-parser.add_argument('-f','--freq', help="frequency of division over epochs", type=int, default=10)
-parser.add_argument('-r','--reduction', help="divided by", type=int, default=5)
-parser.add_argument('-u','--unet', help="last layer unet?", type=bool, default=False)
-parser.add_argument('-b','--batch', help="size of the batch", type=int, default=32)
-parser.add_argument('-e','--epochs', help="number of epochs", type=int, default=40)
+parser.add_argument('-f', '--freq', help="frequency of division over epochs", type=int, default=10)
+parser.add_argument('-r', '--reduction', help="divided by", type=int, default=5)
+parser.add_argument('-u', '--unet', help="last layer unet?", type=bool, default=False)
+parser.add_argument('-b', '--batch', help="size of the batch", type=int, default=32)
+parser.add_argument('-e', '--epochs', help="number of epochs", type=int, default=40)
 args = parser.parse_args()
+
 print(args.d)
+
 
 def imshow(img, target):
 
     npimg = make_grid(img).numpy()
     nptarget = make_grid(target).numpy()
 
-    fig, ax = plt.subplots(2, 1, figsize=(10, 10), sharex=True,
-       sharey=True, subplot_kw={'adjustable': 'box-forced'})
+    fig, ax = plt.subplots(2, 1, figsize=(10, 10),
+                           sharex=True, sharey=True,
+                           subplot_kw={'adjustable': 'box-forced'})
 
     ax[0].set_title("Original images")
     ax[0].imshow(np.transpose(npimg, (1, 2, 0)))
@@ -58,7 +61,7 @@ if __name__ == '__main__':
 
     # Select a device
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    print("device: ",device)
+    print("device: ", device)
 
     # Training parameters
     batch_size = args.batch
@@ -70,9 +73,9 @@ if __name__ == '__main__':
 
     # Load the segmentation dataset
     segmentation_dataset = SegmentationDataset(
-        root_dir= '../../../../data/commun/COCO/',
-        input_dir= 'train2017/',
-        target_dir= 'trainSP2017/',
+        root_dir='../../../../data/commun/COCO/',
+        input_dir='train2017/',
+        target_dir='trainSP2017/',
         transform=transforms.Compose([
              RandomCrop(224),
              Normalize(),
@@ -81,10 +84,9 @@ if __name__ == '__main__':
     # Data loader
     trainloader = torch.utils.data.DataLoader(
         segmentation_dataset,
-        batch_size = batch_size,
-        shuffle = True,
-        num_workers = 0)
-
+        batch_size=batch_size,
+        shuffle=True,
+        num_workers=0)
 
     # Neural network
     d = args.d
@@ -95,13 +97,13 @@ if __name__ == '__main__':
     PATH = './weights/run' + run_idx + '.pth'
     TEMP = './temp/run'
 
-    #net.load_state_dict(torch.load(PATH))
+    # net.load_state_dict(torch.load(PATH))
     start_epoches = 0
 
     # Optimizer
     import torch.optim as optim
-    criterion = lambda outputs, target: TV_loss(outputs, target, batch_size = batch_size, alpha = alpha)
-    optimizer = optim.Adam(net.parameters(), lr = learning_rate)
+    criterion = lambda outputs, target: TV_loss(outputs, target, batch_size=batch_size, alpha=alpha)
+    optimizer = optim.Adam(net.parameters(), lr=learning_rate)
 
     def learning():
 
@@ -112,7 +114,7 @@ if __name__ == '__main__':
             # divise the learning rate
             if ((epoch-start_epoches-1) % freq == 0):
                 learning_rate /= reduction
-                optimizer = optim.Adam(net.parameters(), lr = learning_rate)
+                optimizer = optim.Adam(net.parameters(), lr=learning_rate)
 
             x = []
             running_loss = 0.0
@@ -137,7 +139,7 @@ if __name__ == '__main__':
                 # Weights update
                 optimizer.step()
                 running_loss += loss.item()
-                if i%10==0:
+                if i % 10 == 0:
 
                     print('[%d,%d] loss: %.6f' % (epoch + 1, i+1, running_loss/(i+1)))
                     loss_lst[epoch - start_epoches].append(loss.item())
@@ -152,13 +154,7 @@ if __name__ == '__main__':
 
             # Save loss for the epoch
             np.save('./results/run' + run_idx + "_" + str(epoch) + '.npy',
-              np.array(loss_lst[epoch - start_epoches]))
+                    np.array(loss_lst[epoch - start_epoches]))
 
     learning()
     torch.save(net.state_dict(), PATH)
-
-
-
-
-
-

@@ -4,7 +4,6 @@ Training methods for the neural network
 
 import sys, time, os
 from os.path import expanduser
-home = expanduser("~")
 
 import torch
 import torchvision
@@ -18,21 +17,23 @@ import matplotlib.pyplot as plt
 from network import AdaptiveBatchNorm2d, ChenConv
 from network import Net
 
+home = expanduser("~")
+
 
 def validation(model_idx, epoch_idx):
 
     # Select a device
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    print("device: ",device)
+    print("device: ", device)
 
     # Training parameters
     batch_size = 32
 
     # Load the segmentation dataset
     segmentation_dataset = SegmentationDataset(
-        root_dir= '../../../../data/commun/COCO/',
-        input_dir= 'val2017/',
-        target_dir= 'valSP2017/',
+        root_dir='../../../../data/commun/COCO/',
+        input_dir='val2017/',
+        target_dir='valSP2017/',
         transform=transforms.Compose([
              RandomCrop(224),
              Normalize(),
@@ -41,10 +42,9 @@ def validation(model_idx, epoch_idx):
     # Data loader
     val_loader = torch.utils.data.DataLoader(
         segmentation_dataset,
-        batch_size = batch_size,
-        shuffle = False,
-        num_workers = 0)
-
+        batch_size=batch_size,
+        shuffle=False,
+        num_workers=0)
 
     # Initializes the neural network
     net = Net()
@@ -54,7 +54,7 @@ def validation(model_idx, epoch_idx):
 
     # Compute loss
     loss_epoch = []
-    criterion = lambda outputs, target: TV_loss(outputs, target, batch_size = batch_size, alpha = 0.)
+    criterion = lambda outputs, target: TV_loss(outputs, target, batch_size=batch_size, alpha=0.)
 
     running_loss = 0.0
     for i, sample in enumerate(val_loader):
@@ -84,10 +84,3 @@ if __name__ == '__main__':
         losses[idx] = np.mean(loss)
 
     np.save("validation_loss.npy", losses)
-
-
-
-
-
-
-

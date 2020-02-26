@@ -27,6 +27,7 @@ class DoubleConv(nn.Module):
     def forward(self, x):
         return self.double_conv(x)
 
+
 ### 2. DOWNSCALING ###
 
 class Down(nn.Module):
@@ -41,6 +42,7 @@ class Down(nn.Module):
 
     def forward(self, x):
         return self.maxpool_conv(x)
+
 
 ### 3. UPSCALING ###
 
@@ -68,6 +70,7 @@ class Up(nn.Module):
         x = torch.cat([x2, x1], dim=1)
         return self.conv(x)
 
+
 ### 4. OUT CONVOLUTION ###
 
 class OutConv(nn.Module):
@@ -77,6 +80,7 @@ class OutConv(nn.Module):
 
     def forward(self, x):
         return self.conv(x)
+
 
 ### 5. NEURAL NETWORK ARCHITECTURE ###
 
@@ -110,4 +114,3 @@ class UNet(nn.Module):
         x = self.up4(x, x1)
         logits = self.outc(x)
         return logits
-

@@ -4,7 +4,6 @@ Training methods for the neural network
 
 import sys, time, os
 from os.path import expanduser
-home = expanduser("~")
 
 import torch
 import torchvision
@@ -21,20 +20,22 @@ from network import Net
 from skimage.morphology import disk
 from skimage.filters.rank import gradient
 
+home = expanduser("~")
+
 if __name__ == '__main__':
 
     # Select a device
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    print("device: ",device)
+    print("device: ", device)
 
     # Training parameters
     batch_size = 32
 
     # Load the segmentation dataset
     segmentation_dataset = SegmentationDataset(
-        root_dir= '../../../../data/commun/COCO/',
-        input_dir= 'val2017/',
-        target_dir= 'valSP2017/',
+        root_dir='../../../../data/commun/COCO/',
+        input_dir='val2017/',
+        target_dir='valSP2017/',
         transform=transforms.Compose([
              RandomCrop(224),
              Normalize(),
@@ -43,9 +44,9 @@ if __name__ == '__main__':
     # Data loader
     testloader = torch.utils.data.DataLoader(
         segmentation_dataset,
-        batch_size = batch_size,
-        shuffle = False,
-        num_workers = 0)
+        batch_size=batch_size,
+        shuffle=False,
+        num_workers=0)
 
     # Initializes the neural network
     net = Net()
@@ -66,13 +67,14 @@ if __name__ == '__main__':
     imIn = input_img.cpu().detach().numpy()[0]
     imTarget = segm_true.cpu().detach().numpy()[0]
     imResult = outputs.cpu().detach().numpy()[0]
-    #imGrad = gradient(imResult[1, :, :], disk(1))
-    fig, ax = plt.subplots(2, 2, figsize=(10, 10), sharex=True, 
-      sharey=True, subplot_kw={'adjustable': 'box-forced'})
-    ax[0, 0].imshow(np.transpose(imIn.T, axes = (1, 0, 2)))
-    ax[0, 1].imshow(np.transpose(imResult.T, axes = (1, 0, 2)))
-    ax[1, 0].imshow(np.transpose(imTarget.T, axes = (1, 0, 2)))
-    ax[1, 1].imshow(np.transpose(imIn.T, axes = (1, 0, 2)))
+    # imGrad = gradient(imResult[1, :, :], disk(1))
+    fig, ax = plt.subplots(2, 2, figsize=(10, 10),
+                           sharex=True, sharey=True,
+                           subplot_kw={'adjustable': 'box-forced'})
+    ax[0, 0].imshow(np.transpose(imIn.T, axes=(1, 0, 2)))
+    ax[0, 1].imshow(np.transpose(imResult.T, axes=(1, 0, 2)))
+    ax[1, 0].imshow(np.transpose(imTarget.T, axes=(1, 0, 2)))
+    ax[1, 1].imshow(np.transpose(imIn.T, axes=(1, 0, 2)))
 
     for a in ax.ravel():
         a.set_axis_off()

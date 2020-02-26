@@ -3,12 +3,12 @@ Neural network implementation
 """
 
 import torch
-import torchvision
 import torch.nn as nn
 import torch.nn.functional as F
 
 
 ### 1. ADAPTATIVE BATCH NORMALIZATION ###
+
 
 class AdaptiveBatchNorm2d(nn.Module):
 
@@ -58,7 +58,6 @@ class AdaptiveBatchNorm2d(nn.Module):
         self.a = nn.Parameter(tens_a)
         self.b = nn.Parameter(tens_b)
 
-
     def forward(self, x):
 
         """
@@ -77,6 +76,7 @@ class AdaptiveBatchNorm2d(nn.Module):
         """
 
         return self.a * x + self.b * self.bn(x)
+
 
 ### 2. CONVOLUTION MODULE ###
 
@@ -101,9 +101,9 @@ class ChenConv(nn.Module):
         :type s: int
         """
         super(ChenConv, self).__init__()
-        self.conv = nn.Conv2d(in_channels, out_channels, 3, padding = 2**(s-1), dilation = 2**(s-1))
+        self.conv = nn.Conv2d(in_channels, out_channels, 3, padding=2**(s-1), dilation=2**(s-1))
         self.ABN = AdaptiveBatchNorm2d(out_channels)
-        self.LReLU = nn.LeakyReLU(0.2, inplace = True)
+        self.LReLU = nn.LeakyReLU(0.2, inplace=True)
 
     def forward(self, x):
 
@@ -118,6 +118,7 @@ class ChenConv(nn.Module):
         """
         return self.LReLU(self.ABN(self.conv(x)))
 
+
 ### 3. UP MODULE ###
 
 class Up(nn.Module):
@@ -125,7 +126,7 @@ class Up(nn.Module):
 
     def __init__(self, in_channels, out_channels, unet_bool):
         super().__init__()
-        self.conv_ulti = nn.Conv2d(in_channels, out_channels, 1, padding = 0, dilation = 1)
+        self.conv_ulti = nn.Conv2d(in_channels, out_channels, 1, padding=0, dilation=1)
         self.ABN_ulti = AdaptiveBatchNorm2d(out_channels)
 
     def forward(self, x1, x2, unet_bool):
@@ -136,6 +137,7 @@ class Up(nn.Module):
             x1 = F.pad(x1, [diffX // 2, diffX - diffX // 2,
                             diffY // 2, diffY - diffY // 2])
         return x1
+
 
 ### 4. NEURAL NETWORK ARCHITECTURE ###
 
@@ -156,12 +158,11 @@ class Net(nn.Module):
         self.first = ChenConv(3, 24, 1)
 
         # Intermediate convolution modules
-        self.convs = nn.ModuleList([ChenConv(24, 24, s) for s in range(2,d-2+1)])
+        self.convs = nn.ModuleList([ChenConv(24, 24, s) for s in range(2, d-2+1)])
         self.penulti = ChenConv(24, 24, 1)
 
         # Final convolution
         self.out = Up(24, 3, unet_bool)
-
 
     def forward(self, x):
 
@@ -181,4 +182,3 @@ class Net(nn.Module):
         x = self.penulti(x)
         x = self.out(x)
         return x
-
