@@ -5,6 +5,8 @@ Neural network implementation
 import torch
 import torchvision
 import torch.nn as nn
+import torch.nn.functional as F
+
 
 ### 1. ADAPTATIVE BATCH NORMALIZATION ###
 
@@ -121,7 +123,7 @@ class ChenConv(nn.Module):
 class Up(nn.Module):
     """Upscaling then double conv"""
 
-    def __init__(self, in_channels, out_channels):
+    def __init__(self, in_channels, out_channels, unet_bool):
         super().__init__()
         self.conv_ulti = nn.Conv2d(in_channels, out_channels, 1, padding = 0, dilation = 1)
         self.ABN_ulti = AdaptiveBatchNorm2d(out_channels)

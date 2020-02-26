@@ -194,7 +194,7 @@ class Crop(object):
 
         img, target = sample['image'], sample['target']
 
-        h, w = image.shape[:2]
+        h, w = img.shape[:2]
         new_h, new_w = self.output_size
 
         top = 0
@@ -206,7 +206,7 @@ class Crop(object):
         target = target[top: top + new_h,
                       left: left + new_w]
 
-        return {'input': image, 'target': image_segm}
+        return {'input': img, 'target': target}
 
 
 

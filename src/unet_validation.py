@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 from unet_network import *
 
 
-def validation(model_idx, epoch_idx):
+def unet_validation(model_idx, epoch_idx):
 
     # Select a device
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -78,7 +78,7 @@ if __name__ == '__main__':
     model_idx = 5
     losses = np.zeros(50)
     for idx in range(50):
-        loss = validation_unet(model_idx, idx)
+        loss = unet_validation(model_idx, idx)
         print("Epoch: " + str(idx + 1) + " Loss: " + str(np.mean(loss)))
         losses[idx] = np.mean(loss)
 
