@@ -113,7 +113,7 @@ In this paper, we study different options to improve the performance of a deep l
     \subsection{Network architecture}
         \subsubsection{Layers definitions}
 
-            \paragraph{Dilated convolution} We consider a layer $L=(L_j)_{j\in [\![1,w]\!]}$, $w$ being the number of feature maps $L_j$ of $L$. We also consider $K=(K_{i,j})_{i,j}$, each $K_{i,j}$ being a $3\times 3$ convolutional kernel. The dilated convolution operation of $K_{i,j}$ on $L_j$ is denoted by $L_j*_r K_{i,j}$, $r$ being the dilation parameter.
+            \paragraph{Dilated convolution}\label{par:dilated} We consider a layer $L=(L_j)_{j\in [\![1,w]\!]}$, $w$ being the number of feature maps $L_j$ of $L$. We also consider $K=(K_{i,j})_{i,j}$, each $K_{i,j}$ being a $3\times 3$ convolutional kernel. The dilated convolution operation of $K_{i,j}$ on $L_j$ is denoted by $L_j*_r K_{i,j}$, $r$ being the dilation parameter.
             \begin{figure}
                 \begin{subfigure}{.49\linewidth}
                     \centering
@@ -185,13 +185,33 @@ In this paper, we study different options to improve the performance of a deep l
 
 
         \subsubsection{Chen}
-        Each block $L_s$ is made of 3 layers:
-        \begin{enumerate}
-            \item \textit{A dilated convolution}, $r_s=2^s$
-            \item \textit{An adaptative batch normalization}
-            \item \textit{A leaky rectifier (ReLU)}
-        \end{enumerate}
+            \paragraph{Context Aggregation Network (CAN)}\footnote{reference}
+            \begin{center}
+            \begin{tabular}{ccccccccccc}
+                \hline
+                input $I$ & $\longrightarrow$ & $L^1$ & $\longrightarrow$ & $\cdots$ & $\longrightarrow$ & $L^s$ & $\longrightarrow$ & $\cdots$ & $\longrightarrow$ & output ($L^d$)\\
+                $m\times n\times 3$ & & $m\times n\times w_1$ & & & & $m\times n\times w_s$ & & & & $m\times n\times 3$\\
+                \hline
+            \end{tabular}
+            \end{center}
+            \paragraph{Architecture of a block}
+            Each block $L_s$ is made of 3 layers:
+            \begin{enumerate}
+                \item \textit{A dilated convolution}, $r_s=2^s$
+                \item \textit{An adaptative batch normalization}
+                \item \textit{A leaky rectifier (ReLU)}
+            \end{enumerate}
+            so that the content of an intermediate layer $L^s$ can be computed from the content of the previous layer $L^{s-1}$:
+            \begin{equation}
+                L_i^s=\Phi\left(\Psi^s\left(b_i^s+\sum_jL_j^{s-1}*_{r_s}K^s_{i,j}\right)\right).
+            \end{equation}
+            where ... is ...
 
+            and
+            \begin{equation}
+                L_j^{s-1}*_{r_s}K^s_{i,j}=\sum_{a+r_sb=x}L_j^{s-1}(a)K_{i,j}^s(b)
+            \end{equation}
+            because of \ref{par:dilated}, page \pageref{par:dilated}.
 
 
         \subsubsection{UNet}
