@@ -31,16 +31,16 @@
 \contentsline {paragraph}{Dilated convolution}{4}{section*.16}% 
 \contentsline {paragraph}{Adaptative Batch Normalization (ABN)}{5}{section*.18}% 
 \contentsline {paragraph}{Leaky rectifier (LReLU)}{5}{section*.19}% 
-\contentsline {subsubsection}{\numberline {3.2.2}Chen}{7}{subsubsection.3.2.2}% 
-\contentsline {paragraph}{Context Aggregation Network (CAN)}{7}{section*.22}% 
-\contentsline {paragraph}{Architecture of a block}{7}{section*.23}% 
+\contentsline {subsubsection}{\numberline {3.2.2}Chen}{6}{subsubsection.3.2.2}% 
+\contentsline {paragraph}{Context Aggregation Network (CAN)}{6}{section*.22}% 
+\contentsline {paragraph}{Architecture of a block}{7}{section*.24}% 
 \contentsline {subsubsection}{\numberline {3.2.3}UNet}{7}{subsubsection.3.2.3}% 
 \contentsline {subsubsection}{\numberline {3.2.4}Chen + UNet}{7}{subsubsection.3.2.4}% 
 \contentsline {subsection}{\numberline {3.3}Total Variation (TV) Loss}{7}{subsection.3.3}% 
 \contentsline {subsubsection}{\numberline {3.3.1}MSE}{7}{subsubsection.3.3.1}% 
 \contentsline {subsubsection}{\numberline {3.3.2}TV}{7}{subsubsection.3.3.2}% 
-\contentsline {paragraph}{Formula}{7}{section*.24}% 
-\contentsline {paragraph}{Why}{7}{section*.25}% 
+\contentsline {paragraph}{Formula}{7}{section*.26}% 
+\contentsline {paragraph}{Why}{7}{section*.27}% 
 \contentsline {subsection}{\numberline {3.4}Implementation}{7}{subsection.3.4}% 
 \contentsline {section}{\numberline {4}Exp\IeC {\'e}rience et r\IeC {\'e}sultats}{7}{section.4}% 
 \contentsline {subsection}{\numberline {4.1}Hyperparameters}{7}{subsection.4.1}% 

@@ -118,13 +118,13 @@ In this paper, we study different options to improve the performance of a deep l
                 \begin{subfigure}{.49\linewidth}
                     \centering
                     \includegraphics[width=.8\linewidth]{pics/conv-simple.png}
-                    \caption{\textit{A simple convolution ($r=0$)}}
+                    \caption{\textit{A simple convolution ($r=1$)}}
                     \label{fig:conv-simple}
                 \end{subfigure}
                 \begin{subfigure}{.49\linewidth}
                     \centering
                     \includegraphics[width=.8\linewidth]{pics/conv-dilated.png}
-                    \caption{\textit{A dilated convolution ($r=1$)}}
+                    \caption{\textit{A dilated convolution ($r=2$)}}
                     \label{fig:conv-dilated}
                 \end{subfigure}
                 \caption{\textit{Illustration of two types of convolutions}}
@@ -135,7 +135,8 @@ In this paper, we study different options to improve the performance of a deep l
                  & = \sum_{a+rb=x}L_j(a)K_{i,j}(b) &\\
                  & = \sum_b L_j(x-rb)K_{i,j}(b) &
             \end{flalign*}
-            and we recognize the simple convolution when $r=1$.
+            and we recognize the simple convolution when $r=1$.\\
+            A dilated convolution enables the network getting larger receptive fields while preserving the input resolution\footnote{ref ?}
 
 
             \paragraph{Adaptative Batch Normalization (ABN)} As we have seen in (\ref{par:charac}), page \pageref{par:charac}, we need to normalize the data. We define the \textit{adaptative normalization function} $\Psi$ as:
@@ -186,14 +187,17 @@ In this paper, we study different options to improve the performance of a deep l
 
         \subsubsection{Chen}
             \paragraph{Context Aggregation Network (CAN)}\footnote{reference}
-            \begin{center}
-            \begin{tabular}{ccccccccccc}
-                \hline
-                input $I$ & $\longrightarrow$ & $L^1$ & $\longrightarrow$ & $\cdots$ & $\longrightarrow$ & $L^s$ & $\longrightarrow$ & $\cdots$ & $\longrightarrow$ & output ($L^d$)\\
-                $m\times n\times 3$ & & $m\times n\times w_1$ & & & & $m\times n\times w_s$ & & & & $m\times n\times 3$\\
-                \hline
-            \end{tabular}
-            \end{center}
+            \begin{table}[!ht]
+                \center
+                \begin{tabular}{ccccccccccc}
+                    \hline
+                    input $I$ & $\longrightarrow$ & $L^1$ & $\longrightarrow$ & $\cdots$ & $\longrightarrow$ & $L^s$ & $\longrightarrow$ & $\cdots$ & $\longrightarrow$ & output ($L^d$)\\
+                    $m\times n\times 3$ & & $m\times n\times w_1$ & & & & $m\times n\times w_s$ & & & & $m\times n\times 3$\\
+                    \hline
+                \end{tabular}
+                \caption{\textit{Layers}}
+            \end{table}
+            blabla sur le RGB en entrée, RGB en sortie I -> f(I)
             \paragraph{Architecture of a block}
             Each block $L_s$ is made of 3 layers:
             \begin{enumerate}
@@ -213,6 +217,23 @@ In this paper, we study different options to improve the performance of a deep l
             \end{equation}
             because of \ref{par:dilated}, page \pageref{par:dilated}.
 
+            \begin{table}[!ht]
+                \center
+                \begin{tabular}{|c|c|c|c|c|c|c|c|}
+                    \hline
+                    Layer & 1 & 2 & 3 & 4 & 5 & 6 & 7\\
+                    \hline \hline
+                    Convolution & $3\times3$ & & & & & & \\
+                    \hline
+                    Dilation & 1 & & & & & & \\
+                    \hline
+                    Batch Normalization & Yes & & & & & & \\
+                    \hline
+                    LReLU & Yes & & & & & & \\
+                    \hline
+                \end{tabular}
+                \caption{\textit{Chen}}
+            \end{table}
 
         \subsubsection{UNet}
         \subsubsection{Chen + UNet}
