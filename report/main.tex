@@ -262,9 +262,39 @@ est-ce que l'on parle de la façon dont on compute le gradient et des différent
 
 \section{Expérience et résultats}
     \subsection{Hyperparameters}
+
+        \subsubsection{Network size $d$}
+        - Learning rate initialisé à 0.01, divisé par 2 toutes les 2 époques, saturation à 1e-4
+        - Pas de régularisation TV
+        \begin{figure}
+            \begin{subfigure}{.49\linewidth}
+                \center
+                \begin{tabular}{|c|c|c|c|c|c|}
+                    \hline
+                    $d$ & 4 & 5 & 6 & 7 & 8 \\
+                    \hline
+                    loss & & & & &\\
+                    \hline
+                \end{tabular}
+                \caption{\textit{Loss values on validation set}}
+            \end{subfigure}
+            \begin{subfigure}{.49\linewidth}
+                \centering
+                % \includegraphics[width=.8\linewidth]{pics/hyper-d.png}
+                \caption{\textit{Graph}}
+            \end{subfigure}
+            \caption{\textit{Tuning of network size}}
+        \end{figure}
+        CONCLUSION des run 3 à 5: Il est préférable de laisser d=7. Entre d=6 et d=7, l'amélioration semble
+        relativement faible.
+        bon intermédiaire entre temps de calcul et performances
+
+        \subsubsection{Learning rate}
     évolution des paramètres a et b ?\\
     entrainement (lr, alpha) -> courbes de loss, et loss qui sature (cluster) d'où changement de lr au cours des epochs
+        \subsubsection{Number of epochs}
     nb epochs: on le sélectionne en prenant le minimum de la validation loss
+
         \subsubsection{Runs}
         tableaux et graphes
     \subsection{Results on dataset}
