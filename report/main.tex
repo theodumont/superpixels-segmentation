@@ -247,7 +247,7 @@ In this paper, we study different options to improve the performance of a deep l
 est-ce que l'on parle de la façon dont on compute le gradient et des différentes méthodes que l'on a essayées
 
     \subsection{Implementation}
-    The network was implemented with PyTorch\footnote{Code can be found at \url{https://github.com/theodumont/superpixels-segmentation}.} and we used GPU acceleration [...]
+    The network was implemented with PyTorch\footnote{Repository can be found at \url{https://github.com/theodumont/superpixels-segmentation}.} and we used GPU acceleration [...]
     (pytorch), se renseigner (section assez courante)
     GPU acceleraation
     code sur github
@@ -264,8 +264,12 @@ est-ce que l'on parle de la façon dont on compute le gradient et des différent
     \subsection{Hyperparameters}
     évolution des paramètres a et b ?\\
     entrainement (lr, alpha) -> courbes de loss, et loss qui sature (cluster) d'où changement de lr au cours des epochs
+    nb epochs: on le sélectionne en prenant le minimum de la validation loss
+        \subsubsection{Runs}
+        tableaux et graphes
     \subsection{Results on dataset}
-
+    image originale -> CNN -> résultat du filtre dans eikonal -> superpixels sans couleurs + couleur moyenne pour chaque spp de l'image originale
+    cf results/images
 
 
 

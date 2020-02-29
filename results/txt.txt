@@ -1,1 +1,0 @@
-courbe : pour chaque epoch/poids par epoch de la courbe de train on teste sur toute la base de validation et on regarde le point le plus bas
