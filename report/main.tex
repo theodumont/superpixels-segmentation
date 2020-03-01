@@ -63,10 +63,10 @@ In this paper, we study different options to improve the performance of a deep l
 
     \subsection{Ce qu'est une bonne \spp segmentation}
         \subsubsection{Metrics}
-            \paragraph{metric1}
-            \paragraph{metric1}
-            \paragraph{metric1}
-            \paragraph{metric1}
+        cf article https://arxiv.org/pdf/1612.01601.pdf
+            \paragraph{Boundary Recall}
+            \paragraph{Undersegmentation Error}
+            \paragraph{Compactness}
 
         \subsubsection{SLIC}
         \subsubsection{Autres algorithmes}
@@ -262,25 +262,68 @@ est-ce que l'on parle de la façon dont on compute le gradient et des différent
 
 \section{Expérience et résultats}
     \subsection{Hyperparameters}
+    petit bilan des valeurs choisies
+    évolution des paramètres a et b ?\\
+        \subsubsection{Learning rate}
+        \begin{table}
+            \center
+            \begin{tabular}{|c|c|c|c|c|}
+                \hline
+                $lr_0$ & decay? & saturation? & $d$ & TV? \\
+                \hline \hline
+                $0.001$ & No & No & $7$ & No \\
+                \hline
+                $0.01$ & No & No & $7$ & No \\
+                \hline
+                $0.01$ & $\times 0.5$ every 2 epochs & $10^{-4}$ & $7$ & No \\
+                \hline
+                $0.001$ & $\times 0.5$ every 2 epochs & $10^{-4}$ & $7$ & No \\
+                \hline
+            \end{tabular}
+        \caption{Runs for learning rate tuning}
+        \end{table}
 
+        \begin{figure}[!ht]
+            \begin{subfigure}{.33\linewidth}
+                \centering
+                \includegraphics[width=.8\linewidth]{pics/hpp-d.png}
+                \caption{\textit{Graph}}
+            \end{subfigure}
+            \begin{subfigure}{.33\linewidth}
+                \centering
+                \includegraphics[width=.8\linewidth]{pics/hpp-d.png}
+                \caption{\textit{Graph}}
+            \end{subfigure}
+            \begin{subfigure}{.33\linewidth}
+                \centering
+                \includegraphics[width=.8\linewidth]{pics/hpp-d.png}
+                \caption{\textit{Graph}}
+            \end{subfigure}
+            \caption{\textit{Tuning of learning rate}}
+        \end{figure}
+
+
+        \paragraph{Constant value}
+    entrainement (lr, alpha) -> courbes de loss, et loss qui sature (cluster) d'où changement de lr au cours des epochs
+        \paragraph{Non constant value}
         \subsubsection{Network size $d$}
         - Learning rate initialisé à 0.01, divisé par 2 toutes les 2 époques, saturation à 1e-4
         - Pas de régularisation TV
-        \begin{figure}
+        \begin{figure}[!ht]
             \begin{subfigure}{.49\linewidth}
                 \center
                 \begin{tabular}{|c|c|c|c|c|c|}
                     \hline
                     $d$ & 4 & 5 & 6 & 7 & 8 \\
-                    \hline
-                    loss & & & & &\\
+                    \hline \hline
+                    loss$\times 10^3$ & $3.46$ & $3.18$ & $3.12$ & $3.13$ & ??? \\
                     \hline
                 \end{tabular}
                 \caption{\textit{Loss values on validation set}}
             \end{subfigure}
             \begin{subfigure}{.49\linewidth}
                 \centering
-                % \includegraphics[width=.8\linewidth]{pics/hyper-d.png}
+                \includegraphics[width=.8\linewidth]{pics/hpp-d.png}
                 \caption{\textit{Graph}}
             \end{subfigure}
             \caption{\textit{Tuning of network size}}
@@ -289,11 +332,9 @@ est-ce que l'on parle de la façon dont on compute le gradient et des différent
         relativement faible.
         bon intermédiaire entre temps de calcul et performances
 
-        \subsubsection{Learning rate}
-    évolution des paramètres a et b ?\\
-    entrainement (lr, alpha) -> courbes de loss, et loss qui sature (cluster) d'où changement de lr au cours des epochs
         \subsubsection{Number of epochs}
     nb epochs: on le sélectionne en prenant le minimum de la validation loss
+        \subsubsection{TV regularization}
 
         \subsubsection{Runs}
         tableaux et graphes

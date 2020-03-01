@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.12.9)  29 FEB 2020 23:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.12.9)  2 MAR 2020 00:17
 entering extended mode
 **"C:/Users/Théo Dumont/Documents/repos/python/s3r/report/main.tex"
 ("C:/Users/Théo Dumont/Documents/repos/python/s3r/report/main.tex"
@@ -622,7 +622,7 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 33.
  [2]
-<pics/img.png, id=186, 482.80376pt x 322.20375pt>
+<pics/img.png, id=191, 482.80376pt x 322.20375pt>
 File: pics/img.png Graphic file (type png)
 <use pics/img.png>
 Package pdftex.def Info: pics/img.png  used on input line 43.
@@ -632,12 +632,12 @@ File: pics/img.png Graphic file (type png)
 Package pdftex.def Info: pics/img.png  used on input line 54.
 (pdftex.def)             Requested size: 241.40129pt x 161.10147pt.
  [3 <./pics/img.png (PNG copy)>]
-<pics/conv-simple.png, id=199, 306.39468pt x 283.0575pt>
+<pics/conv-simple.png, id=204, 306.39468pt x 283.0575pt>
 File: pics/conv-simple.png Graphic file (type png)
 <use pics/conv-simple.png>
 Package pdftex.def Info: pics/conv-simple.png  used on input line 120.
 (pdftex.def)             Requested size: 178.45836pt x 164.8645pt.
-<pics/conv-dilated.png, id=201, 306.39468pt x 283.0575pt>
+<pics/conv-dilated.png, id=206, 306.39468pt x 283.0575pt>
 File: pics/conv-dilated.png Graphic file (type png)
 <use pics/conv-dilated.png>
 Package pdftex.def Info: pics/conv-dilated.png  used on input line 126.
@@ -650,52 +650,74 @@ LaTeX Font Info:    Try loading font information for T1+cmtt on input line 146.
 .fd"
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-<pics/act-sigmoid.png, id=224, 462.528pt x 342.5598pt>
+<pics/act-sigmoid.png, id=229, 462.528pt x 342.5598pt>
 File: pics/act-sigmoid.png Graphic file (type png)
 <use pics/act-sigmoid.png>
 Package pdftex.def Info: pics/act-sigmoid.png  used on input line 153.
 (pdftex.def)             Requested size: 223.07211pt x 165.21611pt.
-<pics/act-tanh.png, id=225, 462.528pt x 342.5598pt>
+<pics/act-tanh.png, id=230, 462.528pt x 342.5598pt>
 File: pics/act-tanh.png Graphic file (type png)
 <use pics/act-tanh.png>
 Package pdftex.def Info: pics/act-tanh.png  used on input line 158.
 (pdftex.def)             Requested size: 223.07211pt x 165.21611pt.
  [5 <./pics/conv-simple.png> <./pics/conv-dilated.png>]
-<pics/act-relu.png, id=250, 284.7438pt x 237.2865pt>
+<pics/act-relu.png, id=255, 284.7438pt x 237.2865pt>
 File: pics/act-relu.png Graphic file (type png)
 <use pics/act-relu.png>
 Package pdftex.def Info: pics/act-relu.png  used on input line 171.
 (pdftex.def)             Requested size: 178.45836pt x 148.71645pt.
-<pics/act-lrelu.png, id=251, 284.7438pt x 237.2865pt>
+<pics/act-lrelu.png, id=256, 284.7438pt x 237.2865pt>
 File: pics/act-lrelu.png Graphic file (type png)
 <use pics/act-lrelu.png>
 Package pdftex.def Info: pics/act-lrelu.png  used on input line 177.
 (pdftex.def)             Requested size: 178.45836pt x 148.71645pt.
  [6 <./pics/act-sigmoid.png> <./pics/act-tanh.png> <./pics/act-relu.png> <./pic
 s/act-lrelu.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 265--267
+
+ []
+
+<pics/hpp-d.png, id=273, 216.81pt x 180.675pt>
+File: pics/hpp-d.png Graphic file (type png)
+<use pics/hpp-d.png>
+Package pdftex.def Info: pics/hpp-d.png  used on input line 289.
+(pdftex.def)             Requested size: 120.18556pt x 100.1545pt.
+File: pics/hpp-d.png Graphic file (type png)
+<use pics/hpp-d.png>
+Package pdftex.def Info: pics/hpp-d.png  used on input line 294.
+(pdftex.def)             Requested size: 120.18556pt x 100.1545pt.
+File: pics/hpp-d.png Graphic file (type png)
+<use pics/hpp-d.png>
+Package pdftex.def Info: pics/hpp-d.png  used on input line 299.
+(pdftex.def)             Requested size: 120.18556pt x 100.1545pt.
+[7]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 266.
+(hyperref)                removing `math shift' on input line 309.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 266.
+(hyperref)                removing `math shift' on input line 309.
 
-[7] [8]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 335.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 335.
+File: pics/hpp-d.png Graphic file (type png)
+<use pics/hpp-d.png>
+Package pdftex.def Info: pics/hpp-d.png  used on input line 326.
+(pdftex.def)             Requested size: 178.45836pt x 148.72237pt.
+[8 <./pics/hpp-d.png>] [9]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 376.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 376.
  (main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 335.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 335.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 376.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 376.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 2F1AAC43BE4FC432BB9D6A0671C3A9BA;2227.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 335.
+(rerunfilecheck)             Checksum: 7E4901C8397C3C7D06539E6A2C2E486A;2305.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 376.
  ) 
 Here is how much of TeX's memory you used:
- 10718 strings out of 492946
- 176192 string characters out of 3123156
- 284653 words of memory out of 3000000
- 14369 multiletter control sequences out of 15000+200000
+ 10730 strings out of 492946
+ 176377 string characters out of 3123156
+ 286653 words of memory out of 3000000
+ 14374 multiletter control sequences out of 15000+200000
  22831 words of font info for 67 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  52i,14n,45p,590b,544s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -727,9 +749,9 @@ blic/amsfonts/cm/cmr7.pfb><C:/Users/Théo Dumont/AppData/Local/Programs/MiKTeX
 l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Théo
  Dumont/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.
 pfb>
-Output written on main.pdf (8 pages, 603815 bytes).
+Output written on main.pdf (9 pages, 615288 bytes).
 PDF statistics:
- 738 PDF objects out of 1000 (max. 8388607)
- 82 named destinations out of 1000 (max. 500000)
- 300 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 755 PDF objects out of 1000 (max. 8388607)
+ 88 named destinations out of 1000 (max. 500000)
+ 313 words of extra memory for PDF output out of 10000 (max. 10000000)
 

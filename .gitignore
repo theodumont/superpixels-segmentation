@@ -5,3 +5,8 @@ report/main.out
 report/main.synctex.gz
 report/main.toc
 report/main.
+
+cnn/data/train2017/
+cnn/data/trainSP2017/
+cnn/data/val2017/
+cnn/data/valSP2017/
