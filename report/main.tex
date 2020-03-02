@@ -240,11 +240,12 @@ In this paper, we study different options to improve the performance of a deep l
 
     \subsection{Total Variation (TV) Loss}
         \subsubsection{MSE}
+        $$L_{MSE}=\frac{1}{N}\sum_{i=1}^N |\hat{f}(I)_i-f(I)_i|^2$$
+
         \subsubsection{TV}
             \paragraph{Formula}
+            $$L_{TV}=\frac{1}{N}\sum_{i=1}^N |\hat{f}(I)_i-f(I)_i|^2+\frac{1}{N}$$
             \paragraph{Why}
-
-est-ce que l'on parle de la façon dont on compute le gradient et des différentes méthodes que l'on a essayées
 
     \subsection{Implementation}
     The network was implemented with PyTorch\footnote{Repository can be found at \url{https://github.com/theodumont/superpixels-segmentation}.} and we used GPU acceleration [...]
