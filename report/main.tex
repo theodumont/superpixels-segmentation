@@ -64,13 +64,46 @@ In this paper, we study different options to improve the performance of a deep l
     \subsection{Ce qu'est une bonne \spp segmentation}
         \subsubsection{Metrics}
         cf article https://arxiv.org/pdf/1612.01601.pdf
+        let $S = {S_j}^K_{j=1}$ and $G = {G_i}$ be partitions of the same image $I : x_n \mapsto I(x_n)$, $1 \leq n \leq N$
+        $S$ is a segmented image
+        $G$ is the ground truth
             \paragraph{Boundary Recall}
+            - most commonly used metric to assess boundary adherence.
+            - Let $\text{TP}(G,S)$ be the number of true positive boundary pixels and $\text{FN}(G,S)$ be the number of false negative boudary pixels in the segmented image $S$.
+            $$\mathrm{Rec}(G,S)=\frac{\mathrm{TP}(G,S)}{\mathrm{TP}(G,S)+\mathrm{FN}(G,S)}$$
             \paragraph{Undersegmentation Error}
+
             \paragraph{Compactness}
-
-        \subsubsection{SLIC}
+            - evaluates the compactness of the superpixels.
+            $$
+            \mathrm{CO}(G, S)=\frac{1}{N} \sum_{S_{j}}|S_{j}| \frac{4 \pi A\left(S_{j}\right)}{P\left(S_{j}\right)}
+            $$
+            - the $\mathrm{CO}$ operator computes how close the area $A(S_j)$ of each superpixel $S_j$ is from a circle with same perimeter $P(S_j)$.
         \subsubsection{Autres algorithmes}
+            \paragraph{SLIC}
+            \paragraph{metrics}
+            Here are the previously defined metrics of some well-known superpixel segmentation algorithms.
+            \begin{table}[!ht]
+                \center
+                \begin{tabular}{|c|c|c|c|}
+                    \hline
+                    Algorithm & BR & UE & CO\\
+                    \hline
+                    \hline
+                    SLIC & & & \\
+                    \hline
+                     & & & \\
+                    \hline
+                     & & & \\
+                    \hline
+                    \hline
+                    Reference & & & \\
+                    \hline
+                \end{tabular}
+                \caption{Metrics for different superpixel segmentation algorithms}
+            \end{table}
 
+            \noindent We use the ?? alorithm as a reference to evaluate the performances of our model.
     \subsection{Motivations/ambitions}
             \paragraph{Difficultés que l'on cherche à résoudre}
             \paragraph{Pas de vraie approche DL pour segmentation avec \spp s}

@@ -3,32 +3,31 @@
 \BOOKMARK [2][-]{subsection.1.2}{Superpixels}{section.1}% 3
 \BOOKMARK [2][-]{subsection.1.3}{Ce qu'est une bonne superpixelsegmentation}{section.1}% 4
 \BOOKMARK [3][-]{subsubsection.1.3.1}{Metrics}{subsection.1.3}% 5
-\BOOKMARK [3][-]{subsubsection.1.3.2}{SLIC}{subsection.1.3}% 6
-\BOOKMARK [3][-]{subsubsection.1.3.3}{Autres algorithmes}{subsection.1.3}% 7
-\BOOKMARK [2][-]{subsection.1.4}{Motivations/ambitions}{section.1}% 8
-\BOOKMARK [1][-]{section.2}{Dataset generation}{}% 9
-\BOOKMARK [2][-]{subsection.2.1}{COCO dataset}{section.2}% 10
-\BOOKMARK [3][-]{subsubsection.2.1.1}{The COCO dataset}{subsection.2.1}% 11
-\BOOKMARK [3][-]{subsubsection.2.1.2}{Characteristics}{subsection.2.1}% 12
-\BOOKMARK [2][-]{subsection.2.2}{Eikonal}{section.2}% 13
-\BOOKMARK [2][-]{subsection.2.3}{Notre utilisation de eikonal}{section.2}% 14
-\BOOKMARK [1][-]{section.3}{The model}{}% 15
-\BOOKMARK [2][-]{subsection.3.1}{Approach}{section.3}% 16
-\BOOKMARK [2][-]{subsection.3.2}{Network architecture}{section.3}% 17
-\BOOKMARK [3][-]{subsubsection.3.2.1}{Layers definitions}{subsection.3.2}% 18
-\BOOKMARK [3][-]{subsubsection.3.2.2}{Chen}{subsection.3.2}% 19
-\BOOKMARK [3][-]{subsubsection.3.2.3}{UNet}{subsection.3.2}% 20
-\BOOKMARK [3][-]{subsubsection.3.2.4}{Chen + UNet}{subsection.3.2}% 21
-\BOOKMARK [2][-]{subsection.3.3}{Total Variation \(TV\) Loss}{section.3}% 22
-\BOOKMARK [3][-]{subsubsection.3.3.1}{MSE}{subsection.3.3}% 23
-\BOOKMARK [3][-]{subsubsection.3.3.2}{TV}{subsection.3.3}% 24
-\BOOKMARK [2][-]{subsection.3.4}{Implementation}{section.3}% 25
-\BOOKMARK [1][-]{section.4}{Exp\351rience et r\351sultats}{}% 26
-\BOOKMARK [2][-]{subsection.4.1}{Hyperparameters}{section.4}% 27
-\BOOKMARK [3][-]{subsubsection.4.1.1}{Learning rate}{subsection.4.1}% 28
-\BOOKMARK [3][-]{subsubsection.4.1.2}{Network size d}{subsection.4.1}% 29
-\BOOKMARK [3][-]{subsubsection.4.1.3}{Number of epochs}{subsection.4.1}% 30
-\BOOKMARK [3][-]{subsubsection.4.1.4}{TV regularization}{subsection.4.1}% 31
-\BOOKMARK [3][-]{subsubsection.4.1.5}{Runs}{subsection.4.1}% 32
-\BOOKMARK [2][-]{subsection.4.2}{Results on dataset}{section.4}% 33
-\BOOKMARK [1][-]{section.5}{Conclusion/Discussion}{}% 34
+\BOOKMARK [3][-]{subsubsection.1.3.2}{Autres algorithmes}{subsection.1.3}% 6
+\BOOKMARK [2][-]{subsection.1.4}{Motivations/ambitions}{section.1}% 7
+\BOOKMARK [1][-]{section.2}{Dataset generation}{}% 8
+\BOOKMARK [2][-]{subsection.2.1}{COCO dataset}{section.2}% 9
+\BOOKMARK [3][-]{subsubsection.2.1.1}{The COCO dataset}{subsection.2.1}% 10
+\BOOKMARK [3][-]{subsubsection.2.1.2}{Characteristics}{subsection.2.1}% 11
+\BOOKMARK [2][-]{subsection.2.2}{Eikonal}{section.2}% 12
+\BOOKMARK [2][-]{subsection.2.3}{Notre utilisation de eikonal}{section.2}% 13
+\BOOKMARK [1][-]{section.3}{The model}{}% 14
+\BOOKMARK [2][-]{subsection.3.1}{Approach}{section.3}% 15
+\BOOKMARK [2][-]{subsection.3.2}{Network architecture}{section.3}% 16
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Layers definitions}{subsection.3.2}% 17
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Chen}{subsection.3.2}% 18
+\BOOKMARK [3][-]{subsubsection.3.2.3}{UNet}{subsection.3.2}% 19
+\BOOKMARK [3][-]{subsubsection.3.2.4}{Chen + UNet}{subsection.3.2}% 20
+\BOOKMARK [2][-]{subsection.3.3}{Total Variation \(TV\) Loss}{section.3}% 21
+\BOOKMARK [3][-]{subsubsection.3.3.1}{MSE}{subsection.3.3}% 22
+\BOOKMARK [3][-]{subsubsection.3.3.2}{TV}{subsection.3.3}% 23
+\BOOKMARK [2][-]{subsection.3.4}{Implementation}{section.3}% 24
+\BOOKMARK [1][-]{section.4}{Exp\351rience et r\351sultats}{}% 25
+\BOOKMARK [2][-]{subsection.4.1}{Hyperparameters}{section.4}% 26
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Learning rate}{subsection.4.1}% 27
+\BOOKMARK [3][-]{subsubsection.4.1.2}{Network size d}{subsection.4.1}% 28
+\BOOKMARK [3][-]{subsubsection.4.1.3}{Number of epochs}{subsection.4.1}% 29
+\BOOKMARK [3][-]{subsubsection.4.1.4}{TV regularization}{subsection.4.1}% 30
+\BOOKMARK [3][-]{subsubsection.4.1.5}{Runs}{subsection.4.1}% 31
+\BOOKMARK [2][-]{subsection.4.2}{Results on dataset}{section.4}% 32
+\BOOKMARK [1][-]{section.5}{Conclusion/Discussion}{}% 33
