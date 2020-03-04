@@ -3,7 +3,11 @@ import matplotlib.pyplot as plt
 from dataset import *
 
 
-def min_max_images(segmentation_dataset):
+train_or_val = 'train'
+full_or_empty = 'full'
+
+
+def min_max_images(segmentation_dataset, save_output):
     h_vect = []
     w_vect = []
     values = []
@@ -69,17 +73,22 @@ def min_max_images(segmentation_dataset):
     ax_histy.hist(h_vect, bins=bins, orientation='horizontal')
     ax_histy.set_ylim(ax_scatter.get_ylim())
 
-    plt.savefig("./results/graphs/val2017full.png")
-    plt.savefig("./../report/pics/val2017full.png")
+    plt.savefig("./results/graphs/" + save_output)
+    plt.savefig("./../report/pics/" + save_output)
     plt.show()
 
 
 if __name__ == "__main__":
 
+    root_dir = './data/'
+    input_dir = train_or_val + '2017' + full_or_empty + '/'
+    target_dir = train_or_val + '2017' + full_or_empty + '/'
+
     segmentation_dataset = SegmentationDataset(
-            root_dir='./data/',
-            input_dir='val2017full/',
-            target_dir='val2017full/',
+            root_dir=root_dir,
+            input_dir=input_dir,
+            target_dir=target_dir,
             transform=None)
 
-    min_max_images(segmentation_dataset)
+    save_output = train_or_val + '2017' + full_or_empty + '.png'
+    min_max_images(segmentation_dataset, save_output)
