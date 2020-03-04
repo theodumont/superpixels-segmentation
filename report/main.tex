@@ -121,12 +121,56 @@ In this paper, we study different options to improve the performance of a deep l
 \section{Dataset generation}
     \subsection{COCO dataset}
         \subsubsection{The COCO dataset}
-        COCO dataset
+        COCO dataset\footnote{site de COCO}, nb of images, examples
         \subsubsection{Characteristics}
         \label{par:charac}
 
-        max, min pixels, etc
-        graphes pour décrire les données
+        \begin{figure}[!ht]
+            \begin{subfigure}{.49\linewidth}
+                \centering
+                % \includegraphics[width=\linewidth]{pics/train2017full.png}
+                \caption{\textit{plot}}
+            \end{subfigure}
+            % \hspace{-7em}
+            \begin{subfigure}{.49\linewidth}
+                \centering
+                \includegraphics[width=\linewidth]{pics/val2017full.png}
+                \caption{\textit{plot}}
+            \end{subfigure}
+
+            \bigskip
+
+            \begin{subfigure}{.49\linewidth}
+                \center
+                \begin{tabular}{|c|c|c|}
+                    \hline
+                    Training & Height & Width \\
+                    \hline
+                    \hline
+                    Min & ? & ? \\
+                    \hline
+                    Max & ? & ? \\
+                    \hline
+                \end{tabular}
+                \caption{Tabular}
+            \end{subfigure}
+            \begin{subfigure}{.49\linewidth}
+                \center
+                \begin{tabular}{|c|c|c|}
+                    \hline
+                    Validation & Height & Width \\
+                    \hline
+                    \hline
+                    Min & 145 & 200 \\
+                    \hline
+                    Max & 640 & 640 \\
+                    \hline
+                \end{tabular}
+                \caption{Tabular}
+            \end{subfigure}
+            \caption{\textit{Training and validation sets characterization}}
+        \end{figure}
+
     \subsection{Eikonal}
     \subsection{Notre utilisation de eikonal}
     en plus réutilisé derrière sur image qui sort du réseau\\
