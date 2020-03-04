@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 loss = []
 for model in [3]:
     for idx in range(40):
-        l = np.load("loss-train/run" + str(model) + "_" + str(idx) + ".npy")
-        loss.append(np.mean(l))
+        los = np.load("loss-train/run" + str(model) + "_" + str(idx) + ".npy")
+        loss.append(np.mean(los))
 
 validation_loss = np.load("loss-validation/Validation_loss_0.npy")
 for model in []:

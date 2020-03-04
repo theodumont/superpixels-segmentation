@@ -1,31 +1,25 @@
 import numpy as np
-import random as rd
 import matplotlib.pyplot as plt
-from collections import Sequence
-from itertools import chain, count
-import torch
-import torchvision
 from dataset import *
-import torchvision.transforms as transforms
 
 
 def min_max_images(segmentation_dataset):
-    # min_hauteur = 1000
-    # max_hauteur = 0
-    # min_largeur = 1000
-    # max_largeur = 0
-
     h_vect = []
     w_vect = []
     values = []
     sizes = np.zeros((650, 650), dtype=int)
 
+    print("Filling the table...")
     for i in range(len(segmentation_dataset)):
         h = segmentation_dataset[i]['input'].shape[0]
         w = segmentation_dataset[i]['input'].shape[1]
 
         sizes[h][w] += 1
 
+        if ((i+1) % 100 == 0):
+            print(i+1, "th image")
+
+    print("Creating the arrays...")
     for h in range(650):
         for w in range(650):
             if sizes[h][w] != 0:
@@ -33,46 +27,50 @@ def min_max_images(segmentation_dataset):
                 w_vect.append(w)
                 values.append(sizes[h][w])
 
-        # if (i % 10 == 0):
-        #     print(i, "th image")
+    print("Minimum height is", np.min(h_vect), "pixels")
+    print("Maximum height is", np.max(h_vect), "pixels")
+    print("Minimum width is", np.min(w_vect), "pixels")
+    print("Maximum width is", np.max(w_vect), "pixels")
 
-    # print("Le minimum de taille en hauteur est", min_hauteur, "pixels")
-    # print("Le maximum de taille en hauteur est", max_hauteur, "pixels")
-    # print("Le minimum de taille en largeur est", min_largeur, "pixels")
-    # print("Le maximum de taille en largeur est", max_largeur, "pixels")
-
+    print("Plotting...")
     left, width = 0.1, 0.65
     bottom, height = 0.1, 0.65
-    spacing = 0.005
+    spacing = 0.013
+    plt.figure("Data characterization", figsize=(5.5, 5.5))
 
+    # Scatter
     rect_scatter = [left, bottom, width, height]
-    rect_histx = [left, bottom + height + spacing, width, 0.2]
-    rect_histy = [left + width + spacing, bottom, 0.2, height]
-
-    plt.figure(figsize=(8, 8))
     ax_scatter = plt.axes(rect_scatter)
     ax_scatter.tick_params(direction='in', top=True, right=True)
-    ax_histx = plt.axes(rect_histx)
-    ax_histx.tick_params(direction='in', labelbottom=False)
-    ax_histy = plt.axes(rect_histy)
-    ax_histy.tick_params(direction='in', labelleft=False)
-
-    ax_scatter.scatter(w_vect, h_vect, s=[10*v for v in values], c=values)
-
+    ax_scatter.set_xlabel("Images widths")
+    ax_scatter.set_ylabel("Images heights")
+    ax_scatter.scatter(w_vect, h_vect, s=[2*v for v in values], c=values)
     lim_inf = np.ceil(np.abs([w_vect, h_vect]).min()) - 20
     lim_sup = np.ceil(np.abs([w_vect, h_vect]).max()) + 20
     ax_scatter.set_xlim((lim_inf, lim_sup))
     ax_scatter.set_ylim((lim_inf, lim_sup))
 
+    # Histograms
     bins = range(np.abs([w_vect, h_vect]).min(),
                  np.abs([w_vect, h_vect]).max(),
                  10)
-    ax_histx.hist(w_vect, bins=bins)
-    ax_histy.hist(h_vect, bins=bins, orientation='horizontal')
 
+    # Hist_x
+    rect_histx = [left, bottom + height + spacing, width, 0.15]
+    ax_histx = plt.axes(rect_histx)
+    ax_histx.tick_params(direction='in', labelbottom=False)
+    ax_histx.hist(w_vect, bins=bins)
     ax_histx.set_xlim(ax_scatter.get_xlim())
+
+    # Hist_y
+    rect_histy = [left + width + spacing, bottom, 0.15, height]
+    ax_histy = plt.axes(rect_histy)
+    ax_histy.tick_params(direction='in', labelleft=False)
+    ax_histy.hist(h_vect, bins=bins, orientation='horizontal')
     ax_histy.set_ylim(ax_scatter.get_ylim())
 
+    plt.savefig("./results/graphs/val2017full.png")
+    plt.savefig("./../report/pics/val2017full.png")
     plt.show()
 
 
@@ -80,8 +78,8 @@ if __name__ == "__main__":
 
     segmentation_dataset = SegmentationDataset(
             root_dir='./data/',
-            input_dir='val2017/',
-            target_dir='valSP2017/',
+            input_dir='val2017full/',
+            target_dir='val2017full/',
             transform=None)
 
     min_max_images(segmentation_dataset)
