@@ -38,7 +38,7 @@ In this paper, we study different options to improve the performance of a deep l
     \subsection{Segmentation}
             \paragraph{What it is}piche
 
-            \begin{figure}[!htb]
+            \begin{figure}[!ht]
                 \centering
                 \includegraphics[scale=0.5]{pics/img.png}
                 \caption{\textit{An image and its segmented image}}
@@ -49,10 +49,21 @@ In this paper, we study different options to improve the performance of a deep l
     \subsection{Superpixels}
             \paragraph{What it is}piche
 
-            \begin{figure}[!htb]
+            \begin{figure}[!ht]
+            \centering
+            \begin{subfigure}{.3\linewidth}
                 \centering
-                \includegraphics[scale=0.5]{pics/img.png}
-                \caption{\textit{Partition d'une image en superpixels}}
+                \includegraphics[width=0.9\linewidth]{pics/img_segm1.png}
+            \end{subfigure}
+            \begin{subfigure}{.3\linewidth}
+                \centering
+                \includegraphics[width=0.9\linewidth]{pics/img_segm2.png}
+            \end{subfigure}
+            \begin{subfigure}{.3\linewidth}
+                \centering
+                \includegraphics[width=0.9\linewidth]{pics/img_segm3.png}
+            \end{subfigure}
+                \caption{\textit{A superpixel segmentation. From left to right: the original image, the original image with its calculated superpixels outlines and the resulting superpixel segmented image. Each pixel of a superpixel has only one color, the mean color of the original image over the superpixel region.}}
                 \label{fig:spp}
             \end{figure}
 
@@ -122,8 +133,10 @@ In this paper, we study different options to improve the performance of a deep l
     \subsection{COCO dataset}
         \subsubsection{The COCO dataset}
         COCO dataset\footnote{site de COCO}, nb of images, examples
+
         \subsubsection{Characteristics}
         \label{par:charac}
+        Piche
 
         \begin{figure}[!ht]
             \begin{subfigure}{.49\linewidth}

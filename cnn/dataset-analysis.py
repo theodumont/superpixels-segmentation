@@ -48,7 +48,7 @@ def min_max_images(segmentation_dataset, save_output):
     ax_scatter.tick_params(direction='in', top=True, right=True)
     ax_scatter.set_xlabel("Images widths")
     ax_scatter.set_ylabel("Images heights")
-    ax_scatter.scatter(w_vect, h_vect, s=[2*v for v in values], c=values)
+    ax_scatter.scatter(w_vect, h_vect, s=[v/10 for v in values], c=values)
     lim_inf = np.ceil(np.abs([w_vect, h_vect]).min()) - 20
     lim_sup = np.ceil(np.abs([w_vect, h_vect]).max()) + 20
     ax_scatter.set_xlim((lim_inf, lim_sup))
