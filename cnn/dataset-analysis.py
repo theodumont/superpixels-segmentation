@@ -1,3 +1,7 @@
+"""
+Computes characteristics of the dataset
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 from dataset import *
@@ -23,6 +27,12 @@ def min_max_images(segmentation_dataset, save_output):
         if ((i+1) % 100 == 0):
             print(i+1, "th image")
 
+    total = 0
+    for integer in sizes:
+        if integer != 0:
+            total += integer
+    print(total, "images dans le tableau")
+
     print("Creating the arrays...")
     for h in range(650):
         for w in range(650):
@@ -35,7 +45,6 @@ def min_max_images(segmentation_dataset, save_output):
     print("Maximum height is", np.max(h_vect), "pixels")
     print("Minimum width is", np.min(w_vect), "pixels")
     print("Maximum width is", np.max(w_vect), "pixels")
-
     print("Plotting...")
     left, width = 0.1, 0.65
     bottom, height = 0.1, 0.65

@@ -17,12 +17,12 @@ class SegmentationDataset:
     Class handling the segmentation dataset
     """
 
-    def __init__(self, root_dir, input_dir, target_dir, transform = None):
+    def __init__(self, root_dir, input_dir, target_dir, transform=None):
 
         """
         Class constructor
 
-        :param root_dir: Root directory 
+        :param root_dir: Root directory
         :type root_dir: string
         :param input_dir: path to the training images
         :type input_dir: string
@@ -38,7 +38,6 @@ class SegmentationDataset:
         self.transform = transform
         self.images = os.listdir(self.root_dir + self.target_dir)
 
-
     def __len__(self):
 
         """
@@ -49,7 +48,6 @@ class SegmentationDataset:
         """
 
         return len(self.images)
-
 
     def __getitem__(self, idx):
 
@@ -66,12 +64,12 @@ class SegmentationDataset:
         """
 
         img_name = os.path.join(self.root_dir,
-          self.input_dir,
-          self.images[idx][:-4] + '.jpg')
+                                self.input_dir,
+                                self.images[idx][:-4] + '.jpg')
 
         target_name = os.path.join(self.root_dir,
-          self.target_dir,
-          self.images[idx])
+                                   self.target_dir,
+                                   self.images[idx])
 
         img = io.imread(img_name)
         target = io.imread(target_name)
@@ -84,7 +82,6 @@ class SegmentationDataset:
         return sample
 
 
-
 class Rescale(object):
 
     """
@@ -92,8 +89,8 @@ class Rescale(object):
 
     Args:
 
-      output_size (tuple or int): Desired output size. 
-      If tuple, the output shape matches output_size. 
+      output_size (tuple or int): Desired output size.
+      If tuple, the output shape matches output_size.
       If int, the smallest edge size is matched to output_size,
       and the aspect ratio is kept identical
 
@@ -104,8 +101,8 @@ class Rescale(object):
         """
         Constructor
 
-        :param output_size: Desired output size. 
-         If tuple, the output shape matches output_size. 
+        :param output_size: Desired output size.
+         If tuple, the output shape matches output_size.
          If int, the smallest edge size is matched to output_size,
          and the aspect ratio is kept identical
 
@@ -194,20 +191,19 @@ class Crop(object):
 
         img, target = sample['image'], sample['target']
 
-        h, w = image.shape[:2]
+        h, w = img.shape[:2]
         new_h, new_w = self.output_size
 
         top = 0
         left = 0
 
         img = img[top: top + new_h,
-                      left: left + new_w]
+                  left: left + new_w]
 
         target = target[top: top + new_h,
-                      left: left + new_w]
+                        left: left + new_w]
 
-        return {'input': image, 'target': image_segm}
-
+        return {'input': img, 'target': target}
 
 
 class RandomCrop(object):
@@ -271,9 +267,9 @@ class RandomCrop(object):
         left = np.random.randint(0, w - new_w)
 
         img = img[top: top + new_h,
-                      left: left + new_w]
+                  left: left + new_w]
         target = target[top: top + new_h,
-                      left: left + new_w]
+                        left: left + new_w]
 
         return {'input': img, 'target': target}
 
@@ -332,4 +328,3 @@ class Normalize(object):
         img = img_as_float(img)
         target = img_as_float(target)
         return {'input': img, 'target': target}
-

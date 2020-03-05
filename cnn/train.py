@@ -17,7 +17,7 @@ import torch.nn.functional as F
 from loss import TV_loss
 import matplotlib.pyplot as plt
 from network import Net
-
+import numpy as np
 
 
 def imshow(img, target):
@@ -25,8 +25,9 @@ def imshow(img, target):
     npimg = make_grid(img).numpy()
     nptarget = make_grid(target).numpy()
 
-    fig, ax = plt.subplots(2, 1, figsize=(10, 10), sharex=True,
-       sharey=True, subplot_kw={'adjustable': 'box-forced'})
+    fig, ax = plt.subplots(2, 1, figsize=(10, 10),
+                           sharex=True, sharey=True,
+                           subplot_kw={'adjustable': 'box-forced'})
 
     ax[0].set_title("Original images")
     ax[0].imshow(np.transpose(npimg, (1, 2, 0)))
@@ -44,7 +45,7 @@ if __name__ == '__main__':
 
     # Select a device
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    print("device: ",device)
+    print("device: ", device)
 
     # Training parameters
     batch_size = 32
@@ -53,9 +54,9 @@ if __name__ == '__main__':
 
     # Load the segmentation dataset
     segmentation_dataset = SegmentationDataset(
-        root_dir= '../../../../data/commun/COCO/',
-        input_dir= 'train2017/',
-        target_dir= 'trainSP2017/',
+        root_dir='../../../../data/commun/COCO/',
+        input_dir='train2017/',
+        target_dir='trainSP2017/',
         transform=transforms.Compose([
              RandomCrop(224),
              Normalize(),
@@ -64,10 +65,9 @@ if __name__ == '__main__':
     # Data loader
     trainloader = torch.utils.data.DataLoader(
         segmentation_dataset,
-        batch_size = batch_size,
-        shuffle = True,
-        num_workers = 0)
-
+        batch_size=batch_size,
+        shuffle=True,
+        num_workers=0)
 
     # Neural network
     d = 7
@@ -82,20 +82,23 @@ if __name__ == '__main__':
 
     # Optimizer
     import torch.optim as optim
-    criterion = lambda outputs, target: TV_loss(outputs, target, batch_size = batch_size, alpha = 0.)
-    optimizer = optim.Adam(net.parameters(), lr = learning_rate)
+    criterion = lambda outputs, target: TV_loss(outputs, target,
+                                                batch_size=batch_size,
+                                                alpha=0.)
+    optimizer = optim.Adam(net.parameters(), lr=learning_rate)
 
     def learning():
 
         loss_lst = [[] for i in range(start_epoches, num_epochs)]
 
-        for epoch in range(start_epoches, num_epochs):  # loop over the dataset multiple times
+        # loop over the dataset multiple times
+        for epoch in range(start_epoches, num_epochs):
 
             x = []
             running_loss = 0.0
 
-            param_a = [[] for s in range(2,d-2+1)]
-            param_b = [[] for s in range(2,d-2+1)]
+            param_a = [[] for s in range(2, d-2+1)]
+            param_b = [[] for s in range(2, d-2+1)]
 
             for i, sample in enumerate(trainloader):
 
@@ -114,13 +117,13 @@ if __name__ == '__main__':
                 # Weights update
                 optimizer.step()
                 running_loss += loss.item()
-                if i%1==0:
+                if i % 1 == 0:
 
-                    print('[%d,%d] loss: %.6f' % (epoch + 1, i+1, running_loss/(i+1)))
+                    print('[%d,%d] loss: %.6f' % (epoch+1, i+1, running_loss/(i+1)))
                     loss_lst[epoch - start_epoches].append(loss.item())
                     x.append(i+1)
 
-                    for s in range(2,d-2+1):
+                    for s in range(2, d-2+1):
                         param_a[s-2].append(net.convs[s-2].ABN.a.data.item())
                         param_b[s-2].append(net.convs[s-2].ABN.b.data.item())
 
@@ -134,13 +137,7 @@ if __name__ == '__main__':
 
             # Save loss for the epoch
             np.save('./../results/loss-train/run' + run_idx + "_" + str(epoch) + '.npy',
-              np.array(loss_lst[epoch - start_epoches]))
+                    np.array(loss_lst[epoch - start_epoches]))
 
     learning()
     torch.save(net.state_dict(), PATH)
-
-
-
-
-
-

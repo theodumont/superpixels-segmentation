@@ -10,6 +10,7 @@ import torch.nn as nn
 # 1: Adaptative batch normalization
 # ------------------------------------
 
+
 class AdaptiveBatchNorm2d(nn.Module):
 
     """
@@ -20,25 +21,25 @@ class AdaptiveBatchNorm2d(nn.Module):
         r"""
         Class constructor
 
-        An adaptative batch normalization layer takes as input a tensor x and 
+        An adaptative batch normalization layer takes as input a tensor x and
         outputs a tensor y defined by
 
         .. math::
         y = a BN(x) + bx
 
-        where BN is a batch normalization layer, and a and b are learnable parameters. 
-       
+        where BN is a batch normalization layer, and a and b are learnable parameters.
+
         .. math::
         BN(x) = \frac{x - \mathrm{E}[x]}{ \sqrt{\mathrm{Var}[x] + \epsilon}} * \gamma + \beta
 
         The shape of the input tensor is BxCxWxH where B is the number of imaes in each batch,
-        C the number of features maps, W the width of the image and H the height of the image, 
+        C the number of features maps, W the width of the image and H the height of the image,
         respectively.
 
         :param num_features: Number of features map
         :param momentum: Parameter used by the batch normalizatio layer to compute the statistics
         :param eps: Value added to the denominator for ensuring stability
-        :param affine: When set to True, indicates that the batch normalization 
+        :param affine: When set to True, indicates that the batch normalization
          layer has learnable affine parameters.
 
         :type num_features: int
@@ -58,12 +59,11 @@ class AdaptiveBatchNorm2d(nn.Module):
         self.a = nn.Parameter(tens_a)
         self.b = nn.Parameter(tens_b)
 
-
     def forward(self, x):
 
         """
         Forward pass in the adaptative batch normalization layer
-        
+
         .. math::
         y = a BN(x) + bx
 
@@ -81,6 +81,7 @@ class AdaptiveBatchNorm2d(nn.Module):
 # ------------------------------------
 # 2: Convolution module
 # ------------------------------------
+
 
 class ChenConv(nn.Module):
 
@@ -103,9 +104,9 @@ class ChenConv(nn.Module):
         :type s: int
         """
         super(ChenConv, self).__init__()
-        self.conv = nn.Conv2d(in_channels, out_channels, 3, padding = 2**(s-1), dilation = 2**(s-1))
+        self.conv = nn.Conv2d(in_channels, out_channels, 3, padding=2**(s-1), dilation=2**(s-1))
         self.ABN = AdaptiveBatchNorm2d(out_channels)
-        self.LReLU = nn.LeakyReLU(0.2, inplace = True)
+        self.LReLU = nn.LeakyReLU(0.2, inplace=True)
 
     def forward(self, x):
 
@@ -125,6 +126,7 @@ class ChenConv(nn.Module):
 # 3: Neural network architecture
 # ------------------------------------
 
+
 class Net(nn.Module):
 
     """
@@ -143,13 +145,12 @@ class Net(nn.Module):
         self.first = ChenConv(3, 24, 1)
 
         # Intermediate convolution modules
-        self.convs = nn.ModuleList([ChenConv(24, 24, s) for s in range(2,d-2+1)])   
+        self.convs = nn.ModuleList([ChenConv(24, 24, s) for s in range(2, d-2+1)])
         self.penulti = ChenConv(24, 24, 1)
 
-        # Final convolution 
-        self.conv_ulti = nn.Conv2d(24, 3, 1, padding = 0, dilation = 1)
+        # Final convolution
+        self.conv_ulti = nn.Conv2d(24, 3, 1, padding=0, dilation=1)
         self.ABN_ulti = AdaptiveBatchNorm2d(3)
-
 
     def forward(self, x):
 
@@ -171,7 +172,6 @@ class Net(nn.Module):
         x = (self.ABN_ulti(self.conv_ulti(x)))
         return x
 
-
     def num_flat_features(self, x):
 
         """
@@ -185,7 +185,7 @@ class Net(nn.Module):
         :rtype: int
         """
 
-        size = x.size()[1:] 
+        size = x.size()[1:]
         num_features = 1
         for s in size:
             num_features *= s
