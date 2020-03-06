@@ -73,6 +73,7 @@ In this paper, we study different options to improve the performance of a deep l
 
 
     \subsection{Ce qu'est une bonne \spp segmentation}
+        pour obtenir metriques des algos, \texttt{text}
         \subsubsection{Metrics}
         cf article https://arxiv.org/pdf/1612.01601.pdf
         let $S = {S_j}^K_{j=1}$ and $G = {G_i}$ be partitions of the same image $I : x_n \mapsto I(x_n)$, $1 \leq n \leq N$
@@ -80,6 +81,7 @@ In this paper, we study different options to improve the performance of a deep l
         $G$ is the ground truth
             \paragraph{Boundary Recall}
             - most commonly used metric to assess boundary adherence.
+            - intersection entre les frontieres grossies et truth, donc pourcentage de vrais contours deetctes
             - Let $\text{TP}(G,S)$ be the number of true positive boundary pixels and $\text{FN}(G,S)$ be the number of false negative boudary pixels in the segmented image $S$.
             $$\mathrm{Rec}(G,S)=\frac{\mathrm{TP}(G,S)}{\mathrm{TP}(G,S)+\mathrm{FN}(G,S)}$$
             \paragraph{Undersegmentation Error}
@@ -92,29 +94,7 @@ In this paper, we study different options to improve the performance of a deep l
             - the $\mathrm{CO}$ operator computes how close the area $A(S_j)$ of each superpixel $S_j$ is from a circle with same perimeter $P(S_j)$.
         \subsubsection{Autres algorithmes}
             \paragraph{SLIC}
-            \paragraph{metrics}
-            Here are the previously defined metrics of some well-known superpixel segmentation algorithms.
-            \begin{table}[!ht]
-                \center
-                \begin{tabular}{|c|c|c|c|}
-                    \hline
-                    Algorithm & BR & UE & CO\\
-                    \hline
-                    \hline
-                    SLIC & & & \\
-                    \hline
-                     & & & \\
-                    \hline
-                     & & & \\
-                    \hline
-                    \hline
-                    Reference & & & \\
-                    \hline
-                \end{tabular}
-                \caption{Metrics for different superpixel segmentation algorithms}
-            \end{table}
 
-            \noindent We use the ?? alorithm as a reference to evaluate the performances of our model.
     \subsection{Motivations/ambitions}
             \paragraph{Difficultés que l'on cherche à résoudre}
             \paragraph{Pas de vraie approche DL pour segmentation avec \spp s}
@@ -141,10 +121,9 @@ In this paper, we study different options to improve the performance of a deep l
         \begin{figure}[!ht]
             \begin{subfigure}{.49\linewidth}
                 \centering
-                % \includegraphics[width=\linewidth]{pics/train2017full.png}
+                \includegraphics[width=\linewidth]{pics/train2017full.png}
                 \caption{\textit{plot}}
             \end{subfigure}
-            % \hspace{-7em}
             \begin{subfigure}{.49\linewidth}
                 \centering
                 \includegraphics[width=\linewidth]{pics/val2017full.png}
@@ -155,14 +134,14 @@ In this paper, we study different options to improve the performance of a deep l
 
             \begin{subfigure}{.49\linewidth}
                 \center
-                \begin{tabular}{|c|c|c||c|}
+                \begin{tabular}{|c||c|c|c|}
                     \hline
                      & Training & Height & Width \\
                     \hline
                     \hline
-                    Images & Min & ? & ? \\
+                    Images & Min & 51 & 59 \\
                     \hline
-                    118~287 & Max & ? & ? \\
+                    118~287 & Max & 640 & 640 \\
                     \hline
                 \end{tabular}
                 \caption{Tabular}
@@ -184,6 +163,8 @@ In this paper, we study different options to improve the performance of a deep l
             \caption{\textit{Training and validation sets characterization}}
         \end{figure}
 
+        d'où la nécessité de faire des transformations sur la dataset pour uniformiser les tailles en entrée du réseau.
+
     \subsection{Eikonal}
     \subsection{Notre utilisation de eikonal}
     en plus réutilisé derrière sur image qui sort du réseau\\
@@ -204,7 +185,7 @@ In this paper, we study different options to improve the performance of a deep l
         \subsubsection{Layers definitions}
 
             \paragraph{Dilated convolution}\label{par:dilated} We consider a layer $L=(L_j)_{j\in [\![1,w]\!]}$, $w$ being the number of feature maps $L_j$ of $L$. We also consider $K=(K_{i,j})_{i,j}$, each $K_{i,j}$ being a $3\times 3$ convolutional kernel. The dilated convolution operation of $K_{i,j}$ on $L_j$ is denoted by $L_j*_r K_{i,j}$, $r$ being the dilation parameter.
-            \begin{figure}
+            \begin{figure}[!ht]
                 \begin{subfigure}{.49\linewidth}
                     \centering
                     \includegraphics[width=.8\linewidth]{pics/conv-simple.png}
@@ -219,7 +200,8 @@ In this paper, we study different options to improve the performance of a deep l
                 \end{subfigure}
                 \caption{\textit{Illustration of two types of convolutions}}
             \end{figure}
-            The output $C(x)$ of a pixel $x$ is:
+
+            \noindent The output $C(x)$ of a pixel $x$ is:
             \begin{flalign*}
             C(x):& = (L_j*_r K_{i,j})(x) &\\
                  & = \sum_{a+rb=x}L_j(a)K_{i,j}(b) &\\
@@ -237,34 +219,34 @@ In this paper, we study different options to improve the performance of a deep l
 
             \paragraph{Leaky rectifier (LReLU)} In order to let our neural network model complex patterns in the data, we have to add a non-linear property to the model. It often is an activation function, such as a sigmoid or a tanh (Figure \ref{fig:act-sigmoids}).
 
-            \begin{figure}
+            \begin{figure}[!ht]
                 \begin{subfigure}{.49\linewidth}
                     \centering
-                    \includegraphics[width=\linewidth]{pics/act-sigmoid.png}
+                    \includegraphics[width=.9\linewidth]{pics/act-sigmoid.png}
                     \caption{\textit{Sigmoid}}
                 \end{subfigure}
                 \begin{subfigure}{.49\linewidth}
                     \centering
-                    \includegraphics[width=\linewidth]{pics/act-tanh.png}
+                    \includegraphics[width=.9\linewidth]{pics/act-tanh.png}
                     \caption{\textit{tanh}}
                 \end{subfigure}
                 \caption{\textit{Illustration of two bounded rectifiers}}
                 \label{fig:act-sigmoids}
             \end{figure}
 
-            The problem with these activation functions is that they are bounded and their gradient is very low on the edges. Because we want are going to manipulate high scalar values, we have to use an unbounded activation function, such as ReLU, $\Phi(x)=\max(0,x)$ (Figure \ref{fig:relu}). But the issue with ReLU is that all the negative values become zero immediately, which decreases the ability of our model to train from the data. Hence the implementation of a \textit{leaky rectifier}, LReLU:
+            these activation functions are often used but they are bounded and their gradient is very low on the edges. Because we are going to manipulate high scalar values, we have to use an unbounded activation function, such as ReLU, $\Phi(x)=\max(0,x)$ (Figure \ref{fig:relu}). But the issue with ReLU is that all the negative values become zero immediately, which decreases the ability of our model to train from the data. Hence the implementation of a \textit{leaky rectifier}, LReLU (\ref{fig:lrelu}):
             $$\Phi(x)=\max(\alpha x,x)\mbox{, with } 0<\alpha<1.$$
 
-            \begin{figure}
+            \begin{figure}[!ht]
                 \begin{subfigure}{.49\linewidth}
                     \centering
-                    \includegraphics[width=.8\linewidth]{pics/act-relu.png}
+                    \includegraphics[width=.7\linewidth]{pics/act-relu.png}
                     \caption{\textit{ReLU}}
                     \label{fig:relu}
                 \end{subfigure}
                 \begin{subfigure}{.49\linewidth}
                     \centering
-                    \includegraphics[width=.8\linewidth]{pics/act-lrelu.png}
+                    \includegraphics[width=.7\linewidth]{pics/act-lrelu.png}
                     \caption{\textit{LReLU ($\alpha=0.2$)}}
                     \label{fig:lrelu}
                 \end{subfigure}
@@ -308,7 +290,7 @@ In this paper, we study different options to improve the performance of a deep l
             because of \ref{par:dilated}, page \pageref{par:dilated}.
 
             \begin{table}[!ht]
-                \center
+                \centering
                 \begin{tabular}{|c|c|c|c|c|c|c|c|}
                     \hline
                     Layer & 1 & 2 & 3 & 4 & 5 & 6 & 7\\
@@ -332,10 +314,11 @@ In this paper, we study different options to improve the performance of a deep l
         \subsubsection{MSE}
         $$L_{MSE}=\frac{1}{N}\sum_{i=1}^N |\hat{f}(I)_i-f(I)_i|^2$$
 
-        \subsubsection{TV}
+        \subsubsection{TV}\footnote{ref}
+            \paragraph{Why} In the process of creating an image segmentation neural network, we want the image output to have a lot of areas where the gradient is $0$. We thus want to take into account this gradient $\nabla f(I)$ in the loss function [...]
             \paragraph{Formula}
-            $$L_{TV}=\frac{1}{N}\sum_{i=1}^N |\hat{f}(I)_i-f(I)_i|^2+\frac{1}{N}$$
-            \paragraph{Why}
+            $$L_{TV}=\frac{1}{N}\sum_{i=1}^N |\hat{f}(I)_i-f(I)_i|^2+\frac{1}{N}\sum_{i=1}^N|(\nabla f(I))_i)|^2$$
+            granting an improvement in the output image smoothness.
 
     \subsection{Implementation}
     The network was implemented with PyTorch\footnote{Repository can be found at \url{https://github.com/theodumont/superpixels-segmentation}.} and we used GPU acceleration [...]
@@ -356,7 +339,7 @@ In this paper, we study different options to improve the performance of a deep l
     petit bilan des valeurs choisies
     évolution des paramètres a et b ?\\
         \subsubsection{Learning rate}
-        \begin{table}
+        \begin{table}[!ht]
             \center
             \begin{tabular}{|c|c|c|c|c|}
                 \hline
@@ -434,6 +417,32 @@ In this paper, we study different options to improve the performance of a deep l
     cf results/images
 
 
+        \subsubsection{The dataset}
+        BSD dataset, BSD fait a la main et pas a l'arrache comme COCO
+        \subsubsection{Results}
+
+            \paragraph{metrics}
+            Here are the previously defined metrics of some well-known superpixel segmentation algorithms.
+            \begin{table}[!ht]
+                \centering
+                \begin{tabular}{|c|c|ccc|}
+                    \hline
+                    \multicolumn{2}{|c|}{Algorithm} & BR & UE & CO\\
+                    \hline
+                    \hline
+                    \multirow{3}{*}{image analysis} & EI [\footnote{eikonal}] & & & \\
+                    & EIT [\footnote{Eikonal with textures, metriques dans l'article}] & & & \\
+                    & WS [\footnote{watershed}] & & & \\
+                    \hline
+                    \multirow{2}{*}{neural networks} & SLIC [\footnote{reference}] & & & \\
+                    & Ours & & & \\
+                    \hline
+                \end{tabular}
+                \caption{Comparisons of metrics on the BSD dataset for different
+                superpixel segmentation algorithms}
+            \end{table}
+
+            \noindent We use the ?? alorithm as a reference to evaluate the performances of our model.
 
 
 
