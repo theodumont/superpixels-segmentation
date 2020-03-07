@@ -2,7 +2,6 @@
 
 ## Structure
 
-- `train2017`:
-- `trainSP2017`:
-- `val2017`:
-- `valSP2017`:
+- `train2017/` and `val2017`:
+- `trainPAN2017/` and `valPAN2017/`:
+- `trainSP2017` and `valSP2017`:
