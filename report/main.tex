@@ -41,13 +41,20 @@ In this paper, we study different options to improve the performance of a deep l
             - change the representation of an image into something that is more meaningful and easier to analyz
             - locate boundaries and objects
 
-
             \begin{figure}[!ht]
+            \centering
+            \begin{subfigure}{.49\linewidth}
                 \centering
-                \includegraphics[scale=0.5]{pics/img.png}
-                \caption{\textit{An image and its segmented image}}
+                \includegraphics[width=0.9\linewidth]{pics/img_segm1.jpg}
+            \end{subfigure}
+            \begin{subfigure}{.49\linewidth}
+                \centering
+                \includegraphics[width=0.9\linewidth]{pics/img_segm2.png}
+            \end{subfigure}
+                \caption{\textit{A segmentation. Left: the original image; right: the segmented image. Both are from the COCO training dataset (REF?).}}
                 \label{fig:segm}
             \end{figure}
+
             \paragraph{Motivation}
 
     \subsection{Superpixels}
@@ -57,15 +64,15 @@ In this paper, we study different options to improve the performance of a deep l
             \centering
             \begin{subfigure}{.3\linewidth}
                 \centering
-                \includegraphics[width=0.9\linewidth]{pics/img_segm1.png}
+                \includegraphics[width=0.9\linewidth]{pics/img_spp1.png}
             \end{subfigure}
             \begin{subfigure}{.3\linewidth}
                 \centering
-                \includegraphics[width=0.9\linewidth]{pics/img_segm2.png}
+                \includegraphics[width=0.9\linewidth]{pics/img_spp2.png}
             \end{subfigure}
             \begin{subfigure}{.3\linewidth}
                 \centering
-                \includegraphics[width=0.9\linewidth]{pics/img_segm3.png}
+                \includegraphics[width=0.9\linewidth]{pics/img_spp3.png}
             \end{subfigure}
                 \caption{\textit{A superpixel segmentation. From left to right: the original image, the original image with its calculated superpixels outlines and the resulting superpixel segmented image. Each pixel of a superpixel has only one color, the mean color of the original image over the superpixel region.}}
                 \label{fig:spp}
