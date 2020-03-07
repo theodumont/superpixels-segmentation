@@ -1,12 +1,9 @@
-cnn/__pycache__/
-report/main.aux
+# report
+report/catalogue2019.pdf
+report/to-add/
 report/main.log
-report/main.out
-report/main.synctex.gz
-report/main.toc
-report/main.
 
-cnn/data/train2017full/
-cnn/data/trainSP2017full/
-cnn/data/val2017full/
-cnn/data/valSP2017full/
+# cnn
+cnn/__pycache__/
+cnn/data/*full/
+cnn/data/*.json

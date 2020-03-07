@@ -6,52 +6,47 @@
 \contentsline {subsection}{\numberline {1.2}Superpixels}{3}{subsection.1.2}% 
 \contentsline {paragraph}{What it is}{3}{section*.6}% 
 \contentsline {paragraph}{Applications \& Motivation}{3}{section*.8}% 
-\contentsline {subsection}{\numberline {1.3}Ce qu'est une bonne superpixelsegmentation}{4}{subsection.1.3}% 
-\contentsline {subsubsection}{\numberline {1.3.1}Metrics}{4}{subsubsection.1.3.1}% 
-\contentsline {paragraph}{Boundary Recall}{4}{section*.9}% 
-\contentsline {paragraph}{Undersegmentation Error}{4}{section*.10}% 
-\contentsline {paragraph}{Compactness}{4}{section*.11}% 
-\contentsline {subsubsection}{\numberline {1.3.2}Autres algorithmes}{4}{subsubsection.1.3.2}% 
-\contentsline {paragraph}{SLIC}{4}{section*.12}% 
-\contentsline {subsection}{\numberline {1.4}Motivations/ambitions}{4}{subsection.1.4}% 
-\contentsline {paragraph}{Difficult\IeC {\'e}s que l'on cherche \IeC {\`a} r\IeC {\'e}soudre}{4}{section*.13}% 
-\contentsline {paragraph}{Pas de vraie approche DL pour segmentation avec superpixels}{4}{section*.14}% 
-\contentsline {paragraph}{Ambitions}{4}{section*.15}% 
+\contentsline {subsubsection}{\numberline {1.2.1}Ce qu'est une bonne superpixelsegmentation}{4}{subsubsection.1.2.1}% 
+\contentsline {paragraph}{Metrics}{4}{section*.9}% 
+\contentsline {paragraph}{Autres algorithmes}{4}{section*.10}% 
+\contentsline {subsubsection}{\numberline {1.2.2}Motivations/ambitions}{4}{subsubsection.1.2.2}% 
+\contentsline {paragraph}{Difficult\IeC {\'e}s que l'on cherche \IeC {\`a} r\IeC {\'e}soudre}{4}{section*.11}% 
+\contentsline {paragraph}{Pas de vraie approche DL pour segmentation avec superpixels}{4}{section*.12}% 
+\contentsline {paragraph}{Ambitions}{4}{section*.13}% 
 \contentsline {section}{\numberline {2}Dataset generation}{4}{section.2}% 
 \contentsline {subsection}{\numberline {2.1}COCO dataset}{4}{subsection.2.1}% 
 \contentsline {subsubsection}{\numberline {2.1.1}The COCO dataset}{4}{subsubsection.2.1.1}% 
 \contentsline {subsubsection}{\numberline {2.1.2}Characteristics}{4}{subsubsection.2.1.2}% 
 \contentsline {subsection}{\numberline {2.2}Eikonal}{5}{subsection.2.2}% 
-\contentsline {subsection}{\numberline {2.3}Notre utilisation de eikonal}{5}{subsection.2.3}% 
+\contentsline {subsection}{\numberline {2.3}Global approach}{5}{subsection.2.3}% 
 \contentsline {section}{\numberline {3}The model}{5}{section.3}% 
-\contentsline {subsection}{\numberline {3.1}Approach}{5}{subsection.3.1}% 
-\contentsline {subsection}{\numberline {3.2}Network architecture}{5}{subsection.3.2}% 
-\contentsline {subsubsection}{\numberline {3.2.1}Layers definitions}{5}{subsubsection.3.2.1}% 
-\contentsline {paragraph}{Dilated convolution}{5}{section*.17}% 
-\contentsline {paragraph}{Adaptative Batch Normalization (ABN)}{6}{section*.19}% 
-\contentsline {paragraph}{Leaky rectifier (LReLU)}{6}{section*.20}% 
-\contentsline {subsubsection}{\numberline {3.2.2}Chen}{7}{subsubsection.3.2.2}% 
-\contentsline {paragraph}{Context Aggregation Network (CAN)}{7}{section*.23}% 
-\contentsline {paragraph}{Architecture of a block}{7}{section*.25}% 
-\contentsline {subsubsection}{\numberline {3.2.3}UNet}{8}{subsubsection.3.2.3}% 
-\contentsline {subsubsection}{\numberline {3.2.4}Chen + UNet}{8}{subsubsection.3.2.4}% 
-\contentsline {subsection}{\numberline {3.3}Total Variation (TV) Loss}{8}{subsection.3.3}% 
-\contentsline {subsubsection}{\numberline {3.3.1}MSE}{8}{subsubsection.3.3.1}% 
-\contentsline {subsubsection}{\numberline {3.3.2}TV}{8}{subsubsection.3.3.2}% 
-\contentsline {paragraph}{Why}{8}{section*.27}% 
-\contentsline {paragraph}{Formula}{8}{section*.28}% 
-\contentsline {subsection}{\numberline {3.4}Implementation}{8}{subsection.3.4}% 
+\contentsline {subsection}{\numberline {3.1}Network architecture}{5}{subsection.3.1}% 
+\contentsline {subsubsection}{\numberline {3.1.1}Layers definitions}{5}{subsubsection.3.1.1}% 
+\contentsline {paragraph}{Dilated convolution}{5}{section*.16}% 
+\contentsline {paragraph}{Adaptative Batch Normalization (ABN)}{6}{section*.18}% 
+\contentsline {paragraph}{Leaky rectifier (LReLU)}{6}{section*.19}% 
+\contentsline {subsubsection}{\numberline {3.1.2}Chen}{7}{subsubsection.3.1.2}% 
+\contentsline {paragraph}{Context Aggregation Network (CAN)}{7}{section*.22}% 
+\contentsline {paragraph}{Architecture of a block}{7}{section*.24}% 
+\contentsline {subsubsection}{\numberline {3.1.3}UNet}{8}{subsubsection.3.1.3}% 
+\contentsline {subsubsection}{\numberline {3.1.4}Chen + UNet}{8}{subsubsection.3.1.4}% 
+\contentsline {subsection}{\numberline {3.2}Total Variation (TV) Loss}{8}{subsection.3.2}% 
+\contentsline {subsubsection}{\numberline {3.2.1}MSE}{8}{subsubsection.3.2.1}% 
+\contentsline {subsubsection}{\numberline {3.2.2}TV}{8}{subsubsection.3.2.2}% 
+\contentsline {paragraph}{Why}{8}{section*.26}% 
+\contentsline {paragraph}{Formula}{8}{section*.27}% 
+\contentsline {subsection}{\numberline {3.3}Implementation}{9}{subsection.3.3}% 
 \contentsline {section}{\numberline {4}Exp\IeC {\'e}rience et r\IeC {\'e}sultats}{9}{section.4}% 
 \contentsline {subsection}{\numberline {4.1}Hyperparameters}{9}{subsection.4.1}% 
 \contentsline {subsubsection}{\numberline {4.1.1}Learning rate}{9}{subsubsection.4.1.1}% 
-\contentsline {paragraph}{Constant value}{9}{section*.31}% 
-\contentsline {paragraph}{Non constant value}{9}{section*.32}% 
+\contentsline {paragraph}{Constant value}{9}{section*.30}% 
+\contentsline {paragraph}{Non constant value}{9}{section*.31}% 
 \contentsline {subsubsection}{\numberline {4.1.2}Network size $d$}{9}{subsubsection.4.1.2}% 
 \contentsline {subsubsection}{\numberline {4.1.3}Number of epochs}{9}{subsubsection.4.1.3}% 
-\contentsline {subsubsection}{\numberline {4.1.4}TV regularization}{9}{subsubsection.4.1.4}% 
-\contentsline {subsubsection}{\numberline {4.1.5}Runs}{9}{subsubsection.4.1.5}% 
+\contentsline {subsubsection}{\numberline {4.1.4}TV regularization}{10}{subsubsection.4.1.4}% 
+\contentsline {subsubsection}{\numberline {4.1.5}Runs}{10}{subsubsection.4.1.5}% 
 \contentsline {subsection}{\numberline {4.2}Results on dataset}{10}{subsection.4.2}% 
 \contentsline {subsubsection}{\numberline {4.2.1}The dataset}{10}{subsubsection.4.2.1}% 
 \contentsline {subsubsection}{\numberline {4.2.2}Results}{10}{subsubsection.4.2.2}% 
-\contentsline {paragraph}{metrics}{10}{section*.34}% 
+\contentsline {paragraph}{metrics}{10}{section*.33}% 
 \contentsline {section}{\numberline {5}Conclusion/Discussion}{10}{section.5}% 

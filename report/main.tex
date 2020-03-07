@@ -36,7 +36,11 @@ In this paper, we study different options to improve the performance of a deep l
 \section{Introduction}
 
     \subsection{Segmentation}
-            \paragraph{What it is}piche
+            \paragraph{What it is}
+            - partitioning a digital image into multiple segments (sets of pixel)
+            - change the representation of an image into something that is more meaningful and easier to analyz
+            - locate boundaries and objects
+
 
             \begin{figure}[!ht]
                 \centering
@@ -72,34 +76,36 @@ In this paper, we study different options to improve the performance of a deep l
             fournir un support sur lequel faire de la classification (couleur/texture moyenne, etc)
 
 
-    \subsection{Ce qu'est une bonne \spp segmentation}
-        pour obtenir metriques des algos, \texttt{text}
-        \subsubsection{Metrics}
-        cf article https://arxiv.org/pdf/1612.01601.pdf
-        let $S = {S_j}^K_{j=1}$ and $G = {G_i}$ be partitions of the same image $I : x_n \mapsto I(x_n)$, $1 \leq n \leq N$
-        $S$ is a segmented image
-        $G$ is the ground truth
-            \paragraph{Boundary Recall}
-            - most commonly used metric to assess boundary adherence.
-            - intersection entre les frontieres grossies et truth, donc pourcentage de vrais contours deetctes
-            - Let $\text{TP}(G,S)$ be the number of true positive boundary pixels and $\text{FN}(G,S)$ be the number of false negative boudary pixels in the segmented image $S$.
-            $$\mathrm{Rec}(G,S)=\frac{\mathrm{TP}(G,S)}{\mathrm{TP}(G,S)+\mathrm{FN}(G,S)}$$
-            \paragraph{Undersegmentation Error}
+        \subsubsection{Ce qu'est une bonne \spp segmentation}
+            pour obtenir metriques des algos, \texttt{cnn/results/results.py}
+            \paragraph{Metrics}
+            \footnote{cf article https://arxiv.org/pdf/1612.01601.pdf}
+            let $S = {S_j}^K_{j=1}$ and $G = {G_i}$ be partitions of the same image $I : x_n \mapsto I(x_n)$, $1 \leq n \leq N$
+            $S$ is a segmented image
+            $G$ is the ground truth
+            \begin{itemize}
+                \item \textbf{Boundary Recall.}
+                - most commonly used metric to assess boundary adherence.
+                - intersection entre les frontieres grossies et truth, donc pourcentage de vrais contours deetctes
+                - Let $\text{TP}(G,S)$ be the number of true positive boundary pixels and $\text{FN}(G,S)$ be the number of false negative boudary pixels in the segmented image $S$.
+                $$\mathrm{Rec}(G,S)=\frac{\mathrm{TP}(G,S)}{\mathrm{TP}(G,S)+\mathrm{FN}(G,S)}$$
+                \item \textbf{Undersegmentation Error.}
+                \item \textbf{Compactness.}
+                - evaluates the compactness of the superpixels.
+                $$
+                \mathrm{CO}(G, S)=\frac{1}{N} \sum_{S_{j}}|S_{j}| \frac{4 \pi A\left(S_{j}\right)}{P\left(S_{j}\right)}
+                $$
+                - the $\mathrm{CO}$ operator computes how close the area $A(S_j)$ of each superpixel $S_j$ is from a circle with same perimeter $P(S_j)$.
+            \end{itemize}
 
-            \paragraph{Compactness}
-            - evaluates the compactness of the superpixels.
-            $$
-            \mathrm{CO}(G, S)=\frac{1}{N} \sum_{S_{j}}|S_{j}| \frac{4 \pi A\left(S_{j}\right)}{P\left(S_{j}\right)}
-            $$
-            - the $\mathrm{CO}$ operator computes how close the area $A(S_j)$ of each superpixel $S_j$ is from a circle with same perimeter $P(S_j)$.
-        \subsubsection{Autres algorithmes}
-            \paragraph{SLIC}
+            \paragraph{Autres algorithmes}
+                - SLIC
 
-    \subsection{Motivations/ambitions}
-            \paragraph{Difficultés que l'on cherche à résoudre}
-            \paragraph{Pas de vraie approche DL pour segmentation avec \spp s}
-            \paragraph{Ambitions}
-            améliorer les métriques
+        \subsubsection{Motivations/ambitions}
+                \paragraph{Difficultés que l'on cherche à résoudre}
+                \paragraph{Pas de vraie approche DL pour segmentation avec \spp s} Most of the aforementioned segmentation methods are based only on color information of pixels in the image. Humans use much more knowledge when performing image segmentation, but implementing this knowledge would cost considerable human engineering and computational time, and would require a huge domain knowledge database which does not currently exist. Trainable segmentation methods, such as neural network segmentation, overcome these issues by modeling the domain knowledge from a dataset of labeled pixels.
+                \paragraph{Ambitions}
+                améliorer les métriques
 
 
 
@@ -116,7 +122,7 @@ In this paper, we study different options to improve the performance of a deep l
 
         \subsubsection{Characteristics}
         \label{par:charac}
-        Piche
+        In order to have a better understanding of the dataset, we
 
         \begin{figure}[!ht]
             \begin{subfigure}{.49\linewidth}
@@ -129,9 +135,7 @@ In this paper, we study different options to improve the performance of a deep l
                 \includegraphics[width=\linewidth]{pics/val2017full.png}
                 \caption{\textit{plot}}
             \end{subfigure}
-
             \bigskip
-
             \begin{subfigure}{.49\linewidth}
                 \center
                 \begin{tabular}{|c||c|c|c|}
@@ -166,9 +170,14 @@ In this paper, we study different options to improve the performance of a deep l
         d'où la nécessité de faire des transformations sur la dataset pour uniformiser les tailles en entrée du réseau.
 
     \subsection{Eikonal}
-    \subsection{Notre utilisation de eikonal}
+    \subsection{Global approach}
     en plus réutilisé derrière sur image qui sort du réseau\\
     faire un petit résumé
+    \begin{figure}[!ht]
+        \centering
+        % \includegraphics[width=0.9\linewidth]{pics/img_segm3.png}
+        \caption{\textit{Title}}
+    \end{figure}
 
 
 
@@ -179,8 +188,6 @@ In this paper, we study different options to improve the performance of a deep l
 
 
 \section{The model}
-    \subsection{Approach}
-    description générale de l'approche (NN puis eikonal)
     \subsection{Network architecture}
         \subsubsection{Layers definitions}
 
@@ -315,7 +322,9 @@ In this paper, we study different options to improve the performance of a deep l
         $$L_{MSE}=\frac{1}{N}\sum_{i=1}^N |\hat{f}(I)_i-f(I)_i|^2$$
 
         \subsubsection{TV}\footnote{ref}
-            \paragraph{Why} In the process of creating an image segmentation neural network, we want the image output to have a lot of areas where the gradient is $0$. We thus want to take into account this gradient $\nabla f(I)$ in the loss function [...]
+            \paragraph{Why} In such a search for well-segmented images, 2 criteria have to be fulfilled. The output needs to be as close as possible to the ground truth image; but we also need the segmented image to present a lot of zones where the color gradient $\nabla f(I)$ is equal to $0$. Thus, we want to implement a train loss function that could help us satisfy these two criteria.
+            In order to do so, we use the Total Variation (TV) loss, defined below.
+
             \paragraph{Formula}
             $$L_{TV}=\frac{1}{N}\sum_{i=1}^N |\hat{f}(I)_i-f(I)_i|^2+\frac{1}{N}\sum_{i=1}^N|(\nabla f(I))_i)|^2$$
             granting an improvement in the output image smoothness.
@@ -434,8 +443,8 @@ In this paper, we study different options to improve the performance of a deep l
                     & EIT [\footnote{Eikonal with textures, metriques dans l'article}] & & & \\
                     & WS [\footnote{watershed}] & & & \\
                     \hline
-                    \multirow{2}{*}{neural networks} & SLIC [\footnote{reference}] & & & \\
-                    & Ours & & & \\
+                    \multirow{2}{*}{neural networks} & ref [\footnote{SLIC?}] & 0.8995 & 0.0473 & 0.5409\\
+                    & Ours & 0.8781\footnote{Légèrement moins bon que ref, pas très grave parce que la compacité est pourrie du coup comme les contours oscillent ils intersectent plus de contours de l'image} & 0.0388 & 0.7682\\
                     \hline
                 \end{tabular}
                 \caption{Comparisons of metrics on the BSD dataset for different
@@ -443,7 +452,8 @@ In this paper, we study different options to improve the performance of a deep l
             \end{table}
 
             \noindent We use the ?? alorithm as a reference to evaluate the performances of our model.
-
+            pas très grave parce que la compacité est pourrie
+            du coup comme les contours oscillent ils intersectent plus de contours de l'image
 
 
 
