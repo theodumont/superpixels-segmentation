@@ -2,10 +2,6 @@
 Training methods for the neural network
 """
 
-import sys, time, os
-from os.path import expanduser
-home = expanduser("~")
-
 import torch
 import torchvision
 import torchvision.transforms as transforms
@@ -18,6 +14,10 @@ import matplotlib.pyplot as plt
 from network import AdaptiveBatchNorm2d, ChenConv
 from network import Net
 import numpy as np
+
+import sys, time, os
+from os.path import expanduser
+home = expanduser("~")
 
 
 def validation(model_idx, epoch_idx):

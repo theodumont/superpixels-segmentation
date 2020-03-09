@@ -3,7 +3,6 @@ Implementation of the MSE + TV Loss function
 """
 
 import torch
-import torchvision
 import torch.nn as nn
 
 

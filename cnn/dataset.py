@@ -121,8 +121,8 @@ class Rescale(object):
          and the target image (key: "target")
         :type sample: Dictionary
 
-        :return: Dictionary containing the transformed input image (key: "input")
-         and the target image (key: "target")
+        :return: Dictionary containing the transformed input image
+        (key: "input") and the target image (key: "target")
         :rtype: Dictionary
         """
 
@@ -184,8 +184,8 @@ class Crop(object):
          and the target image (key: "target")
         :type sample: Dictionary
 
-        :return: Dictionary containing the transformed input image (key: "input")
-         and the target image (key: "target")
+        :return: Dictionary containing the transformed input image
+        (key: "input") and the target image (key: "target")
         :rtype: Dictionary
         """
 
@@ -245,8 +245,8 @@ class RandomCrop(object):
          and the target image (key: "target")
         :type sample: Dictionary
 
-        :return: Dictionary containing the transformed input image (key: "input")
-         and the target image (key: "target")
+        :return: Dictionary containing the transformed input image
+        (key: "input") and the target image (key: "target")
         :rtype: Dictionary
         """
 
@@ -255,11 +255,11 @@ class RandomCrop(object):
         h, w = img.shape[:2]
         new_h, new_w = self.output_size
         if(h - new_h < 0):
-            print("Probleme h")
+            print("Problem h")
             print(h)
             print(new_h)
         if(w - new_w < 0):
-            print("probleme w")
+            print("Problem w")
             print(w)
             print(new_w)
 
@@ -289,8 +289,8 @@ class ToTensor(object):
          and the target image (key: "target")
         :type sample: Dictionary
 
-        :return: Dictionary containing the transformed input image (key: "input")
-         and the target image (key: "target")
+        :return: Dictionary containing the transformed input image
+        (key: "input") and the target image (key: "target")
         :rtype: Dictionary
         """
 
@@ -319,8 +319,8 @@ class Normalize(object):
          and the target image (key: "target")
         :type sample: Dictionary
 
-        :return: Dictionary containing the transformed input image (key: "input")
-         and the target image (key: "target")
+        :return: Dictionary containing the transformed input image
+        (key: "input") and the target image (key: "target")
         :rtype: Dictionary
         """
 

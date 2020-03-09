@@ -2,10 +2,6 @@
 Training methods for the neural network
 """
 
-import sys, time, os
-from os.path import expanduser
-home = expanduser("~")
-
 import torch
 import torchvision
 import torchvision.transforms as transforms
@@ -22,6 +18,11 @@ from skimage.morphology import disk
 from skimage.filters.rank import gradient
 
 import numpy as np
+
+import sys, time, os
+from os.path import expanduser
+home = expanduser("~")
+
 
 if __name__ == '__main__':
 
