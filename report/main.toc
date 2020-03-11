@@ -1,46 +1,44 @@
 \babel@toc {english}{}
 \contentsline {section}{\numberline {1}Introduction}{3}{section.1}% 
 \contentsline {subsection}{\numberline {1.1}Segmentation}{3}{subsection.1.1}% 
-\contentsline {paragraph}{What it is}{3}{section*.3}% 
-\contentsline {paragraph}{Motivation}{3}{section*.5}% 
 \contentsline {subsection}{\numberline {1.2}Superpixels}{3}{subsection.1.2}% 
-\contentsline {paragraph}{What it is}{3}{section*.6}% 
-\contentsline {paragraph}{Applications \& Motivation}{3}{section*.8}% 
+\contentsline {paragraph}{What it is}{3}{section*.4}% 
+\contentsline {paragraph}{Applications \& Motivation}{3}{section*.6}% 
 \contentsline {subsubsection}{\numberline {1.2.1}Ce qu'est une bonne superpixelsegmentation}{3}{subsubsection.1.2.1}% 
-\contentsline {paragraph}{Metrics}{4}{section*.9}% 
-\contentsline {paragraph}{Autres algorithmes}{4}{section*.10}% 
+\contentsline {paragraph}{Metrics}{3}{section*.7}% 
+\contentsline {paragraph}{Autres algorithmes}{4}{section*.8}% 
 \contentsline {subsubsection}{\numberline {1.2.2}Motivations/ambitions}{4}{subsubsection.1.2.2}% 
-\contentsline {paragraph}{Difficult\IeC {\'e}s que l'on cherche \IeC {\`a} r\IeC {\'e}soudre}{4}{section*.11}% 
-\contentsline {paragraph}{Pas de vraie approche DL pour segmentation avec superpixels}{4}{section*.12}% 
-\contentsline {paragraph}{Ambitions}{4}{section*.13}% 
+\contentsline {paragraph}{Difficult\IeC {\'e}s que l'on cherche \IeC {\`a} r\IeC {\'e}soudre}{4}{section*.9}% 
+\contentsline {paragraph}{Pas de vraie approche DL pour segmentation avec superpixels}{4}{section*.10}% 
+\contentsline {paragraph}{Ambitions}{4}{section*.11}% 
 \contentsline {section}{\numberline {2}Dataset generation}{4}{section.2}% 
 \contentsline {subsection}{\numberline {2.1}COCO dataset}{4}{subsection.2.1}% 
 \contentsline {subsubsection}{\numberline {2.1.1}The COCO dataset}{4}{subsubsection.2.1.1}% 
-\contentsline {subsubsection}{\numberline {2.1.2}Characteristics}{4}{subsubsection.2.1.2}% 
-\contentsline {subsection}{\numberline {2.2}Eikonal}{4}{subsection.2.2}% 
-\contentsline {subsection}{\numberline {2.3}Global approach}{4}{subsection.2.3}% 
+\contentsline {subsubsection}{\numberline {2.1.2}Characteristics}{5}{subsubsection.2.1.2}% 
+\contentsline {subsection}{\numberline {2.2}Eikonal}{5}{subsection.2.2}% 
+\contentsline {subsection}{\numberline {2.3}Global approach}{5}{subsection.2.3}% 
 \contentsline {section}{\numberline {3}The model}{5}{section.3}% 
 \contentsline {subsection}{\numberline {3.1}Network architecture}{5}{subsection.3.1}% 
 \contentsline {subsubsection}{\numberline {3.1.1}Layers definitions}{5}{subsubsection.3.1.1}% 
-\contentsline {paragraph}{Dilated convolution}{5}{section*.16}% 
-\contentsline {paragraph}{Adaptative Batch Normalization (ABN)}{6}{section*.18}% 
-\contentsline {paragraph}{Leaky rectifier (LReLU)}{6}{section*.19}% 
-\contentsline {subsubsection}{\numberline {3.1.2}Chen}{6}{subsubsection.3.1.2}% 
-\contentsline {paragraph}{Context Aggregation Network (CAN)}{6}{section*.22}% 
-\contentsline {paragraph}{Architecture of a block}{7}{section*.24}% 
+\contentsline {paragraph}{Dilated convolution}{5}{section*.14}% 
+\contentsline {paragraph}{Adaptative Batch Normalization (ABN)}{6}{section*.16}% 
+\contentsline {paragraph}{Leaky rectifier (LReLU)}{6}{section*.17}% 
+\contentsline {subsubsection}{\numberline {3.1.2}Chen}{7}{subsubsection.3.1.2}% 
+\contentsline {paragraph}{Context Aggregation Network (CAN)}{7}{section*.20}% 
+\contentsline {paragraph}{Architecture of a block}{7}{section*.22}% 
 \contentsline {subsubsection}{\numberline {3.1.3}UNet}{8}{subsubsection.3.1.3}% 
 \contentsline {subsubsection}{\numberline {3.1.4}Chen + UNet}{8}{subsubsection.3.1.4}% 
 \contentsline {subsection}{\numberline {3.2}Total Variation (TV) Loss}{8}{subsection.3.2}% 
 \contentsline {subsubsection}{\numberline {3.2.1}MSE}{8}{subsubsection.3.2.1}% 
 \contentsline {subsubsection}{\numberline {3.2.2}TV}{8}{subsubsection.3.2.2}% 
-\contentsline {paragraph}{Why}{8}{section*.26}% 
-\contentsline {paragraph}{Formula}{8}{section*.27}% 
-\contentsline {subsection}{\numberline {3.3}Implementation}{8}{subsection.3.3}% 
-\contentsline {section}{\numberline {4}Exp\IeC {\'e}rience et r\IeC {\'e}sultats}{8}{section.4}% 
-\contentsline {subsection}{\numberline {4.1}Hyperparameters}{8}{subsection.4.1}% 
-\contentsline {subsubsection}{\numberline {4.1.1}Learning rate}{8}{subsubsection.4.1.1}% 
-\contentsline {paragraph}{Constant value}{8}{section*.30}% 
-\contentsline {paragraph}{Non constant value}{9}{section*.31}% 
+\contentsline {paragraph}{Why}{8}{section*.24}% 
+\contentsline {paragraph}{Formula}{8}{section*.25}% 
+\contentsline {subsection}{\numberline {3.3}Implementation}{9}{subsection.3.3}% 
+\contentsline {section}{\numberline {4}Exp\IeC {\'e}rience et r\IeC {\'e}sultats}{9}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}Hyperparameters}{9}{subsection.4.1}% 
+\contentsline {subsubsection}{\numberline {4.1.1}Learning rate}{9}{subsubsection.4.1.1}% 
+\contentsline {paragraph}{Constant value}{9}{section*.28}% 
+\contentsline {paragraph}{Non constant value}{9}{section*.29}% 
 \contentsline {subsubsection}{\numberline {4.1.2}Network size $d$}{9}{subsubsection.4.1.2}% 
 \contentsline {subsubsection}{\numberline {4.1.3}Number of epochs}{9}{subsubsection.4.1.3}% 
 \contentsline {subsubsection}{\numberline {4.1.4}TV regularization}{10}{subsubsection.4.1.4}% 
@@ -48,5 +46,5 @@
 \contentsline {subsection}{\numberline {4.2}Results on dataset}{10}{subsection.4.2}% 
 \contentsline {subsubsection}{\numberline {4.2.1}The dataset}{10}{subsubsection.4.2.1}% 
 \contentsline {subsubsection}{\numberline {4.2.2}Results}{10}{subsubsection.4.2.2}% 
-\contentsline {paragraph}{metrics}{10}{section*.33}% 
+\contentsline {paragraph}{metrics}{10}{section*.31}% 
 \contentsline {section}{\numberline {5}Conclusion/Discussion}{10}{section.5}% 
