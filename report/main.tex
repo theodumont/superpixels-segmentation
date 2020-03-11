@@ -38,8 +38,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
 \section{Introduction}
 
     \subsection{Segmentation}
-            The human eye can easily understand the content of an image, but making a computer interpret the disposition of its pixels is more complex. Segmenting an image is partitioning it into multiple sets of pixels. It transforms the image into something that is easier to analyze, and much more meaningful. It allows one to locate the objects on an image, pointing out their boundaries.
-
+            The human eye can easily understand the content of an image, but making a computer interpret the disposition of its pixels is more complex. Segmenting an image is partitioning it into multiple sets of pixels. It transforms the image into something that is easier to analyze, and much more meaningful, assigning a label to every pixel in an image such that pixels with the same label share certain characteristics. It allows one to locate the objects on an image, pointing out their boundaries.
             \begin{figure}[!ht]
             \centering
             \begin{subfigure}{.49\linewidth}
@@ -53,8 +52,8 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
                 \caption{\textit{A segmentation. Left: the original image; right: the segmented image. Both are from the COCO training dataset (REF?).}}
                 \label{fig:segm}
             \end{figure}
-
-            Motivation references for segmentation applications
+            The applications of such a process are numerous: control of the an object outlines on a production line, face detection, medical imaging, pedestrian detection, video surveillance...
+            [Phrase]
 
     \subsection{Superpixels}
             \paragraph{What it is}Superpixel algorithms refer to a class of techniques designed to partition an image into small regions that group perceptually similar pixels. Superpixel representations are generally more meaningful than raw pixel representations and easier to analyze. One of the advantages of using superpixels is notably that their number ismuchsmallerthanthenumberofpixelsintheimage,whichleadstoareductionintheamountofcalculations required for further processing. In addition, thanks to their homogeneity, superpixels constitute subregions of the image on which it is particularly relevant to compute features. As a consequence, superpixel algorithms are commonly employed as a pre-processing step in a number of applications, including depth estimation [26]\footnote{[26] CLawrenceZitnickandSingBingKang. Stereoforimage-basedrenderingusingimageover-segmentation. International Journal of Computer Vision, 75(1):49–65, 2007.}, object classification or image segmentation [11]\footnote{[11] Brian Fulkerson, Andrea Vedaldi, and Stefano Soatto. Class segmentation and object localization with superpixel neighborhoods. In Computer Vision, 2009 IEEE 12th International Conference on, pages 670–677. IEEE, 2009.}.
