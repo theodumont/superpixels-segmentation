@@ -1,0 +1,3 @@
+/home/bruno/Superpixels/src/CMakeFiles/edit_cache.dir
+/home/bruno/Superpixels/src/CMakeFiles/rebuild_cache.dir
+/home/bruno/Superpixels/src/CMakeFiles/fmm.dir
