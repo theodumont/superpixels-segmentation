@@ -1,10 +1,15 @@
-# report
-report/catalogue2019.pdf
-report/to-add/
-report/main.log
+# git repo
+to-add/
+
+# python
+*__pycache__/
 
 # cnn
-cnn/__pycache__/
 cnn/data/*.json
 
+# report
+report/catalogue2019.pdf
+report/main.log
+
+# data
 *full/
