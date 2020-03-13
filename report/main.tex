@@ -3,8 +3,6 @@
 
 \begin{document}
 
-\newcommand{\spp}{superpixel}
-
 \begin{center}
     \begin{Large}\textbf{IMAGE SEGMENTATION BY SUPERPIXELS}\end{Large}
 
@@ -39,76 +37,76 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
 
     \subsection{Segmentation}
             The human eye can easily understand the content of an image, but making a computer interpret the disposition of its pixels is more complex. Segmenting an image is partitioning it into multiple sets of pixels. It transforms the image into something that is easier to analyze, and much more meaningful, assigning a label to every pixel in an image such that pixels with the same label share certain characteristics. It allows one to locate the objects on an image, pointing out their boundaries.
+
             \begin{figure}[!ht]
             \centering
             \begin{subfigure}{.49\linewidth}
                 \centering
                 \includegraphics[width=0.9\linewidth]{pics/img_segm1.jpg}
+                \caption{\textit{The original image}}
             \end{subfigure}
             \begin{subfigure}{.49\linewidth}
                 \centering
                 \includegraphics[width=0.9\linewidth]{pics/img_segm2.png}
+                \caption{\textit{The segmented image}}
             \end{subfigure}
-                \caption{\textit{A segmentation. Left: the original image; right: the segmented image. Both are from the COCO training dataset (REF?).}}
+                \caption{\textit{A segmentation. To each segmented region of the image was affected the mean value of its pixels. Both images are from the COCO training dataset (REF?).}}
                 \label{fig:segm}
             \end{figure}
-            The applications of such a process are numerous: control of the an object outlines on a production line, face detection, medical imaging, pedestrian detection, video surveillance...
-            [Phrase]
+            The applications of such a process are numerous: control of the an object outlines on a production line, face detection, medical imaging, pedestrian detection, video surveillance\ldots They justify our search for higher segmentation performances.
 
     \subsection{Superpixels}
-            \paragraph{What it is}Superpixel algorithms refer to a class of techniques designed to partition an image into small regions that group perceptually similar pixels. Superpixel representations are generally more meaningful than raw pixel representations and easier to analyze. One of the advantages of using superpixels is notably that their number ismuchsmallerthanthenumberofpixelsintheimage,whichleadstoareductionintheamountofcalculations required for further processing. In addition, thanks to their homogeneity, superpixels constitute subregions of the image on which it is particularly relevant to compute features. As a consequence, superpixel algorithms are commonly employed as a pre-processing step in a number of applications, including depth estimation [26]\footnote{[26] CLawrenceZitnickandSingBingKang. Stereoforimage-basedrenderingusingimageover-segmentation. International Journal of Computer Vision, 75(1):49–65, 2007.}, object classification or image segmentation [11]\footnote{[11] Brian Fulkerson, Andrea Vedaldi, and Stefano Soatto. Class segmentation and object localization with superpixel neighborhoods. In Computer Vision, 2009 IEEE 12th International Conference on, pages 670–677. IEEE, 2009.}.
+        Superpixel algorithms are a class of techniques that partition an image into several small groups of pixels that share the same properties. Such a process highly reduces the number of characteristics of an image, as each superpixel is composed of hundreds of pixels, which leads to the amount of calculation being reduced for a further processing. In addition, as the pixels of a superpixel share similar attributes, they constitute regions of an image on which it is very relevant to compute features -- mean color, texture.
 
-            \begin{figure}[!ht]
+        \begin{figure}[!ht]
+        \centering
+        \begin{subfigure}{.3\linewidth}
             \centering
-            \begin{subfigure}{.3\linewidth}
-                \centering
-                \includegraphics[width=0.9\linewidth]{pics/img_spp1.png}
-            \end{subfigure}
-            \begin{subfigure}{.3\linewidth}
-                \centering
-                \includegraphics[width=0.9\linewidth]{pics/img_spp2.png}
-            \end{subfigure}
-            \begin{subfigure}{.3\linewidth}
-                \centering
-                \includegraphics[width=0.9\linewidth]{pics/img_spp3.png}
-            \end{subfigure}
-                \caption{\textit{A superpixel segmentation. From left to right: the original image, the original image with its calculated superpixels outlines and the resulting superpixel segmented image. Each pixel of a superpixel has only one color, the mean color of the original image over the superpixel region.}}
-                \label{fig:spp}
-            \end{figure}
+            \includegraphics[width=0.9\linewidth]{pics/img_spp1.png}
+        \end{subfigure}
+        \begin{subfigure}{.3\linewidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{pics/img_spp2.png}
+        \end{subfigure}
+        \begin{subfigure}{.3\linewidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{pics/img_spp3.png}
+        \end{subfigure}
+            \caption{\textit{A superpixel segmentation. From left to right: the original image, the original image with its calculated superpixels outlines and the resulting superpixel segmented image. Each superpixel has only one color, the mean color of the original image over the superpixel region.}}
+            \label{fig:spp}
+        \end{figure}
 
-            \paragraph{Applications \& Motivation}
-            démarrer une segmentation\\
-            fournir un support sur lequel faire de la classification (couleur/texture moyenne, etc)
+        Thus, superpixel algorithms are often considered as a pre-processing step in a number of applications. They can be used for depth estimation [depth], make the objects features more understandable in object classification, and improve performances in image segmentation [img-segm], reducing the complexity of finding the different regions of an image by grouping at first similar pixels.
 
+        \subsubsection{A good superpixel segmentation}
+            \paragraph{Metrics}
+            Before even starting building one, we have to define what is a ``good'' superpixel segmentation algorithm. As it is shown in [stutz], it is a very ambiguous task as many relevant criteria exist. Several metrics, though, are commonly chosen in the literature to evaluate whether a superpixel algorithm gives good results or not.
 
-        \subsubsection{Ce qu'est une bonne \spp segmentation}
-            pour obtenir metriques des algos, \texttt{cnn/results/results.py}
-            \paragraph{Metrics} Defining requirements for a “good” superpixel segmentation algorithm is an ambiguous task [23]. Several criteria are nevertheless commonly retained in the literature to evaluate the quality of a superpixel partition. (article bruno)
-            \footnote{cf article https://arxiv.org/pdf/1612.01601.pdf}
-            let $S = {S_j}^K_{j=1}$ and $G = {G_i}$ be partitions of the same image $I : x_n \mapsto I(x_n)$, $1 \leq n \leq N$
-            $S$ is a segmented image
-            $G$ is the ground truth
+            Let $G = \{G_i\}_i$ and $S = \{S_j\}_j$ be partitions of the same image $I : x_n \mapsto I(x_n)$, $1 \leq n \leq N$. $G$ is the ground truth segmented image\footnote{ground truth segmented or superpixel segmented?} and $S$ is the segmented image obtained from a superpixel algorithm.
             \begin{itemize}
-                \item \textbf{Boundary Recall.}
-                - most commonly used metric to assess boundary adherence.
-                - intersection entre les frontieres grossies et truth, donc pourcentage de vrais contours deetctes
-                - Let $\text{TP}(G,S)$ be the number of true positive boundary pixels and $\text{FN}(G,S)$ be the number of false negative boudary pixels in the segmented image $S$.
-                $$\mathrm{Rec}(G,S)=\frac{\mathrm{TP}(G,S)}{\mathrm{TP}(G,S)+\mathrm{FN}(G,S)}$$
-                \item \textbf{Undersegmentation Error.}
-                \item \textbf{Compactness.}
-                - evaluates the compactness of the superpixels.
+                \item \textbf{Boundary Recall.} The first criterion we want the algorithm to respect is quite logically to detect most of the ground truth's outlines. Boundary recall measures the intersection between the dilated outlines of the segmented image and the ones of the ground truth image. As so, it indicates the proportion of real boundaries being detected, with a tolerance margin of a few pixels.\\
+                If $\text{D}(G,\tilde{S})$ is the number of detected boundary pixels and $\text{UD}(G,\tilde{S})$ the number of undetected boundary pixels in the segmented image $S$, then the \textit{boundary recall} is:
                 $$
-                \mathrm{CO}(G, S)=\frac{1}{N} \sum_{S_{j}}|S_{j}| \frac{4 \pi A\left(S_{j}\right)}{P\left(S_{j}\right)}
+                \mathrm{Rec}(G,S)=\frac{\mathrm{D}(G,\tilde{S})}{\mathrm{D}(G,\tilde{S})+\mathrm{UD}(G,\tilde{S})} \in [0,1]
                 $$
-                - the $\mathrm{CO}$ operator computes how close the area $A(S_j)$ of each superpixel $S_j$ is from a circle with same perimeter $P(S_j)$.
+                $\tilde{S}$ being the segmented image with its boundaries dilated. Please note that boundary recall does not measure the regularity of the boundaries at all. That means an algorithm can have a very high boundary recall while being very abrupt. This nourishes the need of a metric that quantifies the regularity of the boundaries.
+
+                \item \textbf{Compactness.} In order to simplify the superpixel segmented image as much as possible, its superpixels need to be smooth and regular. We thus want to build a criterion that computes how close the area $A(S_j)$ of each superpixel $S_j$ is from a circle with same perimeter $P(S_j)$:
+                $$
+                \mathrm{Co}(G, S)=\frac{1}{N} \sum_{S_j}|S_j| \frac{4 \pi A(S_j)}{P(S_j)^2}
+                $$
+
+                \item \textbf{Undersegmentation Error.} Undersegmentation Error measures the ``leakage'' of the superpixels over the ground truth:
+                $$
+                \mathrm{UE}(G,S) = \text{formula}
+                $$
             \end{itemize}
 
-            \paragraph{Autres algorithmes}
-                - SLIC
+            \paragraph{SLIC} To do
 
-        \subsubsection{Motivations/ambitions}
+        \subsubsection{Ambitions}
                 \paragraph{Difficultés que l'on cherche à résoudre}
-                \paragraph{Pas de vraie approche DL pour segmentation avec \spp s} Most of the aforementioned segmentation methods are based only on color information of pixels in the image. Humans use much more knowledge when performing image segmentation, but implementing this knowledge would cost considerable human engineering and computational time, and would require a huge domain knowledge database which does not currently exist. Trainable segmentation methods, such as neural network segmentation, overcome these issues by modeling the domain knowledge from a dataset of labeled pixels.
+                \paragraph{Pas de vraie approche DL pour segmentation avec spps} Most of the aforementioned segmentation methods are based only on color information of pixels in the image. Humans use much more knowledge when performing image segmentation, but implementing this knowledge would cost considerable human engineering and computational time, and would require a huge domain knowledge database which does not currently exist. Trainable segmentation methods, such as neural network segmentation, overcome these issues by modeling the domain knowledge from a dataset of labeled pixels.
                 \paragraph{Ambitions}
                 améliorer les métriques
 
@@ -476,16 +474,7 @@ relire tous les mails pour avoir toutes les infos sur performances etc
 
 \section*{Special thanks}
 
-\section*{Sources}
 
-\noindent
-{[}1]
-{[}1] C. Smith, J.C. Green, Titre de l’article, Titre du journal, 10 (2009) 55-72\\
-{[}2] M. Truk, C. Bidul. Titre du bouquin, John Wiley and Sons, New York, 1973\\
-{[}3] P. Machin, Titre de la thèse, Thèse, Université Poitiers, 1992\\
-{[}4] D. Pierre, J.-P. Paul, B. Jacques, Titre communication, in: D. Editor, G. Editeur, ( éd.), Proceedings of Conference XXX , Publisher, Paris, France, 1995, pp. 3–6
-
-\newpage
-
+\include{biblio}
 
 \end{document}

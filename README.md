@@ -7,7 +7,6 @@ Keywords: Python, PyTorch, Deep Learning, Image Segmentation
 - The `src` directory contains the scripts.
 - The `report` directory contains the sources for the report (pdf version can be found [here](report/main.pdf)).
 
-
 ## Table of contents
 
 1. [ Installation ](#1-installation)
