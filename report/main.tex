@@ -98,9 +98,10 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             \paragraph{SLIC} To do
 
         \subsubsection{Ambitions}
-                \paragraph{Difficultés que l'on cherche à résoudre}
-                \paragraph{Pas de vraie approche DL pour segmentation avec spps} Most of the aforementioned segmentation methods are based only on color information of pixels in the image. Humans use much more knowledge when performing image segmentation, but implementing this knowledge would cost considerable human engineering and computational time, and would require a huge domain knowledge database which does not currently exist. Trainable segmentation methods, such as neural network segmentation, overcome these issues by modeling the domain knowledge from a dataset of labeled pixels.
-                \paragraph{Ambitions}
+                \paragraph{Difficultés que l'on cherche à résoudre} To do
+                \paragraph{Pas de vraie approche DL pour segmentation avec spps} To do\\
+                Article Bruno: Most of the aforementioned segmentation methods are based only on color information of pixels in the image. Humans use much more knowledge when performing image segmentation, but implementing this knowledge would cost considerable human engineering and computational time, and would require a huge domain knowledge database which does not currently exist. Trainable segmentation methods, such as neural network segmentation, overcome these issues by modeling the domain knowledge from a dataset of labeled pixels.
+                \paragraph{Ambitions} To do\\
                 améliorer les métriques
 
 
@@ -110,7 +111,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
 
 
 
-
+\newpage
 \section{Dataset generation}
     \subsection{COCO dataset}
         COCO dataset\footnote{site de COCO}, nb of images, examples
@@ -159,17 +160,26 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             \end{subfigure}
             \caption{\textit{Training and validation sets characterization}}
         \end{figure}
-        Hence the necessity to pre-process the dataset in order to standardize the input images' size. Moreover, the dataset lacks quality
+        Hence the necessity to pre-process the dataset in order to standardize the input images' size. Moreover, as the COCO dataset has been labeled by hand in an approximative way, its images lack quality and their boundaries are often imprecise (Figure \ref{fig:imprecise}). We subsequently introduce the Eikonal algorithm, which constitutes an important step in the process but that will not be fully detailed in this paper.
+
+        \begin{figure}[!ht]
+            \centering
+            \includegraphics[width=0.3\linewidth]{pics/img_segm_coco.png}
+            \caption{\textit{Imprecise}}
+            \label{fig:imprecise}
+        \end{figure}
 
     \subsection{Eikonal}
+    To do
     \subsection{Global approach}
-    en plus réutilisé derrière sur image qui sort du réseau\\
-    faire un petit résumé
     \begin{figure}[!ht]
         \centering
         % \includegraphics[width=0.9\linewidth]{pics/img_segm3.png}
-        \caption{\textit{Title}}
+        \caption{\textit{Global approach}}
     \end{figure}
+
+    image originale -> CNN -> résultat du filtre dans eikonal -> superpixels sans couleurs + couleur moyenne pour chaque spp de l'image originale
+
 
 
 
@@ -208,7 +218,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
                  & = \sum_b L_j(x-rb)K_{i,j}(b) &
             \end{flalign*}
             and we recognize the simple convolution when $r=1$.\\
-            A dilated convolution enables the network getting larger receptive fields while preserving the input resolution\footnote{ref ?}
+            A dilated convolution enables the network getting larger receptive fields while preserving the input resolution\footnote{ref ?}.
 
 
             \paragraph{Adaptative Batch Normalization (ABN)} As we have seen in (\ref{par:charac}), page \pageref{par:charac}, we need to normalize the data. We define the \textit{adaptative normalization function} $\Psi$ as:
@@ -234,7 +244,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
                 \label{fig:act-sigmoids}
             \end{figure}
 
-            these activation functions are often used but they are bounded and their gradient is very low on the edges. Because we are going to manipulate high scalar values, we have to use an unbounded activation function, such as ReLU, $\Phi(x)=\max(0,x)$ (Figure \ref{fig:relu}). But the issue with ReLU is that all the negative values become zero immediately, which decreases the ability of our model to train from the data. Hence the implementation of a \textit{leaky rectifier}, LReLU (\ref{fig:lrelu}):
+            these activation functions are often used but they are bounded and their gradient is very low on the edges. Because we are going to manipulate high scalar values, we have to use an unbounded activation function, such as ReLU, $\Phi(x)=\max(0,x)$ (Figure \ref{fig:relu}). But the issue with ReLU is that all the negative values become zero immediately, which decreases the ability of our model to train from the data. Hence the implementation of a \textit{leaky rectifier}, LReLU (Figure \ref{fig:lrelu}):
             $$\Phi(x)=\max(\alpha x,x)\mbox{, with } 0<\alpha<1.$$
 
             \begin{figure}[!ht]
@@ -253,12 +263,14 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
                 \caption{\textit{Illustration of two unbounded rectifiers}}
             \end{figure}
 
-            By implementing a Leaky Rectifier, we are able to take into account the negative valued pixels.
+            \noindent By implementing a Leaky Rectifier, we are able to take into account the negative valued pixels.
 
 
-
+        \newpage
         \subsubsection{Chen}
             \paragraph{Context Aggregation Network (CAN)}\footnote{reference}
+            blabla sur le RGB en entrée, RGB en sortie I -> f(I)\\
+            To do
             \begin{table}[!ht]
                 \center
                 \begin{tabular}{ccccccccccc}
@@ -269,13 +281,13 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
                 \end{tabular}
                 \caption{\textit{Layers}}
             \end{table}
-            blabla sur le RGB en entrée, RGB en sortie I -> f(I)
+
             \paragraph{Architecture of a block}
             Each block $L_s$ is made of 3 layers:
             \begin{enumerate}
-                \item \textit{A dilated convolution}, $r_s=2^s$
-                \item \textit{An adaptative batch normalization}
-                \item \textit{A leaky rectifier (ReLU)}
+                \item A \textit{dilated convolution}, with parameter $r_s=2^s$,
+                \item An \textit{adaptative batch normalization},
+                \item A \textit{leaky rectifier (ReLU)},
             \end{enumerate}
             so that the content of an intermediate layer $L^s$ can be computed from the content of the previous layer $L^{s-1}$:
             \begin{equation}
@@ -308,38 +320,34 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             \end{table}
 
         \subsubsection{UNet}
+        To do
         \subsubsection{Chen + UNet}
+        To do
 
     \subsection{Total Variation (TV) Loss}
         \subsubsection{MSE}
+        To do
         $$L_{MSE}=\frac{1}{N}\sum_{i=1}^N |\hat{f}(I)_i-f(I)_i|^2$$
 
         \subsubsection{TV}\footnote{ref}
-            \paragraph{Why} In such a search for well-segmented images, 2 criteria have to be fulfilled. The output needs to be as close as possible to the ground truth image; but we also need the segmented image to present a lot of zones where the color gradient $\nabla f(I)$ is equal to $0$. Thus, we want to implement a train loss function that could help us satisfy these two criteria.
-            In order to do so, we use the Total Variation (TV) loss, defined below.
-
-            \paragraph{Formula}
-            $$L_{TV}=\frac{1}{N}\sum_{i=1}^N |\hat{f}(I)_i-f(I)_i|^2+\frac{1}{N}\sum_{i=1}^N|(\nabla f(I))_i)|^2$$
-            granting an improvement in the output image smoothness.
+        To do
+            In such a search for well-segmented images, 2 criteria have to be fulfilled. The output needs to be as close as possible to the ground truth image; but we also need the segmented image to present a lot of zones where the color gradient $\nabla f(I)$ is equal to $0$. Thus, we want to implement a train loss function that could help us satisfy these two criteria.
+            In order grant an improvement in the output image smoothness, we use the Total Variation (TV) loss, defined by:
+            $$
+            L_{TV}=\frac{1}{N}\sum_{i=1}^N |\hat{f}(I)_i-f(I)_i|^2+\frac{1}{N}\sum_{i=1}^N|(\nabla f(I))_i)|^2
+            $$
 
     \subsection{Implementation}
-    The network was implemented with PyTorch\footnote{Repository can be found at \url{https://github.com/theodumont/superpixels-segmentation}.} and we used GPU acceleration [...]
-    (pytorch), se renseigner (section assez courante)
+    The network was implemented with PyTorch\footnote{Repository can be found at \url{https://github.com/theodumont/superpixels-segmentation}.} and we used GPU acceleration [...]\\
+    (pytorch), se renseigner (section assez courante)\\
     GPU acceleraation
-    code sur github
-
-
-
-
-
 
 
 
 
 \section{Expérience et résultats}
     \subsection{Hyperparameters}
-    petit bilan des valeurs choisies
-    évolution des paramètres a et b ?\\
+    petit bilan des valeurs choisies au final
         \subsubsection{Learning rate}
         \begin{table}[!ht]
             \center
@@ -385,6 +393,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
         \subsubsection{Network size $d$}
         - Learning rate initialisé à 0.01, divisé par 2 toutes les 2 époques, saturation à 1e-4
         - Pas de régularisation TV
+
         \begin{figure}[!ht]
             \begin{subfigure}{.49\linewidth}
                 \center
@@ -404,6 +413,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             \end{subfigure}
             \caption{\textit{Tuning of network size}}
         \end{figure}
+
         CONCLUSION des run 3 à 5: Il est préférable de laisser d=7. Entre d=6 et d=7, l'amélioration semble
         relativement faible.
         bon intermédiaire entre temps de calcul et performances
@@ -414,46 +424,35 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
         PK MARCHE PAS ?
         - gradient fort sur outlines
         - comment faire ? découper images, COCO pas ouf pour ça, résolution basse
-        \subsubsection{Runs}
-        tableaux et graphes
+        \subsubsection{All the runs}
+        a mettre en annexe, tableaux de tous les runs et graphes
+
     \subsection{Results on dataset}
-    image originale -> CNN -> résultat du filtre dans eikonal -> superpixels sans couleurs + couleur moyenne pour chaque spp de l'image originale
     cf results/images
+    BSD dataset, BSD fait a la main et pas a l'arrache comme COCO
 
+        \paragraph{Results}
+        Here are the previously defined metrics of some well-known superpixel segmentation algorithms.
+        \begin{table}[!ht]
+            \centering
+            \begin{tabular}{|c|c|ccc|}
+                \hline
+                \multicolumn{2}{|c|}{Algorithm} & BR & UE & CO\\
+                \hline
+                \hline
+                \multirow{3}{*}{image analysis} & EI [\footnote{eikonal}] & & & \\
+                & EIT [\footnote{Eikonal with textures, metriques dans l'article}] & & & \\
+                & WS [\footnote{watershed}] & & & \\
+                \hline
+                \multirow{2}{*}{neural networks} & ref [\footnote{SLIC?}] & 0.8995 & 0.0473 & 0.5409\\
+                & Ours & 0.8781\footnote{Légèrement moins bon que ref, pas très grave parce que la compacité est pourrie du coup comme les contours oscillent ils intersectent plus de contours de l'image} & 0.0388 & 0.7682\\
+                \hline
+            \end{tabular}
+            \caption{Comparisons of metrics on the BSD dataset for different
+            superpixel segmentation algorithms}
+        \end{table}
 
-        \subsubsection{The dataset}
-        BSD dataset, BSD fait a la main et pas a l'arrache comme COCO
-        \subsubsection{Results}
-
-            \paragraph{metrics}
-            Here are the previously defined metrics of some well-known superpixel segmentation algorithms.
-            \begin{table}[!ht]
-                \centering
-                \begin{tabular}{|c|c|ccc|}
-                    \hline
-                    \multicolumn{2}{|c|}{Algorithm} & BR & UE & CO\\
-                    \hline
-                    \hline
-                    \multirow{3}{*}{image analysis} & EI [\footnote{eikonal}] & & & \\
-                    & EIT [\footnote{Eikonal with textures, metriques dans l'article}] & & & \\
-                    & WS [\footnote{watershed}] & & & \\
-                    \hline
-                    \multirow{2}{*}{neural networks} & ref [\footnote{SLIC?}] & 0.8995 & 0.0473 & 0.5409\\
-                    & Ours & 0.8781\footnote{Légèrement moins bon que ref, pas très grave parce que la compacité est pourrie du coup comme les contours oscillent ils intersectent plus de contours de l'image} & 0.0388 & 0.7682\\
-                    \hline
-                \end{tabular}
-                \caption{Comparisons of metrics on the BSD dataset for different
-                superpixel segmentation algorithms}
-            \end{table}
-
-            \noindent We use the ?? alorithm as a reference to evaluate the performances of our model.
-            pas très grave parce que la compacité est pourrie
-            du coup comme les contours oscillent ils intersectent plus de contours de l'image
-
-
-
-
-
+        \noindent We use the SLIC alorithm as a reference to evaluate the performances of our model.
 
 
 

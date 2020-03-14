@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.12.9)  13 MAR 2020 23:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.12.9)  14 MAR 2020 23:16
 entering extended mode
-**"C:/Users/Théo Dumont/Documents/repos/python/s3r/report/main.tex"
-("C:/Users/Théo Dumont/Documents/repos/python/s3r/report/main.tex"
+**"C:/Users/Théo Dumont/Documents/repos/python/s3r-repo/report/main.tex"
+("C:/Users/Théo Dumont/Documents/repos/python/s3r-repo/report/main.tex"
 LaTeX2e <2018-12-01>
 
 ("C:\Users\Théo Dumont\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\articl
@@ -615,12 +615,12 @@ LaTeX Font Info:    Try loading font information for OMS+rsfs on input line 10.
 
 ("C:\Users\Théo Dumont\AppData\Local\Programs\MiKTeX 2.9\tex/latex/calrsfs\oms
 rsfs.fd")
-<pics/img_segm1.jpg, id=123, 642.4pt x 218.8175pt>
+<pics/img_segm1.jpg, id=115, 642.4pt x 218.8175pt>
 File: pics/img_segm1.jpg Graphic file (type jpg)
 <use pics/img_segm1.jpg>
 Package pdftex.def Info: pics/img_segm1.jpg  used on input line 38.
 (pdftex.def)             Requested size: 200.76353pt x 68.38364pt.
-<pics/img_segm2.png, id=124, 642.4pt x 218.8175pt>
+<pics/img_segm2.png, id=116, 642.4pt x 218.8175pt>
 File: pics/img_segm2.png Graphic file (type png)
 <use pics/img_segm2.png>
 Package pdftex.def Info: pics/img_segm2.png  used on input line 43.
@@ -628,17 +628,17 @@ Package pdftex.def Info: pics/img_segm2.png  used on input line 43.
  [1{C:/Users/Théo Dumont/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
  <./pics/img_segm1.jpg> <./pics/img_segm2.png (PNG copy)>]
-<pics/img_spp1.png, id=139, 154.07562pt x 230.36063pt>
+<pics/img_spp1.png, id=131, 154.07562pt x 230.36063pt>
 File: pics/img_spp1.png Graphic file (type png)
 <use pics/img_spp1.png>
 Package pdftex.def Info: pics/img_spp1.png  used on input line 58.
 (pdftex.def)             Requested size: 122.9163pt x 183.77905pt.
-<pics/img_spp2.png, id=141, 154.07562pt x 229.85875pt>
+<pics/img_spp2.png, id=133, 154.07562pt x 229.85875pt>
 File: pics/img_spp2.png Graphic file (type png)
 <use pics/img_spp2.png>
 Package pdftex.def Info: pics/img_spp2.png  used on input line 62.
 (pdftex.def)             Requested size: 122.9163pt x 183.37866pt.
-<pics/img_spp3.png, id=142, 154.07562pt x 229.85875pt>
+<pics/img_spp3.png, id=134, 154.07562pt x 229.85875pt>
 File: pics/img_spp3.png Graphic file (type png)
 <use pics/img_spp3.png>
 Package pdftex.def Info: pics/img_spp3.png  used on input line 66.
@@ -652,44 +652,48 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 80.
  [2 <./pics/img_spp1.png> <./pics/img_spp2.png> <./pics/img_spp3.png>]
-<pics/train2017full.png, id=162, 397.485pt x 397.485pt>
+[3]
+<pics/train2017full.png, id=165, 397.485pt x 397.485pt>
 File: pics/train2017full.png Graphic file (type png)
 <use pics/train2017full.png>
-Package pdftex.def Info: pics/train2017full.png  used on input line 123.
+Package pdftex.def Info: pics/train2017full.png  used on input line 124.
 (pdftex.def)             Requested size: 223.07211pt x 223.07529pt.
-<pics/val2017full.png, id=163, 397.485pt x 397.485pt>
+<pics/val2017full.png, id=166, 397.485pt x 397.485pt>
 File: pics/val2017full.png Graphic file (type png)
 <use pics/val2017full.png>
-Package pdftex.def Info: pics/val2017full.png  used on input line 128.
+Package pdftex.def Info: pics/val2017full.png  used on input line 129.
 (pdftex.def)             Requested size: 223.07211pt x 223.07529pt.
 
-Underfull \hbox (badness 4132) in paragraph at lines 121--160
+Underfull \hbox (badness 4132) in paragraph at lines 122--161
 []$[]$ $[]$
  []
 
-<pics/conv-simple.png, id=164, 306.39468pt x 283.0575pt>
+<pics/img_segm_coco.png, id=168, 642.4pt x 481.8pt>
+File: pics/img_segm_coco.png Graphic file (type png)
+<use pics/img_segm_coco.png>
+Package pdftex.def Info: pics/img_segm_coco.png  used on input line 167.
+(pdftex.def)             Requested size: 136.57462pt x 102.43076pt.
+[4 <./pics/train2017full.png> <./pics/val2017full.png> <./pics/img_segm_coco.pn
+g (PNG copy)>]
+<pics/conv-simple.png, id=179, 306.39468pt x 283.0575pt>
 File: pics/conv-simple.png Graphic file (type png)
 <use pics/conv-simple.png>
-Package pdftex.def Info: pics/conv-simple.png  used on input line 190.
+Package pdftex.def Info: pics/conv-simple.png  used on input line 201.
 (pdftex.def)             Requested size: 178.45836pt x 164.8645pt.
-<pics/conv-dilated.png, id=165, 306.39468pt x 283.0575pt>
+<pics/conv-dilated.png, id=180, 306.39468pt x 283.0575pt>
 File: pics/conv-dilated.png Graphic file (type png)
 <use pics/conv-dilated.png>
-Package pdftex.def Info: pics/conv-dilated.png  used on input line 196.
+Package pdftex.def Info: pics/conv-dilated.png  used on input line 207.
 (pdftex.def)             Requested size: 178.45836pt x 164.8645pt.
-[3]
-Overfull \vbox (34.15134pt too high) has occurred while \output is active []
 
 
-[4 <./pics/train2017full.png> <./pics/val2017full.png> <./pics/conv-simple.png>
- <./pics/conv-dilated.png>]
-
-LaTeX Warning: Reference `par:charac' on page 5 undefined on input line 213.
+LaTeX Warning: Reference `par:charac' on page 5 undefined on input line 224.
 
 
-LaTeX Warning: Reference `par:charac' on page 5 undefined on input line 213.
+LaTeX Warning: Reference `par:charac' on page 5 undefined on input line 224.
 
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 217.
+[5 <./pics/conv-simple.png> <./pics/conv-dilated.png>]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 228.
 
 
 ("C:\Users\Théo Dumont\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\t1cmtt
@@ -699,82 +703,78 @@ File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 <pics/act-sigmoid.png, id=199, 462.528pt x 342.5598pt>
 File: pics/act-sigmoid.png Graphic file (type png)
 <use pics/act-sigmoid.png>
-Package pdftex.def Info: pics/act-sigmoid.png  used on input line 224.
+Package pdftex.def Info: pics/act-sigmoid.png  used on input line 235.
 (pdftex.def)             Requested size: 200.76353pt x 148.69345pt.
 <pics/act-tanh.png, id=200, 462.528pt x 342.5598pt>
 File: pics/act-tanh.png Graphic file (type png)
 <use pics/act-tanh.png>
-Package pdftex.def Info: pics/act-tanh.png  used on input line 229.
+Package pdftex.def Info: pics/act-tanh.png  used on input line 240.
 (pdftex.def)             Requested size: 200.76353pt x 148.69345pt.
 <pics/act-relu.png, id=203, 284.7438pt x 237.2865pt>
 File: pics/act-relu.png Graphic file (type png)
 <use pics/act-relu.png>
-Package pdftex.def Info: pics/act-relu.png  used on input line 242.
+Package pdftex.def Info: pics/act-relu.png  used on input line 253.
 (pdftex.def)             Requested size: 156.1498pt x 130.12779pt.
 <pics/act-lrelu.png, id=204, 284.7438pt x 237.2865pt>
 File: pics/act-lrelu.png Graphic file (type png)
 <use pics/act-lrelu.png>
-Package pdftex.def Info: pics/act-lrelu.png  used on input line 248.
+Package pdftex.def Info: pics/act-lrelu.png  used on input line 259.
 (pdftex.def)             Requested size: 156.1498pt x 130.12779pt.
- [5 <./pics/act-sigmoid.png> <./pics/act-tanh.png>] [6 <./pics/act-relu.png> <.
+ [6 <./pics/act-sigmoid.png> <./pics/act-tanh.png>] [7 <./pics/act-relu.png> <.
 /pics/act-lrelu.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 340--342
-
- []
-
 <pics/hpp-d.png, id=241, 216.81pt x 180.675pt>
 File: pics/hpp-d.png Graphic file (type png)
 <use pics/hpp-d.png>
-Package pdftex.def Info: pics/hpp-d.png  used on input line 364.
+Package pdftex.def Info: pics/hpp-d.png  used on input line 373.
 (pdftex.def)             Requested size: 120.18556pt x 100.1545pt.
 File: pics/hpp-d.png Graphic file (type png)
 <use pics/hpp-d.png>
-Package pdftex.def Info: pics/hpp-d.png  used on input line 369.
+Package pdftex.def Info: pics/hpp-d.png  used on input line 378.
 (pdftex.def)             Requested size: 120.18556pt x 100.1545pt.
 File: pics/hpp-d.png Graphic file (type png)
 <use pics/hpp-d.png>
-Package pdftex.def Info: pics/hpp-d.png  used on input line 374.
+Package pdftex.def Info: pics/hpp-d.png  used on input line 383.
 (pdftex.def)             Requested size: 120.18556pt x 100.1545pt.
-[7]
+ [8]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 384.
+(hyperref)                removing `math shift' on input line 393.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 384.
+(hyperref)                removing `math shift' on input line 393.
 
 File: pics/hpp-d.png Graphic file (type png)
 <use pics/hpp-d.png>
-Package pdftex.def Info: pics/hpp-d.png  used on input line 401.
+Package pdftex.def Info: pics/hpp-d.png  used on input line 411.
 (pdftex.def)             Requested size: 178.45836pt x 148.72237pt.
-[8 <./pics/hpp-d.png>] [9]
+[9 <./pics/hpp-d.png>] [10]
 \openout2 = `biblio.aux'.
 
- (biblio.tex) [10
+ (biblio.tex) [11
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 469.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 469.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 471.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 471.
  (main.aux (biblio.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 469.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 469.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 471.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 471.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: F4C0E3B28F2DD46E5AC2B7D014F4C304;2004.
+(rerunfilecheck)             Checksum: 631957853FAA468222CA53BB21439FBA;1872.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 469.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 471.
  ) 
 Here is how much of TeX's memory you used:
- 10818 strings out of 492946
- 178092 string characters out of 3123156
- 286653 words of memory out of 3000000
- 14445 multiletter control sequences out of 15000+200000
+ 10821 strings out of 492946
+ 178238 string characters out of 3123156
+ 283653 words of memory out of 3000000
+ 14449 multiletter control sequences out of 15000+200000
  23597 words of font info for 68 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 52i,16n,45p,682b,543s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 52i,16n,45p,657b,539s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{Hfootnote.13} has been referenced but does not ex
 ist, replaced by a fixed one
 
@@ -819,9 +819,9 @@ rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/Théo Dumo
 nt/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 <C:/Users/Théo Dumont/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmsy7.pfb>
-Output written on main.pdf (10 pages, 1078216 bytes).
+Output written on main.pdf (11 pages, 1088895 bytes).
 PDF statistics:
- 762 PDF objects out of 1000 (max. 8388607)
- 89 named destinations out of 1000 (max. 500000)
- 311 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 761 PDF objects out of 1000 (max. 8388607)
+ 87 named destinations out of 1000 (max. 500000)
+ 300 words of extra memory for PDF output out of 10000 (max. 10000000)
 
