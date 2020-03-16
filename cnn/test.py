@@ -20,8 +20,6 @@ from skimage.filters.rank import gradient
 import numpy as np
 
 import sys, time, os
-from os.path import expanduser
-home = expanduser("~")
 
 
 if __name__ == '__main__':

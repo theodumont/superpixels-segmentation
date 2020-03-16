@@ -16,8 +16,6 @@ from network import Net
 import numpy as np
 
 import sys, time, os
-from os.path import expanduser
-home = expanduser("~")
 
 
 def imshow(img, target):
