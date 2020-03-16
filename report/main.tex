@@ -16,6 +16,7 @@
 \end{center}
 
 \begin{center}
+
 \noindent\textbf{Key-words: }\\
 deep learning; convolutional neural networks; image segmentation\\
 \ \\
@@ -29,7 +30,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
 \section{Introduction}
 
     \subsection{Segmentation}
-            The human eye can easily understand the content of an image, but making a computer interpret the disposition of its pixels is more complex. Segmenting an image is partitioning it into multiple sets of pixels. It transforms the image into something that is easier to analyze, and much more meaningful, assigning a label to every pixel in an image such that pixels with the same label share certain characteristics. It allows one to locate the objects on an image, pointing out their boundaries.
+            The human eye can easily understand the content of an image, but making a computer interpret the disposition of its pixels is more complex. Segmenting an image consists in partitioning it into multiple sets of pixels. It transforms the image into something that is easier to analyze, and much more meaningful, assigning a label to every pixel in an image such that connected groups of pixels with the same label share certain characteristics. It allows one to locate the objects on an image, pointing out their boundaries.
 
             \begin{figure}[!ht]
             \centering
@@ -46,7 +47,10 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
                 \caption{\textit{A segmentation. To each segmented region of the image was affected the mean value of its pixels. Both images are from the COCO training dataset (REF?).}}
                 \label{fig:segm}
             \end{figure}
+
             The applications of such a process are numerous: control of the an object outlines on a production line, face detection, medical imaging, pedestrian detection, video surveillance\ldots They justify our search for higher segmentation performances.
+
+            Image segmentation is a challenging task and there is currently no comprehensive theory in this field, not least because a given segmentation is often aimed at a specific application. The methods based on gradient can be disturbed by noise or textured patterns in the image, thus producing a contour where is actually not. In addition, it is difficult to find a contour if two regions share similar colors or gray levels, or when a contour corresponds to small gradient. Moreover, the result of a segmentation depends on the applications and on the scale of the objects of interest. Even human based segmentations are characterized by a significant variability in terms of result.
 
     \subsection{Superpixels}
         Superpixel algorithms are a class of techniques that partition an image into several small groups of pixels that share the same properties. Such a process highly reduces the number of characteristics of an image, as each superpixel is composed of hundreds of pixels, which leads to the amount of calculation being reduced for a further processing. In addition, as the pixels of a superpixel share similar attributes, they constitute regions of an image on which it is very relevant to compute features -- mean color, texture.
@@ -69,25 +73,26 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             \label{fig:spp}
         \end{figure}
 
-        Thus, superpixel algorithms are often considered as a pre-processing step in a number of applications. They can be used for depth estimation [depth], make the objects features more understandable in object classification, and improve performances in image segmentation [img-segm], reducing the complexity of finding the different regions of an image by grouping at first similar pixels.
+        Thus, superpixel algorithms are often considered as a pre-processing step in a number of applications. They can be used for depth estimation~\cite{zitnick_2007} or make the objects features more understandable in object classification. Finally, computing the superpixel partition of an image can constitute a first processing step to obtain an actual segmentation for this image~\cite{fulkerson_2009}, reducing the complexity of finding the different regions of an image by grouping at first similar pixels.
 
         \subsubsection{A good superpixel segmentation}
             \paragraph{Metrics}
-            Before even starting building one, we have to define what is a ``good'' superpixel segmentation algorithm. As it is shown in [stutz], it is a very ambiguous task as many relevant criteria exist. Several metrics, though, are commonly chosen in the literature to evaluate whether a superpixel algorithm gives good results or not.
+            Before even starting building one, we have to define what is a ``good'' superpixel segmentation algorithm. As it is shown in~\cite{stutz_2017}, it is a very ambiguous task as many relevant criteria exist. Several metrics, though, are commonly chosen in the literature to evaluate whether a superpixel algorithm gives good results or not.
 
             Let $G = \{G_i\}_i$ and $S = \{S_j\}_j$ be partitions of the same image $I : x_n \mapsto I(x_n)$, $1 \leq n \leq N$. $G$ is the ground truth segmented image\footnote{ground truth segmented or superpixel segmented?} and $S$ is the segmented image obtained from a superpixel algorithm.
             \begin{itemize}
-                \item \textbf{Boundary Recall.} The first criterion we want the algorithm to respect is quite logically to detect most of the ground truth's outlines. Boundary recall measures the intersection between the dilated outlines of the segmented image and the ones of the ground truth image. As so, it indicates the proportion of real boundaries being detected, with a tolerance margin of a few pixels.\\
+                \item \textbf{Boundary Recall.} The first criterion we want the algorithm to respect is quite logically to detect most of the ground truth's outlines. Boundary recall measures the intersection between the outlines of the segmented image and the ones of the ground truth image. Before the computation, the segmented image outlines are dilated by a square of side 5 pixels. As such, boundary recall indicates the proportion of real boundaries being detected, with a tolerance margin of a few pixels.\\
                 If $\text{D}(G,\tilde{S})$ is the number of detected boundary pixels and $\text{UD}(G,\tilde{S})$ the number of undetected boundary pixels in the segmented image $S$, then the \textit{boundary recall} is:
                 $$
                 \mathrm{Rec}(G,S)=\frac{\mathrm{D}(G,\tilde{S})}{\mathrm{D}(G,\tilde{S})+\mathrm{UD}(G,\tilde{S})} \in [0,1]
                 $$
-                $\tilde{S}$ being the segmented image with its boundaries dilated. Please note that boundary recall does not measure the regularity of the boundaries at all. That means an algorithm can have a very high boundary recall while being very abrupt. This nourishes the need of a metric that quantifies the regularity of the boundaries.
+                $\tilde{S}$ being the segmented image with its boundaries dilated. Please note that boundary recall does not measure the regularity of the boundaries at all. That means an algorithm can have a very high boundary recall while being very tortuous. This nourishes the need of a metric that quantifies the regularity of the boundaries.
 
                 \item \textbf{Compactness.} In order to simplify the superpixel segmented image as much as possible, its superpixels need to be smooth and regular. We thus want to build a criterion that computes how close the area $A(S_j)$ of each superpixel $S_j$ is from a circle with same perimeter $P(S_j)$:
                 $$
                 \mathrm{Co}(G, S)=\frac{1}{N} \sum_{S_j}|S_j| \frac{4 \pi A(S_j)}{P(S_j)^2}
                 $$
+                As such, a high compactness tends to indicate regular and little tortuous contours.
 
                 \item \textbf{Undersegmentation Error.} Undersegmentation Error measures the ``leakage'' of the superpixels over the ground truth:
                 $$
@@ -465,7 +470,16 @@ relire tous les mails pour avoir toutes les infos sur performances etc
 
 \section*{Special thanks}
 
+\bibliographystyle{plain}
+\bibliography{biblio}
 
-\include{biblio}
+\cite{shi_2000}
+\cite{arbelaez_2011}
+\cite{ren_2005}
+\cite{felzenszwalb_2004}
+\cite{chang_2019}
+\cite{zitnick_2007}
+\cite{fulkerson_2009}
+\cite{stutz_2017}
 
 \end{document}
