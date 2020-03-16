@@ -14,8 +14,6 @@ from skimage.morphology import dilation, rectangle, disk
 from skimage.measure import regionprops
 import matplotlib.pyplot as plt
 
-home = expanduser("~")
-
 
 class metrics:
 

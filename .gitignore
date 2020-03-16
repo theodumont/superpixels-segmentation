@@ -10,6 +10,7 @@ cnn/data/*.json
 # report
 report/catalogue2019.pdf
 report/main.log
+report/pics/*.pptx
 
 # data
 *full/
