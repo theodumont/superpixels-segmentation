@@ -34,7 +34,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
     \item SLIC
     % \item COCO dataset
     \item eikonal
-    \item global approach quickly
+    % \item global approach quickly
     \item Chen
     \item Unet
     \item MSE
@@ -142,9 +142,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
 \section{Dataset generation}
     \subsection{COCO dataset}
 
-        The training of the neural network was performed on the COCO dataset~\cite{microsoft2014}\footnote{\url{http://cocodataset.org}}. This dataset gathers images of complex everyday scenes containing common objects in their natural context and can be used for object detection, segmentation and captioning.
-        \par
-        In order to have a better understanding of this dataset, let's give a look at its images:
+        The training of the neural network was performed on the COCO dataset~\cite{microsoft2014}\footnote{\url{http://cocodataset.org}}. This dataset gathers images of complex everyday scenes containing common objects in their natural context and can be used for object detection, segmentation and captioning. In order to have a better understanding of this dataset, we can analyze its image (Figure~\ref{fig:train}). Hence the necessity to pre-process the dataset in order to standardize the input images' size.
 
         \begin{figure}[!ht]
             \begin{subfigure}{.49\linewidth}
@@ -167,13 +165,14 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
                 \caption{\textit{Characteristics of the COCO dataset}}
             \end{subfigure}
             \caption{\textit{Training set characterization}}
+            \label{fig:train}
         \end{figure}
-        Hence the necessity to pre-process the dataset in order to standardize the input images' size. Moreover, as the COCO dataset has been labeled by hand in an approximative way, its images lack quality and their boundaries are often imprecise (Figure \ref{fig:imprecise}). We subsequently introduce the Eikonal algorithm, which constitutes an important step in the process but that will not be fully detailed in this paper.
+        \noindent The COCO dataset contains a huge number of images, but its segmentations are not very qualitative. A it has been labeled by hand in an approximative way, its segmented images lack quality and their boundaries are often imprecise (Figure~\ref{fig:imprecise}). We subsequently introduce the Eikonal algorithm, which constitutes an important step in the process but that will not be fully detailed in this paper.
 
         \begin{figure}[!ht]
             \centering
             \includegraphics[width=0.3\linewidth]{pics/img_segm_coco.png}
-            \caption{\textit{Imprecise}}
+            \caption{\textit{Lack of precision of the COCO dataset segmentations}}
             \label{fig:imprecise}
         \end{figure}
 
@@ -191,15 +190,15 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
         The training of the convolutional neural network runs as follows:
         \begin{enumerate}
             \item from the COCO dataset, extract the semantic segmented image $\dot C_0$ and transform it into a superpixel segmented image $\bar C_1$ with the Eikonal algorithm;
-            \item from $\bar C_1$, compute the $\dot C_f$ image by assigning to each superpixel the mean color of its pixel on the original image $C_0$;
-            \item give the $(C_0, \dot C_f)$ as inputs to the neural network.
+            \item from $\bar C_1$, compute the $\dot C_f$ image by assigning to each superpixel the mean color of its pixel on the original image $C_0$. The idea is that such a transformed image, relatively close to the original image, seems easier to learn by a network than a labeled image such as $\bar C_1$;
+            \item use $(G,S)=(C_0, \dot C_f)$ as an training input to the neural network.
         \end{enumerate}
         \paragraph{Test}
         To test the network on the BDS dataset (\textit{cf.} Section~\ref{par:bsd}, page~\pageref{par:bsd}):
         \begin{enumerate}
             \item from the BSD dataset, extract the original image $B_0$ and give it to the NN;
             \item get the NN output $N_0$, which is a nearly segmented image;
-            \item use the Eikonal algorithm to obtain the final superpixel segmented image $\dot N_f$.
+            \item use the Eikonal algorithm to obtain the final superpixel segmented image $\bar N_f$, with superpixel labels, on which we compute the metrics.
         \end{enumerate}
 
 
@@ -236,30 +235,13 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             A dilated convolution enables the network getting larger receptive fields while preserving the input resolution\footnote{ref ?}.
 
 
-            \paragraph{Adaptative Batch Normalization (ABN)} As we have seen in (\ref{par:charac}), page \pageref{par:charac}, we need to normalize the data. We define the \textit{adaptative normalization function} $\Psi$ as:
+            \paragraph{Adaptative Batch Normalization (ABN)} Distinct images in the COCO dataset have very different color ranges; in order to maximize the network performances, we normalize the data. We define the \textit{adaptative normalization function} $\Psi$ as:
             $$\Psi(x)=a\ x+b\ BN(x),$$
             where $BN$ is the classic batch normalization\footnote{reference ?}, defined as:
             $$BN(x) = \frac{x-\mathrm{E}[x]}{\sqrt{\mathrm{Var}[x]+\epsilon}}*\gamma+\beta.$$
             As such, $\Psi$ combines identity mapping and batch normalization. $a$, $b$, $\gamma$ and $\beta$ are learned parameters\footnote{ref : \url{https://pytorch.org/docs/stable/_modules/torch/nn/modules/batchnorm.html}} by backpropagation. It allows the model to adapt to each dataset, choosing whether or not giving a big importance to the identity term and the normalization term.
 
-            \paragraph{Leaky rectifier (LReLU)} In order to let our neural network model complex patterns in the data, we have to add a non-linear property to the model. It often is an activation function, such as a sigmoid or a tanh (Figure \ref{fig:act-sigmoids}).
-
-            \begin{figure}[!ht]
-                \begin{subfigure}{.49\linewidth}
-                    \centering
-                    \includegraphics[width=.9\linewidth]{pics/act-sigmoid.png}
-                    \caption{\textit{Sigmoid}}
-                \end{subfigure}
-                \begin{subfigure}{.49\linewidth}
-                    \centering
-                    \includegraphics[width=.9\linewidth]{pics/act-tanh.png}
-                    \caption{\textit{tanh}}
-                \end{subfigure}
-                \caption{\textit{Illustration of two bounded rectifiers}}
-                \label{fig:act-sigmoids}
-            \end{figure}
-
-            these activation functions are often used but they are bounded and their gradient is very low on the edges. Because we are going to manipulate high scalar values, we have to use an unbounded activation function, such as ReLU, $\Phi(x)=\max(0,x)$ (Figure \ref{fig:relu}). But the issue with ReLU is that all the negative values become zero immediately, which decreases the ability of our model to train from the data. Hence the implementation of a \textit{leaky rectifier}, LReLU (Figure \ref{fig:lrelu}):
+            \paragraph{Leaky rectifier (LReLU)} In order to let our neural network model complex patterns in the data, we have to add a non-linear property to the model. It often is an activation function, such as a sigmoid or a tanh, but these activation functions are bounded and their gradient is very low on the edges. Because we are going to manipulate high scalar values, we have to use an unbounded activation function, such as ReLU, $\Phi(x)=\max(0,x)$ (Figure~\ref{fig:relu}). But the issue with ReLU is that all the negative values become zero immediately, which decreases the ability of our model to train from the data. Hence the implementation of a \textit{leaky rectifier}, LReLU (Figure~\ref{fig:lrelu}):
             $$\Phi(x)=\max(\alpha x,x)\mbox{, with } 0<\alpha<1.$$
 
             \begin{figure}[!ht]
@@ -314,7 +296,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             \begin{equation}
                 L_j^{s-1}*_{r_s}K^s_{i,j}=\sum_{a+r_sb=x}L_j^{s-1}(a)K_{i,j}^s(b)
             \end{equation}
-            because of \ref{par:dilated}, page \pageref{par:dilated}.
+            because of \ref{par:dilated}, page~\pageref{par:dilated}.
 
             \begin{table}[!ht]
                 \centering
@@ -346,101 +328,113 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
 
         \subsubsection{TV}\footnote{ref}
         To do
-            In such a search for well-segmented images, 2 criteria have to be fulfilled. The output needs to be as close as possible to the ground truth image; but we also need the segmented image to present a lot of zones where the color gradient $\nabla f(I)$ is equal to $0$. Thus, we want to implement a train loss function that could help us satisfy these two criteria.
-            In order grant an improvement in the output image smoothness, we use the Total Variation (TV) loss, defined by:
-            $$
-            L_{TV}=\frac{1}{N}\sum_{i=1}^N |\hat{f}(I)_i-f(I)_i|^2+\frac{1}{N}\sum_{i=1}^N|(\nabla f(I))_i)|^2
-            $$
 
+        In such a search for well-segmented images, 2 criteria have to be fulfilled. The output needs to be as close as possible to the ground truth image; but we also need the segmented image to present a lot of zones where the color gradient $\nabla f(I)$ is equal to $0$. Thus, we want to implement a train loss function that could help us satisfy these two criteria.
+        In order grant an improvement in the output image smoothness, we use the Total Variation (TV) loss, defined by:
+        $$
+        L_{TV}=\frac{1}{N}\sum_{i=1}^N |\hat{f}(I)_i-f(I)_i|^2+\alpha_{TV}\frac{1}{N}\sum_{i=1}^N|(\nabla f(I))_i)|^2
+        $$
+
+
+\section{Experiments and results}
     \subsection{Implementation}
-    The network was implemented with PyTorch\footnote{Repository can be found at \url{https://github.com/theodumont/superpixels-segmentation}.} and we used GPU acceleration [...]\\
-    (pytorch), se renseigner (section assez courante)\\
-    GPU acceleraation
+    The network was implemented with PyTorch\footnote{Repository can be found at \url{https://github.com/theodumont/superpixels-segmentation}.}. With a batch size of 32, the training of a model was quite long on a GPU, mainly due to the size of the training dataset and the complexity of our model. In further sections we discuss how the hyperparameters impact the model's performances --- metrics and temporal efficiency --- and we conduct experiments to find a good-performing architecture. We found that the following values worked well on the BSD dataset, so we take them as default in the next sections, and only change one or two hyperparameters at a time:
+    \begin{table}[!ht]
+        \centering
+        \begin{tabular}{|c|c|c|c|c|}
+            \hline
+            batch\_size & epochs & $d$ & learning\_rate & $\alpha_{TV}$ \\
+            \hline
+            \hline
+            32 & 80? & $7$ & $10^{-2}$, $10^{-3}$ & ? \\
+            \hline
+        \end{tabular}
+        \caption{\textit{Hyperparameter values}}
+    \end{table}
 
 
-
-
-\section{Expérience et résultats}
-    \subsection{Hyperparameters}
-    petit bilan des valeurs choisies au final
+    \subsection{Hyperparameter tuning}
         \subsubsection{Learning rate}
-        \begin{table}[!ht]
-            \center
-            \begin{tabular}{|c|c|c|c|c|}
-                \hline
-                $lr_0$ & decay? & saturation? & $d$ & TV? \\
-                \hline \hline
-                $0.001$ & No & No & $7$ & No \\
-                \hline
-                $0.01$ & No & No & $7$ & No \\
-                \hline
-                $0.01$ & $\times 0.5$ every 2 epochs & $10^{-4}$ & $7$ & No \\
-                \hline
-                $0.001$ & $\times 0.5$ every 2 epochs & $10^{-4}$ & $7$ & No \\
-                \hline
-            \end{tabular}
-        \caption{Runs for learning rate tuning}
-        \end{table}
-
-        \begin{figure}[!ht]
-            \begin{subfigure}{.33\linewidth}
-                \centering
-                \includegraphics[width=.8\linewidth]{pics/hpp-d.png}
-                \caption{\textit{Graph}}
-            \end{subfigure}
-            \begin{subfigure}{.33\linewidth}
-                \centering
-                \includegraphics[width=.8\linewidth]{pics/hpp-d.png}
-                \caption{\textit{Graph}}
-            \end{subfigure}
-            \begin{subfigure}{.33\linewidth}
-                \centering
-                \includegraphics[width=.8\linewidth]{pics/hpp-d.png}
-                \caption{\textit{Graph}}
-            \end{subfigure}
-            \caption{\textit{Tuning of learning rate}}
-        \end{figure}
-
-
-        \paragraph{Constant value}
-    entrainement (lr, alpha) -> courbes de loss, et loss qui sature (cluster) d'où changement de lr au cours des epochs
-        \paragraph{Non constant value}
-        \subsubsection{Network size $d$}
-        - Learning rate initialisé à 0.01, divisé par 2 toutes les 2 époques, saturation à 1e-4
-        - Pas de régularisation TV
-
-        \begin{figure}[!ht]
-            \begin{subfigure}{.49\linewidth}
+            \begin{table}[!ht]
                 \center
-                \begin{tabular}{|c|c|c|c|c|c|}
+                \begin{tabular}{|c|c|c|c|c|}
                     \hline
-                    $d$ & 4 & 5 & 6 & 7 & 8 \\
+                    $lr_0$ & decay? & saturation? & $d$ & TV? \\
                     \hline \hline
-                    loss$\times 10^3$ & $3.46$ & $3.18$ & $3.12$ & $3.13$ & ??? \\
+                    $0.001$ & No & No & $7$ & No \\
+                    \hline
+                    $0.01$ & No & No & $7$ & No \\
+                    \hline
+                    $0.01$ & $\times 0.5$ every 2 epochs & $10^{-4}$ & $7$ & No \\
+                    \hline
+                    $0.001$ & $\times 0.5$ every 2 epochs & $10^{-4}$ & $7$ & No \\
                     \hline
                 \end{tabular}
-                \caption{\textit{Loss values on validation set}}
-            \end{subfigure}
-            \begin{subfigure}{.49\linewidth}
-                \centering
-                \includegraphics[width=.8\linewidth]{pics/hpp-d.png}
-                \caption{\textit{Graph}}
-            \end{subfigure}
-            \caption{\textit{Tuning of network size}}
-        \end{figure}
+            \caption{Runs for learning rate tuning}
+            \end{table}
 
-        CONCLUSION des run 3 à 5: Il est préférable de laisser d=7. Entre d=6 et d=7, l'amélioration semble
-        relativement faible.
-        bon intermédiaire entre temps de calcul et performances
+            \begin{figure}[!ht]
+                \begin{subfigure}{.33\linewidth}
+                    \centering
+                    \includegraphics[width=.8\linewidth]{pics/hpp-d.png}
+                    \caption{\textit{Graph}}
+                \end{subfigure}
+                \begin{subfigure}{.33\linewidth}
+                    \centering
+                    \includegraphics[width=.8\linewidth]{pics/hpp-d.png}
+                    \caption{\textit{Graph}}
+                \end{subfigure}
+                \begin{subfigure}{.33\linewidth}
+                    \centering
+                    \includegraphics[width=.8\linewidth]{pics/hpp-d.png}
+                    \caption{\textit{Graph}}
+                \end{subfigure}
+                \caption{\textit{Tuning of learning rate}}
+            \end{figure}
+
+
+            \paragraph{Constant value}
+            entrainement (lr, alpha) -> courbes de loss, et loss qui sature (cluster) d'où changement de lr au cours des epochs
+            \paragraph{Non constant value}
+            to do
+        $10^{-2}$ then $10^{-3}$ after 10 epochs.
+        \subsubsection{Network size \textit{d}}
+            - Learning rate initialisé à 0.01, divisé par 2 toutes les 2 époques, saturation à 1e-4
+            - Pas de régularisation TV
+
+            \begin{figure}[!ht]
+                \begin{subfigure}{.49\linewidth}
+                    \center
+                    \begin{tabular}{|c|c|c|c|c|c|}
+                        \hline
+                        $d$ & 4 & 5 & 6 & 7 & 8 \\
+                        \hline \hline
+                        loss$\times 10^3$ & $3.46$ & $3.18$ & $3.12$ & $3.13$ & ??? \\
+                        \hline
+                    \end{tabular}
+                    \caption{\textit{Loss values on validation set}}
+                \end{subfigure}
+                \begin{subfigure}{.49\linewidth}
+                    \centering
+                    \includegraphics[width=.8\linewidth]{pics/hpp-d.png}
+                    \caption{\textit{Graph}}
+                \end{subfigure}
+                \caption{\textit{Tuning of network size}}
+            \end{figure}
+
+            CONCLUSION des run 3 à 5: Il est préférable de laisser d=7. Entre d=6 et d=7, l'amélioration semble
+            relativement faible.
+            bon intermédiaire entre temps de calcul et performances
 
         \subsubsection{Number of epochs}
-        nb epochs: on le sélectionne en prenant le minimum de la validation loss
+            nb epochs: on le sélectionne en prenant le minimum de la validation loss
         \subsubsection{TV regularization}
-        PK MARCHE PAS ?
-        - gradient fort sur outlines
-        - comment faire ? découper images, COCO pas ouf pour ça, résolution basse
+            attention changer valeur code
+            PK MARCHE PAS ?
+            - gradient fort sur outlines
+            - comment faire ? découper images, COCO pas ouf pour ça, résolution basse
         \subsubsection{All the runs}
-        a mettre en annexe, tableaux de tous les runs et graphes
+            a mettre en annexe, tableaux de tous les runs et graphes
 
     \subsection{Results on dataset}
     cf results/images
@@ -491,5 +485,19 @@ relire tous les mails pour avoir toutes les infos sur performances etc
 \cite{zitnick_2007}
 \cite{fulkerson_2009}
 \cite{stutz_2017}
+
+\newpage
+
+\section*{Appendices}
+
+\begin{table}
+    \centering
+    \begin{tabular}{|c|}
+        \hline
+        cell \\
+        \hline
+    \end{tabular}
+    \caption{All the runs}
+\end{table}
 
 \end{document}
