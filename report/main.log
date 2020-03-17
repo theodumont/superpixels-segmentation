@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.12.9)  17 MAR 2020 22:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.12.9)  17 MAR 2020 23:27
 entering extended mode
 **"C:/Users/Théo Dumont/repos/python/s3r-repo/report/main.tex"
 ("C:/Users/Théo Dumont/repos/python/s3r-repo/report/main.tex"
@@ -671,11 +671,11 @@ File: pics/img_segm_coco.png Graphic file (type png)
 Package pdftex.def Info: pics/img_segm_coco.png  used on input line 174.
 (pdftex.def)             Requested size: 136.57462pt x 102.43076pt.
  [5 <./pics/train2017full.png> <./pics/img_segm_coco.png (PNG copy)>]
-<pics/schema-global.png, id=200, 846.66313pt x 437.13312pt>
+<pics/schema-global.png, id=200, 847.165pt x 440.64626pt>
 File: pics/schema-global.png Graphic file (type png)
 <use pics/schema-global.png>
 Package pdftex.def Info: pics/schema-global.png  used on input line 184.
-(pdftex.def)             Requested size: 455.24411pt x 235.04118pt.
+(pdftex.def)             Requested size: 455.24411pt x 236.78896pt.
 
 
 LaTeX Warning: Reference `par:bsd' on page 6 undefined on input line 197.
@@ -731,7 +731,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 503.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 503.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 503.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 2ABC6834DA4E447108A14280C736AC8C;1872.
+(rerunfilecheck)             Checksum: 984382B7B8B7BEF6EFC370F81CBE69E0;1917.
 
 
 LaTeX Warning: There were undefined references.
@@ -790,9 +790,9 @@ rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/Théo Dumo
 nt/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 <C:/Users/Théo Dumont/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmsy7.pfb>
-Output written on main.pdf (13 pages, 1097185 bytes).
+Output written on main.pdf (13 pages, 1096771 bytes).
 PDF statistics:
- 810 PDF objects out of 1000 (max. 8388607)
+ 809 PDF objects out of 1000 (max. 8388607)
  106 named destinations out of 1000 (max. 500000)
  290 words of extra memory for PDF output out of 10000 (max. 10000000)
 

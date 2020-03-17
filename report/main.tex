@@ -194,11 +194,11 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             \item use $(G,S)=(C_0, \dot C_f)$ as an training input to the neural network.
         \end{enumerate}
         \paragraph{Test}
-        To test the network on the BDS dataset (\textit{cf.} Section~\ref{par:bsd}, page~\pageref{par:bsd}):
+        To test the network on the BSD dataset (\textit{cf.} Section~\ref{par:bsd}, page~\pageref{par:bsd}):
         \begin{enumerate}
             \item from the BSD dataset, extract the original image $B_0$ and give it to the NN;
             \item get the NN output $N_0$, which is a nearly segmented image;
-            \item use the Eikonal algorithm to obtain the final superpixel segmented image $\bar N_f$, with superpixel labels, on which we compute the metrics.
+            \item use the Eikonal algorithm to obtain the final superpixel segmented image $\bar N_f$, with superpixel labels, on which we compute the metrics by comparing it to the ground truth $\bar B_0$.
         \end{enumerate}
 
 
@@ -321,20 +321,20 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
         \subsubsection{Chen + UNet}
         To do
 
-    \subsection{Total Variation (TV) Loss}
-        \subsubsection{MSE}
+    \subsection{Total Variation Loss}
+        \subsubsection{Mean Square Error (MSE) Loss}
         To do
         $$L_{MSE}=\frac{1}{N}\sum_{i=1}^N |\hat{f}(I)_i-f(I)_i|^2$$
 
-        \subsubsection{TV}\footnote{ref}
+        \subsubsection{Total Variation (TV) Loss}
         To do
 
         In such a search for well-segmented images, 2 criteria have to be fulfilled. The output needs to be as close as possible to the ground truth image; but we also need the segmented image to present a lot of zones where the color gradient $\nabla f(I)$ is equal to $0$. Thus, we want to implement a train loss function that could help us satisfy these two criteria.
-        In order grant an improvement in the output image smoothness, we use the Total Variation (TV) loss, defined by:
+        In order grant an improvement in the output image smoothness, we use the Total Variation (TV) loss\footnote{ref}, defined by:
         $$
         L_{TV}=\frac{1}{N}\sum_{i=1}^N |\hat{f}(I)_i-f(I)_i|^2+\alpha_{TV}\frac{1}{N}\sum_{i=1}^N|(\nabla f(I))_i)|^2
         $$
-
+        where $\alpha_{TV}$ is a hyperparameter that is going to be tuned and that allow us to give more or less importance to the gradient term.
 
 \section{Experiments and results}
     \subsection{Implementation}
