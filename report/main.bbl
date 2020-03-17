@@ -1,5 +1,9 @@
 \begin{thebibliography}{1}
 
+\bibitem{microsoft2014}
+Microsoft coco: Common objects in context.
+\newblock 2014.
+
 \bibitem{arbelaez_2011}
 P.~Arbeláez, M.~Maire, C.~Fowlkes, and J.~Malik.
 \newblock Contour detection and hierarchical image segmentation.
@@ -37,7 +41,8 @@ J.~Shi and J.~Malik.
 
 \bibitem{stutz_2017}
 David Stutz, Alexander Hermans, and Bastian Leibe.
-\newblock Superpixels: An evaluation of the state-of-the-art, April 2017.
+\newblock Superpixels: An evaluation of the state-of-the-art.
+\newblock {\em Computer Vision and Image Understanding}, April 2017.
 
 \bibitem{zitnick_2007}
 C.~Lawrence Zitnick and Sing~Bing Kang.
