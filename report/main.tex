@@ -35,7 +35,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
     % \item COCO dataset
     \item eikonal
     % \item global approach quickly
-    \item Chen
+    % \item Chen
     \item Unet
     \item MSE
     \item implementation
@@ -232,14 +232,14 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
                  & = \sum_b L_j(x-rb)K_{i,j}(b) &
             \end{flalign*}
             and we recognize the simple convolution when $r=1$.\\
-            A dilated convolution enables the network getting larger receptive fields while preserving the input resolution\footnote{ref ?}.
+            A dilated convolution enables the network getting larger receptive fields --- which allows the network to aggregate information at increasing scales on the image --- while preserving the input resolution\footnote{ref ?}.
 
 
             \paragraph{Adaptative Batch Normalization (ABN)} Distinct images in the COCO dataset have very different color ranges; in order to maximize the network performances, we normalize the data. We define the \textit{adaptative normalization function} $\Psi$ as:
             $$\Psi(x)=a\ x+b\ BN(x),$$
             where $BN$ is the classic batch normalization\footnote{reference ?}, defined as:
             $$BN(x) = \frac{x-\mathrm{E}[x]}{\sqrt{\mathrm{Var}[x]+\epsilon}}*\gamma+\beta.$$
-            As such, $\Psi$ combines identity mapping and batch normalization. $a$, $b$, $\gamma$ and $\beta$ are learned parameters\footnote{ref : \url{https://pytorch.org/docs/stable/_modules/torch/nn/modules/batchnorm.html}} by backpropagation. It allows the model to adapt to each dataset, choosing whether or not giving a big importance to the identity term and the normalization term.
+            As such, $\Psi$ combines identity mapping and batch normalization. The $a$, $b$, $\gamma$ and $\beta$ parameters are learned by backpropagation. It allows the model to adapt to each dataset, choosing whether or not giving a big importance to the identity term and the normalization term.
 
             \paragraph{Leaky rectifier (LReLU)} In order to let our neural network model complex patterns in the data, we have to add a non-linear property to the model. It often is an activation function, such as a sigmoid or a tanh, but these activation functions are bounded and their gradient is very low on the edges. Because we are going to manipulate high scalar values, we have to use an unbounded activation function, such as ReLU, $\Phi(x)=\max(0,x)$ (Figure~\ref{fig:relu}). But the issue with ReLU is that all the negative values become zero immediately, which decreases the ability of our model to train from the data. Hence the implementation of a \textit{leaky rectifier}, LReLU (Figure~\ref{fig:lrelu}):
             $$\Phi(x)=\max(\alpha x,x)\mbox{, with } 0<\alpha<1.$$
@@ -262,58 +262,52 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
 
             \noindent By implementing a Leaky Rectifier, we are able to take into account the negative valued pixels.
 
-
-        \newpage
-        \subsubsection{Chen}
-            \paragraph{Context Aggregation Network (CAN)}\footnote{reference}
-            blabla sur le RGB en entrée, RGB en sortie I -> f(I)\\
-            To do
-            \begin{table}[!ht]
-                \center
-                \begin{tabular}{ccccccccccc}
-                    \hline
-                    input $I$ & $\longrightarrow$ & $L^1$ & $\longrightarrow$ & $\cdots$ & $\longrightarrow$ & $L^s$ & $\longrightarrow$ & $\cdots$ & $\longrightarrow$ & output ($L^d$)\\
-                    $m\times n\times 3$ & & $m\times n\times w_1$ & & & & $m\times n\times w_s$ & & & & $m\times n\times 3$\\
-                    \hline
-                \end{tabular}
-                \caption{\textit{Layers}}
-            \end{table}
-
-            \paragraph{Architecture of a block}
-            Each block $L_s$ is made of 3 layers:
-            \begin{enumerate}
-                \item A \textit{dilated convolution}, with parameter $r_s=2^s$,
-                \item An \textit{adaptative batch normalization},
-                \item A \textit{leaky rectifier (ReLU)},
-            \end{enumerate}
-            so that the content of an intermediate layer $L^s$ can be computed from the content of the previous layer $L^{s-1}$:
-            \begin{equation}
-                L_i^s=\Phi\left(\Psi^s\left(b_i^s+\sum_jL_j^{s-1}*_{r_s}K^s_{i,j}\right)\right).
-            \end{equation}
-            where ... is ...
-
-            and
-            \begin{equation}
-                L_j^{s-1}*_{r_s}K^s_{i,j}=\sum_{a+r_sb=x}L_j^{s-1}(a)K_{i,j}^s(b)
-            \end{equation}
-            because of \ref{par:dilated}, page~\pageref{par:dilated}.
+        \subsubsection{Context Aggregation Network}
+            The primary architecture of our network is the \underline{C}ontext \underline{A}ggregation \underline{N}etwork (CAN), introduced in 2015~\cite{yu2015}. It gradually aggregates contextual information without losing resolution through the use of dilated convolutions, whose parameter exponentially increases over the network layers. This exponential growth grants a global information aggregation with a compact structure~\cite{yu2015,chen2017}.
+            \par
+            The input data goes through the set of layers $\{L^0, \cdots, L^d\}$, and we choose $d=7$ (\textit{cf.}~\ref{par:hpp-d}, page~\pageref{par:hpp-d}); the input and the output are images, so they have 3 feature maps.
 
             \begin{table}[!ht]
                 \centering
-                \begin{tabular}{|c|c|c|c|c|c|c|c|}
+                \begin{tabular}{ccccccccc}
                     \hline
-                    Layer & 1 & 2 & 3 & 4 & 5 & 6 & 7\\
-                    \hline \hline
-                    Convolution & $3\times3$ & & & & & & \\
-                    \hline
-                    Dilation & 1 & & & & & & \\
-                    \hline
-                    Batch Normalization & Yes & & & & & & \\
-                    \hline
-                    LReLU & Yes & & & & & & \\
+                     & $L^1$ & & $L^2$ & & $L^6$ & & $L^d=L^7$ & \\
+                    $m\times n\times 3$ & $\longrightarrow$ &$m\times n\times 24$ & $\longrightarrow$ & \dots & $\longrightarrow$ & $m\times n\times 24$ & $\longrightarrow$ & $m\times n\times 3$ \\
                     \hline
                 \end{tabular}
-                \caption{\textit{Chen}}
+                \caption{\textit{Layers of the network}}
+            \end{table}
+            \par
+            Each block $L^s$, $s\in [\![2,d-2]\!]$ is made of a \textit{dilated convolution}, with parameter $r_s=2^s$, an \textit{adaptative batch normalization}, and a \textit{leaky rectifier (ReLU)}, so that the content of an intermediate layer $L^s$ can be computed from the content of the previous layer $L^{s-1}$:
+            \begin{equation}
+                L_i^s=\Phi\left(\Psi^s\left(b_i^s+\sum_jL_j^{s-1}*_{r_s}K^s_{i,j}\right)\right).
+            \end{equation}
+            with
+            \begin{equation}
+                L_j^{s-1}*_{r_s}K^s_{i,j}=\sum_{a+r_sb=x}L_j^{s-1}(a)K_{i,j}^s(b)
+            \end{equation}
+            where $\Phi, \Psi^s$ and $K^s_{i,j}$ are defined in~\ref{par:dilated}, page~\pageref{par:dilated}.
+
+            \begin{table}[!ht]
+                \centering
+                \begin{tabular}{|c|c||c|cccc|cc|}
+                    \hline
+                    \multicolumn{2}{|c||}{Layer $L_s$} & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+                    \hline
+                    \hline
+                     & Input $w_s$ & 3 & 24 & 24 & 24 & 24 & 24 & 24 \\
+                     & Output $w_{s+1}$ & 24 & 24 & 24 & 24 & 24 & 24 & 3 \\
+                    \cline{2-9}
+                    Conv & Receptive field & $\ 3\times 3\ $ & $\ 3\times 3\ $ & $\ 3\times 3\ $ & $\ 3\times 3\ $ & $\ 3\times 3\ $ & $\ 3\times 3\ $ & $\ 1\times 1\ $ \\
+                     & Dilation $r_s$ & 1 & 2 & 4 & 8 & 16 & 1 & 1 \\
+                     & Padding & 1 & 2 & 4 & 8 & 16 & 1 & 0 \\
+                    \hline
+                    \multicolumn{2}{|c||}{ABN} & Yes & Yes & Yes & Yes & Yes & Yes & Yes \\
+                    \hline
+                    \multicolumn{2}{|c||}{LReLU} & 0.2 & 0.2 & 0.2 & 0.2 & 0.2 & 0.2 & No \\
+                    \hline
+                \end{tabular}
+                \caption{\textit{Our Context Aggregation Network}}
             \end{table}
 
         \subsubsection{UNet}
@@ -475,7 +469,7 @@ relire tous les mails pour avoir toutes les infos sur performances etc
 \section*{Special thanks}
 
 \bibliographystyle{plain}
-\bibliography{biblio}
+\bibliography{sources}
 
 \cite{shi_2000}
 \cite{arbelaez_2011}

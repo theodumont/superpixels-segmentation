@@ -171,23 +171,3 @@ class Net(nn.Module):
         x = self.penulti(x)
         x = (self.ABN_ulti(self.conv_ulti(x)))
         return x
-
-    def num_flat_features(self, x):
-
-        """
-        Size of the flattened tensor
-
-        :param x: Input tensor with size BxCxWxH
-         (B: batch size, C: number of channels, W: image width, H: image height)
-        :type x: PyTorch tensor
-
-        :return: CxWxH
-        :rtype: int
-        """
-
-        size = x.size()[1:]
-        num_features = 1
-        for s in size:
-            num_features *= s
-
-        return num_features

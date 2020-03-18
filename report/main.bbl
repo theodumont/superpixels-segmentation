@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{microsoft2014}
 Microsoft coco: Common objects in context.
@@ -15,6 +15,11 @@ Ka\"iwen Chang.
 \newblock {\em Machine learning based image segmentation}.
 \newblock PhD thesis, Universit{\'e} de recherche Paris Sciences et Lettres,
   2019.
+
+\bibitem{chen2017}
+Qifeng Chen, Jia Xu, and Vladlen Koltun.
+\newblock Fast image processing with fully-convolutional networks.
+\newblock 2017.
 
 \bibitem{felzenszwalb_2004}
 P.~F. Felzenszwalb and D.~P. Huttenlocher.
@@ -43,6 +48,11 @@ J.~Shi and J.~Malik.
 David Stutz, Alexander Hermans, and Bastian Leibe.
 \newblock Superpixels: An evaluation of the state-of-the-art.
 \newblock {\em Computer Vision and Image Understanding}, April 2017.
+
+\bibitem{yu2015}
+Fisher Yu and Vladlen Koltun.
+\newblock Multi-scale context aggregation by dilated convolutions.
+\newblock 2015.
 
 \bibitem{zitnick_2007}
 C.~Lawrence Zitnick and Sing~Bing Kang.
