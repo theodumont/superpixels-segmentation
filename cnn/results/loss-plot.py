@@ -5,13 +5,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 loss = []
-for model in [3]:
+for model in [6, 8]:
     for idx in range(40):
         los = np.load("loss-train/run" + str(model) + "_" + str(idx) + ".npy")
         loss.append(np.mean(los))
 
-validation_loss = np.load("loss-validation/Validation_loss_0.npy")
-for model in []:
+validation_loss = np.load("loss-validation/Validation_loss_6.npy")
+for model in [8]:
     validation_loss = np.concatenate((validation_loss, np.load("loss-validation/Validation_loss_" + str(model) + ".npy")))
 
 plt.figure("Loss")

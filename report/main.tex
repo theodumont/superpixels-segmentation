@@ -30,19 +30,17 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
 
 \section*{To do}
 \begin{itemize}
-    \item undersegmentation error
-    \item SLIC
+    % \item undersegmentation error
+    % \item SLIC
     % \item COCO dataset
-    \item eikonal
+    \item rédiger paragraphe eikonal
     % \item global approach quickly
     % \item Chen
-    \item Unet
-    \item MSE
-    \item implementation
+    \item rédiger Unet
+    \item implementation: quel nb d'epochs?
     \item hpp
     \begin{itemize}
-        \item bilan hpp choisis
-        \item network size
+        \item nb of epochs
         \item TV loss
     \end{itemize}
     \item en annexe : tableaux de tous les runs
@@ -95,10 +93,9 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             \label{fig:spp}
         \end{figure}
 
-        Thus, superpixel algorithms are often considered as a pre-processing step in a number of applications. They can be used for depth estimation~\cite{zitnick_2007} or make the objects features more understandable in object classification. Finally, computing the superpixel partition of an image can constitute a first processing step to obtain an actual segmentation for this image~\cite{fulkerson_2009}, reducing the complexity of finding the different regions of an image by grouping at first similar pixels.
+        Thus, superpixel algorithms are often considered as a pre-processing step in a number of applications. They can be used for depth estimation~\cite{zitnick2007} or make the objects features more understandable in object classification. Finally, computing the superpixel partition of an image can constitute a first processing step to obtain an actual segmentation for this image~\cite{fulkerson2009}, reducing the complexity of finding the different regions of an image by grouping at first similar pixels.
 
         \subsubsection{A good superpixel segmentation}
-            \paragraph{Metrics}
             Before even starting building one, we have to define what is a ``good'' superpixel segmentation algorithm. As it is shown in~\cite{stutz_2017}, it is a very ambiguous task as many relevant criteria exist. Several metrics, though, are commonly chosen in the literature to evaluate whether a superpixel algorithm gives good results or not.
 
             Let $G = \{G_i\}_i$ and $S = \{S_j\}_j$ be partitions of the same image $I : x_n \mapsto I(x_n)$, $1 \leq n \leq N$. $G$ is the ground truth segmented image\footnote{ground truth segmented or superpixel segmented?} and $S$ is the segmented image obtained from a superpixel algorithm.
@@ -110,31 +107,32 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
                 $$
                 $\tilde{S}$ being the segmented image with its boundaries dilated by a square of side 5 pixels. Please note that boundary recall does not measure the regularity of the boundaries at all. That means an algorithm can have a very high boundary recall while being very tortuous. This nourishes the need of a metric that quantifies the regularity of the boundaries.
 
-                \item \textbf{Compactness.} In order to simplify the superpixel segmented image as much as possible, its superpixels need to be smooth and regular. We thus want to build a criterion that computes how close the area $A(S_j)$ of each superpixel $S_j$ is from a circle with same perimeter $P(S_j)$:
+                \item \textbf{Compactness.} In order to simplify the superpixel segmented image as much as possible, its superpixels need to be smooth and regular. We thus want to build a criterion that computes the ratio of the region area $A(S_j)$ with respect to a circle with the same perimeter as the superpixel $S_j$, weighted by the ratio of pixel numbers inside the region~\cite{schick2012}:
                 $$
                 \mathrm{Co}(G, S)=\frac{1}{N} \sum_{S_j}|S_j| \frac{4 \pi A(S_j)}{P(S_j)^2}
                 $$
                 As such, a high compactness tends to indicate regular and little tortuous contours.
 
-                \item \textbf{Undersegmentation Error.} Undersegmentation Error measures the ``leakage'' of the superpixels over the ground truth:
+                \item \textbf{Undersegmentation Error.} Undersegmentation Error measures the ``leakage'' of the superpixels over the ground truth.  We adopt the formulation proposed by Neubert and Protzel in~\cite{neubert2012}:
                 $$
-                \mathrm{UE}(G,S) = \text{formula}
+                \mathrm{UE}_{NP}(G,S)= \frac{1}{N} \sum_{G_i} \sum_{S_j \cap G_i \neq \emptyset} \min \{|S_j \cap G_i|,|S_j-S_j \cap G_i|\}
                 $$
+                where $S_j$ is a superpixel and $G_i$ is a gound truth segment. We take the minimum of the number of overlapping pixels and the number of non overlapping pixels within $S_j$ as the leakage.
             \end{itemize}
 
-            \paragraph{SLIC} To do
+
+        \subsubsection{Literature}
+            A large amount of research has been conducted on image segmentation, based upon a variety of techniques including active contours, clustering, or region splitting or merging. These methods can be roughly classified into contour based methods and region based methods~\cite{arbelaez2011}.
+
+            \paragraph{Contour based methods} For contour based methods, contour detection algorithms are first used to obtain candidate contours, and one has to find a way to transform these into closed contours (See~\cite{ren2005, arbelaez2011}). A classical approach for performing contour based segmentation is for instance the watershed algorithm.
+
+            \paragraph{Region based methods} For region based methods, the image is oversegmented into small regions which are then merged to obtain an actual segmentation. To that end, a classical approach consists in representing the oversegmented image by a region adjacency graph connecting nearby regions. In this case, we transform the image segmentation problem into a graph clustering problem. A vast amount of literature in the field of image processing is dedicated to algorithms based upon graph clustering. In 2000, Shi and Malik \cite{shi2000} proposed a novel graph-theoretic criterion to measure the effectiveness of an image partition, the normalized cut, and an efficient technique for minimizing this criterion based on a generalized eigenvalue problem. This algorithm extracts global impression and obtains good results on static images and motion sequences. In 2004, Felzenszwalb and Huttenlocher \cite{felzenszwalb2004} introduced a graph-based image segmentation method based on pairwise region comparison. In their approach, pixels are merged according to their intensity differences across boundaries and between neighboring pixels within each region. The segmentation criteria are adaptively adjusted to take into account the variability in neighbor regions. These algorithms constitute the main approaches to perform graph-based segmentation.
+
+            The Simple Linear Iterative Clustering (SLIC) algorithm, introduced by Achanta et al.~\cite{achanta2012,achanta2017}, is a region based method and is ranked among the most used algorithms for superpixel segmentation. It constructs a superpixel partition by applying a K-means clustering algorithm on the image. During initialization, K cluster centers locations are selected on the image. Each pixel is then associated to the closest cluster center in the image according to a distance involving the color proximity and the physical distance between the pixel and the seed. The distance between the previous and the new locations is used to compute a residual error $E$, and the procedure is iterated until the error $E$ converges.
 
         \subsubsection{Ambitions}
-            A large amount of research has been conducted on image segmentation, based upon a variety of techniques including active contours, clustering, or region splitting or merging. These methods can be roughly classified into contour based methods and region based methods~\cite{arbelaez_2011}.
-
-            \begin{itemize}
-                \item For contour based methods, contour detection algorithms are first used to obtain candidate contours, and one has to find a way to transform these into closed contours (See~\cite{ren_2005, arbelaez_2011}). A classical approach for performing contour based segmentation is for instance the watershed algorithm.
-
-                \item For region based methods, the image is oversegmented into small regions which are then merged to obtain an actual segmentation. To that end, a classical approach consists in representing the oversegmented image by a region adjacency graph connecting nearby regions. In this case, we transform the image segmentation problem into a graph clustering problem. A vast amount of literature in the field of image processing is dedicated to algorithms based upon graph clustering. In 2000, Shi and Malik \cite{shi_2000} proposed a novel graph-theoretic criterion to measure the effectiveness of an image partition, the normalized cut, and an efficient technique for minimizing this criterion based on a generalized eigenvalue problem. This algorithm extracts global impression and obtains good results on static images and motion sequences. In 2004, Felzenszwalb and Huttenlocher \cite{felzenszwalb_2004} introduced a graph-based image segmentation method based on pairwise region comparison. In their approach, pixels are merged according to their intensity differences across boundaries and between neighboring pixels within each region. The segmentation criteria are adaptively adjusted to take into account the variability in neighbor regions. These algorithms constitute the main approaches to perform graph-based segmentation.
-
-            \end{itemize}
-
-            In previous work~\cite{chang_2019}, we were able to notice that the quality of the initial oversegmentation, as measured by metrics including the boundary recall, the compactness and the undersegmentation error, significantly impacts the quality of the overall segmentation. The objective of this research is therefore to develop a deep learning based algorithm to generate a superpixel partition with improved metrics.\\
+            In previous work~\cite{chang2019}, we were able to notice that the quality of the initial oversegmentation, as measured by metrics including the boundary recall, the compactness and the undersegmentation error, significantly impacts the quality of the overall segmentation. The objective of this research is therefore to develop a deep learning based algorithm to generate a superpixel partition with improved metrics.
+            \par
             Most of the segmentation methods are based on color information of pixels in the image, not taking into account all the human knowledge that one uses to understand what he sees. Implementing this knowledge would require a lot of computational time and a huge database, which does not currently exist. A neural network overcomes this issue, modeling this knowledge from a dataset of labeled images.
 
 
@@ -226,11 +224,11 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             \end{figure}
 
             \noindent The output $C(x)$ of a pixel $x$ is:
-            \begin{flalign*}
-            C(x):& = (L_j*_r K_{i,j})(x) &\\
-                 & = \sum_{a+rb=x}L_j(a)K_{i,j}(b) &\\
-                 & = \sum_b L_j(x-rb)K_{i,j}(b) &
-            \end{flalign*}
+            \begin{align*}
+            C(x):& = (L_j*_r K_{i,j})(x) \\
+                 & = \sum_{a+rb=x}L_j(a)K_{i,j}(b) \\
+                 & = \sum_b L_j(x-rb)K_{i,j}(b)
+            \end{align*}
             and we recognize the simple convolution when $r=1$.\\
             A dilated convolution enables the network getting larger receptive fields --- which allows the network to aggregate information at increasing scales on the image --- while preserving the input resolution\footnote{ref ?}.
 
@@ -316,15 +314,8 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
         To do
 
     \subsection{Total Variation Loss}
-        \subsubsection{Mean Square Error (MSE) Loss}
-        To do
-        $$L_{MSE}=\frac{1}{N}\sum_{i=1}^N |\hat{f}(I)_i-f(I)_i|^2$$
-
-        \subsubsection{Total Variation (TV) Loss}
-        To do
-
         In such a search for well-segmented images, 2 criteria have to be fulfilled. The output needs to be as close as possible to the ground truth image; but we also need the segmented image to present a lot of zones where the color gradient $\nabla f(I)$ is equal to $0$. Thus, we want to implement a train loss function that could help us satisfy these two criteria.
-        In order grant an improvement in the output image smoothness, we use the Total Variation (TV) loss\footnote{ref}, defined by:
+        In order grant an improvement in the output image smoothness, we use the Total Variation (TV) loss, defined by~\cite{tvloss}:
         $$
         L_{TV}=\frac{1}{N}\sum_{i=1}^N |\hat{f}(I)_i-f(I)_i|^2+\alpha_{TV}\frac{1}{N}\sum_{i=1}^N|(\nabla f(I))_i)|^2
         $$
@@ -332,15 +323,15 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
 
 \section{Experiments and results}
     \subsection{Implementation}
-    The network was implemented with PyTorch\footnote{Repository can be found at \url{https://github.com/theodumont/superpixels-segmentation}.}. With a batch size of 32, the training of a model was quite long on a GPU, mainly due to the size of the training dataset and the complexity of our model. In further sections we discuss how the hyperparameters impact the model's performances --- metrics and temporal efficiency --- and we conduct experiments to find a good-performing architecture. We found that the following values worked well on the BSD dataset, so we take them as default in the next sections, and only change one or two hyperparameters at a time:
+    The network was implemented with PyTorch\footnote{Repository can be found at \url{https://github.com/theodumont/superpixels-segmentation}.}. With a batch size of 32, the training of a model was quite long on a GPU, mainly due to the size of the training dataset and the complexity of our model. In further sections we discuss how the hyperparameters impact the model's performances --- metrics and temporal efficiency --- and we conduct experiments to find a good-performing architecture. We found that the following values worked well on the BSD dataset:
     \begin{table}[!ht]
         \centering
-        \begin{tabular}{|c|c|c|c|c|}
+        \begin{tabular}{|c|c|c|c|c|c|}
             \hline
-            batch\_size & epochs & $d$ & learning\_rate & $\alpha_{TV}$ \\
+            batch\_size & epochs & $d$ & $lr_0$ & decay for $lr_0$ & $\alpha_{TV}$ \\
             \hline
             \hline
-            32 & 80? & $7$ & $10^{-2}$, $10^{-3}$ & ? \\
+            32 & 80? & $7$ & $10^{-2}$ & $10^{-3}$ after 10 ep. & 0 \\
             \hline
         \end{tabular}
         \caption{\textit{Hyperparameter values}}
@@ -349,52 +340,54 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
 
     \subsection{Hyperparameter tuning}
         \subsubsection{Learning rate}
+
+            At first, we tested several values for the learning rate $lr$. But either it was too low, and the loss would stagnate over the epochs, either it was too high and the loss wouldn't decrease (Figure~\ref{fig:hpp-lr-div}). We thus want to change the learning rate over the epochs and we allow it to decrease until it reaches a threshold value.
+
             \begin{table}[!ht]
-                \center
+                \centering
                 \begin{tabular}{|c|c|c|c|c|}
                     \hline
-                    $lr_0$ & decay? & saturation? & $d$ & TV? \\
-                    \hline \hline
-                    $0.001$ & No & No & $7$ & No \\
+                    run id & $lr_0$ & decay? & threshold? & started from\\
                     \hline
-                    $0.01$ & No & No & $7$ & No \\
                     \hline
-                    $0.01$ & $\times 0.5$ every 2 epochs & $10^{-4}$ & $7$ & No \\
+                    6 & $10^{-2}$ & $\times .5$ every 2 ep. & $10^{-4}$ & run 0 ep.5 \\
                     \hline
-                    $0.001$ & $\times 0.5$ every 2 epochs & $10^{-4}$ & $7$ & No \\
+                    7 & $10^{-3}$ & No & & run 0 ep.40 \\
+                    \hline
+                    8 & $10^{-2}$ & No & & run 0 ep.40 \\
+                    \hline
+                    9 & $10^{-3}$ & $\times .5$ every 2 ep. & $10^{-4}$ & run 0 ep. 40 \\
+                    \hline
+                    10 & $10^{-3}$ & No & & run 9 ep.40\\
                     \hline
                 \end{tabular}
-            \caption{Runs for learning rate tuning}
+            \caption{Runs for learning rate tuning, with $d=7$}
             \end{table}
 
             \begin{figure}[!ht]
                 \begin{subfigure}{.33\linewidth}
                     \centering
-                    \includegraphics[width=.8\linewidth]{pics/hpp-d.png}
-                    \caption{\textit{Graph}}
+                    \includegraphics[width=\linewidth]{pics/hpp-lr-loss-678910.png}
+                    \caption{\textit{Runs 6, 7, 8, 9 and 10}}
                 \end{subfigure}
                 \begin{subfigure}{.33\linewidth}
                     \centering
-                    \includegraphics[width=.8\linewidth]{pics/hpp-d.png}
-                    \caption{\textit{Graph}}
+                    \includegraphics[width=\linewidth]{pics/hpp-lr-loss-67910.png}
+                    \caption{\textit{Runs 6, 7, 9 and 10}}
                 \end{subfigure}
                 \begin{subfigure}{.33\linewidth}
                     \centering
-                    \includegraphics[width=.8\linewidth]{pics/hpp-d.png}
-                    \caption{\textit{Graph}}
+                    \includegraphics[width=\linewidth]{pics/hpp-lr-loss-7910.png}
+                    \caption{\textit{Runs 7, 9 and 10}}
+                    \label{fig:hpp-lr-div}
                 \end{subfigure}
-                \caption{\textit{Tuning of learning rate}}
+                \caption{\textit{Tuning of learning rate: validation loss for different runs}}
             \end{figure}
+            \par
+            After a hundred epochs, the validation loss levels while the training loss keep decreasing. It thus seems relevant to start from a learning rate of $10^{-2}$ and then to decrease it to $10^{-3}$ after a dozen epochs.
 
-
-            \paragraph{Constant value}
-            entrainement (lr, alpha) -> courbes de loss, et loss qui sature (cluster) d'où changement de lr au cours des epochs
-            \paragraph{Non constant value}
-            to do
-        $10^{-2}$ then $10^{-3}$ after 10 epochs.
         \subsubsection{Network size \textit{d}}
-            - Learning rate initialisé à 0.01, divisé par 2 toutes les 2 époques, saturation à 1e-4
-            - Pas de régularisation TV
+            In order to tune our network size, we fix the learning rate at $10^{-2}$, we divide it by 2 every 2 epochs and we threshold at $10^{-4}$. We do not use the TV-regularization.
 
             \begin{figure}[!ht]
                 \begin{subfigure}{.49\linewidth}
@@ -403,36 +396,32 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
                         \hline
                         $d$ & 4 & 5 & 6 & 7 & 8 \\
                         \hline \hline
-                        loss$\times 10^3$ & $3.46$ & $3.18$ & $3.12$ & $3.13$ & ??? \\
+                        loss$\times 10^3$ & $3.46$ & $3.18$ & $3.12$ & $3.11$ & ??? \\
                         \hline
                     \end{tabular}
-                    \caption{\textit{Loss values on validation set}}
                 \end{subfigure}
                 \begin{subfigure}{.49\linewidth}
                     \centering
                     \includegraphics[width=.8\linewidth]{pics/hpp-d.png}
-                    \caption{\textit{Graph}}
                 \end{subfigure}
-                \caption{\textit{Tuning of network size}}
+                \caption{\textit{Tuning of network size: loss values on the validation set}}
             \end{figure}
-
-            CONCLUSION des run 3 à 5: Il est préférable de laisser d=7. Entre d=6 et d=7, l'amélioration semble
-            relativement faible.
-            bon intermédiaire entre temps de calcul et performances
+            \par
+            As expected, the higher $d$ is, the lower the loss function becomes. We indeed add a convolution layer to our model each time $d$ is incremented. However, this addition has a cost; while improving the precision results of our network, we increase its computation time. As between $d=6$ and $d=7$, the improvement seems relatively low, we choose to keep 7 as a value for $d$, which seems a good compromise between computation time and precision performances.
 
         \subsubsection{Number of epochs}
             nb epochs: on le sélectionne en prenant le minimum de la validation loss
         \subsubsection{TV regularization}
+        check premiers runs
             attention changer valeur code
             PK MARCHE PAS ?
             - gradient fort sur outlines
             - comment faire ? découper images, COCO pas ouf pour ça, résolution basse
-        \subsubsection{All the runs}
-            a mettre en annexe, tableaux de tous les runs et graphes
 
     \subsection{Results on dataset}
     cf results/images
     BSD dataset, BSD fait a la main et pas a l'arrache comme COCO
+     Berkeley Segmentation Dataset 500 (BSDS500)\cite{bsd2011}, [3] bruno
 
         \paragraph{Results}
         Here are the previously defined metrics of some well-known superpixel segmentation algorithms.
@@ -471,27 +460,36 @@ relire tous les mails pour avoir toutes les infos sur performances etc
 \bibliographystyle{plain}
 \bibliography{sources}
 
-\cite{shi_2000}
-\cite{arbelaez_2011}
-\cite{ren_2005}
-\cite{felzenszwalb_2004}
-\cite{chang_2019}
-\cite{zitnick_2007}
-\cite{fulkerson_2009}
-\cite{stutz_2017}
-
 \newpage
 
 \section*{Appendices}
 
-\begin{table}
-    \centering
-    \begin{tabular}{|c|}
-        \hline
-        cell \\
-        \hline
-    \end{tabular}
-    \caption{All the runs}
-\end{table}
+\begin{table}[!ht]
+        \centering
+        \begin{tabular}{|c||c|c|c|c|c|c|c|}
+            \hline
+            id & $d$ & $lr_0$ & decay? & thresh.? & $\alpha_{TV}$ & comments & conclusion \\
+            \hline
+            \hline
+            3 & 4 & $10^{-2}$ & $\times .5$ every 2 ep. & $10^{-4}$ & 0 & & \multirow{5}{*}{$d=7$}\\
+            4 & 5 & $10^{-2}$ & $\times .5$ every 2 ep. & $10^{-4}$ & 0 & & \\
+            5 & 6 & $10^{-2}$ & $\times .5$ every 2 ep. & $10^{-4}$ & 0 & & \\
+            0 & 7 & $10^{-2}$ & $\times .5$ every 2 ep. & $10^{-4}$ & 0 & & \\
+            11 & 8 & $10^{-2}$ & $10^{-3}$ after 10 ep. & $10^{-4}$ & 0 & & \\
+            \hline
+            6 & 7 & $10^{-2}$ & $\times .5$ every 2 ep. & $10^{-4}$ & 0 & from run 0 ep.5 & \multirow{5}{*}{\shortstack{$lr_0=10^{-2}$,\\then $10^{-3}$\\after 10 ep.}}\\
+            7 & 7 & $10^{-3}$ & No & & 0 & from run 0 ep.40 & \\
+            8 & 7 & $10^{-2}$ & No & & 0 & from run 0 ep.40 & \\
+            9 & 7 & $10^{-3}$ & $\times .5$ every 2 ep. & $10^{-4}$ & 0 & from run 0 ep. 40 & \\
+            10 & 7 & $10^{-3}$ & No &  & 0 & from run 9 ep.40& \\
+            \hline
+            12 & & & & & & & \\
+            13 & & & & & & & \\
+            14 & & & & & & & \\
+            \hline
+        \end{tabular}
+        \caption{\textit{All the runs. The batch size is 32 and the number of epochs is 40.}}
+    \end{table}
+
 
 \end{document}

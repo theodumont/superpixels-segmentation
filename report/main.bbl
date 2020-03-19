@@ -4,13 +4,25 @@
 Microsoft coco: Common objects in context.
 \newblock 2014.
 
-\bibitem{arbelaez_2011}
+\bibitem{achanta2012}
+Radhakrishna Achanta, Appu Shaji, Kevin Smith, Aurélien Lucchi, Pascal Fua,
+  and Sabine Susstrunk.
+\newblock Slic superpixels compared to state-of-the-art superpixel methods.
+\newblock {\em IEEE transactions on pattern analysis and machine intelligence},
+  34, 05 2012.
+
+\bibitem{achanta2017}
+Radhakrishna Achanta and Sabine Susstrunk.
+\newblock Superpixels and polygons using simple non-iterative clustering.
+\newblock pages 4895--4904, 07 2017.
+
+\bibitem{arbelaez2011}
 P.~Arbeláez, M.~Maire, C.~Fowlkes, and J.~Malik.
 \newblock Contour detection and hierarchical image segmentation.
 \newblock {\em IEEE Trans. Pattern Anal. Mach. Intell.}, 33(5):898--916, may
   2011.
 
-\bibitem{chang_2019}
+\bibitem{chang2019}
 Ka\"iwen Chang.
 \newblock {\em Machine learning based image segmentation}.
 \newblock PhD thesis, Universit{\'e} de recherche Paris Sciences et Lettres,
@@ -21,40 +33,46 @@ Qifeng Chen, Jia Xu, and Vladlen Koltun.
 \newblock Fast image processing with fully-convolutional networks.
 \newblock 2017.
 
-\bibitem{felzenszwalb_2004}
+\bibitem{felzenszwalb2004}
 P.~F. Felzenszwalb and D.~P. Huttenlocher.
 \newblock Efficient graph-based image segmentation.
 \newblock {\em International journal of computer vision}, 59(2):167--181, 2004.
 
-\bibitem{fulkerson_2009}
+\bibitem{fulkerson2009}
 Brian Fulkerson, Andrea Vedaldi, and Stefano Soatto.
 \newblock Class segmentation and object localization with superpixel
   neighborhoods.
 \newblock {\em In Computer Vision}, pages 670–--677, 2009.
 
-\bibitem{ren_2005}
+\bibitem{neubert2012}
+Peer Neubert and Peter~Protzel Chemnitz.
+\newblock Superpixel benchmark and comparison.
+\newblock In {\em Forum Bildverarbeitung 2010}, pages 205--218, 2012.
+
+\bibitem{ren2005}
 X.~Ren, C.~C. Fowlkes, and J.~Malik.
 \newblock Scale-invariant contour completion using conditional random fields.
 \newblock In {\em Tenth IEEE International Conference on Computer Vision
   (ICCV'05) Volume 1}, volume~2, pages 1214--1221, Oct 2005.
 
-\bibitem{shi_2000}
+\bibitem{schick2012}
+Alexander Schick, Mika Fischer, and Rainer Stiefelhagen.
+\newblock Measuring and evaluating the compactness of superpixels.
+\newblock {\em Proceedings of the 21st International Conference on Pattern
+  Recognition (ICPR2012)}, pages 930--934, 2012.
+
+\bibitem{shi2000}
 J.~Shi and J.~Malik.
 \newblock Normalized cuts and image segmentation.
 \newblock {\em IEEE Transactions on pattern analysis and machine intelligence},
   22(8):888--905, 2000.
-
-\bibitem{stutz_2017}
-David Stutz, Alexander Hermans, and Bastian Leibe.
-\newblock Superpixels: An evaluation of the state-of-the-art.
-\newblock {\em Computer Vision and Image Understanding}, April 2017.
 
 \bibitem{yu2015}
 Fisher Yu and Vladlen Koltun.
 \newblock Multi-scale context aggregation by dilated convolutions.
 \newblock 2015.
 
-\bibitem{zitnick_2007}
+\bibitem{zitnick2007}
 C.~Lawrence Zitnick and Sing~Bing Kang.
 \newblock Stereo for image-based rendering using image over-segmentation.
 \newblock {\em International Journal of Computer Vision}, 75(1):49--65, 2007.
