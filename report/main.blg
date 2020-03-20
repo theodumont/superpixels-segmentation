@@ -1,14 +1,15 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: main.aux
+White space in argument---line 124 of file main.aux
+ : \citation{todo
+ :                metrics dans larticle}
+I'm skipping whatever remains of this command
 The style file: plain.bst
 Database file #1: sources.bib
-Repeated entry---line 141 of file sources.bib
- : @article{arbelaez2011
- :                      ,
-I'm skipping whatever remains of this entry
 Warning--I didn't find a database entry for "stutz_2017"
 Warning--I didn't find a database entry for "ref"
 Warning--I didn't find a database entry for "abn"
 Warning--I didn't find a database entry for "tvloss"
+Warning--I didn't find a database entry for "todo"
 Warning--to sort, need author or key in microsoft2014
 Warning--empty author in microsoft2014
 Warning--empty journal in microsoft2014

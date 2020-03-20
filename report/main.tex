@@ -29,24 +29,23 @@ By combining an algorithm that generates superpixel partitions through the resol
 The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields results in terms of boundary adherence that are comparable to the ones obtained with state of the art algorithms including SLIC, while significantly improving on these algorithms in terms of compactness and undersegmentation.
 
 \section*{To do}
-\begin{itemize}
-    % \item undersegmentation error
-    % \item SLIC
-    % \item COCO dataset
-    \item rédiger paragraphe eikonal
-    % \item global approach quickly
-    % \item Chen
-    \item rédiger Unet
-    \item implementation: quel nb d'epochs?
-    \item hpp
     \begin{itemize}
-        \item nb of epochs
-        \item TV loss
+        % \item undersegmentation error
+        % \item SLIC
+        % \item COCO dataset
+        \item rédiger paragraphe eikonal
+        % \item global approach quickly
+        % \item Chen
+        \item rédiger Unet
+        % \item implementation: quel nb d'epochs?
+        \item hpp: TV loss
+        % \begin{itemize}
+            % \item nb of epochs
+        % \end{itemize}
+        \item appendice: tableaux de tous les runs
+        \item results on dataset
+        \item conclusion
     \end{itemize}
-    \item en annexe : tableaux de tous les runs
-    \item results on dataset
-    \item conclusion
-\end{itemize}
 
 \section{Introduction}
 
@@ -96,6 +95,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
         Thus, superpixel algorithms are often considered as a pre-processing step in a number of applications. They can be used for depth estimation~\cite{zitnick2007} or make the objects features more understandable in object classification. Finally, computing the superpixel partition of an image can constitute a first processing step to obtain an actual segmentation for this image~\cite{fulkerson2009}, reducing the complexity of finding the different regions of an image by grouping at first similar pixels.
 
         \subsubsection{A good superpixel segmentation}
+            \label{par:metrics}
             Before even starting building one, we have to define what is a ``good'' superpixel segmentation algorithm. As it is shown in~\cite{stutz_2017}, it is a very ambiguous task as many relevant criteria exist. Several metrics, though, are commonly chosen in the literature to evaluate whether a superpixel algorithm gives good results or not.
 
             Let $G = \{G_i\}_i$ and $S = \{S_j\}_j$ be partitions of the same image $I : x_n \mapsto I(x_n)$, $1 \leq n \leq N$. $G$ is the ground truth segmented image\footnote{ground truth segmented or superpixel segmented?} and $S$ is the segmented image obtained from a superpixel algorithm.
@@ -144,8 +144,8 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
 
 \newpage
 \section{Dataset generation}
-    \subsection{COCO dataset}
 
+    \subsection{COCO dataset}
         The training of the neural network was performed on the COCO dataset~\cite{microsoft2014}\footnote{\url{http://cocodataset.org}}. This dataset gathers images of complex everyday scenes containing common objects in their natural context and can be used for object detection, segmentation and captioning. In order to have a better understanding of this dataset, we can analyze its image (Figure~\ref{fig:train}). Hence the necessity to pre-process the dataset in order to standardize the input images' size.
 
         \begin{figure}[!ht]
@@ -171,7 +171,8 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             \caption{\textit{Training set characterization}}
             \label{fig:train}
         \end{figure}
-        \noindent The COCO dataset contains a huge number of images, but its segmentations are not very qualitative. A it has been labeled by hand in an approximative way, its segmented images lack quality and their boundaries are often imprecise (Figure~\ref{fig:imprecise}). We subsequently introduce the Eikonal algorithm, which constitutes an important step in the process but that will not be fully detailed in this paper.
+        \par
+        The COCO dataset contains a huge number of images, but its segmentations are not very qualitative. A it has been labeled by hand in an approximative way, its segmented images lack quality and their boundaries are often imprecise (Figure~\ref{fig:imprecise}). We subsequently introduce the Eikonal algorithm, which constitutes an important step in the process but that will not be fully detailed in this paper.
 
         \begin{figure}[!ht]
             \centering
@@ -190,15 +191,13 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
         \end{figure}
         \par
         We denote as $\dot S$ a segmented image with regions of \textit{the same color} $(0, 255, 255)$  and as $\bar S$ a segmented image with regions of \textit{the same label} (0, 1, 2 \dots).
-        \paragraph{Training}
-        The training of the convolutional neural network runs as follows:
+        \paragraph{Training} The training of the convolutional neural network runs as follows:
         \begin{enumerate}
             \item from the COCO dataset, extract the semantic segmented image $\dot C_0$ and transform it into a superpixel segmented image $\bar C_1$ with the Eikonal algorithm;
             \item from $\bar C_1$, compute the $\dot C_f$ image by assigning to each superpixel the mean color of its pixel on the original image $C_0$. The idea is that such a transformed image, relatively close to the original image, seems easier to learn by a network than a labeled image such as $\bar C_1$;
             \item use $(G,S)=(C_0, \dot C_f)$ as an training input to the neural network.
         \end{enumerate}
-        \paragraph{Test}
-        To test the network on the BSD dataset (\textit{cf.} Section~\ref{par:bsd}, page~\pageref{par:bsd}):
+        \paragraph{Test} We test the model on the Berkeley Segmentation Dataset 500 (BSDS500)~\cite{arbelaez2011}. It only contains 500 images but provides very qualitative ground truth manual segmentations for each image. To test the network on the BSD dataset:
         \begin{enumerate}
             \item from the BSD dataset, extract the original image $B_0$ and give it to the neural network;
             \item get the neural network output $N_0$, which is a nearly segmented image;
@@ -315,39 +314,38 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             \end{table}
 
         \subsubsection{UNet}
-        J'ai testé le U-net complet. Les résultats d'entraînement sont tops, mais ça ne généralise pas bien du tout (grosse erreur de validation). J'ai relancé deux calculs en supprimant une des étapes intermédiaires pour diminuer le nombre de paramètres, et en ajoutant une pénalisation TV, le calcul en est à une dizaine d'époques.
-        To do
+            J'ai testé le U-net complet. Les résultats d'entraînement sont tops, mais ça ne généralise pas bien du tout (grosse erreur de validation). J'ai relancé deux calculs en supprimant une des étapes intermédiaires pour diminuer le nombre de paramètres, et en ajoutant une pénalisation TV, le calcul en est à une dizaine d'époques.
+            To do
         \subsubsection{Chen + UNet}
-        To do
+            To do
 
     \subsection{Total Variation Loss}
         In such a search for well-segmented images, 2 criteria have to be fulfilled. The output needs to be as close as possible to the ground truth image; but we also need the segmented image to present a lot of zones where the color gradient $\nabla f(I)$ is equal to $0$. Thus, we want to implement a train loss function that could help us satisfy these two criteria.
         In order grant an improvement in the output image smoothness, we use the Total Variation (TV) loss, defined by~\cite{tvloss}:
         $$
-        L_{TV}=\frac{1}{N}\sum_{i=1}^N |\hat{f}(I)_i-f(I)_i|^2+\alpha_{TV}\frac{1}{N}\sum_{i=1}^N|(\nabla f(I))_i)|^2
+        L_{TV}=\frac{1}{N}\sum_{i=1}^N |\hat{f}(I)_i-f(I)_i|^2+\alpha_{TV}\frac{1}{N}\sum_{i=1}^N|(\nabla f(I))_i|^2
         $$
         where $\alpha_{TV}$ is a hyperparameter that is going to be tuned and that allow us to give more or less importance to the gradient term.
 
 \section{Experiments and results}
     \subsection{Implementation}
-    The network was implemented with PyTorch\footnote{Repository can be found at \url{https://github.com/theodumont/superpixels-segmentation}.}. With a batch size of 32, the training of a model was quite long on a GPU, mainly due to the size of the training dataset and the complexity of our model. In further sections we discuss how the hyperparameters impact the model's performances --- metrics and temporal efficiency --- and we conduct experiments to find a good-performing architecture. We found that the following values worked well on the BSD dataset:
-    \begin{table}[!ht]
-        \centering
-        \begin{tabular}{|c|c|c|c|c|c|}
-            \hline
-            batch\_size & epochs & $d$ & $lr_0$ & decay for $lr_0$ & $\alpha_{TV}$ \\
-            \hline
-            \hline
-            32 & 80 & $7$ & $10^{-2}$ & $10^{-3}$ after 10 ep. & 0 \\
-            \hline
-        \end{tabular}
-        \caption{\textit{Hyperparameter values}}
-    \end{table}
+        The network was implemented with PyTorch\footnote{Repository can be found at \url{https://github.com/theodumont/superpixels-segmentation}.}. With a batch size of 32, the training of a model was quite long on a GPU, mainly due to the size of the training dataset and the complexity of our model. In further sections we discuss how the hyperparameters impact the model's performances --- metrics and temporal efficiency --- and we conduct experiments to find a good-performing architecture. We found that the following values worked well on the BSD dataset:
+        \begin{table}[!ht]
+            \centering
+            \begin{tabular}{|c|c|c|c|c|c|}
+                \hline
+                batch\_size & epochs & $d$ & $lr_0$ & decay for $lr_0$ & $\alpha_{TV}$ \\
+                \hline
+                \hline
+                32 & 80 & $7$ & $10^{-2}$ & $10^{-3}$ after 10 ep. & 0 \\
+                \hline
+            \end{tabular}
+            \caption{\textit{Hyperparameter values}}
+        \end{table}
 
 
     \subsection{Hyperparameter tuning}
         \subsubsection{Learning rate}
-
             At first, we tested several values for the learning rate $lr$. But either it was too low, and the loss would stagnate over the epochs, either it was too high and the loss wouldn't decrease (Figure~\ref{fig:hpp-lr-div}). We thus want to change the learning rate over the epochs and we allow it to decrease until it reaches a threshold value.
 
             \begin{table}[!ht]
@@ -399,7 +397,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
 
             \begin{figure}[!ht]
                 \begin{subfigure}{.49\linewidth}
-                    \center
+                    \centering
                     \begin{tabular}{|c|c|c|c|c|c|}
                         \hline
                         $d$ & 4 & 5 & 6 & 7 & 8 \\
@@ -418,24 +416,45 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             As expected, the higher $d$ is, the lower the loss function becomes. We indeed add a convolution layer to our model each time $d$ is incremented. However, this addition has a cost; while improving the precision results of our network, we increase its computation time. As between $d=6$ and $d=7$, the improvement seems relatively low, we choose to keep 7 as a value for $d$, which seems a good compromise between computation time and precision performances.
 
         \subsubsection{Number of epochs}
-            L'entraînement tourne sur 80 époques en effet. Pour choisir le fichier de poids, je choisis les poids de l'époque qui me donne l'erreur de validation la plus faible.
+            After a hundred epochs of training, the validation loss levels while the training loss keeps decreasing. We thus trained our models over 80 epochs. After each training, we chose the network weights that were providing the best validation loss results.
 
-            nb epochs: on le sélectionne en prenant le minimum de la validation loss
-            After a hundred epochs, the validation loss levels while the training loss keep decreasing.
         \subsubsection{TV regularization}
-        check premiers runs
-            attention changer valeur code
-            PK MARCHE PAS ?
-            - gradient fort sur outlines
-            - comment faire ? découper images, COCO pas ouf pour ça, résolution basse
+            experience \cite{todo}
+
+            \begin{figure}[!ht]
+                \begin{subfigure}{.49\linewidth}
+                    \centering
+                    \begin{tabular}{|c|c|c|c|c|c|}
+                        \hline
+                        $\alpha_{TV}$ &   &   &   &   &   \\
+                        \hline \hline
+                        loss$\times 10^3$ &   &   &   &   &  \\
+                        \hline
+                    \end{tabular}
+                \end{subfigure}
+                \begin{subfigure}{.49\linewidth}
+                    \centering
+                    % \includegraphics[width=.8\linewidth]{pics/hpp-tv.png}
+                \end{subfigure}
+                \caption{\textit{Tuning of $\alpha_{TV}$: loss values on the validation set}}
+            \end{figure}
+            \par
+            interpretation \cite{todo}
+            \par
+            As such, whereas at first glance implementing a TV-loss regularization could totally have yielded better results, it does not improve the model. We tried to analyze why such an initiative didn't pay off. Actually, adding the $|(\nabla f(I))_i|^2$ term in the loss function is enjoining the network to reduce the overall gradient function of the image. Nevertheless, while a superpixel segmented image has a lot a regions where its gradient is 0, it also has a very high gradient on the objects contours.
+            \par
+            Although the results obtained are satisfying without a TV-regularization, we could pre-process each image by dividing it into several smaller ones to reduce the amount of outlines in each image the neural network is going to process. However, the COCO dataset is not suitable for this task as its images have a very low resolution. Cutting them would result in losing a lot of global information and thus making the use of a CAN meaningless.
 
     \subsection{Results on dataset}
-    cf results/images
-    BSD dataset, BSD fait a la main et pas a l'arrache comme COCO
-     Berkeley Segmentation Dataset 500 (BSDS500)\cite{arbelaez2011}
+        To assess its performances, we evaluated our model on the 500 images of the Berkeley Segmentation Dataset 500 (BSDS500)\cite{arbelaez2011} for the three metrics that we previously defined (\ref{par:metrics}): boundary recall, undersegmentation and compactness.
+        \begin{figure}[!htb]
+            \centering
+            \includegraphics[width=.8\linewidth]{pics/img_bsd_res2.png}
+            \caption{\textit{Application of the model to an image of the BSD500. Each superpixel is displayed with the average color of the pixels belonging to it. Details for each image \cite{todo}}}
+        \end{figure}
 
-        \paragraph{Results}
-        Here are the previously defined metrics of some well-known superpixel segmentation algorithms.
+        Here are evaluated the metrics for some superpixel segmentation algorithms: the \underline{w}ater\underline{s}hed algorithm (WS), \underline{ei}konal (EI) and \underline{ei}konal with \underline{t}extures~\cite{todo metrics dans larticle} (EIT).
+        \cite{todo}
         \begin{table}[!ht]
             \centering
             \begin{tabular}{|c|c|ccc|}
@@ -443,23 +462,22 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
                 \multicolumn{2}{|c|}{Algorithm} & BR & UE & CO\\
                 \hline
                 \hline
-                \multirow{3}{*}{image analysis} & EI [\footnote{eikonal}] & & & \\
-                & EIT [\footnote{Eikonal with textures, metriques dans l'article}] & & & \\
-                & WS [\footnote{watershed}] & & & \\
+                \multirow{3}{*}{image analysis} & EI & & & \\
+                                                & EIT & & & \\
+                                                & WS & & & \\
                 \hline
-                \multirow{2}{*}{neural networks} & ref [\footnote{SLIC?}] & 0.8995 & 0.0473 & 0.5409\\
-                & Ours & 0.8781\footnote{Légèrement moins bon que ref, pas très grave parce que la compacité est pourrie du coup comme les contours oscillent ils intersectent plus de contours de l'image} & 0.0388 & 0.7682\\
+                \multirow{2}{*}{neural networks} & SLIC & 0.90 & 0.05 & 0.54\\
+                                                 & Ours & 0.88 & 0.04 & 0.77\\
                 \hline
             \end{tabular}
-            \caption{Comparisons of metrics on the BSD dataset for different
-            superpixel segmentation algorithms}
+            \caption{Comparisons of metrics on the BSDS500 dataset for different superpixel segmentation algorithms}
         \end{table}
-
-        \noindent We use the SLIC alorithm as a reference to evaluate the performances of our model.
-
+        \par
+        We use the SLIC algorithm as a reference to evaluate the performances of our model. It yields very good results: the undersegmentation sees a 0.01 improvement, and the compactness is way better (improvement of 0.23). The boundary recall is slightly smaller for our model than for the SLIC algorithm, but this is not a problem as the SLIC compactness is very low. The contours oscillate and thus intersect more with the ground truth image outlines.
 
 
 \section{Conclusion/Discussion}
+\cite{todo}
 On a présenté un nouveau...\\
 On a prouvé...\\
 Il reste à faire...
@@ -474,6 +492,7 @@ relire tous les mails pour avoir toutes les infos sur performances etc
 \newpage
 
 \section*{Appendices}
+\cite{todo}
 
 \begin{table}[!ht]
         \centering
