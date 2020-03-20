@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.12.9)  20 MAR 2020 16:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.12.9)  20 MAR 2020 19:32
 entering extended mode
-**./main.tex
-(main.tex
+**"C:/Users/Théo Dumont/repos/python/s3r/s3r-repo/report/main.tex"
+("C:/Users/Théo Dumont/repos/python/s3r/s3r-repo/report/main.tex"
 LaTeX2e <2018-12-01>
 
 ("C:\Users\Théo Dumont\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\articl
@@ -615,221 +615,231 @@ LaTeX Font Info:    Try loading font information for OMS+rsfs on input line 10.
 
 ("C:\Users\Théo Dumont\AppData\Local\Programs\MiKTeX 2.9\tex/latex/calrsfs\oms
 rsfs.fd")
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 36.
+<pics/img_segm1.jpg, id=103, 642.4pt x 218.8175pt>
+File: pics/img_segm1.jpg Graphic file (type jpg)
+<use pics/img_segm1.jpg>
+Package pdftex.def Info: pics/img_segm1.jpg  used on input line 41.
+(pdftex.def)             Requested size: 200.76353pt x 68.38364pt.
+<pics/img_segm2.png, id=104, 642.4pt x 218.8175pt>
+File: pics/img_segm2.png Graphic file (type png)
+<use pics/img_segm2.png>
+Package pdftex.def Info: pics/img_segm2.png  used on input line 46.
+(pdftex.def)             Requested size: 200.76353pt x 68.38364pt.
+ [1{C:/Users/Théo Dumont/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
+
+ <./pics/img_segm1.jpg> <./pics/img_segm2.png (PNG copy)>]
+<pics/img_spp1.png, id=122, 154.07562pt x 230.36063pt>
+File: pics/img_spp1.png Graphic file (type png)
+<use pics/img_spp1.png>
+Package pdftex.def Info: pics/img_spp1.png  used on input line 62.
+(pdftex.def)             Requested size: 122.9163pt x 183.77905pt.
+<pics/img_spp2.png, id=124, 154.07562pt x 229.85875pt>
+File: pics/img_spp2.png Graphic file (type png)
+<use pics/img_spp2.png>
+Package pdftex.def Info: pics/img_spp2.png  used on input line 66.
+(pdftex.def)             Requested size: 122.9163pt x 183.37866pt.
+<pics/img_spp3.png, id=125, 154.07562pt x 229.85875pt>
+File: pics/img_spp3.png Graphic file (type png)
+<use pics/img_spp3.png>
+Package pdftex.def Info: pics/img_spp3.png  used on input line 70.
+(pdftex.def)             Requested size: 122.9163pt x 183.37866pt.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 84.
 
 ("C:\Users\Théo Dumont\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\omscmr
 .fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 36.
-<pics/img_segm1.jpg, id=107, 642.4pt x 218.8175pt>
-File: pics/img_segm1.jpg Graphic file (type jpg)
-<use pics/img_segm1.jpg>
-Package pdftex.def Info: pics/img_segm1.jpg  used on input line 60.
-(pdftex.def)             Requested size: 200.76353pt x 68.38364pt.
-<pics/img_segm2.png, id=108, 642.4pt x 218.8175pt>
-File: pics/img_segm2.png Graphic file (type png)
-<use pics/img_segm2.png>
-Package pdftex.def Info: pics/img_segm2.png  used on input line 65.
-(pdftex.def)             Requested size: 200.76353pt x 68.38364pt.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 84.
+ [2 <./pics/img_spp1.png> <./pics/img_spp2.png> <./pics/img_spp3.png>]
 
+LaTeX Warning: Citation `todo:Undersegmentation' on page 3 undefined on input l
+ine 97.
 
-LaTeX Warning: Reference `ref' on page 1 undefined on input line 68.
-
-
-LaTeX Warning: Reference `ref' on page 1 undefined on input line 68.
-
-[1{C:/Users/Théo Dumont/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
-
-]
-<pics/img_spp1.png, id=121, 154.07562pt x 230.36063pt>
-File: pics/img_spp1.png Graphic file (type png)
-<use pics/img_spp1.png>
-Package pdftex.def Info: pics/img_spp1.png  used on input line 81.
-(pdftex.def)             Requested size: 122.9163pt x 183.77905pt.
-<pics/img_spp2.png, id=123, 154.07562pt x 229.85875pt>
-File: pics/img_spp2.png Graphic file (type png)
-<use pics/img_spp2.png>
-Package pdftex.def Info: pics/img_spp2.png  used on input line 85.
-(pdftex.def)             Requested size: 122.9163pt x 183.37866pt.
-<pics/img_spp3.png, id=124, 154.07562pt x 229.85875pt>
-File: pics/img_spp3.png Graphic file (type png)
-<use pics/img_spp3.png>
-Package pdftex.def Info: pics/img_spp3.png  used on input line 89.
-(pdftex.def)             Requested size: 122.9163pt x 183.37866pt.
-
-
-LaTeX Warning: Citation `stutz_2017' on page 2 undefined on input line 99.
-
-[2 <./pics/img_segm1.jpg> <./pics/img_segm2.png (PNG copy)> <./pics/img_spp1.pn
-g> <./pics/img_spp2.png> <./pics/img_spp3.png>] [3] [4]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 149.
+[3]
+<pics/slic.png, id=174, 482.80376pt x 322.20375pt>
+File: pics/slic.png Graphic file (type png)
+<use pics/slic.png>
+Package pdftex.def Info: pics/slic.png  used on input line 116.
+(pdftex.def)             Requested size: 227.62206pt x 151.90283pt.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 131.
 
 
 ("C:\Users\Théo Dumont\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\t1cmtt
 .fd"
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-<pics/train2017full.png, id=187, 397.485pt x 397.485pt>
+<pics/train2017full.png, id=181, 397.485pt x 397.485pt>
 File: pics/train2017full.png Graphic file (type png)
 <use pics/train2017full.png>
-Package pdftex.def Info: pics/train2017full.png  used on input line 154.
+Package pdftex.def Info: pics/train2017full.png  used on input line 136.
 (pdftex.def)             Requested size: 223.07211pt x 223.07529pt.
-<pics/img_segm_coco.png, id=189, 642.4pt x 481.8pt>
+ [4 <./pics/slic.png (PNG copy)>]
+<pics/img_segm_coco.png, id=195, 642.4pt x 481.8pt>
 File: pics/img_segm_coco.png Graphic file (type png)
 <use pics/img_segm_coco.png>
-Package pdftex.def Info: pics/img_segm_coco.png  used on input line 179.
+Package pdftex.def Info: pics/img_segm_coco.png  used on input line 161.
 (pdftex.def)             Requested size: 136.57462pt x 102.43076pt.
- [5 <./pics/train2017full.png> <./pics/img_segm_coco.png (PNG copy)>]
-<pics/schema-global.png, id=200, 847.165pt x 440.64626pt>
+<pics/schema-global.png, id=197, 847.165pt x 440.64626pt>
 File: pics/schema-global.png Graphic file (type png)
 <use pics/schema-global.png>
-Package pdftex.def Info: pics/schema-global.png  used on input line 189.
+Package pdftex.def Info: pics/schema-global.png  used on input line 173.
 (pdftex.def)             Requested size: 455.24411pt x 236.78896pt.
-
-[6 <./pics/schema-global.png>]
-<pics/conv-simple.png, id=216, 306.39468pt x 283.0575pt>
+ [5 <./pics/train2017full.png> <./pics/img_segm_coco.png (PNG copy)>] [6 <./pic
+s/schema-global.png>]
+<pics/conv-simple.png, id=219, 306.39468pt x 283.0575pt>
 File: pics/conv-simple.png Graphic file (type png)
 <use pics/conv-simple.png>
-Package pdftex.def Info: pics/conv-simple.png  used on input line 218.
+Package pdftex.def Info: pics/conv-simple.png  used on input line 202.
 (pdftex.def)             Requested size: 178.45836pt x 164.8645pt.
-<pics/conv-dilated.png, id=217, 306.39468pt x 283.0575pt>
+<pics/conv-dilated.png, id=220, 306.39468pt x 283.0575pt>
 File: pics/conv-dilated.png Graphic file (type png)
 <use pics/conv-dilated.png>
-Package pdftex.def Info: pics/conv-dilated.png  used on input line 224.
+Package pdftex.def Info: pics/conv-dilated.png  used on input line 208.
 (pdftex.def)             Requested size: 178.45836pt x 164.8645pt.
 
 
-LaTeX Warning: Citation `ref' on page 7 undefined on input line 238.
+LaTeX Warning: Citation `dilated' on page 7 undefined on input line 222.
 
 
-LaTeX Warning: Citation `abn' on page 7 undefined on input line 243.
+LaTeX Warning: Citation `abn' on page 7 undefined on input line 227.
 
 [7 <./pics/conv-simple.png> <./pics/conv-dilated.png>]
-<pics/act-relu.png, id=232, 284.7438pt x 237.2865pt>
+<pics/act-relu.png, id=235, 284.7438pt x 237.2865pt>
 File: pics/act-relu.png Graphic file (type png)
 <use pics/act-relu.png>
-Package pdftex.def Info: pics/act-relu.png  used on input line 253.
+Package pdftex.def Info: pics/act-relu.png  used on input line 237.
 (pdftex.def)             Requested size: 156.1498pt x 130.12779pt.
-<pics/act-lrelu.png, id=233, 284.7438pt x 237.2865pt>
+<pics/act-lrelu.png, id=236, 284.7438pt x 237.2865pt>
 File: pics/act-lrelu.png Graphic file (type png)
 <use pics/act-lrelu.png>
-Package pdftex.def Info: pics/act-lrelu.png  used on input line 259.
+Package pdftex.def Info: pics/act-lrelu.png  used on input line 243.
 (pdftex.def)             Requested size: 156.1498pt x 130.12779pt.
- [8 <./pics/act-relu.png> <./pics/act-lrelu.png>]
 
-LaTeX Warning: Citation `tvloss' on page 9 undefined on input line 324.
 
-[9]
-<pics/hpp-lr-loss-678910.png, id=264, 462.528pt x 346.896pt>
+LaTeX Warning: Citation `todo:unet' on page 8 undefined on input line 302.
+
+[8 <./pics/act-relu.png> <./pics/act-lrelu.png>]
+
+LaTeX Warning: Citation `tvloss' on page 9 undefined on input line 308.
+
+<pics/hpp-lr-loss-678910.png, id=261, 460.3599pt x 312.9291pt>
 File: pics/hpp-lr-loss-678910.png Graphic file (type png)
 <use pics/hpp-lr-loss-678910.png>
-Package pdftex.def Info: pics/hpp-lr-loss-678910.png  used on input line 375.
-(pdftex.def)             Requested size: 150.23138pt x 112.67104pt.
-<pics/hpp-lr-loss-67910.png, id=265, 462.528pt x 346.896pt>
+Package pdftex.def Info: pics/hpp-lr-loss-678910.png  used on input line 357.
+(pdftex.def)             Requested size: 177.54492pt x 120.68578pt.
+<pics/hpp-lr-loss-67910.png, id=262, 460.3599pt x 314.3745pt>
 File: pics/hpp-lr-loss-67910.png Graphic file (type png)
 <use pics/hpp-lr-loss-67910.png>
-Package pdftex.def Info: pics/hpp-lr-loss-67910.png  used on input line 380.
-(pdftex.def)             Requested size: 150.23138pt x 112.67104pt.
-<pics/hpp-lr-loss-7910.png, id=266, 462.528pt x 346.896pt>
+Package pdftex.def Info: pics/hpp-lr-loss-67910.png  used on input line 363.
+(pdftex.def)             Requested size: 223.07211pt x 152.33713pt.
+<pics/hpp-lr-loss-7910.png, id=263, 460.3599pt x 316.5426pt>
 File: pics/hpp-lr-loss-7910.png Graphic file (type png)
 <use pics/hpp-lr-loss-7910.png>
-Package pdftex.def Info: pics/hpp-lr-loss-7910.png  used on input line 385.
-(pdftex.def)             Requested size: 150.23138pt x 112.67104pt.
-<pics/hpp-d.png, id=267, 462.528pt x 346.896pt>
+Package pdftex.def Info: pics/hpp-lr-loss-7910.png  used on input line 368.
+(pdftex.def)             Requested size: 223.07211pt x 153.38773pt.
+[9]
+Overfull \hbox (13.10648pt too wide) in paragraph at lines 383--390
+ [][] 
+ []
+
+<pics/hpp-d.png, id=273, 410.4936pt x 325.9377pt>
 File: pics/hpp-d.png Graphic file (type png)
 <use pics/hpp-d.png>
-Package pdftex.def Info: pics/hpp-d.png  used on input line 411.
-(pdftex.def)             Requested size: 178.45836pt x 133.84384pt.
- [10 <./pics/hpp-lr-loss-678910.png> <./pics/hpp-lr-loss-67910.png> <./pics/hpp
--lr-loss-7910.png> <./pics/hpp-d.png>]
+Package pdftex.def Info: pics/hpp-d.png  used on input line 393.
+(pdftex.def)             Requested size: 214.8747pt x 170.61255pt.
 
-LaTeX Warning: Citation `todo' on page 11 undefined on input line 422.
+LaTeX Warning: Citation `todo:tv-tuning' on page 10 undefined on input line 404
+.
 
 
-LaTeX Warning: Citation `todo' on page 11 undefined on input line 442.
+LaTeX Warning: Citation `toto:tv-interpretation' on page 10 undefined on input 
+line 424.
 
-<pics/img_bsd_res2.png, id=282, 700.2963pt x 553.5882pt>
+[10 <./pics/hpp-lr-loss-678910.png> <./pics/hpp-lr-loss-67910.png> <./pics/hpp-
+lr-loss-7910.png>]
+<pics/img_bsd_res2.png, id=285, 471.26062pt x 347.2975pt>
 File: pics/img_bsd_res2.png Graphic file (type png)
 <use pics/img_bsd_res2.png>
-Package pdftex.def Info: pics/img_bsd_res2.png  used on input line 452.
-(pdftex.def)             Requested size: 364.19667pt x 287.9013pt.
-
-LaTeX Warning: Citation `todo' on page 11 undefined on input line 453.
+Package pdftex.def Info: pics/img_bsd_res2.png  used on input line 434.
+(pdftex.def)             Requested size: 364.19667pt x 268.40027pt.
 
 
-LaTeX Warning: Citation `todo' on page 11 undefined on input line 453.
+LaTeX Warning: Citation `groundtruthornot' on page 11 undefined on input line 4
+35.
 
 
-LaTeX Warning: Citation `todo metrics dans larticle' on page 11 undefined on in
-put line 456.
+LaTeX Warning: Citation `groundtruthornot' on page 11 undefined on input line 4
+35.
 
 
-LaTeX Warning: Citation `todo' on page 11 undefined on input line 457.
+LaTeX Warning: Citation `checkplacement' on page 11 undefined on input line 437
+.
 
-[11]
 
-LaTeX Warning: Citation `todo' on page 12 undefined on input line 480.
+LaTeX Warning: Citation `todo:metrics' on page 11 undefined on input line 439.
 
-(main.bbl [12 <./pics/img_bsd_res2.png>]) [13]
+[11 <./pics/hpp-d.png>] [12 <./pics/img_bsd_res2.png>] (main.bbl) [13]
 
-LaTeX Warning: Citation `todo' on page 14 undefined on input line 495.
+LaTeX Warning: Citation `todo-experiments' on page 14 undefined on input line 4
+76.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 525.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 506.
 [14]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 525.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 506.
  (main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 525.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 525.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 506.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 506.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 00811530784388434959A37A093C2569;1759.
+(rerunfilecheck)             Checksum: 4E3243EC81202685DBD1780EE64AB258;1680.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 525.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 506.
  ) 
 Here is how much of TeX's memory you used:
- 10855 strings out of 492946
- 178575 string characters out of 3123156
- 287653 words of memory out of 3000000
- 14478 multiletter control sequences out of 15000+200000
- 24298 words of font info for 69 fonts, out of 3000000 for 9000
+ 10868 strings out of 492946
+ 178890 string characters out of 3123156
+ 289653 words of memory out of 3000000
+ 14486 multiletter control sequences out of 15000+200000
+ 24971 words of font info for 70 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 52i,15n,45p,1400b,539s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 52i,15n,45p,1455b,539s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Théo Dumont\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/
-dpi600\ecbi1000.pk> <C:\Users\Théo Dumont\AppData\Local\MiKTeX\2.9\fonts/pk/lj
-four/jknappen/ec/dpi600\ectt0800.pk> <C:\Users\Théo Dumont\AppData\Local\MiKTe
-X\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\Théo Dumont\Ap
-pData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0600.pk> <C:\User
+dpi600\eccc1000.pk> <C:\Users\Théo Dumont\AppData\Local\MiKTeX\2.9\fonts/pk/lj
+four/jknappen/ec/dpi600\ecbi1000.pk> <C:\Users\Théo Dumont\AppData\Local\MiKTe
+X\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\Théo Dumont\Ap
+pData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0800.pk> <C:\User
 s\Théo Dumont\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm
-0700.pk> <C:\Users\Théo Dumont\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknapp
-en/ec/dpi600\ecti1000.pk> <C:\Users\Théo Dumont\AppData\Local\MiKTeX\2.9\fonts
-/pk/ljfour/jknappen/ec/dpi600\ecti0900.pk> <C:\Users\Théo Dumont\AppData\Local
-\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0900.pk> <C:\Users\Théo Dum
-ont\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C
+0800.pk> <C:\Users\Théo Dumont\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknapp
+en/ec/dpi600\ecrm0600.pk> <C:\Users\Théo Dumont\AppData\Local\MiKTeX\2.9\fonts
+/pk/ljfour/jknappen/ec/dpi600\ecrm0700.pk> <C:\Users\Théo Dumont\AppData\Local
+\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\Théo Dum
+ont\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0900.pk> <C
 :\Users\Théo Dumont\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi60
-0\ecbx1200.pk> <C:\Users\Théo Dumont\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/
-jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Théo Dumont\AppData\Local\MiKTeX\2.9
-\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk><C:/Users/Théo Dumont/AppData/
-Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/T
-héo Dumont/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-mi10.pfb><C:/Users/Théo Dumont/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmmi5.pfb><C:/Users/Théo Dumont/AppData/Local/Programs/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Théo Dumont/AppData/L
-ocal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Th�
-�o Dumont/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi
-9.pfb><C:/Users/Théo Dumont/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
-ic/amsfonts/cm/cmr10.pfb><C:/Users/Théo Dumont/AppData/Local/Programs/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Théo Dumont/AppData/Local
-/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/Théo Du
-mont/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pf
+0\ecbx0900.pk> <C:\Users\Théo Dumont\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/
+jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\Théo Dumont\AppData\Local\MiKTeX\2.9
+\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\Théo Dumont\AppData
+\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Th�
+�o Dumont\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.
+pk><C:/Users/Théo Dumont/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
+amsfonts/cm/cmex10.pfb><C:/Users/Théo Dumont/AppData/Local/Programs/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Théo Dumont/AppData/Local
+/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Théo D
+umont/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pf
 b><C:/Users/Théo Dumont/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmsy7.pfb>
-Output written on main.pdf (14 pages, 2275597 bytes).
+msfonts/cm/cmmi8.pfb><C:/Users/Théo Dumont/AppData/Local/Programs/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/Théo Dumont/AppData/Local/Pr
+ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Théo Dumo
+nt/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C
+:/Users/Théo Dumont/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfo
+nts/cm/cmr9.pfb><C:/Users/Théo Dumont/AppData/Local/Programs/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Théo Dumont/AppData/Local/Progra
+ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on main.pdf (14 pages, 2510614 bytes).
 PDF statistics:
- 786 PDF objects out of 1000 (max. 8388607)
- 95 named destinations out of 1000 (max. 500000)
- 294 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 816 PDF objects out of 1000 (max. 8388607)
+ 96 named destinations out of 1000 (max. 500000)
+ 291 words of extra memory for PDF output out of 10000 (max. 10000000)
 

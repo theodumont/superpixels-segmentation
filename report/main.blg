@@ -1,19 +1,23 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: main.aux
-White space in argument---line 124 of file main.aux
- : \citation{todo
- :                metrics dans larticle}
-I'm skipping whatever remains of this command
 The style file: plain.bst
 Database file #1: sources.bib
-Warning--I didn't find a database entry for "stutz_2017"
-Warning--I didn't find a database entry for "ref"
+Warning--I didn't find a database entry for "todo:Undersegmentation"
+Warning--I didn't find a database entry for "dilated"
 Warning--I didn't find a database entry for "abn"
+Warning--I didn't find a database entry for "todo:unet"
 Warning--I didn't find a database entry for "tvloss"
-Warning--I didn't find a database entry for "todo"
+Warning--I didn't find a database entry for "todo:tv-tuning"
+Warning--I didn't find a database entry for "toto:tv-interpretation"
+Warning--I didn't find a database entry for "groundtruthornot"
+Warning--I didn't find a database entry for "checkplacement"
+Warning--I didn't find a database entry for "todo:metrics"
+Warning--I didn't find a database entry for "todo-experiments"
 Warning--to sort, need author or key in microsoft2014
 Warning--empty author in microsoft2014
 Warning--empty journal in microsoft2014
 Warning--empty booktitle in achanta2017
+Warning--empty journal in figliuzzi2019
 Warning--empty journal in chen2017
+Warning--empty journal in unet2015
 Warning--empty journal in yu2015
-(There was 1 error message)
+(There were 19 warnings)

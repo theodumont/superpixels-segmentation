@@ -28,6 +28,11 @@ Ka\"iwen Chang.
 \newblock PhD thesis, Universit{\'e} de recherche Paris Sciences et Lettres,
   2019.
 
+\bibitem{figliuzzi2019}
+Kaiwen Chang and Bruno Figliuzzi.
+\newblock {Fast Marching Based Superpixels Generation}.
+\newblock pages 350--361, May 2019.
+
 \bibitem{chen2017}
 Qifeng Chen, Jia Xu, and Vladlen Koltun.
 \newblock Fast image processing with fully-convolutional networks.
@@ -55,6 +60,11 @@ X.~Ren, C.~C. Fowlkes, and J.~Malik.
 \newblock In {\em Tenth IEEE International Conference on Computer Vision
   (ICCV'05) Volume 1}, volume~2, pages 1214--1221, Oct 2005.
 
+\bibitem{unet2015}
+Olaf Ronneberger, Philipp Fischer, and Thomas Brox.
+\newblock U-net: Convolutional networks for biomedical image segmentation.
+\newblock 2015.
+
 \bibitem{schick2012}
 Alexander Schick, Mika Fischer, and Rainer Stiefelhagen.
 \newblock Measuring and evaluating the compactness of superpixels.
@@ -66,6 +76,11 @@ J.~Shi and J.~Malik.
 \newblock Normalized cuts and image segmentation.
 \newblock {\em IEEE Transactions on pattern analysis and machine intelligence},
   22(8):888--905, 2000.
+
+\bibitem{stutz2017}
+David Stutz, Alexander Hermans, and Bastian Leibe.
+\newblock Superpixels: An evaluation of the state-of-the-art.
+\newblock {\em Computer Vision and Image Understanding}, April 2017.
 
 \bibitem{yu2015}
 Fisher Yu and Vladlen Koltun.
