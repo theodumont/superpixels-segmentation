@@ -66,7 +66,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             \includegraphics[width=0.9\linewidth]{pics/img_segm2.png}
             \caption{\textit{The segmented image}}
         \end{subfigure}
-            \caption{\textit{A segmentation. To each segmented region of the image was affected the mean value of its pixels. Both images are from the COCO training dataset (REF?).}}
+            \caption{\textit{A segmentation. To each segmented region of the image was affected the mean value of its pixels. Both images are from the COCO training dataset \ref{ref}.}}
             \label{fig:segm}
         \end{figure}
 
@@ -127,6 +127,12 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             \paragraph{Contour based methods} For contour based methods, contour detection algorithms are first used to obtain candidate contours, and one has to find a way to transform these into closed contours (See~\cite{ren2005, arbelaez2011}). A classical approach for performing contour based segmentation is for instance the watershed algorithm.
 
             \paragraph{Region based methods} For region based methods, the image is oversegmented into small regions which are then merged to obtain an actual segmentation. To that end, a classical approach consists in representing the oversegmented image by a region adjacency graph connecting nearby regions. In this case, we transform the image segmentation problem into a graph clustering problem. A vast amount of literature in the field of image processing is dedicated to algorithms based upon graph clustering. In 2000, Shi and Malik \cite{shi2000} proposed a novel graph-theoretic criterion to measure the effectiveness of an image partition, the normalized cut, and an efficient technique for minimizing this criterion based on a generalized eigenvalue problem. This algorithm extracts global impression and obtains good results on static images and motion sequences. In 2004, Felzenszwalb and Huttenlocher \cite{felzenszwalb2004} introduced a graph-based image segmentation method based on pairwise region comparison. In their approach, pixels are merged according to their intensity differences across boundaries and between neighboring pixels within each region. The segmentation criteria are adaptively adjusted to take into account the variability in neighbor regions. These algorithms constitute the main approaches to perform graph-based segmentation.
+
+            \begin{figure}[!ht]
+                \centering
+                % \includegraphics[width=.8\linewidth]{pics/hpp-d.png}
+                \caption{\textit{fig test}}
+            \end{figure}
 
             The Simple Linear Iterative Clustering (SLIC) algorithm, introduced by Achanta et al.~\cite{achanta2012,achanta2017}, is a region based method and is ranked among the most used algorithms for superpixel segmentation. It constructs a superpixel partition by applying a K-means clustering algorithm on the image. During initialization, K cluster centers locations are selected on the image. Each pixel is then associated to the closest cluster center in the image according to a distance involving the color proximity and the physical distance between the pixel and the seed. The distance between the previous and the new locations is used to compute a residual error $E$, and the procedure is iterated until the error $E$ converges.
 
@@ -194,8 +200,8 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
         \paragraph{Test}
         To test the network on the BSD dataset (\textit{cf.} Section~\ref{par:bsd}, page~\pageref{par:bsd}):
         \begin{enumerate}
-            \item from the BSD dataset, extract the original image $B_0$ and give it to the NN;
-            \item get the NN output $N_0$, which is a nearly segmented image;
+            \item from the BSD dataset, extract the original image $B_0$ and give it to the neural network;
+            \item get the neural network output $N_0$, which is a nearly segmented image;
             \item use the Eikonal algorithm to obtain the final superpixel segmented image $\bar N_f$, with superpixel labels, on which we compute the metrics by comparing it to the ground truth $\bar B_0$.
         \end{enumerate}
 
@@ -230,12 +236,12 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
                  & = \sum_b L_j(x-rb)K_{i,j}(b)
             \end{align*}
             and we recognize the simple convolution when $r=1$.\\
-            A dilated convolution enables the network getting larger receptive fields --- which allows the network to aggregate information at increasing scales on the image --- while preserving the input resolution\footnote{ref ?}.
+            A dilated convolution enables the network getting larger receptive fields --- which allows the network to aggregate information at increasing scales on the image --- while preserving the input resolution~\cite{ref}.
 
 
             \paragraph{Adaptative Batch Normalization (ABN)} Distinct images in the COCO dataset have very different color ranges; in order to maximize the network performances, we normalize the data. We define the \textit{adaptative normalization function} $\Psi$ as:
             $$\Psi(x)=a\ x+b\ BN(x),$$
-            where $BN$ is the classic batch normalization\footnote{reference ?}, defined as:
+            where $BN$ is the classic batch normalization~\cite{abn}, defined as:
             $$BN(x) = \frac{x-\mathrm{E}[x]}{\sqrt{\mathrm{Var}[x]+\epsilon}}*\gamma+\beta.$$
             As such, $\Psi$ combines identity mapping and batch normalization. The $a$, $b$, $\gamma$ and $\beta$ parameters are learned by backpropagation. It allows the model to adapt to each dataset, choosing whether or not giving a big importance to the identity term and the normalization term.
 
@@ -309,6 +315,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             \end{table}
 
         \subsubsection{UNet}
+        J'ai testé le U-net complet. Les résultats d'entraînement sont tops, mais ça ne généralise pas bien du tout (grosse erreur de validation). J'ai relancé deux calculs en supprimant une des étapes intermédiaires pour diminuer le nombre de paramètres, et en ajoutant une pénalisation TV, le calcul en est à une dizaine d'époques.
         To do
         \subsubsection{Chen + UNet}
         To do
@@ -331,7 +338,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             batch\_size & epochs & $d$ & $lr_0$ & decay for $lr_0$ & $\alpha_{TV}$ \\
             \hline
             \hline
-            32 & 80? & $7$ & $10^{-2}$ & $10^{-3}$ after 10 ep. & 0 \\
+            32 & 80 & $7$ & $10^{-2}$ & $10^{-3}$ after 10 ep. & 0 \\
             \hline
         \end{tabular}
         \caption{\textit{Hyperparameter values}}
@@ -384,9 +391,10 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
                 \caption{\textit{Tuning of learning rate: validation loss for different runs}}
             \end{figure}
             \par
-            After a hundred epochs, the validation loss levels while the training loss keep decreasing. It thus seems relevant to start from a learning rate of $10^{-2}$ and then to decrease it to $10^{-3}$ after a dozen epochs.
+            Introducing a decay and a threshold broadly gives the same results as switching the learning rate only once, after a dozen epochs. It thus seems relevant to start from a learning rate of $10^{-2}$, which allows the network to adapt quickly at first, and then to decrease it to $10^{-3}$ after a dozen epochs. Decreasing the learning rate below this value gives negligible results and essentially only slows down the algorithm.
 
         \subsubsection{Network size \textit{d}}
+            \label{par:hpp-d}
             In order to tune our network size, we fix the learning rate at $10^{-2}$, we divide it by 2 every 2 epochs and we threshold at $10^{-4}$. We do not use the TV-regularization.
 
             \begin{figure}[!ht]
@@ -410,7 +418,10 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             As expected, the higher $d$ is, the lower the loss function becomes. We indeed add a convolution layer to our model each time $d$ is incremented. However, this addition has a cost; while improving the precision results of our network, we increase its computation time. As between $d=6$ and $d=7$, the improvement seems relatively low, we choose to keep 7 as a value for $d$, which seems a good compromise between computation time and precision performances.
 
         \subsubsection{Number of epochs}
+            L'entraînement tourne sur 80 époques en effet. Pour choisir le fichier de poids, je choisis les poids de l'époque qui me donne l'erreur de validation la plus faible.
+
             nb epochs: on le sélectionne en prenant le minimum de la validation loss
+            After a hundred epochs, the validation loss levels while the training loss keep decreasing.
         \subsubsection{TV regularization}
         check premiers runs
             attention changer valeur code
@@ -421,7 +432,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
     \subsection{Results on dataset}
     cf results/images
     BSD dataset, BSD fait a la main et pas a l'arrache comme COCO
-     Berkeley Segmentation Dataset 500 (BSDS500)\cite{bsd2011}, [3] bruno
+     Berkeley Segmentation Dataset 500 (BSDS500)\cite{arbelaez2011}
 
         \paragraph{Results}
         Here are the previously defined metrics of some well-known superpixel segmentation algorithms.

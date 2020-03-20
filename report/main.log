@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.12.9)  20 MAR 2020 00:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.12.9)  20 MAR 2020 13:21
 entering extended mode
-**"C:/Users/Théo Dumont/repos/python/s3r/s3r-repo/report/main.tex"
-("C:/Users/Théo Dumont/repos/python/s3r/s3r-repo/report/main.tex"
+**./main.tex
+(main.tex
 LaTeX2e <2018-12-01>
 
 ("C:\Users\Théo Dumont\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\articl
@@ -636,6 +636,13 @@ File: pics/img_segm2.png Graphic file (type png)
 <use pics/img_segm2.png>
 Package pdftex.def Info: pics/img_segm2.png  used on input line 66.
 (pdftex.def)             Requested size: 200.76353pt x 68.38364pt.
+
+
+LaTeX Warning: Reference `ref' on page 2 undefined on input line 69.
+
+
+LaTeX Warning: Reference `ref' on page 2 undefined on input line 69.
+
 <pics/img_spp1.png, id=121, 154.07562pt x 230.36063pt>
 File: pics/img_spp1.png Graphic file (type png)
 <use pics/img_spp1.png>
@@ -651,137 +658,133 @@ File: pics/img_spp3.png Graphic file (type png)
 <use pics/img_spp3.png>
 Package pdftex.def Info: pics/img_spp3.png  used on input line 90.
 (pdftex.def)             Requested size: 122.9163pt x 183.37866pt.
- [2 <./pics/img_segm1.jpg> <./pics/img_segm2.png (PNG copy)> <./pics/img_spp1.p
-ng> <./pics/img_spp2.png> <./pics/img_spp3.png>]
+[2 <./pics/img_segm1.jpg> <./pics/img_segm2.png (PNG copy)> <./pics/img_spp1.pn
+g> <./pics/img_spp2.png> <./pics/img_spp3.png>]
 
 LaTeX Warning: Citation `stutz_2017' on page 3 undefined on input line 99.
 
 [3] [4]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 143.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 149.
 
 
 ("C:\Users\Théo Dumont\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\t1cmtt
 .fd"
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-<pics/train2017full.png, id=186, 397.485pt x 397.485pt>
+<pics/train2017full.png, id=187, 397.485pt x 397.485pt>
 File: pics/train2017full.png Graphic file (type png)
 <use pics/train2017full.png>
-Package pdftex.def Info: pics/train2017full.png  used on input line 148.
+Package pdftex.def Info: pics/train2017full.png  used on input line 154.
 (pdftex.def)             Requested size: 223.07211pt x 223.07529pt.
-<pics/img_segm_coco.png, id=188, 642.4pt x 481.8pt>
+<pics/img_segm_coco.png, id=189, 642.4pt x 481.8pt>
 File: pics/img_segm_coco.png Graphic file (type png)
 <use pics/img_segm_coco.png>
-Package pdftex.def Info: pics/img_segm_coco.png  used on input line 172.
+Package pdftex.def Info: pics/img_segm_coco.png  used on input line 178.
 (pdftex.def)             Requested size: 136.57462pt x 102.43076pt.
  [5 <./pics/train2017full.png> <./pics/img_segm_coco.png (PNG copy)>]
-<pics/schema-global.png, id=199, 847.165pt x 440.64626pt>
+<pics/schema-global.png, id=200, 847.165pt x 440.64626pt>
 File: pics/schema-global.png Graphic file (type png)
 <use pics/schema-global.png>
-Package pdftex.def Info: pics/schema-global.png  used on input line 182.
+Package pdftex.def Info: pics/schema-global.png  used on input line 188.
 (pdftex.def)             Requested size: 455.24411pt x 236.78896pt.
 
 
-LaTeX Warning: Reference `par:bsd' on page 6 undefined on input line 195.
+LaTeX Warning: Reference `par:bsd' on page 6 undefined on input line 201.
 
 
-LaTeX Warning: Reference `par:bsd' on page 6 undefined on input line 195.
+LaTeX Warning: Reference `par:bsd' on page 6 undefined on input line 201.
 
 [6 <./pics/schema-global.png>]
-<pics/conv-simple.png, id=214, 306.39468pt x 283.0575pt>
+<pics/conv-simple.png, id=215, 306.39468pt x 283.0575pt>
 File: pics/conv-simple.png Graphic file (type png)
 <use pics/conv-simple.png>
-Package pdftex.def Info: pics/conv-simple.png  used on input line 213.
+Package pdftex.def Info: pics/conv-simple.png  used on input line 219.
 (pdftex.def)             Requested size: 178.45836pt x 164.8645pt.
-<pics/conv-dilated.png, id=215, 306.39468pt x 283.0575pt>
+<pics/conv-dilated.png, id=216, 306.39468pt x 283.0575pt>
 File: pics/conv-dilated.png Graphic file (type png)
 <use pics/conv-dilated.png>
-Package pdftex.def Info: pics/conv-dilated.png  used on input line 219.
+Package pdftex.def Info: pics/conv-dilated.png  used on input line 225.
 (pdftex.def)             Requested size: 178.45836pt x 164.8645pt.
- [7 <./pics/conv-simple.png> <./pics/conv-dilated.png>]
-<pics/act-relu.png, id=234, 284.7438pt x 237.2865pt>
+
+
+LaTeX Warning: Citation `ref' on page 7 undefined on input line 239.
+
+
+LaTeX Warning: Citation `abn' on page 7 undefined on input line 244.
+
+[7 <./pics/conv-simple.png> <./pics/conv-dilated.png>]
+<pics/act-relu.png, id=231, 284.7438pt x 237.2865pt>
 File: pics/act-relu.png Graphic file (type png)
 <use pics/act-relu.png>
-Package pdftex.def Info: pics/act-relu.png  used on input line 248.
+Package pdftex.def Info: pics/act-relu.png  used on input line 254.
 (pdftex.def)             Requested size: 156.1498pt x 130.12779pt.
-<pics/act-lrelu.png, id=235, 284.7438pt x 237.2865pt>
+<pics/act-lrelu.png, id=232, 284.7438pt x 237.2865pt>
 File: pics/act-lrelu.png Graphic file (type png)
 <use pics/act-lrelu.png>
-Package pdftex.def Info: pics/act-lrelu.png  used on input line 254.
+Package pdftex.def Info: pics/act-lrelu.png  used on input line 260.
 (pdftex.def)             Requested size: 156.1498pt x 130.12779pt.
+ [8 <./pics/act-relu.png> <./pics/act-lrelu.png>]
 
-
-LaTeX Warning: Reference `par:hpp-d' on page 8 undefined on input line 266.
-
-
-LaTeX Warning: Reference `par:hpp-d' on page 8 undefined on input line 266.
-
-[8 <./pics/act-relu.png> <./pics/act-lrelu.png>]
-
-LaTeX Warning: Citation `tvloss' on page 9 undefined on input line 318.
+LaTeX Warning: Citation `tvloss' on page 9 undefined on input line 325.
 
 [9]
-<pics/hpp-lr-loss-678910.png, id=264, 462.528pt x 346.896pt>
+<pics/hpp-lr-loss-678910.png, id=263, 462.528pt x 346.896pt>
 File: pics/hpp-lr-loss-678910.png Graphic file (type png)
 <use pics/hpp-lr-loss-678910.png>
-Package pdftex.def Info: pics/hpp-lr-loss-678910.png  used on input line 370.
+Package pdftex.def Info: pics/hpp-lr-loss-678910.png  used on input line 377.
 (pdftex.def)             Requested size: 150.23138pt x 112.67104pt.
-<pics/hpp-lr-loss-67910.png, id=265, 462.528pt x 346.896pt>
+<pics/hpp-lr-loss-67910.png, id=264, 462.528pt x 346.896pt>
 File: pics/hpp-lr-loss-67910.png Graphic file (type png)
 <use pics/hpp-lr-loss-67910.png>
-Package pdftex.def Info: pics/hpp-lr-loss-67910.png  used on input line 375.
+Package pdftex.def Info: pics/hpp-lr-loss-67910.png  used on input line 382.
 (pdftex.def)             Requested size: 150.23138pt x 112.67104pt.
-<pics/hpp-lr-loss-7910.png, id=266, 462.528pt x 346.896pt>
+<pics/hpp-lr-loss-7910.png, id=265, 462.528pt x 346.896pt>
 File: pics/hpp-lr-loss-7910.png Graphic file (type png)
 <use pics/hpp-lr-loss-7910.png>
-Package pdftex.def Info: pics/hpp-lr-loss-7910.png  used on input line 380.
+Package pdftex.def Info: pics/hpp-lr-loss-7910.png  used on input line 387.
 (pdftex.def)             Requested size: 150.23138pt x 112.67104pt.
-<pics/hpp-d.png, id=267, 462.528pt x 346.896pt>
+<pics/hpp-d.png, id=266, 462.528pt x 346.896pt>
 File: pics/hpp-d.png Graphic file (type png)
 <use pics/hpp-d.png>
-Package pdftex.def Info: pics/hpp-d.png  used on input line 405.
+Package pdftex.def Info: pics/hpp-d.png  used on input line 413.
 (pdftex.def)             Requested size: 178.45836pt x 133.84384pt.
  [10 <./pics/hpp-lr-loss-678910.png> <./pics/hpp-lr-loss-67910.png> <./pics/hpp
--lr-loss-7910.png> <./pics/hpp-d.png>]
-
-LaTeX Warning: Citation `bsd2011' on page 11 undefined on input line 424.
-
-(main.bbl [11]) [12]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 495.
+-lr-loss-7910.png> <./pics/hpp-d.png>] (main.bbl [11]) [12]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 506.
  [13]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 495.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 506.
  (main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 495.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 495.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 506.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 506.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 00811530784388434959A37A093C2569;1759.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 495.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 506.
  ) 
 Here is how much of TeX's memory you used:
- 10853 strings out of 492946
- 178613 string characters out of 3123156
- 286653 words of memory out of 3000000
- 14471 multiletter control sequences out of 15000+200000
+ 10852 strings out of 492946
+ 178459 string characters out of 3123156
+ 287653 words of memory out of 3000000
+ 14473 multiletter control sequences out of 15000+200000
  24298 words of font info for 69 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 52i,16n,45p,1459b,539s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{Hfootnote.10} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.9} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{Hfootnote.8} has been referenced but does not exist
-, replaced by a fixed one
+ 52i,16n,45p,1404b,539s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{Hfootnote.8} has been referenced but does not exi
+st, replaced by a fixed one
 
 pdfTeX warning (dest): name{Hfootnote.7} has been referenced but does not exist
 , replaced by a fixed one
 
 pdfTeX warning (dest): name{Hfootnote.6} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.5} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.4} has been referenced but does not exist
 , replaced by a fixed one
 
  <C:\Users\Théo Dumont\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dp
@@ -813,9 +816,9 @@ rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/Théo Dumo
 nt/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 <C:/Users/Théo Dumont/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmsy7.pfb>
-Output written on main.pdf (13 pages, 1229411 bytes).
+Output written on main.pdf (13 pages, 1229476 bytes).
 PDF statistics:
- 793 PDF objects out of 1000 (max. 8388607)
- 99 named destinations out of 1000 (max. 500000)
+ 791 PDF objects out of 1000 (max. 8388607)
+ 98 named destinations out of 1000 (max. 500000)
  289 words of extra memory for PDF output out of 10000 (max. 10000000)
 
