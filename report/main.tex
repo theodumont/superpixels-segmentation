@@ -222,9 +222,9 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             A dilated convolution enables the network getting larger receptive fields --- which allows the network to aggregate information at increasing scales on the image --- while preserving the input resolution~\cite{dilated}.
 
 
-            \paragraph{Adaptative Batch Normalization (ABN)} Distinct images in the COCO dataset have very different color ranges; in order to maximize the network performances, we normalize the data. We define the \textit{adaptative normalization function} $\Psi$ as:
+            \paragraph{Adaptative Batch Normalization (ABN)} Distinct images in the COCO dataset have very different color ranges; in order to maximize the network performances, we normalize the data in each layer of the network. We define the \textit{adaptative normalization function} $\Psi$ as~\cite{chen2017}:
             $$\Psi(x)=a\ x+b\ BN(x),$$
-            where $BN$ is the classic batch normalization~\cite{abn}, defined as:
+            where $BN$ is the classic PyTorch batch normalization, defined as:
             $$BN(x) = \frac{x-\mathrm{E}[x]}{\sqrt{\mathrm{Var}[x]+\epsilon}}*\gamma+\beta.$$
             As such, $\Psi$ combines identity mapping and batch normalization. The $a$, $b$, $\gamma$ and $\beta$ parameters are learned by backpropagation. It allows the model to adapt to each dataset, choosing whether or not giving a big importance to the identity term and the normalization term.
 

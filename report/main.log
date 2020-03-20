@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.12.9)  20 MAR 2020 19:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.12.9)  20 MAR 2020 19:38
 entering extended mode
 **"C:/Users/Théo Dumont/repos/python/s3r/s3r-repo/report/main.tex"
 ("C:/Users/Théo Dumont/repos/python/s3r/s3r-repo/report/main.tex"
@@ -701,16 +701,13 @@ Package pdftex.def Info: pics/conv-dilated.png  used on input line 208.
 
 LaTeX Warning: Citation `dilated' on page 7 undefined on input line 222.
 
-
-LaTeX Warning: Citation `abn' on page 7 undefined on input line 227.
-
 [7 <./pics/conv-simple.png> <./pics/conv-dilated.png>]
-<pics/act-relu.png, id=235, 284.7438pt x 237.2865pt>
+<pics/act-relu.png, id=237, 284.7438pt x 237.2865pt>
 File: pics/act-relu.png Graphic file (type png)
 <use pics/act-relu.png>
 Package pdftex.def Info: pics/act-relu.png  used on input line 237.
 (pdftex.def)             Requested size: 156.1498pt x 130.12779pt.
-<pics/act-lrelu.png, id=236, 284.7438pt x 237.2865pt>
+<pics/act-lrelu.png, id=238, 284.7438pt x 237.2865pt>
 File: pics/act-lrelu.png Graphic file (type png)
 <use pics/act-lrelu.png>
 Package pdftex.def Info: pics/act-lrelu.png  used on input line 243.
@@ -723,17 +720,17 @@ LaTeX Warning: Citation `todo:unet' on page 8 undefined on input line 302.
 
 LaTeX Warning: Citation `tvloss' on page 9 undefined on input line 308.
 
-<pics/hpp-lr-loss-678910.png, id=261, 460.3599pt x 312.9291pt>
+<pics/hpp-lr-loss-678910.png, id=262, 460.3599pt x 312.9291pt>
 File: pics/hpp-lr-loss-678910.png Graphic file (type png)
 <use pics/hpp-lr-loss-678910.png>
 Package pdftex.def Info: pics/hpp-lr-loss-678910.png  used on input line 357.
 (pdftex.def)             Requested size: 177.54492pt x 120.68578pt.
-<pics/hpp-lr-loss-67910.png, id=262, 460.3599pt x 314.3745pt>
+<pics/hpp-lr-loss-67910.png, id=263, 460.3599pt x 314.3745pt>
 File: pics/hpp-lr-loss-67910.png Graphic file (type png)
 <use pics/hpp-lr-loss-67910.png>
 Package pdftex.def Info: pics/hpp-lr-loss-67910.png  used on input line 363.
 (pdftex.def)             Requested size: 223.07211pt x 152.33713pt.
-<pics/hpp-lr-loss-7910.png, id=263, 460.3599pt x 316.5426pt>
+<pics/hpp-lr-loss-7910.png, id=264, 460.3599pt x 316.5426pt>
 File: pics/hpp-lr-loss-7910.png Graphic file (type png)
 <use pics/hpp-lr-loss-7910.png>
 Package pdftex.def Info: pics/hpp-lr-loss-7910.png  used on input line 368.
@@ -743,7 +740,7 @@ Overfull \hbox (13.10648pt too wide) in paragraph at lines 383--390
  [][] 
  []
 
-<pics/hpp-d.png, id=273, 410.4936pt x 325.9377pt>
+<pics/hpp-d.png, id=274, 410.4936pt x 325.9377pt>
 File: pics/hpp-d.png Graphic file (type png)
 <use pics/hpp-d.png>
 Package pdftex.def Info: pics/hpp-d.png  used on input line 393.
@@ -758,7 +755,7 @@ line 424.
 
 [10 <./pics/hpp-lr-loss-678910.png> <./pics/hpp-lr-loss-67910.png> <./pics/hpp-
 lr-loss-7910.png>]
-<pics/img_bsd_res2.png, id=285, 471.26062pt x 347.2975pt>
+<pics/img_bsd_res2.png, id=286, 471.26062pt x 347.2975pt>
 File: pics/img_bsd_res2.png Graphic file (type png)
 <use pics/img_bsd_res2.png>
 Package pdftex.def Info: pics/img_bsd_res2.png  used on input line 434.
@@ -837,9 +834,9 @@ nt/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C
 nts/cm/cmr9.pfb><C:/Users/Théo Dumont/AppData/Local/Programs/MiKTeX 2.9/fonts/
 type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Théo Dumont/AppData/Local/Progra
 ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on main.pdf (14 pages, 2510614 bytes).
+Output written on main.pdf (14 pages, 2510840 bytes).
 PDF statistics:
- 816 PDF objects out of 1000 (max. 8388607)
+ 817 PDF objects out of 1000 (max. 8388607)
  96 named destinations out of 1000 (max. 500000)
  291 words of extra memory for PDF output out of 10000 (max. 10000000)
 
