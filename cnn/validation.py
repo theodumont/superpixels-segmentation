@@ -1,5 +1,5 @@
 """
-Training methods for the neural network
+Validation methods for the neural network
 """
 
 import torch
@@ -29,7 +29,7 @@ def validation(model_idx, epoch_idx):
 
     # Load the segmentation dataset
     segmentation_dataset = SegmentationDataset(
-        root_dir='../../../../data/commun/COCO/',
+        root_dir='./data/',
         input_dir='val2017/',
         target_dir='valSP2017/',
         transform=transforms.Compose([
@@ -47,7 +47,7 @@ def validation(model_idx, epoch_idx):
     # Initializes the neural network
     net = Net(8)
     net.to(device)
-    PATH = './../results/weights/run'+str(model_idx)+'_'+str(epoch_idx)+'.pth'
+    PATH = './results/weights/run'+str(model_idx)+'_'+str(epoch_idx)+'.pth'
     net.load_state_dict(torch.load(PATH))
 
     # Compute loss
@@ -83,4 +83,4 @@ if __name__ == '__main__':
         print("Epoch: " + str(idx + 1) + " Loss: " + str(np.mean(loss)))
         losses[idx] = np.mean(loss)
 
-    np.save("./../results/loss-validation/Validation_loss_"+str(model_idx)+".npy", losses)
+    np.save("./results/loss-validation/Validation_loss_"+str(model_idx)+".npy", losses)

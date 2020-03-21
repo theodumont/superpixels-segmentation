@@ -3,6 +3,7 @@ Training methods for the neural network
 """
 
 import torch
+import torch.optim as optim
 import torchvision
 import torchvision.transforms as transforms
 from torchvision.utils import make_grid
@@ -52,7 +53,7 @@ if __name__ == '__main__':
 
     # Load the segmentation dataset
     segmentation_dataset = SegmentationDataset(
-        root_dir='../../../../data/commun/COCO/',
+        root_dir='./data/',
         input_dir='train2017/',
         target_dir='trainSP2017/',
         transform=transforms.Compose([
@@ -72,14 +73,13 @@ if __name__ == '__main__':
     net = Net(d)
     net.to(device)
     run_idx = '14'
-    PATH = './../results/weights/run' + run_idx + '.pth'
-    TEMP = './../results/weights/run'
+    PATH = './results/weights/run' + run_idx + '.pth'
+    TEMP = './results/weights/run'
 
-    net.load_state_dict(torch.load('./../results/weights/run10_13.pth'))
+    net.load_state_dict(torch.load('./results/weights/run10_13.pth'))
     start_epoches = 0
 
     # Optimizer
-    import torch.optim as optim
     criterion = lambda outputs, target: TV_loss(outputs, target,
                                                 batch_size=batch_size,
                                                 alpha=0.)
@@ -129,12 +129,12 @@ if __name__ == '__main__':
             torch.save(net.state_dict(), TEMP + run_idx + "_" + str(epoch) + '.pth')
 
             # Update learning rate
-            """if (epoch == 10):
-                for param_group in optimizer.param_groups:
-                    param_group['lr'] = 0.001"""
+            # if (epoch == 10):
+            #     for param_group in optimizer.param_groups:
+            #         param_group['lr'] = 0.001
 
             # Save loss for the epoch
-            np.save('./../results/loss-train/run' + run_idx + "_" + str(epoch) + '.npy',
+            np.save('./results/loss-train/run' + run_idx + "_" + str(epoch) + '.npy',
                     np.array(loss_lst[epoch - start_epoches]))
 
     learning()
