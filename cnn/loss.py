@@ -26,6 +26,8 @@ def TV_loss(outputs, target, batch_size, alpha=0.):
     """
 
     MSE = nn.MSELoss()
-    loss = torch.sum(torch.abs(outputs[:, :, 1:, :]-outputs[:, :, :-1, :]))
-    loss += torch.sum(torch.abs(outputs[:, :, :, 1:]-outputs[:, :, :, :-1]))
+    loss = torch.sum(torch.abs(outputs[:, :, 1:, :] -
+                               outputs[:, :, :-1, :]))
+    loss += torch.sum(torch.abs(outputs[:, :, :, 1:] -
+                                outputs[:, :, :, :-1]))
     return MSE(outputs, target) + alpha/batch_size/3 * loss

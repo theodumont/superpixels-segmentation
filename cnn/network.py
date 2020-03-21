@@ -3,13 +3,10 @@ Neural network implementation
 """
 
 import torch
-import torchvision
 import torch.nn as nn
 
-# ------------------------------------
-# 1: Adaptative batch normalization
-# ------------------------------------
 
+# 1. ADAPTATIVE BATCH NORMALIZATION
 
 class AdaptiveBatchNorm2d(nn.Module):
 
@@ -78,16 +75,14 @@ class AdaptiveBatchNorm2d(nn.Module):
 
         return self.a * x + self.b * self.bn(x)
 
-# ------------------------------------
-# 2: Convolution module
-# ------------------------------------
 
+# 2. CONVOLUTION MODULE
 
 class ChenConv(nn.Module):
 
     """
     Convolution module implementation: 2D dilated Convolution followed
-    by an adaptative batch normalization layer and a leaky RELU
+    by an adaptative batch normalization layer and a leaky ReLU
     activation function.
     """
 
@@ -104,7 +99,8 @@ class ChenConv(nn.Module):
         :type s: int
         """
         super(ChenConv, self).__init__()
-        self.conv = nn.Conv2d(in_channels, out_channels, 3, padding=2**(s-1), dilation=2**(s-1))
+        self.conv = nn.Conv2d(in_channels, out_channels, 3,
+                              padding=2**(s-1), dilation=2**(s-1))
         self.ABN = AdaptiveBatchNorm2d(out_channels)
         self.LReLU = nn.LeakyReLU(0.2, inplace=True)
 
@@ -122,10 +118,7 @@ class ChenConv(nn.Module):
         return self.LReLU(self.ABN(self.conv(x)))
 
 
-# ------------------------------------
-# 3: Neural network architecture
-# ------------------------------------
-
+# 3. NEURAL NETWORK ARCHITECTURE
 
 class Net(nn.Module):
 
@@ -133,7 +126,7 @@ class Net(nn.Module):
     Implementation of the neural network architecture
     """
 
-    def __init__(self, d=7):
+    def __init__(self, d):
 
         """
         Neural network architecture

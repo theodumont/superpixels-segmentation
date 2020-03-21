@@ -31,7 +31,7 @@ def min_max_images(segmentation_dataset, save_output):
     for integer in sizes:
         if integer != 0:
             total += integer
-    print(total, "images dans le tableau")
+    print(total, "images in table")
 
     print("Creating the arrays...")
     for h in range(650):
@@ -65,8 +65,7 @@ def min_max_images(segmentation_dataset, save_output):
 
     # Histograms
     bins = range(np.abs([w_vect, h_vect]).min(),
-                 np.abs([w_vect, h_vect]).max(),
-                 10)
+                 np.abs([w_vect, h_vect]).max(), 10)
 
     # Hist_x
     rect_histx = [left, bottom + height + spacing, width, 0.15]
@@ -90,8 +89,8 @@ def min_max_images(segmentation_dataset, save_output):
 if __name__ == "__main__":
 
     root_dir = './data/'
-    input_dir = train_or_val + '2017' + full_or_empty + '/'
-    target_dir = train_or_val + '2017' + full_or_empty + '/'
+    input_dir = f'{train_or_val}2017{full_or_empty}/'
+    target_dir = f'{train_or_val}2017{full_or_empty}/'
 
     segmentation_dataset = SegmentationDataset(
             root_dir=root_dir,
@@ -99,5 +98,5 @@ if __name__ == "__main__":
             target_dir=target_dir,
             transform=None)
 
-    save_output = train_or_val + '2017' + full_or_empty + '.png'
+    save_output = f'{train_or_val}2017{full_or_empty}.png'
     min_max_images(segmentation_dataset, save_output)

@@ -1,5 +1,5 @@
 """
-Training methods for the neural network
+Test methods for the neural network
 """
 
 import torch
@@ -19,8 +19,6 @@ from skimage.filters.rank import gradient
 
 import numpy as np
 
-import sys, time, os
-
 
 if __name__ == '__main__':
 
@@ -29,7 +27,7 @@ if __name__ == '__main__':
     print("device: ", device)
 
     # Training parameters
-    batch_size = 2
+    batch_size = 32
 
     # Load the segmentation dataset
     segmentation_dataset = SegmentationDataset(
@@ -48,10 +46,10 @@ if __name__ == '__main__':
         shuffle=False,
         num_workers=0)
 
-    # Initializes the neural network
-    net = Net(6)
+    # Initialize the neural network
+    net = Net(7)
     net.to(device)
-    PATH = './../results/weights/run5_14.pth'
+    PATH = './results/weights/run5_14.pth'
     net.load_state_dict(torch.load(PATH))
 
     for i, sample in enumerate(testloader):
@@ -60,13 +58,12 @@ if __name__ == '__main__':
         segm_true = sample['target'].to(device)
 
         outputs = net(input_img)
-        if(i > 1):
-            break
 
     # Display result
     imIn = input_img.cpu().detach().numpy()[0]
     imTarget = segm_true.cpu().detach().numpy()[0]
     imResult = outputs.cpu().detach().numpy()[0]
+    # imGrad = gradient(imResult[1, :, :], disk(1))
     fig, ax = plt.subplots(2, 2, figsize=(10, 10),
                            sharex=True, sharey=True,
                            subplot_kw={'adjustable': 'box-forced'})

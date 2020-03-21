@@ -1,3 +1,6 @@
+"""
+Useful tools and functions
+"""
 import numpy as np
 import random as rd
 import matplotlib.pyplot as plt
@@ -37,7 +40,10 @@ def show_sample_index(segmentation_dataset, idx_list):
 
 
 def show_sample(sample, idx):
-    fig = plt.figure("Batch numéro "+str(idx), figsize=(6, 9))
+    """
+    Display a sample image from the dataset, v2
+    """
+    fig = plt.figure("Batch number {}".format(idx), figsize=(6, 9))
 
     images = sample['image']
     images_segm = sample['image_segm']
@@ -45,17 +51,17 @@ def show_sample(sample, idx):
         image = np.transpose((255*images).int()[i], axes=(1, 2, 0))
         image_segm = np.transpose((255*images_segm).int()[i], axes=(1, 2, 0))
         ax = plt.subplot(images.shape[0], 2, 2*i+1)
-        ax.set_title('Image originale '+str(i))
+        ax.set_title('Original image {}'.format(i))
         ax.axis('off')
         plt.imshow(image)
 
         ax = plt.subplot(images.shape[0], 2, 2*i+2)
-        ax.set_title('Image segmentée '+str(i))
+        ax.set_title('Segmented image {}'.format(i))
         ax.axis('off')
         plt.imshow(image_segm)
 
     plt.tight_layout()
-    print("Affichage")
+    print("Display...")
     plt.draw()
     plt.pause(.7)
     plt.close()
@@ -63,38 +69,15 @@ def show_sample(sample, idx):
 
 def depth(image):
     """
-    Returns the
+    Return the depth of an image
     """
     return len(torch.from_numpy(image).size())
 
 
-def calcul_pixel(input_img, outputs, net):
-    print("Pixel initial   : ", input_img[0, 0, 0, 0].item(), input_img[0, 1, 0, 0].item(), input_img[0, 2, 0, 0].item())
-    print("Pixel final     : ", outputs[0, 0, 0, 0].item(), outputs[0, 1, 0, 0].item(), outputs[0, 2, 0, 0].item())
-
-    R = 0.
-    G = 0.
-    B = 0.
-    u = 0
-    for name, param in net.named_parameters():
-        if param.requires_grad:
-            if u == 0:
-                R += input_img[0, 0, 0, 0].item()*param[0, 0, 0, 0] + input_img[0, 1, 0, 0].item()*param[0, 1, 0, 0] + input_img[0, 2, 0, 0].item()*param[0, 2, 0, 0]
-                G += input_img[0, 0, 0, 0].item()*param[1, 0, 0, 0] + input_img[0, 1, 0, 0].item()*param[1, 1, 0, 0] + input_img[0, 2, 0, 0].item()*param[1, 2, 0, 0]
-                B += input_img[0, 0, 0, 0].item()*param[2, 0, 0, 0] + input_img[0, 1, 0, 0].item()*param[2, 1, 0, 0] + input_img[0, 2, 0, 0].item()*param[2, 2, 0, 0]
-
-            if u == 1:
-                # print(param)
-                R += param[0]
-                G += param[1]
-                B += param[2]
-            u += 1
-            # print("net.parameters : ", name, param.data)
-
-    print("Le calcul donne : ", R.item(), G.item(), B.item())
-
-
 def to_vector(f):
+    """
+    Transform a tensor into a vector
+    """
     return f.reshape(-1).unsqueeze(1)
 
 
@@ -103,7 +86,7 @@ def draw(ylabel, title, batch_size, d, xlim=None, ylim=None):
     plt.ylabel(ylabel)
     plt.xlim(xlim)
     plt.ylim(ylim)
-    plt.title(title+', batch is '+str(batch_size)+', d = '+str(d))
+    plt.title('{}, batch is {}, d = {}'.format(title, batch_size, d))
     plt.grid(True)
     plt.legend()
     plt.tight_layout

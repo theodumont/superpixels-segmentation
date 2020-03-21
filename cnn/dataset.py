@@ -256,12 +256,10 @@ class RandomCrop(object):
         new_h, new_w = self.output_size
         if(h - new_h < 0):
             print("Problem h")
-            print(h)
-            print(new_h)
+            print("original is {}, new is {}".format(h, new_h))
         if(w - new_w < 0):
             print("Problem w")
-            print(w)
-            print(new_w)
+            print("original is {}, new is {}".format(w, new_w))
 
         top = np.random.randint(0, h - new_h)
         left = np.random.randint(0, w - new_w)
@@ -277,7 +275,7 @@ class RandomCrop(object):
 class ToTensor(object):
 
     """
-    Converts the ndarrays from the samples into PyTorch Tensors
+    Convert the ndarrays from the samples into PyTorch Tensors
     """
 
     def __call__(self, sample):
@@ -307,7 +305,7 @@ class ToTensor(object):
 class Normalize(object):
 
     """
-    Normalizes images from a sample between 0 and 1
+    Normalize images from a sample between 0 and 1
     """
 
     def __call__(self, sample):
