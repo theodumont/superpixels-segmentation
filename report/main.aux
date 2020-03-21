@@ -25,119 +25,121 @@
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:segm}{{1}{1}{\textit {A segmentation. To each segmented region of the image was affected the mean value of its pixels. Both images are from the COCO training dataset~\cite {microsoft2014}.}\relax }{figure.caption.1}{}}
 \newlabel{fig:segm@cref}{{[figure][1][]1}{[1][1][]1}}
-\citation{zitnick2007}
-\citation{fulkerson2009}
-\citation{stutz2017}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Superpixels}{2}{subsection.1.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \textit  {A superpixel segmentation. From left to right: the original image, the original image with its calculated superpixels outlines and the resulting superpixel segmented image. Each superpixel has only one color, the mean color of the original image over the superpixel region.}\relax }}{2}{figure.caption.2}\protected@file@percent }
-\newlabel{fig:spp}{{2}{2}{\textit {A superpixel segmentation. From left to right: the original image, the original image with its calculated superpixels outlines and the resulting superpixel segmented image. Each superpixel has only one color, the mean color of the original image over the superpixel region.}\relax }{figure.caption.2}{}}
-\newlabel{fig:spp@cref}{{[figure][2][]2}{[1][2][]2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.2.1}A good superpixel segmentation}{2}{subsubsection.1.2.1}\protected@file@percent }
-\newlabel{par:metrics}{{1.2.1}{2}{A good superpixel segmentation}{subsubsection.1.2.1}{}}
-\newlabel{par:metrics@cref}{{[subsubsection][1][1,2]1.2.1}{[1][2][]2}}
-\citation{schick2012}
-\citation{todo:Undersegmentation}
-\citation{neubert2012}
 \citation{arbelaez2011}
 \citation{ren2005}
 \citation{arbelaez2011}
 \citation{shi2000}
 \citation{felzenszwalb2004}
+\citation{chang2019}
+\citation{todo}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Literature}{2}{subsection.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Contour based methods}{2}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Region based methods}{2}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Ambitions}{2}{subsection.1.3}\protected@file@percent }
+\citation{zitnick2007}
+\citation{fulkerson2009}
+\citation{stutz2017}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Background on superpixels segmentation}{3}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Superpixels}{3}{subsection.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \textit  {A superpixel segmentation. From left to right: the original image, the original image with its calculated superpixels outlines and the resulting superpixel segmented image. Each superpixel has only one color, the mean color of the original image over the superpixel region.}\relax }}{3}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:spp}{{2}{3}{\textit {A superpixel segmentation. From left to right: the original image, the original image with its calculated superpixels outlines and the resulting superpixel segmented image. Each superpixel has only one color, the mean color of the original image over the superpixel region.}\relax }{figure.caption.4}{}}
+\newlabel{fig:spp@cref}{{[figure][2][]2}{[1][3][]3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}A good superpixel segmentation}{3}{subsection.2.2}\protected@file@percent }
+\newlabel{par:metrics}{{2.2}{3}{A good superpixel segmentation}{subsection.2.2}{}}
+\newlabel{par:metrics@cref}{{[subsection][2][2]2.2}{[1][3][]3}}
+\citation{schick2012}
+\citation{todo:Undersegmentation}
+\citation{neubert2012}
 \citation{achanta2012}
 \citation{achanta2017}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.2.2}Literature}{3}{subsubsection.1.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Contour based methods}{3}{section*.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Region based methods}{3}{section*.4}\protected@file@percent }
-\citation{chang2019}
+\citation{todo}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Algorithms}{4}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.1}SLIC}{4}{subsubsection.2.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.2}Eikonal}{4}{subsubsection.2.3.2}\protected@file@percent }
 \citation{figliuzzi2019}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces \textit  {Illustration of the SLIC superpixel segmentation of an image of the BSDS500.}\relax }}{5}{figure.caption.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Proposed approach and architecture}{5}{section.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces \textit  {Training method. The dash type indicates if the element is an image (plain border), a segmented image (dash) or a superpixel segmented image (dash and dots).}\relax }}{5}{figure.caption.6}\protected@file@percent }
 \citation{microsoft2014}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces \textit  {Illustration of the SLIC superpixel segmentation of an image of the BSDS500.}\relax }}{4}{figure.caption.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.2.3}Ambitions}{4}{subsubsection.1.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Dataset generation}{4}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}The COCO dataset}{4}{subsection.2.1}\protected@file@percent }
-\newlabel{par:coco}{{2.1}{4}{The COCO dataset}{subsection.2.1}{}}
-\newlabel{par:coco@cref}{{[subsection][1][2]2.1}{[1][4][]4}}
+\citation{todo}
 \citation{figliuzzi2019}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces \textit  {Training set characterization}\relax }}{5}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:train}{{4}{5}{\textit {Training set characterization}\relax }{figure.caption.6}{}}
-\newlabel{fig:train@cref}{{[figure][4][]4}{[1][4][]5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces \textit  {Lack of precision of the COCO dataset segmentations}\relax }}{5}{figure.caption.7}\protected@file@percent }
-\newlabel{fig:imprecise}{{5}{5}{\textit {Lack of precision of the COCO dataset segmentations}\relax }{figure.caption.7}{}}
-\newlabel{fig:imprecise@cref}{{[figure][5][]5}{[1][5][]5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Eikonal}{5}{subsection.2.2}\protected@file@percent }
-\citation{arbelaez2011}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Global approach}{6}{subsection.2.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces \textit  {Global approach. The dash type indicates if the element is an image (plain border), a segmented image (dash) or a superpixel segmented image (dash and dots).}\relax }}{6}{figure.caption.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Training}{6}{section*.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Test}{6}{section*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Dataset generation}{6}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}The COCO dataset}{6}{subsubsection.3.1.1}\protected@file@percent }
+\newlabel{par:coco}{{3.1.1}{6}{The COCO dataset}{subsubsection.3.1.1}{}}
+\newlabel{par:coco@cref}{{[subsubsection][1][3,1]3.1.1}{[1][6][]6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces \textit  {Training set characterization}\relax }}{6}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:train}{{5}{6}{\textit {Training set characterization}\relax }{figure.caption.7}{}}
+\newlabel{fig:train@cref}{{[figure][5][]5}{[1][6][]6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces \textit  {Lack of precision of the COCO dataset segmentations}\relax }}{6}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:imprecise}{{6}{6}{\textit {Lack of precision of the COCO dataset segmentations}\relax }{figure.caption.8}{}}
+\newlabel{fig:imprecise@cref}{{[figure][6][]6}{[1][6][]6}}
+\citation{yu2015}
+\citation{yu2015}
+\citation{chen2017}
 \citation{dilated}
 \citation{chen2017}
-\@writefile{toc}{\contentsline {section}{\numberline {3}The model}{7}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Network architecture}{7}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Layers definitions}{7}{subsubsection.3.1.1}\protected@file@percent }
-\newlabel{par:dilated}{{3.1.1}{7}{Dilated convolution}{section*.11}{}}
-\newlabel{par:dilated@cref}{{[subsubsection][1][3,1]3.1.1}{[1][6][]7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Eikonal}{7}{subsubsection.3.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Model}{7}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Network architecture}{7}{subsubsection.3.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Context Aggregation Network}{7}{section*.9}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces \textit  {Layers of the network}\relax }}{7}{table.caption.10}\protected@file@percent }
+\newlabel{par:dilated}{{3.2.1}{7}{Dilated convolution}{section*.11}{}}
+\newlabel{par:dilated@cref}{{[subsubsection][1][3,2]3.2.1}{[1][7][]7}}
 \@writefile{toc}{\contentsline {paragraph}{Dilated convolution}{7}{section*.11}\protected@file@percent }
-\newlabel{fig:conv-simple}{{7a}{7}{\textit {A simple convolution ($r=1$)}\relax }{figure.caption.12}{}}
-\newlabel{fig:conv-simple@cref}{{[subfigure][1][7]7a}{[1][7][]7}}
-\newlabel{sub@fig:conv-simple}{{a}{7}{\textit {A simple convolution ($r=1$)}\relax }{figure.caption.12}{}}
-\newlabel{sub@fig:conv-simple@cref}{{[subfigure][1][7]7a}{[1][7][]7}}
-\newlabel{fig:conv-dilated}{{7b}{7}{\textit {A dilated convolution ($r=2$)}\relax }{figure.caption.12}{}}
-\newlabel{fig:conv-dilated@cref}{{[subfigure][2][7]7b}{[1][7][]7}}
-\newlabel{sub@fig:conv-dilated}{{b}{7}{\textit {A dilated convolution ($r=2$)}\relax }{figure.caption.12}{}}
-\newlabel{sub@fig:conv-dilated@cref}{{[subfigure][2][7]7b}{[1][7][]7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces \textit  {Illustration of two types of convolutions}\relax }}{7}{figure.caption.12}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Adaptative Batch Normalization (ABN)}{7}{section*.13}\protected@file@percent }
-\citation{yu2015}
-\citation{yu2015}
-\citation{chen2017}
-\citation{unet2015}
-\citation{todo:unet}
-\@writefile{toc}{\contentsline {paragraph}{Leaky rectifier (LReLU)}{8}{section*.14}\protected@file@percent }
-\newlabel{fig:relu}{{8a}{8}{\textit {ReLU}\relax }{figure.caption.15}{}}
-\newlabel{fig:relu@cref}{{[subfigure][1][8]8a}{[1][8][]8}}
-\newlabel{sub@fig:relu}{{a}{8}{\textit {ReLU}\relax }{figure.caption.15}{}}
-\newlabel{sub@fig:relu@cref}{{[subfigure][1][8]8a}{[1][8][]8}}
-\newlabel{fig:lrelu}{{8b}{8}{\textit {LReLU ($\alpha =0.2$)}\relax }{figure.caption.15}{}}
-\newlabel{fig:lrelu@cref}{{[subfigure][2][8]8b}{[1][8][]8}}
-\newlabel{sub@fig:lrelu}{{b}{8}{\textit {LReLU ($\alpha =0.2$)}\relax }{figure.caption.15}{}}
-\newlabel{sub@fig:lrelu@cref}{{[subfigure][2][8]8b}{[1][8][]8}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces \textit  {Illustration of two unbounded rectifiers}\relax }}{8}{figure.caption.15}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.2}Context Aggregation Network}{8}{subsubsection.3.1.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces \textit  {Layers of the network}\relax }}{8}{table.caption.16}\protected@file@percent }
 \citation{tvloss}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces \textit  {Our Context Aggregation Network}\relax }}{9}{table.caption.17}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.3}UNet}{9}{subsubsection.3.1.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Total Variation Loss}{9}{subsection.3.2}\protected@file@percent }
+\newlabel{fig:conv-simple}{{7a}{8}{\textit {A simple convolution ($r=1$)}\relax }{figure.caption.12}{}}
+\newlabel{fig:conv-simple@cref}{{[subfigure][1][7]7a}{[1][7][]8}}
+\newlabel{sub@fig:conv-simple}{{a}{8}{\textit {A simple convolution ($r=1$)}\relax }{figure.caption.12}{}}
+\newlabel{sub@fig:conv-simple@cref}{{[subfigure][1][7]7a}{[1][7][]8}}
+\newlabel{fig:conv-dilated}{{7b}{8}{\textit {A dilated convolution ($r=2$)}\relax }{figure.caption.12}{}}
+\newlabel{fig:conv-dilated@cref}{{[subfigure][2][7]7b}{[1][7][]8}}
+\newlabel{sub@fig:conv-dilated}{{b}{8}{\textit {A dilated convolution ($r=2$)}\relax }{figure.caption.12}{}}
+\newlabel{sub@fig:conv-dilated@cref}{{[subfigure][2][7]7b}{[1][7][]8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces \textit  {Illustration of two types of convolutions}\relax }}{8}{figure.caption.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Adaptative Batch Normalization (ABN)}{8}{section*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Leaky rectifier (LReLU)}{8}{section*.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Total Variation Loss}{8}{subsubsection.3.2.2}\protected@file@percent }
+\newlabel{fig:relu}{{8a}{9}{\textit {ReLU}\relax }{figure.caption.15}{}}
+\newlabel{fig:relu@cref}{{[subfigure][1][8]8a}{[1][8][]9}}
+\newlabel{sub@fig:relu}{{a}{9}{\textit {ReLU}\relax }{figure.caption.15}{}}
+\newlabel{sub@fig:relu@cref}{{[subfigure][1][8]8a}{[1][8][]9}}
+\newlabel{fig:lrelu}{{8b}{9}{\textit {LReLU ($\alpha =0.2$)}\relax }{figure.caption.15}{}}
+\newlabel{fig:lrelu@cref}{{[subfigure][2][8]8b}{[1][8][]9}}
+\newlabel{sub@fig:lrelu}{{b}{9}{\textit {LReLU ($\alpha =0.2$)}\relax }{figure.caption.15}{}}
+\newlabel{sub@fig:lrelu@cref}{{[subfigure][2][8]8b}{[1][8][]9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces \textit  {Illustration of two unbounded rectifiers}\relax }}{9}{figure.caption.15}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces \textit  {Our Context Aggregation Network}\relax }}{9}{table.caption.16}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4}Experiments and results}{9}{section.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Implementation}{9}{subsection.4.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces \textit  {Hyperparameter values}\relax }}{9}{table.caption.18}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces \textit  {Hyperparameter values}\relax }}{9}{table.caption.17}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Hyperparameter tuning}{9}{subsection.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Learning rate}{9}{subsubsection.4.2.1}\protected@file@percent }
-\citation{todo:tv-tuning}
-\citation{toto:tv-interpretation}
+\@writefile{toc}{\contentsline {paragraph}{Learning rate}{9}{section*.18}\protected@file@percent }
 \newlabel{fig:hpp-lr-div}{{9b}{10}{\textit {Runs 6, 7, 8, 9 and 10}\relax }{figure.caption.19}{}}
 \newlabel{fig:hpp-lr-div@cref}{{[subfigure][2][9]9b}{[1][9][]10}}
 \newlabel{sub@fig:hpp-lr-div}{{b}{10}{\textit {Runs 6, 7, 8, 9 and 10}\relax }{figure.caption.19}{}}
 \newlabel{sub@fig:hpp-lr-div@cref}{{[subfigure][2][9]9b}{[1][9][]10}}
 \@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces \textit  {Tuning of learning rate: validation loss for different runs}\relax }}{10}{figure.caption.19}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}Network size \textit  {d}}{10}{subsubsection.4.2.2}\protected@file@percent }
-\newlabel{par:hpp-d}{{4.2.2}{10}{Network size \textit {d}}{subsubsection.4.2.2}{}}
-\newlabel{par:hpp-d@cref}{{[subsubsection][2][4,2]4.2.2}{[1][10][]10}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3}Number of epochs}{10}{subsubsection.4.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.4}TV regularization}{10}{subsubsection.4.2.4}\protected@file@percent }
+\newlabel{par:hpp-d}{{4.2}{10}{Network size \textit {d}}{section*.20}{}}
+\newlabel{par:hpp-d@cref}{{[subsection][2][4]4.2}{[1][10][]10}}
+\@writefile{toc}{\contentsline {paragraph}{Network size \textit  {d}}{10}{section*.20}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces \textit  {Tuning of network size: loss values on the validation set}\relax }}{10}{figure.caption.21}\protected@file@percent }
+\citation{todo:tv-tuning}
+\citation{toto:tv-interpretation}
 \citation{arbelaez2011}
+\@writefile{toc}{\contentsline {paragraph}{Number of epochs}{11}{section*.22}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{TV regularization}{11}{section*.23}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces \textit  {Tuning of $\alpha _{TV}$: loss values on the validation set}\relax }}{11}{figure.caption.24}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Results on dataset}{11}{subsection.4.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces \textit  {Testing method. The dash type indicates if the element is an image (plain border), a segmented image (dash) or a superpixel segmented image (dash and dots).}\relax }}{11}{figure.caption.25}\protected@file@percent }
 \citation{groundtruthornot}
 \citation{groundtruthornot}
 \citation{checkplacement}
 \citation{figliuzzi2019}
 \citation{todo:metrics}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces \textit  {Tuning of network size: loss values on the validation set}\relax }}{11}{figure.caption.20}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces \textit  {Tuning of $\alpha _{TV}$: loss values on the validation set}\relax }}{11}{figure.caption.21}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Results on dataset}{11}{subsection.4.3}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Comparisons of metrics on the BSDS500 dataset for different superpixel segmentation algorithms\relax }}{11}{table.caption.23}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces \textit  {Application of the model to an image of the BSD500. From left to right, up to down: the original image, the output image of the neural network, the original image and its superpixel segmentation\cite  {groundtruthornot}, and the final superpixel segmented image with each superpixel being displayed with the average color of the pixels belonging to it.}\relax }}{12}{figure.caption.22}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{12}{section.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces \textit  {Application of the model to an image of the BSD500. From left to right, up to down: the original image, the output image of the neural network, the original image and its superpixel segmentation\cite  {groundtruthornot}, and the final superpixel segmented image with each superpixel being displayed with the average color of the pixels belonging to it.}\relax }}{12}{figure.caption.26}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Comparisons of metrics on the BSDS500 dataset for different superpixel segmentation algorithms\relax }}{12}{table.caption.27}\protected@file@percent }
+\citation{unet2015}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion and conclusion}{13}{section.5}\protected@file@percent }
 \bibstyle{plain}
 \bibdata{sources}
 \bibcite{microsoft2014}{1}
@@ -158,4 +160,4 @@
 \bibcite{yu2015}{16}
 \bibcite{zitnick2007}{17}
 \citation{todo-experiments}
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces \textit  {All the runs. The batch size is 32.}\relax }}{14}{table.caption.28}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces \textit  {All the runs. The batch size is 32.}\relax }}{15}{table.caption.32}\protected@file@percent }
