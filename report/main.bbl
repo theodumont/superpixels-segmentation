@@ -22,6 +22,11 @@ P.~Arbeláez, M.~Maire, C.~Fowlkes, and J.~Malik.
 \newblock {\em IEEE Trans. Pattern Anal. Mach. Intell.}, 33(5):898--916, may
   2011.
 
+\bibitem{chambolle2004}
+Antonin Chambolle.
+\newblock An algorithm for total variation minimization and applications.
+\newblock {\em J. Math. Imaging Vis.}, 20(1–2):89–97, 2004.
+
 \bibitem{chang2019}
 Ka\"iwen Chang.
 \newblock {\em Machine learning based image segmentation}.
@@ -49,10 +54,17 @@ Brian Fulkerson, Andrea Vedaldi, and Stefano Soatto.
   neighborhoods.
 \newblock {\em In Computer Vision}, pages 670–--677, 2009.
 
-\bibitem{neubert2012}
-Peer Neubert and Peter~Protzel Chemnitz.
-\newblock Superpixel benchmark and comparison.
-\newblock In {\em Forum Bildverarbeitung 2010}, pages 205--218, 2012.
+\bibitem{ioffe2015}
+Sergey Ioffe and Christian Szegedy.
+\newblock Batch normalization: Accelerating deep network training by reducing
+  internal covariate shift.
+\newblock {\em CoRR}, abs/1502.03167, 2015.
+
+\bibitem{long2015}
+J.~{Long}, E.~{Shelhamer}, and T.~{Darrell}.
+\newblock Fully convolutional networks for semantic segmentation.
+\newblock In {\em 2015 IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, pages 3431--3440, June 2015.
 
 \bibitem{ren2005}
 X.~Ren, C.~C. Fowlkes, and J.~Malik.
@@ -64,6 +76,11 @@ X.~Ren, C.~C. Fowlkes, and J.~Malik.
 Olaf Ronneberger, Philipp Fischer, and Thomas Brox.
 \newblock U-net: Convolutional networks for biomedical image segmentation.
 \newblock 2015.
+
+\bibitem{rudin1992}
+L~I Rudin, S~Osher, and E~Fatemi.
+\newblock Nonlinear total variation based noise removal algorithms.
+\newblock {\em Physica D: Nonlinear Phenomena}, 60(1-4):259--268, 1992.
 
 \bibitem{schick2012}
 Alexander Schick, Mika Fischer, and Rainer Stiefelhagen.
@@ -81,6 +98,13 @@ J.~Shi and J.~Malik.
 David Stutz, Alexander Hermans, and Bastian Leibe.
 \newblock Superpixels: An evaluation of the state-of-the-art.
 \newblock {\em Computer Vision and Image Understanding}, April 2017.
+
+\bibitem{watershed1991}
+L.~{Vincent} and P.~{Soille}.
+\newblock Watersheds in digital spaces: an efficient algorithm based on
+  immersion simulations.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  13(6):583--598, June 1991.
 
 \bibitem{yu2015}
 Fisher Yu and Vladlen Koltun.

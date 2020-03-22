@@ -32,7 +32,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
 \section{Introduction}
 
     \subsection{Segmentation}
-        While looking at an image, the human brain uses a lot of knowledge to understand its content. But as for a computer, an image only is a set of integer valued pixels, making it produce an interpretation is much more complex. Segmenting an image consists in transforming the image into something that is easier to analyze, and much more meaningful. By partitioning an image into multiple sets of pixels, it assigns a label to every pixel in it such that connected groups of pixels with the same label share certain characteristics. It allows one to locate the objects on an image, pointing out their boundaries.\\
+        While looking at an image, the human brain uses a lot of knowledge to understand its content. However, from the perspective of a computer, an image is only a set of integer valued pixels. Hence, making it produce an interpretation is much more complex. Segmenting an image consists in transforming the image in a representation that is easier to analyze, and much more meaningful. A segmentation partitions an image into multiple connected sets of pixels sharing certain characteristics including similar colors or texture patterns. It allows one to locate the objects on an image or to point out their boundaries.\\
         The applications of such a process are numerous: control of the an object outlines on a production line, face detection, medical imaging, pedestrian detection, video surveillance\ldots They justify our search for higher segmentation performances.
 
         \begin{figure}[!ht]
@@ -47,22 +47,24 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             \includegraphics[width=0.9\linewidth]{pics/img_segm2.png}
             \caption{\textit{The segmented image}}
         \end{subfigure}
-            \caption{\textit{A segmentation. To each segmented region of the image was affected the mean value of its pixels. Both images are from the COCO training dataset~\cite{microsoft2014}.}}
+            \caption{\textit{Segmentation examples. To each segmented region of the image was affected the mean value of its pixels. Both images are from the COCO training dataset~\cite{microsoft2014}.}}
             \label{fig:segm}
         \end{figure}
 
-        Image segmentation is a challenging task and there is currently no comprehensive theory in this field, not least because a given segmentation is often aimed at a specific application. The methods based on gradient can be disturbed by noise or textured patterns in the image, thus producing a contour where is actually not. In addition, it is difficult to find a contour if two regions share similar colors or gray levels, or when a contour corresponds to small gradient. Moreover, the result of a segmentation depends on the applications and on the scale of the objects of interest. Even human based segmentations are characterized by a significant variability in terms of result.
+        Image segmentation is a challenging task and there is currently no comprehensive theory in this field, not least because a given segmentation is often aimed at a specific application. The methods based on gradient~\cite{watershed1991,arbelaez2011} can be disturbed by noise or textured patterns in the image, thus producing a contour where there is actually not. In addition, it is difficult to find a contour if two regions share similar colors or gray levels, or when a contour is present in a region with small gradient values. Moreover, the result of a segmentation depends on the applications and on the scale of the objects of interest. Even human based segmentations are characterized by a significant variability in terms of result.
 
     \subsection{Literature}
         A large amount of research has been conducted on image segmentation, based upon a variety of techniques including active contours, clustering, or region splitting or merging. These methods can be roughly classified into contour based methods and region based methods~\cite{arbelaez2011}.
-        \paragraph{Contour based methods} For contour based methods, contour detection algorithms are first used to obtain candidate contours, and one has to find a way to transform these into closed contours (See~\cite{ren2005, arbelaez2011}). A classical approach for performing contour based segmentation is for instance the watershed algorithm.
-        \paragraph{Region based methods} For region based methods, the image is oversegmented into small regions which are then merged to obtain an actual segmentation. To that end, a classical approach consists in representing the oversegmented image by a region adjacency graph connecting nearby regions. In this case, we transform the image segmentation problem into a graph clustering problem. A vast amount of literature in the field of image processing is dedicated to algorithms based upon graph clustering. In 2000, Shi and Malik \cite{shi2000} proposed a novel graph-theoretic criterion to measure the effectiveness of an image partition, the normalized cut, and an efficient technique for minimizing this criterion based on a generalized eigenvalue problem. This algorithm extracts global impression and obtains good results on static images and motion sequences. In 2004, Felzenszwalb and Huttenlocher \cite{felzenszwalb2004} introduced a graph-based image segmentation method based on pairwise region comparison. In their approach, pixels are merged according to their intensity differences across boundaries and between neighboring pixels within each region. The segmentation criteria are adaptively adjusted to take into account the variability in neighbor regions. These algorithms constitute the main approaches to perform graph-based segmentation.
+        \paragraph{Contour based methods} For contour based methods, contour detection algorithms are first used to obtain candidate contours, and one has to find a way to transform these into closed contours (see~\cite{ren2005, arbelaez2011}). A classical approach for performing contour based segmentation is for instance the watershed algorithm~\cite{watershed1991}.
+        \paragraph{Region based methods} For region based methods, the image is oversegmented into small regions which are then merged to obtain an actual segmentation. To that end, a classical approach consists in representing the oversegmented image by a region adjacency graph connecting nearby regions. In this case, we transform the image segmentation problem into a graph clustering problem. A vast amount of literature in the field of image processing is dedicated to algorithms based upon graph clustering. In 2000, Shi and Malik~\cite{shi2000} proposed a novel graph-theoretic criterion to measure the effectiveness of an image partition, the normalized cut, and an efficient technique for minimizing this criterion based on a generalized eigenvalue problem. This algorithm extracts global impression and obtains good results on static images and motion sequences. In 2004, Felzenszwalb and Huttenlocher~\cite{felzenszwalb2004} introduced a graph-based image segmentation method based on pairwise region comparison. In their approach, pixels are merged according to their intensity differences across boundaries and between neighboring pixels within each region. The segmentation criteria are adaptively adjusted to take into account the variability in neighbor regions. These algorithms constitute the main approaches to perform graph-based segmentation.
         \bigskip
 
-        Most of the time, the starting point of a region based method is finding a way to build a superpixel partition of the image.
+        Most of the time, the starting point of a region based methods consists in finding a way to build an over-segmentation of the image.
 
     \subsection{Ambitions}
-        In previous work~\cite{chang2019}, we were able to notice that the quality of the initial oversegmentation, as measured by metrics including the boundary recall, the compactness and the undersegmentation error, significantly impacts the quality of the overall segmentation. The objective of this research is therefore to develop a deep learning based algorithm to generate a superpixel partition with improved metrics.
+        In previous work~\cite{chang2019}, we were able to notice that the quality of the initial oversegmentation, as measured by metrics including the boundary recall, the compactness and the undersegmentation error, significantly impacts the quality of the overall segmentation.
+        Deep learning algorithms have recently been applied to segmentation tasks and currently represent the state-of-the art solution in this field~\cite{unet2015,long2015}. Nevertheless, the question of generating deep learning based over-segmentations has not been extensively studied yet, mostly due to the lack of proper training datasets for this particular task.
+        The objective of this research is therefore to develop a deep learning based algorithm to generate a superpixel partition with improved metrics.
         \par
         Most of the segmentation methods are based on color information of pixels in the image, not taking into account all the human knowledge that one uses to understand what he sees. Implementing this knowledge would require a lot of computational time and a huge database, which does not currently exist. A neural network overcomes this issue, modeling this knowledge from a dataset of labeled images.
         \par
@@ -72,7 +74,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
 \section{Background on superpixels segmentation}
 
     \subsection{Superpixels}
-        Superpixel algorithms are a class of techniques that partition an image into several small groups of pixels that share the same properties. Such a process highly reduces the number of characteristics of an image, as each superpixel is composed of hundreds of pixels, which leads to the amount of calculation being reduced for a further processing. In addition, as the pixels of a superpixel share similar attributes, they constitute regions of an image on which it is very relevant to compute features -- mean color, mean texture.
+        Superpixel algorithms are a class of techniques that partition an image into several small groups of pixels that share the same properties. Such a process highly reduces the number of characteristics of an image, as each superpixel is composed of hundreds of pixels, which leads to the amount of calculation being reduced for a further processing. In addition, as the pixels of a superpixel share similar attributes, they constitute regions on which it is relevant to compute features -- mean color, mean texture.
 
         \begin{figure}[!ht]
         \centering
@@ -88,17 +90,17 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             \centering
             \includegraphics[width=0.9\linewidth]{pics/img_spp3.png}
         \end{subfigure}
-            \caption{\textit{A superpixel segmentation. From left to right: the original image, the original image with its calculated superpixels outlines and the resulting superpixel segmented image. Each superpixel has only one color, the mean color of the original image over the superpixel region.}}
+            \caption{\textit{Example of a superpixel segmentation. From left to right: original image, original image with its calculated superpixels outlines and resulting superpixel segmentation. Each superpixel is affected the mean color of the original image over the superpixel region.}}
             \label{fig:spp}
         \end{figure}
-
-        Thus, superpixel algorithms are often considered as a pre-processing step in a number of applications. They can be used for depth estimation~\cite{zitnick2007} or make the objects features more understandable in object classification. Finally, computing the superpixel partition of an image can constitute a first processing step to obtain an actual segmentation for this image~\cite{fulkerson2009}, reducing the complexity of finding the different regions of an image by grouping at first similar pixels.
+        \par
+        Thus, superpixel algorithms are often considered as a pre-processing step in a number of applications. They can be used for depth estimation~\cite{zitnick2007} or make the objects features more understandable in object classification. In addition, computing the superpixel partition of an image can constitute a first processing step to obtain an actual segmentation for this image~\cite{fulkerson2009}, reducing the complexity of finding the different regions of an image by grouping at first similar pixels.
 
     \subsection{A good superpixel segmentation}
         \label{par:metrics}
-        Before even starting building one, we have to define what is a ``good'' superpixel segmentation algorithm. As it is shown in~\cite{stutz2017}, it is a very ambiguous task as many relevant criteria exist. Several metrics, though, are commonly chosen in the literature to evaluate whether a superpixel algorithm gives good results or not.
+        Before even starting building one, we have to define what is a ``good'' superpixel segmentation algorithm. As shown in~\cite{stutz2017}, it is a very ambiguous task as many relevant criteria exist. Several metrics, though, are commonly chosen in the literature to evaluate whether a superpixel algorithm gives good results or not.
 
-        Let $G = \{G_i\}_i$ and $S = \{S_j\}_j$ be partitions of the same image $I : x_n \mapsto I(x_n)$, $1 \leq n \leq N$. $G$ is the ground truth segmented image\footnote{ground truth segmented or superpixel segmented?} and $S$ is the segmented image obtained from a superpixel algorithm.
+        Let $G = \{G_i\}_i$ and $S = \{S_j\}_j$ be partitions of the same image $I : x_n \mapsto I(x_n)$, $1 \leq n \leq N$. $G$ is the ground truth segmented image\footnote{ground truth segmented or superpixel segmented?\cite{toanswer}} and $S$ is the segmented image obtained from a superpixel algorithm.
         \begin{itemize}
             \item \textbf{Boundary Recall.} The first criterion we want the algorithm to respect is quite logically to detect most of the ground truth's outlines. Boundary recall measures the intersection between the outlines of the segmented image and the ones of the ground truth image. Before the computation, the segmented image outlines are dilated by a square of side 5 pixels. As such, boundary recall indicates the proportion of real boundaries being detected, with a tolerance margin of a few pixels.\\
             If $\text{D}(G,\tilde{S})$ is the number of detected boundary pixels and $\text{UD}(G,\tilde{S})$ the number of undetected boundary pixels in the segmented image $S$, then the \textit{boundary recall} is:
@@ -113,16 +115,16 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             $$
             As such, a high compactness tends to indicate regular and little tortuous contours.
 
-            \item \textbf{Undersegmentation Error.} \cite{todo:Undersegmentation} Undersegmentation Error measures the ``leakage'' of the superpixels over the ground truth.  We adopt the formulation proposed by Neubert and Protzel in~\cite{neubert2012}:
+            \item \textbf{Undersegmentation Error.} Undersegmentation Error measures the ``leakage'' of the superpixels over the ground truth. We adopt the formulation proposed by Achanta et al.~in~\cite{achanta2012}:
             $$
-            \mathrm{UE}_{NP}(G,S)= \frac{1}{N} \sum_{G_i} \sum_{S_j \cap G_i \neq \emptyset} \min \{|S_j \cap G_i|,|S_j-S_j \cap G_i|\}
+            \mathrm{UE}(G,S)=\frac{1}{N} \left[\sum_{G_i} \left(\sum_{S_j | S_j \cap G_i>B}|S_j|\right)-N\right]
             $$
-            where $S_j$ is a superpixel and $G_i$ is a gound truth segment. We take the minimum of the number of overlapping pixels and the number of non overlapping pixels within $S_j$ as the leakage.
+            Given a region $G_i$ from the ground truth segmentation, $\{S_j | S_j \cap G_i>B\}$ is the set of superpixels $S_j$ leaking across the boundaries of $G_i$, $B$ being a tolerance margin --- here, the minimum number of pixels is 5 percent of $|S_j|$. Superpixels that do not fit the ground truth result in a high value of UE.
         \end{itemize}
 
     \subsection{Algorithms}
         \subsubsection{SLIC}
-            The Simple Linear Iterative Clustering (SLIC) algorithm, introduced by Achanta et al.~\cite{achanta2012,achanta2017}, is a region based method and is ranked among the most used algorithms for superpixel segmentation. It constructs a superpixel partition by applying a K-means clustering algorithm on the image. During initialization, K cluster centers locations are selected on the image. Each pixel is then associated to the closest cluster center in the image according to a distance involving the color proximity and the physical distance between the pixel and the seed. The distance between the previous and the new locations is used to compute a residual error $E$, and the procedure is iterated until the error $E$ converges.
+            The Simple Linear Iterative Clustering (SLIC) algorithm, introduced by Achanta et al.~\cite{achanta2012,achanta2017}, is a region based method and is ranked among the most used algorithms for superpixel segmentation. It constructs a superpixel partition by applying a local K-means clustering algorithm on the image. During initialization, K cluster centers locations are selected on the image. Each pixel is then associated to the closest cluster center in the image according to a distance involving the color proximity and the physical distance between the pixel and the seed. The distance between the previous and the new locations is used to compute a residual error $E$, and the procedure is iterated until the error $E$ converges.
 
             \begin{figure}[!ht]
                 \centering
@@ -131,11 +133,32 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             \end{figure}
 
         \subsubsection{Eikonal}
-            \cite{todo}
+
+            An algorithm based upon the Eikonal equation has recently been proposed for generating superpixels. The algorithm draws an analogy between waves propagating in an heterogeneous medium and regions growing on an image at a rate depending on the local color and texture.
+            The Eikonal equation is a non-linear partial differential equation describing the propagation of waves in a domain $\Omega \subset \mathbb{R}^2$. At each point $x$ of the domain, the local velocity is denoted $F(x)$. For all $x$ in $\Omega $, Eikonal equation reads:
+            \begin{equation}
+              \begin{cases}
+                ||\nabla U(x)|| = \dfrac{1}{F(x)} \quad \forall x \in \Omega \\
+                U(x) = 0    \quad \forall x \in \partial \Omega,
+              \end{cases}
+            \end{equation}
+            where $\partial \Omega $ denotes the boundary of the domaine $\Omega $. The solution $U(x)$ to Eikonal equation can conveniently be interpreted as the minimal traveling time required for the wave to travel from $\partial \Omega$ to point $x$.
+
+            In what follows, a pixel in image $\mathcal{I}$ is denoted by $p$ and its coordinates by $(x, y)$. $\mathbf{C}(p)$ denotes the color at pixel $p$ in the CIELAB color space. The Eikonal algorithm is initialized by selecting $N$ \textit{seeds} or \textit{cluster centers} locations $\left\{s_1, s_2, ..., s_N \right\}$. Then, a velocity field $F_i(p)$ is associated to each seed $s_i$ depending on the color and the texture of both the seed and the pixel location $p:=(x, y)$. The labels of the seeds are then gradually propagated from the labeled pixels to the unlabeled pixels according to the local velocities $\{F_i(x)\}_{i = 1, .., N}$. On the domain defined by the image, Eikonal equation therefore reads
+            \begin{equation}
+              \begin{cases}
+                ||\nabla U(p)|| = \dfrac{1}{F(p)}\quad \forall p \in I\\
+                U(p) = 0    \quad \forall p \in \Gamma.
+              \end{cases}
+              \label{eqn:eikonal}
+            \end{equation}
+            Computing the propagation associated to (\ref{eqn:eikonal}) enables to obtain a superpixel partition of $\mathcal{I}$.
+            Starting from several pixel seeds on the image, we associate a wave to each one. The speed of the wave associated to a pixel is high if it arrives on a pixel that is similar to the original seed, and low otherwise. Wen two wavefronts meet, a contour is generated.
+
 
 \newpage
 \section{Proposed approach and architecture}
-    For our model to train, we build a superpixel segmentation dataset using the COCO dataset and a version of the Eikonal-based superpixel algorithm~\cite{figliuzzi2019}, applied on an image of the dataset (three color channels) and a segmentation mask (one channel).
+    For our model to train, we build a superpixel segmentation dataset using the COCO dataset and a version of the Eikonal-based superpixel algorithm~\cite{figliuzzi2019}, applied on an image of the dataset (three color channels) and a segmentation mask (one channel). By considering a velocity function in (\ref{eqn:eikonal}) putting a significant weight on the segmentation mask, it is possible to construct a superpixel of the image which respects the boundaries of the segmentation mask.
     \begin{figure}[!ht]
         \centering
         \includegraphics[width=.7\linewidth]{pics/schema-train.png}
@@ -151,49 +174,41 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
 
 
     \subsection{Dataset generation}
+        \label{par:coco}
+        The training of the neural network was performed on a modified version of the COCO dataset~\cite{microsoft2014}. This dataset gathers images of complex everyday scenes containing common objects in their natural context and can be used for object detection, segmentation and captioning. In order to have a better understanding of this dataset, we can analyze its images (Figure~\ref{fig:train}). Hence the necessity to pre-process the dataset in order to standardize the input images' size.
 
-        \subsubsection{The COCO dataset}
-            \label{par:coco}
-            The training of the neural network was performed on a modified version of the COCO dataset~\cite{microsoft2014}. This dataset gathers images of complex everyday scenes containing common objects in their natural context and can be used for object detection, segmentation and captioning. In order to have a better understanding of this dataset, we can analyze its image (Figure~\ref{fig:train}). Hence the necessity to pre-process the dataset in order to standardize the input images' size.
-
-            \begin{figure}[!ht]
-                \begin{subfigure}{.49\linewidth}
-                    \centering
-                    \includegraphics[width=\linewidth]{pics/train2017full.png}
-                    \caption{\textit{COCO dataset images: widths, heights, and number of images for each dimension}}
-                \end{subfigure}
-                \begin{subfigure}{.49\linewidth}
-                    \center
-                    \begin{tabular}{|c||c|c|c|}
-                        \hline
-                        \multicolumn{2}{|c|}{Training} & Height & Width \\
-                        \hline
-                        \hline
-                        Images & Min & 51 & 59 \\
-                        \hline
-                        118~287 & Max & 640 & 640 \\
-                        \hline
-                    \end{tabular}
-                    \caption{\textit{Characteristics of the COCO dataset}}
-                \end{subfigure}
-                \caption{\textit{Training set characterization}}
-                \label{fig:train}
-            \end{figure}
-
-            The COCO dataset contains a huge number of images, but its segmentations are not very qualitative. A it has been labeled by hand in an approximative way, its segmented images lack quality and their boundaries are often imprecise (Figure~\ref{fig:imprecise}). We subsequently introduce the Eikonal algorithm, which constitutes an important step in the process but that will not be fully detailed in this paper.
-
-            \begin{figure}[!ht]
+        \begin{figure}[!ht]
+            \begin{subfigure}{.49\linewidth}
                 \centering
-                \includegraphics[width=0.3\linewidth]{pics/img_segm_coco.png}
-                \caption{\textit{Lack of precision of the COCO dataset segmentations}}
-                \label{fig:imprecise}
-            \end{figure}
+                \includegraphics[width=\linewidth]{pics/train2017full.png}
+                \caption{\textit{COCO dataset images: widths, heights, and number of images for each dimension}}
+            \end{subfigure}
+            \begin{subfigure}{.49\linewidth}
+                \centering
+                \begin{tabular}{|c||c|c|c|}
+                    \hline
+                    \multicolumn{2}{|c|}{Training} & Height & Width \\
+                    \hline
+                    \hline
+                    Images & Min & 51 & 59 \\
+                    \hline
+                    118~287 & Max & 640 & 640 \\
+                    \hline
+                \end{tabular}
+                \caption{\textit{Characteristics of the COCO dataset}}
+            \end{subfigure}
+            \caption{\textit{Training set characterization}}
+            \label{fig:train}
+        \end{figure}
 
+        The COCO dataset contains a huge number of images, but its segmentations are not very qualitative. As it has been labeled by hand in an approximative way, the boundaries of its segmented images are often imprecise (Figure~\ref{fig:imprecise}). We subsequently use the Eikonal algorithm\cite{tochange} to process the images.
 
-        \subsubsection{Eikonal}
-            \cite{todo} à modifier selon ce qu'envoie bruno
-            In previous work~\cite{figliuzzi2019} was built a superpixel creation algorithm based on the Eikonal equation. We will not tackle this algorithm as it was not the goal of this work; nevertheless it may be useful to have a basic understanding of how it works. Starting from several pixel seeds on the image, we associate a wave to each one. The speed of the wave associated to a pixel is high if it arrives on a pixel that is similar to the original seed, and low otherwise. Wen two wavefronts meet, a contour is generated. Moreover, as we apply the algorithm on a four channels image --- three color channels and a segmentation mask ---, we can impose the speed of the wave to reduce a lot when it passes from a segmentation mask to another, building superpixels sticking to the ground truth.
-
+        \begin{figure}[!ht]
+            \centering
+            \includegraphics[width=0.3\linewidth]{pics/img_segm_coco.png}
+            \caption{\textit{Lack of precision of the COCO dataset segmentations}}
+            \label{fig:imprecise}
+        \end{figure}
 
 
     \subsection{Model}
@@ -201,7 +216,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
         \subsubsection{Network architecture}
 
             \paragraph{Context Aggregation Network}
-            The primary architecture of our network is the \underline{C}ontext \underline{A}ggregation \underline{N}etwork (CAN), introduced in 2015~\cite{yu2015}. It gradually aggregates contextual information without losing resolution through the use of dilated convolutions, whose parameter exponentially increases over the network layers. This exponential growth grants a global information aggregation with a compact structure~\cite{yu2015,chen2017}.
+            The primary architecture of our network is the \underline{C}ontext \underline{A}ggregation \underline{N}etwork (CAN), introduced in 2015~\cite{yu2015}. It gradually aggregates contextual information without losing resolution through the use of dilated convolutions, whose field of view increases exponentially over the network layers. This exponential growth grants a global information aggregation with a compact structure~\cite{yu2015,chen2017}.
             \par
             The input data goes through the set of layers $\{L^0, \cdots, L^d\}$, and we choose $d=7$ (\textit{cf.}~\ref{par:hpp-d}, page~\pageref{par:hpp-d}); the input and the output are images, so they have 3 feature maps.
 
@@ -216,7 +231,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
                 \caption{\textit{Layers of the network}}
             \end{table}
             \par
-            Each block $L^s$, $s\in [\![2,d-2]\!]$ is made of a \textit{dilated convolution}, with parameter $r_s=2^s$, an \textit{adaptative batch normalization}, and a \textit{leaky rectifier (ReLU)}, so that the content of an intermediate layer $L^s$ can be computed from the content of the previous layer $L^{s-1}$:
+            Each block $L^s$, $s\in [\![2,d-2]\!]$ is made of a \textit{dilated convolution}, with parameter $r_s=2^s$, an \textit{adaptive batch normalization}, and a \textit{leaky rectifier (ReLU)}, so that the content of an intermediate layer $L^s$ can be computed from the content of the previous layer $L^{s-1}$:
             \begin{equation}
                 L_i^s=\Phi\left(\Psi^s\left(b_i^s+\sum_jL_j^{s-1}*_{r_s}K^s_{i,j}\right)\right).
             \end{equation}
@@ -250,15 +265,14 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
                  & = \sum_{a+rb=x}L_j(a)K_{i,j}(b) \\
                  & = \sum_b L_j(x-rb)K_{i,j}(b)
             \end{align*}
-            and we recognize the simple convolution when $r=1$.\\
-            A dilated convolution enables the network getting larger receptive fields --- which allows the network to aggregate information at increasing scales on the image --- while preserving the input resolution~\cite{dilated}.
+            and we recognize the simple convolution when $r=1$. A dilated convolution enables the network getting larger receptive fields --- which allows the network to aggregate information at increasing scales on the image --- while preserving the input resolution~\cite{yu2015}.
 
 
-            \paragraph{Adaptative Batch Normalization (ABN)} Distinct images in the COCO dataset have very different color ranges; in order to maximize the network performances, we normalize the data in each layer of the network. We define the \textit{adaptative normalization function} $\Psi$ as~\cite{chen2017}:
+            \paragraph{Adaptive Batch Normalization (ABN)} Distinct images in the COCO dataset have very different color ranges; in order to maximize the network performances, we normalize each batch at each layer of the network, so that the images of the batch have similar color ranges. The network can thereby consider a batch as a whole. We define the \textit{adaptive normalization function} $\Psi$ as~\cite{chen2017}:
             $$\Psi(x)=a\ x+b\ BN(x),$$
             where $BN$ is the classic PyTorch batch normalization, defined as:
             $$BN(x) = \frac{x-\mathrm{E}[x]}{\sqrt{\mathrm{Var}[x]+\epsilon}}*\gamma+\beta.$$
-            As such, $\Psi$ combines identity mapping and batch normalization. The $a$, $b$, $\gamma$ and $\beta$ parameters are learned by backpropagation. It allows the model to adapt to each dataset, choosing whether or not giving a big importance to the identity term and the normalization term.
+            As such, $\Psi$ combines identity mapping and batch normalization. The $a$, $b$, $\gamma$ and $\beta$ parameters are learned by backpropagation. It allows the model to choose to either give importance to the identity term or to the normalization term. Because it keeps the weights close to 0, batch normalization is also a way to regularize the network~\cite{ioffe2015} such that it is easier to generalize, and it is thus unnecessary to use dropout to mitigate overfitting.
 
             \paragraph{Leaky rectifier (LReLU)} In order to let our neural network model complex patterns in the data, we have to add a non-linear property to the model. It often is an activation function, such as a sigmoid or a tanh, but these activation functions are bounded and their gradient is very low on the edges. Because we are going to manipulate high scalar values, we have to use an unbounded activation function, such as ReLU, $\Phi(x)=\max(0,x)$ (Figure~\ref{fig:relu}). But the issue with ReLU is that all the negative values become zero immediately, which decreases the ability of our model to train from the data. Hence the implementation of a \textit{leaky rectifier}, LReLU (Figure~\ref{fig:lrelu}):
             $$\Phi(x)=\max(\alpha x,x)\mbox{, with } 0<\alpha<1.$$
@@ -305,8 +319,8 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
 
 
         \subsubsection{Total Variation Loss}
-            In such a search for well-segmented images, 2 criteria have to be fulfilled. The output needs to be as close as possible to the ground truth image; but we also need the segmented image to present a lot of zones where the color gradient $\nabla f(I)$ is equal to $0$. Thus, we want to implement a train loss function that could help us satisfy these two criteria.
-            In order grant an improvement in the output image smoothness, we use the Total Variation (TV) loss, defined by~\cite{tvloss}:
+            In such a search for well-segmented images, two criteria have to be fulfilled. The output needs to be as close as possible to the ground truth image; but we also need the segmented image to present a lot of zones where the color gradient $\nabla f(I)$ is equal to $0$. Thus, we want to implement a train loss function that could help us satisfy these two criteria.
+            In order to grant an improvement in the output image smoothness, we use the Total Variation (TV) loss, often used in noise removal algorithms~\cite{rudin1992,chambolle2004}:
             $$
             L_{TV}=\frac{1}{N}\sum_{i=1}^N |\hat{f}(I)_i-f(I)_i|^2+\alpha_{TV}\frac{1}{N}\sum_{i=1}^N|(\nabla f(I))_i|^2
             $$
@@ -375,7 +389,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             \caption{\textit{Tuning of learning rate: validation loss for different runs}}
         \end{figure}
         \par
-        Introducing a decay and a threshold broadly gives the same results as switching the learning rate only once, after a dozen epochs. It thus seems relevant to start from a learning rate of $10^{-2}$, which allows the network to adapt quickly at first, and then to decrease it to $10^{-3}$ after a dozen epochs. Decreasing the learning rate below this value gives negligible results and essentially only slows down the algorithm.
+        Introducing a decay and a threshold broadly gives the same results as switching the learning rate only once, after a dozen epochs. It thus seems relevant to start from a learning rate of $10^{-2}$, which allows the network to adapt quickly at first, and then to decrease it to $10^{-3}$ after a dozen epochs. Decreasing the learning rate below this value gives negligible results and essentially only slows down the model.
 
         \paragraph{Network size \textit{d}}
         \label{par:hpp-d}
@@ -447,10 +461,10 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
         \begin{figure}[!htb]
             \centering
             \includegraphics[width=.8\linewidth]{pics/img_bsd_res2.png}
-            \caption{\textit{Application of the model to an image of the BSD500. From left to right, up to down: the original image, the output image of the neural network, the original image and its superpixel segmentation\cite{groundtruthornot}, and the final superpixel segmented image with each superpixel being displayed with the average color of the pixels belonging to it.}}
+            \caption{\textit{Application of the model to an image of the BSD500. From left to right, up to down: original image, output image of the neural network, superpixel segmentation of the output image overlaying on original image, and superpixel segmented image with each superpixel being displayed with the average color of the pixels belonging to it.}}
         \end{figure}
         \cite{checkplacement}
-        Here are evaluated the metrics for some superpixel segmentation algorithms: the \underline{w}ater\underline{s}hed algorithm (WS), \underline{ei}konal (EI) and \underline{ei}konal with \underline{t}extures (EIT)~\cite{figliuzzi2019}.
+        Here are evaluated the metrics for some superpixel segmentation algorithms: the \underline{w}ater\underline{s}hed algorithm (WS)~\cite{watershed1991}, \underline{ei}konal (EI) and \underline{ei}konal with \underline{t}extures (EIT)~\cite{figliuzzi2019}.
         \cite{todo:metrics}
         \begin{table}[!ht]
             \centering
@@ -476,14 +490,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
 
 
 \section{Discussion and conclusion}
-    A voir à la fin, l’idée : discuter des résultats, expliquer que la TV n’a pas marché, proposer des pistes (ex : unet)
-
-    In this article, we presented an algorithm based upon convolutional neural networks for generating superpixel partitions of images. This work indicates that convolutional neural networks can achieve good performance on superpixel segmentation. Because of the complexity of both the model and the problem we are trying to resolve, we were able to conduct little experiments for the tuning of our hyperparameters. It would thus be interesting to push the study further, notably by conducting additional tests for a better choice of our parameters. We ran some experiments on the implementation of a U-Net~\cite{unet2015} network, but only have a few results yet. So far, they are very promising, but we would like to continue testing this network, and try to mix it with the CAN, for instance adding only one U-Net layer on the CAN. Furthermore, testing our model on other datasets would show how well it generalizes.
-
-
-    % J'ai testé le U-net complet. Les résultats d'entraînement sont tops, mais ça ne généralise pas bien du tout (grosse erreur de validation). J'ai relancé deux calculs en supprimant une des étapes intermédiaires pour diminuer le nombre de paramètres, et en ajoutant une pénalisation TV, le calcul en est à une dizaine d'époques.
-    % Chen + UNet
-
+    In this article, we presented an algorithm based upon convolutional neural networks for generating superpixel partitions of images. This work indicates that convolutional neural networks can achieve good performance on superpixel segmentation. Because of the complexity of both the model and the problem we are trying to resolve, we were able to conduct little experiments for the tuning of our hyperparameters. It would thus be interesting to push the study further, notably by conducting additional tests for a better choice of our parameters. We ran some experiments on the implementation of a U-Net~\cite{unet2015} network, but only have a few results yet. We would like to continue testing this network, and try to mix it with the CAN, for instance adding only one U-Net layer on the CAN. Furthermore, testing our model on other datasets would show how well it generalizes.
 
     Whereas at first glance implementing a TV-loss regularization could totally have yielded better results, it does not improve the model. We tried to analyze why such an initiative didn't pay off. Actually, adding the gradient term in the loss function is enjoining the network to reduce the overall gradient function of the image. Nevertheless, while a superpixel segmented image has a lot a regions where its gradient is 0, it also has a very high gradient on the objects contours.
     Although the results obtained are satisfying without a TV-regularization, we could pre-process each image by dividing it into several smaller ones to reduce the amount of outlines in each image the neural network is going to process. However, the COCO dataset is not suitable for this task as its images have a very low resolution. Cutting them would result in losing a lot of global information and thus making the use of a CAN meaningless.
