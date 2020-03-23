@@ -1,9 +1,6 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: main.aux
 The style file: plain.bst
 Database file #1: sources.bib
-Warning--I didn't find a database entry for "todo"
-Warning--I didn't find a database entry for "toanswer"
-Warning--I didn't find a database entry for "tochange"
 Warning--I didn't find a database entry for "todo:tv-tuning"
 Warning--I didn't find a database entry for "toto:tv-interpretation"
 Warning--I didn't find a database entry for "checkplacement"
@@ -17,4 +14,4 @@ Warning--empty journal in figliuzzi2019
 Warning--empty journal in chen2017
 Warning--empty journal in unet2015
 Warning--empty journal in yu2015
-(There were 16 warnings)
+(There were 13 warnings)

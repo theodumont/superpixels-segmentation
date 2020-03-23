@@ -68,7 +68,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
         \par
         Most of the segmentation methods are based on color information of pixels in the image, not taking into account all the human knowledge that one uses to understand what he sees. Implementing this knowledge would require a lot of computational time and a huge database, which does not currently exist. A neural network overcomes this issue, modeling this knowledge from a dataset of labeled images.
         \par
-        \cite{todo} petit résumé de quelques lignes du contenu de l’article et annonce le plan.
+        After a short overview of the literature and the state-of-the-art algorithms in superpixel segmentation, we will expose both how we generated the training dataset and how we built the convolutional neural network model.
 
 \newpage
 \section{Background on superpixels segmentation}
@@ -100,7 +100,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
         \label{par:metrics}
         Before even starting building one, we have to define what is a ``good'' superpixel segmentation algorithm. As shown in~\cite{stutz2017}, it is a very ambiguous task as many relevant criteria exist. Several metrics, though, are commonly chosen in the literature to evaluate whether a superpixel algorithm gives good results or not.
 
-        Let $G = \{G_i\}_i$ and $S = \{S_j\}_j$ be partitions of the same image $I : x_n \mapsto I(x_n)$, $1 \leq n \leq N$. $G$ is the ground truth segmented image\footnote{ground truth segmented or superpixel segmented?\cite{toanswer}} and $S$ is the segmented image obtained from a superpixel algorithm.
+        Let $G = \{G_i\}_i$ and $S = \{S_j\}_j$ be partitions of the same image $I : x_n \mapsto I(x_n)$, $1 \leq n \leq N$. $G$ is the ground truth segmented image and $S$ is the segmented image obtained from a superpixel algorithm.
         \begin{itemize}
             \item \textbf{Boundary Recall.} The first criterion we want the algorithm to respect is quite logically to detect most of the ground truth's outlines. Boundary recall measures the intersection between the outlines of the segmented image and the ones of the ground truth image. Before the computation, the segmented image outlines are dilated by a square of side 5 pixels. As such, boundary recall indicates the proportion of real boundaries being detected, with a tolerance margin of a few pixels.\\
             If $\text{D}(G,\tilde{S})$ is the number of detected boundary pixels and $\text{UD}(G,\tilde{S})$ the number of undetected boundary pixels in the segmented image $S$, then the \textit{boundary recall} is:
@@ -153,7 +153,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
               \label{eqn:eikonal}
             \end{equation}
             Computing the propagation associated to (\ref{eqn:eikonal}) enables to obtain a superpixel partition of $\mathcal{I}$.
-            Starting from several pixel seeds on the image, we associate a wave to each one. The speed of the wave associated to a pixel is high if it arrives on a pixel that is similar to the original seed, and low otherwise. Wen two wavefronts meet, a contour is generated.
+            Starting from several pixel seeds on the image, we associate a wave to each one. The speed of the wave associated to a pixel is high if it arrives on a pixel that is similar to the original seed, and low otherwise. Wen two wavefronts meet, a contour is generated. Moreover, as we apply the algorithm on a four channels image --- three color channels and a segmentation mask ---, we can impose the speed of the wave to reduce a lot when it passes from a segmentation mask to another, building superpixels sticking to the ground truth.
 
 
 \newpage
@@ -201,7 +201,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             \label{fig:train}
         \end{figure}
 
-        The COCO dataset contains a huge number of images, but its segmentations are not very qualitative. As it has been labeled by hand in an approximative way, the boundaries of its segmented images are often imprecise (Figure~\ref{fig:imprecise}). We subsequently use the Eikonal algorithm\cite{tochange} to process the images.
+        The COCO dataset contains a huge number of images, but its segmentations are not very qualitative. As it has been labeled by hand in an approximative way, the boundaries of its segmented images are often imprecise (Figure~\ref{fig:imprecise}). We subsequently use the Eikonal algorithm to process the images.
 
         \begin{figure}[!ht]
             \centering
@@ -280,13 +280,13 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             \begin{figure}[!ht]
                 \begin{subfigure}{.49\linewidth}
                     \centering
-                    \includegraphics[width=.7\linewidth]{pics/act-relu.png}
+                    \includegraphics[width=.9\linewidth]{pics/act-relu.png}
                     \caption{\textit{ReLU}}
                     \label{fig:relu}
                 \end{subfigure}
                 \begin{subfigure}{.49\linewidth}
                     \centering
-                    \includegraphics[width=.7\linewidth]{pics/act-lrelu.png}
+                    \includegraphics[width=.9\linewidth]{pics/act-lrelu.png}
                     \caption{\textit{LReLU ($\alpha=0.2$)}}
                     \label{fig:lrelu}
                 \end{subfigure}
@@ -473,12 +473,17 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
                 \multicolumn{2}{|c|}{Algorithm} & BR & UE & CO\\
                 \hline
                 \hline
-                \multirow{3}{*}{image analysis} & EI & & & \\
-                                                & EIT & & & \\
-                                                & WS & & & \\
+                \multirow{5}{*}{image analysis} & WS & 0.85 & 0.08 & 0.42\\
+                                                & FMS100 & 0.74 & 0.08 & 0.49 \\
+                                                & FMS200 & 0.82 & 0.07 & 0.47 \\
+                                                & FMS400 & 0.89 & 0.05 & 0.48 \\
+                                                & FMS600 & 0.93 & 0.04 & 0.51 \\
                 \hline
-                \multirow{2}{*}{neural networks} & SLIC & 0.90 & 0.05 & 0.54\\
-                                                 & Ours & 0.88 & 0.04 & 0.77\\
+                \multirow{5}{*}{neural networks} & SLIC & 0.90 & 0.05 & 0.54\\
+                                                 & Ours100 & 0.70 & 0.07 & 0.64\\
+                                                 & Ours200 & 0.80 & 0.05 & 0.68\\
+                                                 & Ours400 & 0.88 & 0.04 & 0.77\\
+                                                 & Ours600 & 0.91 & 0.03 & 0.83\\
                 \hline
             \end{tabular}
             \caption{Comparisons of metrics on the BSDS500 dataset for different superpixel segmentation algorithms}

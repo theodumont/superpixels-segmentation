@@ -13,7 +13,7 @@ home = expanduser("~")
 
 if __name__ == '__main__':
 
-    results_path = "./ref/"
+    results_path = "./reffull/"
     with open(results_path + "result.json") as f:
         data = json.load(f)
 
@@ -25,8 +25,8 @@ if __name__ == '__main__':
     compactness = data['compactness']
 
     print("Recall: " + str(np.mean(recall)))
-    print("Recall2: " + str(np.mean(recall2)))
-    print("Precision: " + str(np.mean(precision)))
+    # print("Recall2: " + str(np.mean(recall2)))
+    # print("Precision: " + str(np.mean(precision)))
     print("Undersegmentation: " + str(np.mean(undersegmentation)))
-    print("Undersegmentation (NP): " + str(np.mean(undersegmentationNP)))
+    # print("Undersegmentation (NP): " + str(np.mean(undersegmentationNP)))
     print("Compactness: " + str(np.mean(compactness)))

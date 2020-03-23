@@ -5,7 +5,7 @@ Computes characteristics of the dataset
 import numpy as np
 import matplotlib.pyplot as plt
 from dataset import *
-
+import seaborn as sb
 
 train_or_val = 'train'
 full_or_empty = 'full'
@@ -53,7 +53,7 @@ def min_max_images(segmentation_dataset, save_output):
 
     # Scatter
     rect_scatter = [left, bottom, width, height]
-    ax_scatter = plt.axes(rect_scatter)
+    ax_scatter = plt.axes(rect_scatter, alpha=.5)
     ax_scatter.tick_params(direction='in', top=True, right=True)
     ax_scatter.set_xlabel("Images widths")
     ax_scatter.set_ylabel("Images heights")
