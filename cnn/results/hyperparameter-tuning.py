@@ -7,7 +7,7 @@ import seaborn as sb
 sb.set()
 # d
 
-if True:
+if False:
     # consider the runs 3, 4, 5 and 0
     validation_loss4 = np.load("loss-validation/Validation_loss_3.npy")
     validation_loss5 = np.load("loss-validation/Validation_loss_4.npy")
@@ -20,7 +20,7 @@ if True:
 
     plt.figure("Minimum loss")
     # figsize=(3,2.5)
-    plt.plot([4, 5, 6, 7], [d4, d5, d6, .00311])
+    plt.plot([4, 5, 6, 7], [d4, d5, d6, d7])
     plt.xlabel("d")
     plt.ylabel("Loss")
     plt.ticklabel_format(axis="y", style="sci", scilimits=(0,0))
@@ -60,3 +60,29 @@ if False:
     plt.legend()
     plt.savefig("graphs/hpp-lr-loss-7910.png")
     # plt.show()
+
+
+# alpha TV
+
+if True:
+    validation_loss9 = np.load("loss-validation/Validation_loss_9.npy")
+    # validation_loss12 = np.load("loss-validation/Validation_loss_12.npy")
+    validation_loss13 = np.load("loss-validation/Validation_loss_13.npy")
+    plt.figure("Loss")
+    plt.plot(validation_loss9, label='(run 9) alpha=0')
+    plt.plot(validation_loss13, label='(run 13) alpha=1E-7')
+    # plt.plot(validation_loss12, label='(run 12) alpha=1E-6')
+    plt.xlabel("Epoch")
+    plt.ylabel("Loss")
+    plt.legend()
+    plt.show()
+    plt.savefig("graphs/hpp-tv-loss.png")
+    plt.figure("Minimum loss")
+    # figsize=(3,2.5)
+    plt.plot([4, 5, 6, 7], [d4, d5, d6, d7])
+    plt.xlabel("d")
+    plt.ylabel("Loss")
+    plt.ticklabel_format(axis="y", style="sci", scilimits=(0,0))
+    plt.savefig("graphs/hpp-tv.png")
+    plt.show()
+    print([d4, d5, d6, d7])
