@@ -280,13 +280,13 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             \begin{figure}[!ht]
                 \begin{subfigure}{.49\linewidth}
                     \centering
-                    \includegraphics[width=.9\linewidth]{pics/act-relu.png}
+                    \includegraphics[width=\linewidth]{pics/act-relu.png}
                     \caption{\textit{ReLU}}
                     \label{fig:relu}
                 \end{subfigure}
                 \begin{subfigure}{.49\linewidth}
                     \centering
-                    \includegraphics[width=.9\linewidth]{pics/act-lrelu.png}
+                    \includegraphics[width=\linewidth]{pics/act-lrelu.png}
                     \caption{\textit{LReLU ($\alpha=0.2$)}}
                     \label{fig:lrelu}
                 \end{subfigure}
@@ -317,7 +317,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
                 \caption{\textit{Our Context Aggregation Network}}
             \end{table}
 
-
+\newpage
         \subsubsection{Total Variation Loss}
             In such a search for well-segmented images, two criteria have to be fulfilled. The output needs to be as close as possible to the ground truth image; but we also need the segmented image to present a lot of zones where the color gradient $\nabla f(I)$ is equal to $0$. Thus, we want to implement a train loss function that could help us satisfy these two criteria.
             In order to grant an improvement in the output image smoothness, we use the Total Variation (TV) loss, often used in noise removal algorithms~\cite{rudin1992,chambolle2004}:
@@ -390,6 +390,7 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
         \end{figure}
         \par
         Introducing a decay and a threshold broadly gives the same results as switching the learning rate only once, after a dozen epochs. It thus seems relevant to start from a learning rate of $10^{-2}$, which allows the network to adapt quickly at first, and then to decrease it to $10^{-3}$ after a dozen epochs. Decreasing the learning rate below this value gives negligible results and essentially only slows down the model.
+        \newpage
 
         \paragraph{Network size \textit{d}}
         \label{par:hpp-d}
@@ -424,11 +425,11 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             \begin{figure}[!ht]
                 \begin{subfigure}{.49\linewidth}
                     \centering
-                    \begin{tabular}{|c|c|c|c|c|c|}
+                    \begin{tabular}{|c|c|c|c|}
                         \hline
-                        $\alpha_{TV}$ &   &   &   &   &   \\
+                        $\alpha_{TV}$ & 0 & $10^{-7}$ & $10^{-6}$ \\
                         \hline \hline
-                        loss$\times 10^3$ &   &   &   &   &  \\
+                        loss$\times 10^3$ &   &   &  \\
                         \hline
                     \end{tabular}
                 \end{subfigure}
@@ -463,27 +464,31 @@ The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields r
             \includegraphics[width=.8\linewidth]{pics/img_bsd_res2.png}
             \caption{\textit{Application of the model to an image of the BSD500. From left to right, up to down: original image, output image of the neural network, superpixel segmentation of the output image overlaying on original image, and superpixel segmented image with each superpixel being displayed with the average color of the pixels belonging to it.}}
         \end{figure}
-        \cite{checkplacement}
-        Here are evaluated the metrics for some superpixel segmentation algorithms: the \underline{w}ater\underline{s}hed algorithm (WS)~\cite{watershed1991}, \underline{ei}konal (EI) and \underline{ei}konal with \underline{t}extures (EIT)~\cite{figliuzzi2019}.
-        \cite{todo:metrics}
+        \par
+        Here are evaluated the metrics for some superpixel segmentation algorithms: SLIC~\cite{achanta2012}, FMS~\cite{figliuzzi2019} and our algorithm.
+        \par
         \begin{table}[!ht]
             \centering
             \begin{tabular}{|c|c|ccc|}
                 \hline
-                \multicolumn{2}{|c|}{Algorithm} & BR & UE & CO\\
+                Superpixels & Algorithm & BR & UE & CO\\
                 \hline
                 \hline
-                \multirow{5}{*}{image analysis} & WS & 0.85 & 0.08 & 0.42\\
-                                                & FMS100 & 0.74 & 0.08 & 0.49 \\
-                                                & FMS200 & 0.82 & 0.07 & 0.47 \\
-                                                & FMS400 & 0.89 & 0.05 & 0.48 \\
-                                                & FMS600 & 0.93 & 0.04 & 0.51 \\
+                \multirow{3}{*}{100} & SLIC & 0.75 & 0.16 & 0.22 \\
+                                     & FMS & 0.74 & 0.08 & 0.49 \\
+                                     & Ours & 0.70 & 0.07 & 0.64\\
                 \hline
-                \multirow{5}{*}{neural networks} & SLIC & 0.90 & 0.05 & 0.54\\
-                                                 & Ours100 & 0.70 & 0.07 & 0.64\\
-                                                 & Ours200 & 0.80 & 0.05 & 0.68\\
-                                                 & Ours400 & 0.88 & 0.04 & 0.77\\
-                                                 & Ours600 & 0.91 & 0.03 & 0.83\\
+                \multirow{3}{*}{200} & SLIC & 0.82 & 0.12 & 0.26\\
+                                     & FMS & 0.82 & 0.07 & 0.47 \\
+                                     & Ours & 0.74 & 0.08 & 0.49 \\
+                \hline
+                \multirow{3}{*}{400} & SLIC & 0.90 & 0.10 & 0.31\\
+                                     & FMS & 0.89 & 0.05 & 0.48 \\
+                                     & Ours & 0.74 & 0.08 & 0.49 \\
+                \hline
+                \multirow{3}{*}{600} & SLIC & 0.92 & 0.08 & 0.35 \\
+                                     & FMS & 0.93 & 0.04 & 0.51 \\
+                                     & Ours & 0.91 & 0.03 & 0.83\\
                 \hline
             \end{tabular}
             \caption{Comparisons of metrics on the BSDS500 dataset for different superpixel segmentation algorithms}
@@ -512,7 +517,6 @@ This work would not have been possible without the precious help of Mr.~Bruno \t
 \section*{Appendices}
 
     \subsection*{Experiments}
-    \cite{todo-experiments}
 
     \begin{table}[!ht]
             \centering
@@ -521,21 +525,22 @@ This work would not have been possible without the precious help of Mr.~Bruno \t
                 id & $d$ & $lr_0$ & decay? & thresh.? & $\alpha_{TV}$ & comments & conclusion \\
                 \hline
                 \hline
-                3 & 4 & $10^{-2}$ & $\times .5$ every 2 ep. & $10^{-4}$ & 0 & & \multirow{5}{*}{$d=7$}\\
+                3 & 4 & $10^{-2}$ & $\times .5$ every 2 ep. & $10^{-4}$ & 0 & & \multirow{6}{*}{$d=7$}\\
                 4 & 5 & $10^{-2}$ & $\times .5$ every 2 ep. & $10^{-4}$ & 0 & & \\
                 5 & 6 & $10^{-2}$ & $\times .5$ every 2 ep. & $10^{-4}$ & 0 & & \\
                 0 & 7 & $10^{-2}$ & $\times .5$ every 2 ep. & $10^{-4}$ & 0 & & \\
-                11 & 8 & $10^{-2}$ & $10^{-3}$ after 10 ep. & $10^{-4}$ & 0 & & \\
+                11 & 8 & $10^{-2}$ & $10^{-3}$ after 10 ep. & $10^{-3}$ & 0 & & \\
+                15 & 8 & $10^{-2}$ & $\times .5$ every 2 ep. & $10^{-4}$ & 0 & & \\
                 \hline
-                6 & 7 & $10^{-2}$ & $\times .5$ every 2 ep. & $10^{-4}$ & 0 & from run 0 ep.5 & \multirow{5}{*}{\shortstack{$lr_0=10^{-2}$,\\then $10^{-3}$\\after 10 ep.}}\\
-                7 & 7 & $10^{-3}$ & No & & 0 & from run 0 ep.40 & \\
+                6 & 7 & $10^{-2}$ & $\times .5$ every 2 ep. & $10^{-4}$ & 0 & from run 0 ep.5 & \multirow{6}{*}{\shortstack{$lr_0=10^{-2}$,\\then $10^{-3}$\\after 10 ep.}}\\
                 8 & 7 & $10^{-2}$ & No & & 0 & from run 0 ep.40 & \\
+                7 & 7 & $10^{-3}$ & No & & 0 & from run 0 ep.40 & \\
                 9 & 7 & $10^{-3}$ & $\times .5$ every 2 ep. & $10^{-4}$ & 0 & from run 0 ep. 40 & \\
                 10 & 7 & $10^{-3}$ & No &  & 0 & from run 9 ep.40& \\
+                14 & 7 & $10^{-4}$ & No &  & 0 & from run 10 ep.13& \\
                 \hline
-                12 & & & & & & & \\
-                13 & & & & & & & \\
-                14 & & & & & & & \\
+                12 & 7 & $10^{-2}$ & $10^{-3}$ after 10 ep. & $10^{-3}$ & $10^{-6}$ & \multirow{2}{*}{no improvement} & \multirow{2}{*}{$\alpha_{TV}=0$}\\
+                13 & 7 & $10^{-2}$ & $10^{-3}$ after 10 ep. & $10^{-3}$ & $10^{-7}$ & & \\
                 \hline
             \end{tabular}
             \caption{\textit{All the runs. The batch size is 32.}}

@@ -27,11 +27,13 @@ def LReLU(x, alpha):
 
 
 x = np.arange(-10., 10., 0.2)
-y = sigmoid(x)
+y = ReLU(x)
 
 fig, ax = plt.subplots()
 ax.plot(x, y, color='m')
 ax.set_xlim(-5, 5)
 ax.set_xlabel("x")
 ax.set_ylabel("y")
+ax.axhline(y=0, color='k')
+ax.axvline(x=0, color='k')
 plt.show()

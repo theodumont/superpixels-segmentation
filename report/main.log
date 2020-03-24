@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.12.9)  23 MAR 2020 21:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.12.9)  24 MAR 2020 13:05
 entering extended mode
 **"C:/Users/Théo Dumont/repos/python/s3r/s3r-repo/report/main.tex"
 ("C:/Users/Théo Dumont/repos/python/s3r/s3r-repo/report/main.tex"
@@ -692,12 +692,12 @@ Package pdftex.def Info: pics/conv-dilated.png  used on input line 255.
 File: pics/act-relu.png Graphic file (type png)
 <use pics/act-relu.png>
 Package pdftex.def Info: pics/act-relu.png  used on input line 283.
-(pdftex.def)             Requested size: 200.76353pt x 148.69345pt.
+(pdftex.def)             Requested size: 223.07211pt x 165.21611pt.
 <pics/act-lrelu.png, id=233, 462.528pt x 342.5598pt>
 File: pics/act-lrelu.png Graphic file (type png)
 <use pics/act-lrelu.png>
 Package pdftex.def Info: pics/act-lrelu.png  used on input line 289.
-(pdftex.def)             Requested size: 200.76353pt x 148.69345pt.
+(pdftex.def)             Requested size: 223.07211pt x 165.21611pt.
  [9 <./pics/act-relu.png> <./pics/act-lrelu.png>]
 LaTeX Font Info:    Try loading font information for T1+cmtt on input line 334.
 
@@ -721,90 +721,74 @@ File: pics/hpp-lr-loss-7910.png Graphic file (type png)
 <use pics/hpp-lr-loss-7910.png>
 Package pdftex.def Info: pics/hpp-lr-loss-7910.png  used on input line 386.
 (pdftex.def)             Requested size: 223.07211pt x 167.30745pt.
-
-Overfull \hbox (13.10648pt too wide) in paragraph at lines 401--408
+ [10]
+Overfull \hbox (13.10648pt too wide) in paragraph at lines 402--409
  [][] 
  []
 
-<pics/hpp-d.png, id=252, 462.528pt x 346.896pt>
+<pics/hpp-d.png, id=266, 462.528pt x 346.896pt>
 File: pics/hpp-d.png Graphic file (type png)
 <use pics/hpp-d.png>
-Package pdftex.def Info: pics/hpp-d.png  used on input line 411.
+Package pdftex.def Info: pics/hpp-d.png  used on input line 412.
 (pdftex.def)             Requested size: 214.8747pt x 161.15675pt.
+[11 <./pics/hpp-lr-loss-678910.png> <./pics/hpp-lr-loss-67910.png> <./pics/hpp-
+lr-loss-7910.png> <./pics/hpp-d.png>]
 
-LaTeX Warning: Citation `todo:tv-tuning' on page 10 undefined on input line 422
+LaTeX Warning: Citation `todo:tv-tuning' on page 12 undefined on input line 423
 .
 
 
-LaTeX Warning: Citation `toto:tv-interpretation' on page 10 undefined on input 
-line 442.
+LaTeX Warning: Citation `toto:tv-interpretation' on page 12 undefined on input 
+line 443.
 
 
-Overfull \hbox (9.25357pt too wide) in paragraph at lines 446--447
+Overfull \hbox (9.25357pt too wide) in paragraph at lines 447--448
 \T1/cmr/m/n/10 To as-sess its per-for-mances, we eval-u-ated our model on the B
 erke-ley Seg-men-ta-tion Dataset 500 (BSDS500)[[]].
  []
 
-[10]
-
-LaTeX Warning: Text page 11 contains only floats.
-
-[11 <./pics/hpp-lr-loss-678910.png> <./pics/hpp-lr-loss-67910.png> <./pics/hpp-
-lr-loss-7910.png> <./pics/hpp-d.png>]
-<pics/schema-test.png, id=283, 498.36188pt x 381.425pt>
+<pics/schema-test.png, id=280, 498.36188pt x 381.425pt>
 File: pics/schema-test.png Graphic file (type png)
 <use pics/schema-test.png>
-Package pdftex.def Info: pics/schema-test.png  used on input line 450.
+Package pdftex.def Info: pics/schema-test.png  used on input line 451.
 (pdftex.def)             Requested size: 318.66948pt x 243.90163pt.
-<pics/img_bsd_res2.png, id=284, 471.26062pt x 347.2975pt>
+<pics/img_bsd_res2.png, id=281, 471.26062pt x 347.2975pt>
 File: pics/img_bsd_res2.png Graphic file (type png)
 <use pics/img_bsd_res2.png>
-Package pdftex.def Info: pics/img_bsd_res2.png  used on input line 463.
+Package pdftex.def Info: pics/img_bsd_res2.png  used on input line 464.
 (pdftex.def)             Requested size: 364.19667pt x 268.40027pt.
-
-
-LaTeX Warning: Citation `checkplacement' on page 12 undefined on input line 466
-.
-
-
-LaTeX Warning: Citation `todo:metrics' on page 12 undefined on input line 468.
-
 [12 <./pics/schema-test.png>] [13 <./pics/img_bsd_res2.png>] [14] (main.bbl
 [15]) [16]
-
-LaTeX Warning: Citation `todo-experiments' on page 17 undefined on input line 5
-15.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 545.
-[17]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 545.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 550.
+ [17]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 550.
  (main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 545.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 545.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 550.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 550.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 713C6CCAE02B71B5D17516D6C712D74D;1322.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 545.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 550.
  ) 
 Here is how much of TeX's memory you used:
  10892 strings out of 492946
  179119 string characters out of 3123156
- 289653 words of memory out of 3000000
+ 285653 words of memory out of 3000000
  14497 multiletter control sequences out of 15000+200000
  26827 words of font info for 76 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  52i,15n,45p,1451b,541s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Théo Dumont\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/
 dpi600\eccc1000.pk> <C:\Users\Théo Dumont\AppData\Local\MiKTeX\2.9\fonts/pk/lj
-four/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\Théo Dumont\AppData\Local\MiKTe
-X\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0800.pk> <C:\Users\Théo Dumont\Ap
-pData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\User
+four/jknappen/ec/dpi600\ecbi1000.pk> <C:\Users\Théo Dumont\AppData\Local\MiKTe
+X\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\Théo Dumont\Ap
+pData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0800.pk> <C:\User
 s\Théo Dumont\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm
-0600.pk> <C:\Users\Théo Dumont\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknapp
-en/ec/dpi600\ecbi1000.pk> <C:\Users\Théo Dumont\AppData\Local\MiKTeX\2.9\fonts
+0800.pk> <C:\Users\Théo Dumont\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknapp
+en/ec/dpi600\ecrm0600.pk> <C:\Users\Théo Dumont\AppData\Local\MiKTeX\2.9\fonts
 /pk/ljfour/jknappen/ec/dpi600\ecrm0700.pk> <C:\Users\Théo Dumont\AppData\Local
 \MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\Théo Dum
 ont\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0900.pk> <C
@@ -832,7 +816,7 @@ AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/
 Users/Théo Dumont/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
 s/symbols/msbm10.pfb><C:/Users/Théo Dumont/AppData/Local/Programs/MiKTeX 2.9/f
 onts/type1/public/rsfs/rsfs10.pfb>
-Output written on main.pdf (17 pages, 2541265 bytes).
+Output written on main.pdf (17 pages, 2541543 bytes).
 PDF statistics:
  822 PDF objects out of 1000 (max. 8388607)
  102 named destinations out of 1000 (max. 500000)
