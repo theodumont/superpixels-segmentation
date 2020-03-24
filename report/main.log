@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.12.9)  24 MAR 2020 17:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.12.9)  24 MAR 2020 17:52
 entering extended mode
 **"C:/Users/Théo Dumont/repos/python/s3r/s3r-repo/report/main.tex"
 ("C:/Users/Théo Dumont/repos/python/s3r/s3r-repo/report/main.tex"
@@ -780,25 +780,25 @@ Overfull \hbox (22.30856pt too wide) in paragraph at lines 487--488
  []
 
 [13 <./pics/img_bsd_res2.png>] [14 <./pics/UE.png> <./pics/CO.png> <./pics/BR.p
-ng>] (main.bbl [15]) [16]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 543.
- [17]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 543.
+ng>] (main.bbl [15])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 511.
+ [16]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 511.
  (main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 543.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 543.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 511.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 511.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 713C6CCAE02B71B5D17516D6C712D74D;1322.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 543.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 511.
  ) 
 Here is how much of TeX's memory you used:
- 10914 strings out of 492946
- 179371 string characters out of 3123156
- 285653 words of memory out of 3000000
- 14519 multiletter control sequences out of 15000+200000
+ 10909 strings out of 492946
+ 179322 string characters out of 3123156
+ 284653 words of memory out of 3000000
+ 14518 multiletter control sequences out of 15000+200000
  26827 words of font info for 76 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 52i,15n,45p,1418b,541s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 52i,13n,45p,1418b,541s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Théo Dumont\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/
 dpi600\eccc1000.pk> <C:\Users\Théo Dumont\AppData\Local\MiKTeX\2.9\fonts/pk/lj
 four/jknappen/ec/dpi600\ecbi1000.pk> <C:\Users\Théo Dumont\AppData\Local\MiKTe
@@ -834,9 +834,9 @@ AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/
 Users/Théo Dumont/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
 s/symbols/msbm10.pfb><C:/Users/Théo Dumont/AppData/Local/Programs/MiKTeX 2.9/f
 onts/type1/public/rsfs/rsfs10.pfb>
-Output written on main.pdf (17 pages, 2619455 bytes).
+Output written on main.pdf (16 pages, 2615549 bytes).
 PDF statistics:
- 838 PDF objects out of 1000 (max. 8388607)
- 99 named destinations out of 1000 (max. 500000)
+ 828 PDF objects out of 1000 (max. 8388607)
+ 95 named destinations out of 1000 (max. 500000)
  271 words of extra memory for PDF output out of 10000 (max. 10000000)
 

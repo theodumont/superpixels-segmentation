@@ -13,7 +13,7 @@ home = expanduser("~")
 
 if __name__ == '__main__':
 
-    results_path = "./reffull/"
+    results_path = "./ref200/"
     with open(results_path + "result.json") as f:
         data = json.load(f)
 

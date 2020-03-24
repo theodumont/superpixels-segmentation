@@ -493,6 +493,8 @@ and $D_{xy}$ is the physical distance between pixel $i$ and the seed $k$ :
 
 
 \newpage
+\
+\newpage
 \section{Discussion and conclusion\label{s5}}
     In this article, we presented an algorithm based upon convolutional neural networks for generating superpixel partitions of images. This work indicates that convolutional neural networks can achieve good performance on superpixel segmentation. Because of the complexity of both the model and the problem we are trying to resolve, we were able to conduct little experiments for the tuning of our hyperparameters. It would thus be interesting to push the study further, notably by conducting additional tests for a better choice of our parameters. We ran some experiments on the implementation of a U-Net~\cite{unet2015} network, but only have a few results yet. We would like to continue testing this network, and try to mix it with the CAN, for instance adding only one U-Net layer on the CAN. Furthermore, testing our model on other datasets would show how well it generalizes.
 
@@ -505,39 +507,5 @@ This work would not have been possible without the precious help of Mr.~Bruno \t
 
 \bibliographystyle{plain}
 \bibliography{sources}
-
-\newpage
-\section*{Appendices}
-
-    \subsection*{Experiments}
-
-    \begin{table}[!ht]
-            \centering
-            \begin{tabular}{|c||c|c|c|c|c|c|c|}
-                \hline
-                id & $d$ & $lr_0$ & decay? & thresh.? & $\alpha_{TV}$ & comments & conclusion \\
-                \hline
-                \hline
-                3 & 4 & $10^{-2}$ & $\times .5$ every 2 ep. & $10^{-4}$ & 0 & & \multirow{6}{*}{$d=7$}\\
-                4 & 5 & $10^{-2}$ & $\times .5$ every 2 ep. & $10^{-4}$ & 0 & & \\
-                5 & 6 & $10^{-2}$ & $\times .5$ every 2 ep. & $10^{-4}$ & 0 & & \\
-                0 & 7 & $10^{-2}$ & $\times .5$ every 2 ep. & $10^{-4}$ & 0 & & \\
-                11 & 8 & $10^{-2}$ & $10^{-3}$ after 10 ep. & $10^{-3}$ & 0 & & \\
-                15 & 8 & $10^{-2}$ & $\times .5$ every 2 ep. & $10^{-4}$ & 0 & & \\
-                \hline
-                6 & 7 & $10^{-2}$ & $\times .5$ every 2 ep. & $10^{-4}$ & 0 & from run 0 ep.5 & \multirow{6}{*}{\shortstack{$lr_0=10^{-2}$,\\then $10^{-3}$\\after 10 ep.}}\\
-                8 & 7 & $10^{-2}$ & No & & 0 & from run 0 ep.40 & \\
-                7 & 7 & $10^{-3}$ & No & & 0 & from run 0 ep.40 & \\
-                9 & 7 & $10^{-3}$ & $\times .5$ every 2 ep. & $10^{-4}$ & 0 & from run 0 ep. 40 & \\
-                10 & 7 & $10^{-3}$ & No &  & 0 & from run 9 ep.40& \\
-                14 & 7 & $10^{-4}$ & No &  & 0 & from run 10 ep.13& \\
-                \hline
-                12 & 7 & $10^{-2}$ & $10^{-3}$ after 10 ep. & $10^{-3}$ & $10^{-6}$ & \multirow{2}{*}{no improvement} & \multirow{2}{*}{$\alpha_{TV}=0$}\\
-                13 & 7 & $10^{-2}$ & $10^{-3}$ after 10 ep. & $10^{-3}$ & $10^{-7}$ & & \\
-                \hline
-            \end{tabular}
-            \caption{\textit{All the runs. The batch size is 32.}}
-        \end{table}
-
 
 \end{document}
