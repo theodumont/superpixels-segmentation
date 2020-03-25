@@ -5,7 +5,7 @@
 \BOOKMARK [1][-]{section.2}{Background on superpixels segmentation}{}% 5
 \BOOKMARK [2][-]{subsection.2.1}{Superpixels}{section.2}% 6
 \BOOKMARK [2][-]{subsection.2.2}{A good superpixel segmentation}{section.2}% 7
-\BOOKMARK [2][-]{subsection.2.3}{Algorithms}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.3}{Superpixel algorithms}{section.2}% 8
 \BOOKMARK [3][-]{subsubsection.2.3.1}{SLIC}{subsection.2.3}% 9
 \BOOKMARK [3][-]{subsubsection.2.3.2}{Eikonal}{subsection.2.3}% 10
 \BOOKMARK [1][-]{section.3}{Proposed approach and architecture}{}% 11
