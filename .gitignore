@@ -12,3 +12,4 @@ report/pics/*.pptx
 
 # data
 *full/
+*.json
