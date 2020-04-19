@@ -1,1 +1,0 @@
-/usr/bin/c++  -fPIC -O3 -DNDEBUG  -shared -Wl,-soname,libfmm.so -o lib/Release/libfmm.so CMakeFiles/fmm.dir/src/wrapper.cpp.o CMakeFiles/fmm.dir/src/fastmarching.cpp.o CMakeFiles/fmm.dir/src/heap.cpp.o -lboost_python 

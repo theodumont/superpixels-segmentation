@@ -1,3 +1,0 @@
-# Segmentation - BSD
-
-To do
