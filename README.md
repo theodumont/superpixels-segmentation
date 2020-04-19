@@ -15,7 +15,8 @@ Keywords: Python, PyTorch, Deep Learning, Image Segmentation
 - [ ] `cnn`
     - [ ] sort `cnn` codes (modules, net)
     - [ ] `README.md` in `cnn`
-    - [ ] put `cnn\results\results.py` file in `notebooks`
+    - [ ] put `cnn\results\images\results.py` file in `notebooks`
+    - [ ] adapt files to new structure of repository
     - [ ] `README.md` in `cnn\results`
 - [ ] `data`
     - [ ] `README.md` in `data`
