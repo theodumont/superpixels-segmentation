@@ -23,6 +23,6 @@ Keywords: Python, PyTorch, Deep Learning, Image Segmentation
     - [ ] convert `.py` files into `notebooks`
     - [ ] `README.md` in `notebooks`
 - [x] `report`
-- [ ] `segm`
-    - [ ] `README.md` in `segm`
+- [x] `segm`
+    - [x] `README.md` in `segm`
 - [ ] this `README.md`
