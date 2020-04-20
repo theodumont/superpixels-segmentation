@@ -3,6 +3,9 @@
 # python
 *__pycache__/
 
+# jupyter
+*.ipynb_checkpoints
+
 # cnn
 cnn/data/*.json
 
