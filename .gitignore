@@ -10,7 +10,13 @@
 cnn/data/*.json
 
 # report
+report/main.aux
+report/main.bbl
+report/main.blg
 report/main.log
+report/main.out
+report/main.synctex.gz
+report/main.toc
 report/pics/*.pptx
 
 # data
