@@ -19,6 +19,15 @@ report/main.synctex.gz
 report/main.toc
 report/pics/*.pptx
 
+# presentation
+presentation/main.aux
+presentation/main.log
+presentation/main.nav
+presentation/main.out
+presentation/main.snm
+presentation/main.synctex.gz
+presentation/main.toc
+
 # data
 *full/
 *.json
