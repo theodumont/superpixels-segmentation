@@ -29,7 +29,7 @@ The project `superpixels-segmentation` has the following structure:
 
 - `cnn/`: scripts for convolutional neural network
 - `segm/`: info about superpixel segmentation
-- `notebooks/`: dataset analysis and other scripts
+- `other/`: dataset analysis and other scripts
 - `report/`: sources for report (pdf version can be found [here](report/main.pdf))
 - `data/`: samples from the datasets used. More info in the [`data/` folder](data)
 - `presentation/`: sources for public presentation (pdf version can be found [here](presentation/main.pdf))
