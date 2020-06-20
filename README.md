@@ -21,10 +21,10 @@ Keywords: Python, PyTorch, Deep Learning, Image Segmentation
 
 The project `superpixel-segmentation` has the following structure:
 
-- `cnn`: scripts for convolutional neural network
-- `segm`: info about superpixel segmentation
-- `report`: sources for report (pdf version can be found [here](report/main.pdf))
-- `presentation`: sources for public presentation (pdf version can be found [here](presentation/main.pdf))
+- `cnn/`: scripts for convolutional neural network
+- `segm/`: info about superpixel segmentation
+- `report/`: sources for report (pdf version can be found [here](report/main.pdf))
+- `presentation/`: sources for public presentation (pdf version can be found [here](presentation/main.pdf))
 
 
 ## 3. Neural Network
@@ -61,11 +61,11 @@ We found that the following values worked well on the BSD dataset:
 
 ![An output image](./report/pics/img_bsd_res2_readme.png)
 
-_Application of the model to an image of the BSD500. From left to right, up to down: original image, output image of the neural network, superpixel segmentation of the output image overlaying on original image, and superpixel segmented image with each superpixel being displayed with the average color of the pixels belonging to it._
+_Application of the model to an image of the BSD500. Original image (left) and superpixel segmented image with each superpixel being displayed with the average color of the pixels belonging to it (right)._
 
 Below are evaluated the metrics for some superpixel segmentation algorithms: SLIC, FMS and our algorithm (see [report](report/main.pdf) for references). We use the SLIC algorithm as a reference to evaluate the performances of our model.
 
-![Comparisons of metrics on the BSDS500 dataset](./report/pics/metrics.png)
+<!-- ![Comparisons of metrics on the BSDS500 dataset](./report/pics/metrics.png) -->
 
 Our model yields very good results: the undersegmentation sees a 0.01 improvement, and the compactness is way better (improvement of 0.23). The boundary recall is slightly smaller for our model than for the SLIC algorithm, but this is not a problem as the SLIC compactness is very low. The contours oscillate and thus intersect more with the ground truth image outlines.
 
