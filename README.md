@@ -34,15 +34,15 @@ The primary architecture of our network is the Context Aggregation Network (CAN)
 
 Here is the architecture of our Context Aggregation Network:
 
-| Layer `L_s`          | 1   | 2   | 3   | 4   | 5   | 6   | 7   |
-|----------------------|-----|-----|-----|-----|-----|-----|-----|
-| Input `w\_s`         | 3   | 24  | 24  | 24  | 24  | 24  | 24  |
-| Output `w\_\{s\+1\}` | 24  | 24  | 24  | 24  | 24  | 24  | 3   |
-| Receptive field      | 3x3 | 3x3 | 3x3 | 3x3 | 3x3 | 3x3 | 1x1 |
-| Dilation `r\_s`      | 1   | 2   | 4   | 8   | 16  | 1   | 1   |
-| Padding              | 1   | 2   | 4   | 8   | 16  | 1   | 0   |
-| ABN                  | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| LReLU                | 0.2 | 0.2 | 0.2 | 0.2 | 0.2 | 0.2 | No  |
+| Layer `L_s`       | 1   | 2   | 3   | 4   | 5   | 6   | 7   |
+|-------------------|-----|-----|-----|-----|-----|-----|-----|
+| Input `w_s`       | 3   | 24  | 24  | 24  | 24  | 24  | 24  |
+| Output `w_{s+1}`  | 24  | 24  | 24  | 24  | 24  | 24  | 3   |
+| Receptive field   | 3x3 | 3x3 | 3x3 | 3x3 | 3x3 | 3x3 | 1x1 |
+| Dilation `r_s`    | 1   | 2   | 4   | 8   | 16  | 1   | 1   |
+| Padding           | 1   | 2   | 4   | 8   | 16  | 1   | 0   |
+| ABN               | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| LReLU             | 0.2 | 0.2 | 0.2 | 0.2 | 0.2 | 0.2 | No  |
 
 
 
@@ -59,14 +59,15 @@ We found that the following values worked well on the BSD dataset:
 ## 4. Results
 
 
-![An output image](./report/pics/img_bsd_res2.png)
+![An output image](./report/pics/img_bsd_res2_readme.png)
 
 _Application of the model to an image of the BSD500. From left to right, up to down: original image, output image of the neural network, superpixel segmentation of the output image overlaying on original image, and superpixel segmented image with each superpixel being displayed with the average color of the pixels belonging to it._
 
-Below are evaluated the metrics for some superpixel segmentation algorithms: SLIC, FMS and our algorithm (see [report](report/main.pdf) for references). We use the SLIC algorithm as a reference to evaluate the performances of our model. It yields very good results: the undersegmentation sees a 0.01 improvement, and the compactness is way better (improvement of 0.23). The boundary recall is slightly smaller for our model than for the SLIC algorithm, but this is not a problem as the SLIC compactness is very low. The contours oscillate and thus intersect more with the ground truth image outlines.
+Below are evaluated the metrics for some superpixel segmentation algorithms: SLIC, FMS and our algorithm (see [report](report/main.pdf) for references). We use the SLIC algorithm as a reference to evaluate the performances of our model.
 
 ![Comparisons of metrics on the BSDS500 dataset](./report/pics/metrics.png)
 
+Our model yields very good results: the undersegmentation sees a 0.01 improvement, and the compactness is way better (improvement of 0.23). The boundary recall is slightly smaller for our model than for the SLIC algorithm, but this is not a problem as the SLIC compactness is very low. The contours oscillate and thus intersect more with the ground truth image outlines.
 
 ## 5. Resources
 
