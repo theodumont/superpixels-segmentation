@@ -73,6 +73,7 @@ Below are evaluated the metrics for some superpixel segmentation algorithms: SLI
 | SLIC | .10              | .31         | .90             |
 | FMS  | .05              | .48         | .89             |
 | Ours | .04              | .77         | .88             |
+
 _Comparisons of metrics on the BSD500 dataset. Values are for segmentations with 400 superpixels._
 
 Our model yields very good results: the undersegmentation sees a 0.01 improvement, and the compactness is way better (improvement of 0.23). The boundary recall is slightly smaller for our model than for the SLIC algorithm, but this is not a problem as the SLIC compactness is very low. The contours oscillate and thus intersect more with the ground truth image outlines.
