@@ -1,0 +1,8 @@
+notebook
+numpy
+Pillow
+scikit-image
+scipy
+seaborn
+torch
+torchvision

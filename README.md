@@ -1,7 +1,5 @@
 # Research internship - Image segmentation by superpixels
 
-> :warning: WIP
-
 Keywords: Python, PyTorch, Deep Learning, Image Segmentation
 
 ## Table of contents
@@ -22,6 +20,16 @@ The objective of this research is to develop a deep learning based algorithm to 
 By combining an algorithm that generates superpixel partitions through the resolution of the Eikonal equation and ground truth segmentations from the [COCO dataset](http://cocodataset.org/#home), we were able to generate training examples of superpixel partitions of the images of the dataset. This convolutional network architecture is then trained on these images. A superpixel algorithm is finally applied to the output of the network to construct the seeked partition.
 
 You can read [the report](report/main.pdf) for more information about this.
+
+To install the project:
+```bash
+# clone the project
+$ cd /path/to/project/
+$ git clone https://github.com/theodumont/superpixels-segmentation.git
+$ cd superpixels-segmentation/
+# install requirements
+$ pip install -r requirements.txt
+```
 
 ## 2. Project structure
 
@@ -87,18 +95,3 @@ Our model yields very good results: the undersegmentation sees a 0.01 improvemen
 ## 5. References
 
 See [here](report/main.pdf#page=15) for references.
-
-## To do
-
-- [ ] `cnn`
-    - [x] sort `cnn` codes (modules, net)
-    - [ ] put `cnn\results\images\results.py` file in `notebooks`
-- [ ] `data`
-    - [ ] `README.md` in `data`
-- [ ] `notebooks`
-    - [ ] convert `.py` files into `notebooks`
-- [x] `report`
-- [x] `segm`
-    - [x] `README.md` in `segm`
-- [ ] this `README.md`
-- [ ] requirements
