@@ -1,12 +1,13 @@
 """
 Useful tools and functions
 """
-import numpy as np
+
 import random as rd
+import numpy as np
 import matplotlib.pyplot as plt
-from collections import Sequence
-from itertools import chain, count
 import torch
+from itertools import chain, count
+from collections import Sequence
 
 
 def show_image(image):
@@ -39,14 +40,25 @@ def show_sample_index(segmentation_dataset, idx_list):
         show_sample(sample, idx)
 
 
-def show_sample(sample, idx):
+def show_sample(sample):
+    fig = plt.figure(0)
+    ax = plt.subplot(112)
+    ax.imshow(np.transpose(sample['input'].int().squeeze(0), axes=(1, 2, 0)))
+    ax = plt.subplot(212)
+    ax.imshow(np.transpose(sample['target'].int().squeeze(0), axes=(1, 2, 0)))
+    plt.draw()
+    plt.pause(.7)
+    plt.close()
+
+
+def show_batch(batch):
     """
     Display a sample image from the dataset, v2
     """
-    fig = plt.figure("Batch number {}".format(idx), figsize=(6, 9))
+    fig = plt.figure("Batch".format(idx))
 
-    images = sample['image']
-    images_segm = sample['image_segm']
+    images = batch['image']
+    images_segm = batch['image_segm']
     for i in range(images.shape[0]):
         image = np.transpose((255*images).int()[i], axes=(1, 2, 0))
         image_segm = np.transpose((255*images_segm).int()[i], axes=(1, 2, 0))

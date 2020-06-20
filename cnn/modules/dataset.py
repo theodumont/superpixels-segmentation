@@ -3,12 +3,12 @@ Load pairs of image and target from the dataset, and define
 transformations on the images (crop, rescaling, etc.)
 """
 
+import os
+import numpy as np
 import torch
 import skimage.transform as tr
 from skimage import img_as_float
-import os
 from skimage import io
-import numpy as np
 
 
 class SegmentationDataset:
@@ -36,7 +36,7 @@ class SegmentationDataset:
         self.input_dir = input_dir
         self.target_dir = target_dir
         self.transform = transform
-        self.images = os.listdir(self.root_dir + self.target_dir)
+        self.images = os.listdir(os.path.join(self.root_dir, self.target_dir))
 
     def __len__(self):
 
@@ -279,7 +279,7 @@ class ToTensor(object):
     """
 
     def __call__(self, sample):
-
+        print('piche')
         """
         Apply the transform to the specified sample
 
@@ -293,9 +293,14 @@ class ToTensor(object):
         """
 
         img, target = sample['input'], sample['target']
-
-        img = img.transpose((2, 0, 1))
-        target = target.transpose((2, 0, 1))
+        try:
+            return 0
+            img = img.transpose((2, 0, 1))
+            target = target.transpose((2, 0, 1))
+        except:
+            return 0
+            img = img.transpose((0, 1))
+            target = target.transpose((0, 1))
 
         img = torch.from_numpy(img).float()
         target = torch.from_numpy(target).float()

@@ -2,22 +2,19 @@
 Test methods for the neural network
 """
 
+import numpy as np
+import matplotlib.pyplot as plt
 import torch
-import torchvision
-import torchvision.transforms as transforms
-from dataset import *
-from utils import *
 import torch.nn as nn
 import torch.nn.functional as F
-from loss import TV_loss
-import matplotlib.pyplot as plt
-from network import AdaptiveBatchNorm2d, ChenConv
-from network import Net
-
+import torchvision
+import torchvision.transforms as transforms
 from skimage.morphology import disk
 from skimage.filters.rank import gradient
-
-import numpy as np
+from modules.dataset import *
+from modules.utils import *
+from modules.loss import TV_loss
+from modules.network import AdaptiveBatchNorm2d, ChenConv, Net
 
 
 if __name__ == '__main__':
