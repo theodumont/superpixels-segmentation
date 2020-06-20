@@ -65,7 +65,7 @@ _Application of the model to an image of the BSD500. Original image (left) and s
 
 Below are evaluated the metrics for some superpixel segmentation algorithms: SLIC, FMS and our algorithm (see [report](report/main.pdf) for references). We use the SLIC algorithm as a reference to evaluate the performances of our model.
 
-<!-- ![Comparisons of metrics on the BSDS500 dataset](./report/pics/metrics.png) -->
+![Comparisons of metrics on the BSDS500 dataset](./report/pics/metrics.png)
 
 Our model yields very good results: the undersegmentation sees a 0.01 improvement, and the compactness is way better (improvement of 0.23). The boundary recall is slightly smaller for our model than for the SLIC algorithm, but this is not a problem as the SLIC compactness is very low. The contours oscillate and thus intersect more with the ground truth image outlines.
 
