@@ -23,7 +23,9 @@ The project `superpixel-segmentation` has the following structure:
 
 - `cnn/`: scripts for convolutional neural network
 - `segm/`: info about superpixel segmentation
+- `notebooks/`: dataset analysis and other scripts
 - `report/`: sources for report (pdf version can be found [here](report/main.pdf))
+- `data/`: samples from the datasets used. More info in the [`data/` folder](data)
 - `presentation/`: sources for public presentation (pdf version can be found [here](presentation/main.pdf))
 
 
@@ -60,12 +62,18 @@ We found that the following values worked well on the BSD dataset:
 
 
 ![An output image](./report/pics/img_bsd_res2_readme.png)
-
 _Application of the model to an image of the BSD500. Original image (left) and superpixel segmented image with each superpixel being displayed with the average color of the pixels belonging to it (right)._
 
 Below are evaluated the metrics for some superpixel segmentation algorithms: SLIC, FMS and our algorithm (see [report](report/main.pdf) for references). We use the SLIC algorithm as a reference to evaluate the performances of our model.
 
 ![Comparisons of metrics on the BSDS500 dataset](./report/pics/metrics.png)
+
+|      | Undersegm. Error | Compactness | Boundary Recall | 
+|------|------------------|-------------|-----------------|
+| SLIC | .10              | .31         | .90             |
+| FMS  | .05              | .48         | .89             |
+| Ours | .04              | .77         | .88             |
+_Comparisons of metrics on the BSD500 dataset. Values are for segmentations with 400 superpixels._
 
 Our model yields very good results: the undersegmentation sees a 0.01 improvement, and the compactness is way better (improvement of 0.23). The boundary recall is slightly smaller for our model than for the SLIC algorithm, but this is not a problem as the SLIC compactness is very low. The contours oscillate and thus intersect more with the ground truth image outlines.
 
@@ -77,16 +85,13 @@ This project was inspired by:
 
 - [ ] `cnn`
     - [x] sort `cnn` codes (modules, net)
-    - [ ] `README.md` in `cnn`
     - [ ] put `cnn\results\images\results.py` file in `notebooks`
-    - [ ] adapt files to new structure of repository
-    - [ ] `README.md` in `cnn\results`
 - [ ] `data`
     - [ ] `README.md` in `data`
 - [ ] `notebooks`
     - [ ] convert `.py` files into `notebooks`
-    - [ ] `README.md` in `notebooks`
 - [x] `report`
 - [x] `segm`
     - [x] `README.md` in `segm`
 - [ ] this `README.md`
+- [ ] requirements
