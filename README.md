@@ -10,7 +10,7 @@ Keywords: Python, PyTorch, Deep Learning, Image Segmentation
     3.1. [ Architecture ](#31-architecture)  
     3.2. [ Hyperparameters ](#32-hyperparameters)
 4. [ Results ](#4-results)
-5. [ Resources ](#5-resources)
+5. [ References ](#5-references)
 
 ## 1. Introduction
 
