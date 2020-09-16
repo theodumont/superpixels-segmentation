@@ -3,7 +3,6 @@
 Keywords: Python, PyTorch, Deep Learning, Image Segmentation
 
 ## Table of contents
-
 1. [ Introduction ](#1-introduction)
 2. [ Project structure ](#2-project-structure)
 3. [ Neural Network ](#3-neural-network)  
@@ -24,11 +23,11 @@ You can read [the report](report/main.pdf) for more information about this.
 To install the project:
 ```bash
 # clone the project
-$ cd /path/to/project/
-$ git clone https://github.com/theodumont/superpixels-segmentation.git
-$ cd superpixels-segmentation/
+cd /path/to/project/
+git clone https://github.com/theodumont/superpixels-segmentation.git
+cd superpixels-segmentation/
 # install requirements
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ## 2. Project structure
@@ -38,9 +37,9 @@ The project `superpixels-segmentation` has the following structure:
 - `cnn/`: scripts for convolutional neural network
 - `segm/`: info about superpixel segmentation
 - `other/`: dataset analysis and other scripts
-- `report/`: sources for report (pdf version can be found [here](report/main.pdf))
+- `report/`: sources for report (``.pdf`` version can be found [here](report/main.pdf))
 - `data/`: samples from the datasets used. More info in the [`data/` folder](data)
-- `presentation/`: sources for public presentation (pdf version can be found [here](presentation/main.pdf))
+- `presentation/`: sources for public presentation (``.pdf`` version can be found [here](presentation/main.pdf))
 
 
 ## 3. Neural Network
