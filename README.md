@@ -1,6 +1,6 @@
 # Research internship - Image segmentation by superpixels
 
-Keywords: Python, PyTorch, Deep Learning, Image Segmentation
+**Keywords:** Python, PyTorch, Deep Learning, Image Segmentation
 
 ## Table of contents
 1. [ Introduction ](#1-introduction)
@@ -15,7 +15,7 @@ Keywords: Python, PyTorch, Deep Learning, Image Segmentation
 
 > Disclaimer: this code is part of a bigger project and does not aim at being used alone.
 
-The objective of this research is to develop a deep learning based algorithm to generate a superpixel partition with improved metrics.
+The objective of this research is to develop a deep learning based algorithm to generate a **superpixel partition** with improved metrics.
 By combining an algorithm that generates superpixel partitions through the resolution of the Eikonal equation and ground truth segmentations from the [COCO dataset](http://cocodataset.org/#home), we were able to generate training examples of superpixel partitions of the images of the dataset. This convolutional network architecture is then trained on these images. A superpixel algorithm is finally applied to the output of the network to construct the seeked partition.
 
 You can read [the report](report/main.pdf) for more information about this.
@@ -45,7 +45,7 @@ The project `superpixels-segmentation` has the following structure:
 ## 3. Neural Network
 
 ### 3.1. Architecture
-The primary architecture of our network is the Context Aggregation Network (CAN). It gradually aggregates contextual information without losing resolution through the use of dilated convolutions, whose field of view increases exponentially over the network layers. This exponential growth grants a global information aggregation with a compact structure. Please view [the report](report/main.pdf) for references.
+The primary architecture of our network is the **Context Aggregation Network** (CAN). It gradually aggregates contextual information without losing resolution through the use of dilated convolutions, whose field of view increases exponentially over the network layers. This exponential growth grants a global information aggregation with a compact structure. Please view [the report](report/main.pdf) for references.
 
 Here is the architecture of our Context Aggregation Network:
 
@@ -72,7 +72,7 @@ We found that the following values worked well on the BSD dataset:
 
 
 ## 4. Results
-The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields results in terms of boundary adherence that are comparable to the ones obtained with state of the art algorithms including SLIC, while significantly improving on these algorithms in terms of compactness and undersegmentation.
+The algorithm is evaluated on the Berkeley Segmentation Dataset 500. It yields results in terms of boundary adherence that are comparable to the ones obtained with state of the art algorithms including SLIC, while significantly improving on these algorithms in terms of **compactness and undersegmentation**.
 
 ![An output image](./report/pics/img_bsd_res2_readme.png)
 _Application of the model to an image of the BSD500. Original image (left) and superpixel segmented image with each superpixel being displayed with the average color of the pixels belonging to it (right)._
@@ -89,7 +89,7 @@ Below are evaluated the metrics for some superpixel segmentation algorithms: SLI
 
 _Comparisons of metrics on the BSD500 dataset. Values are for segmentations with 400 superpixels._
 
-Our model yields very good results: the undersegmentation sees a 0.01 improvement, and the compactness is way better (improvement of 0.23). The boundary recall is slightly smaller for our model than for the SLIC algorithm, but this is not a problem as the SLIC compactness is very low. The contours oscillate and thus intersect more with the ground truth image outlines.
+Our model yields very good results: the undersegmentation sees a `0.01` improvement, and the compactness is way better (improvement of `0.23`). The boundary recall is slightly smaller for our model than for the SLIC algorithm, but this is not a problem as the SLIC compactness is very low. The contours oscillate and thus intersect more with the ground truth image outlines.
 
 ## 5. References
 
