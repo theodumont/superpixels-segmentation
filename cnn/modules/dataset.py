@@ -294,11 +294,9 @@ class ToTensor(object):
 
         img, target = sample['input'], sample['target']
         try:
-            return 0
             img = img.transpose((2, 0, 1))
             target = target.transpose((2, 0, 1))
         except:
-            return 0
             img = img.transpose((0, 1))
             target = target.transpose((0, 1))
 
